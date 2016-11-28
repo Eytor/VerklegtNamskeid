@@ -13,17 +13,19 @@ struct TolPers{
 
 void updateFile(vector<TolPers> person, int num, int& count)
 {
-    ifstream file;
-    file.open ("list.txt");
-
-    for(int i = count; i < (count+num); i++)
+    ofstream file;
+    file.open("list.txt");
+    if(file.is_open())
     {
-        file >> person[i].name ;
-        file >> person[i].sex ;
-        file >> person[i].yearOfBirth ;
-        file >> person[i].yearOfDeath ;
+        for(int i = 0; i < (count+num); i++)
+        {
+            file << person[i].name << '\t' ;
+            file << person[i].sex << '\t';
+            file << person[i].yearOfBirth << '\t';
+            file << person[i].yearOfDeath << endl ;
+        }
+        file.close();
     }
-    file.close();
     count += num;
 }
 
@@ -93,8 +95,8 @@ void displayList(vector<TolPers> person, int count)
             {
                 cout << "Year of Death: " << person[i].yearOfDeath << endl;
             }
+            cout << endl;
     }
-    cout << endl;
 }
 
 
@@ -122,6 +124,7 @@ int main()
         case 4:
             break;
         case 0:
+            cout << "Goodbye!" << endl;
             break;
         default:
             cout << "Wrong input" << endl;
