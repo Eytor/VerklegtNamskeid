@@ -6,6 +6,8 @@ using namespace std;
 
 struct TolPers{
     string name;
+    char middleInitial;
+    string lastName;
     string sex;
     int yearOfBirth;
     int yearOfDeath;
@@ -20,6 +22,8 @@ void updateFile(vector<TolPers> person, int num, int& count)
         for(int i = 0; i < (count+num); i++)
         {
             file << person[i].name << '\t' ;
+            file << person[i].middleInitial << '\t';
+            file << person[i].lastName << '\t';
             file << person[i].sex << '\t';
             file << person[i].yearOfBirth << '\t';
             file << person[i].yearOfDeath << endl ;
@@ -34,6 +38,8 @@ void retriveInfo(vector<TolPers>& person, int& count)
     ifstream file;
     file.open ("list.txt");
     string name;
+    char middleInitial;
+    string lastName;
     string sex;
     int birth;
     int death;
@@ -41,6 +47,8 @@ void retriveInfo(vector<TolPers>& person, int& count)
     while(file >> name >> sex >> birth >> death)
     {
         pers.name = name;
+        pers.middleInitial = middleInitial;
+        pers.lastName = lastName;
         pers.sex = sex;
         pers.yearOfBirth = birth;
         pers.yearOfDeath = death;
@@ -74,6 +82,10 @@ void InputPeople(vector<TolPers>& person, int& count)
 
         cout << "Name: ";
         cin >> pers.name;
+        cout << "Middle initial: ";
+        cin >> pers.middleInitial;
+        cout << "Last name: ";
+        cin >> pers.lastName;
         cout << "Sex: ";
         cin >> pers.sex;
         cout << "Year of birth: ";
@@ -89,6 +101,8 @@ void displayList(vector<TolPers> person, int count)
     for(int i = 0; i < count; i++)
     {
         cout << "Name: " << person[i].name << endl
+             << "Middle initial: " << person[i].middleInitial << endl
+             << "Last name: " << person[i].lastName << endl
              << "Sex: " << person[i].sex << endl
              << "Year of birth: " << person[i].yearOfBirth << endl;
             if(person[i].yearOfDeath != 0)
