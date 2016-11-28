@@ -44,7 +44,7 @@ void retriveInfo(vector<TolPers>& person, int& count)
     int birth;
     int death;
     TolPers pers;
-    while(file >> name >> sex >> birth >> death)
+    while(file >> name >> middleInitial >> lastName >> sex >> birth >> death)
     {
         pers.name = name;
         pers.middleInitial = middleInitial;
@@ -100,16 +100,19 @@ void displayList(vector<TolPers> person, int count)
 {
     for(int i = 0; i < count; i++)
     {
-        cout << "Name: " << person[i].name << endl
-             << "Middle initial: " << person[i].middleInitial << endl
-             << "Last name: " << person[i].lastName << endl
+        cout << "Name: " << person[i].name ;
+        if(person[i].middleInitial != '0')
+        {
+        cout << " " << person[i].middleInitial;
+        }
+        cout << " " << person[i].lastName << endl
              << "Sex: " << person[i].sex << endl
              << "Year of birth: " << person[i].yearOfBirth << endl;
-            if(person[i].yearOfDeath != 0)
-            {
-                cout << "Year of Death: " << person[i].yearOfDeath << endl;
-            }
-            cout << endl;
+        if(person[i].yearOfDeath != 0)
+        {
+            cout << "Year of Death: " << person[i].yearOfDeath << endl;
+        }
+        cout << endl;
     }
 }
 
