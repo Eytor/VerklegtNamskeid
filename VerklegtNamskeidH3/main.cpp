@@ -148,7 +148,9 @@ void search(vector<TolPers> person, int count)
            (convertToLower(person[i].middleInitial) == convertToLower(term))||
            (convertToLower(person[i].lastName) == convertToLower(term))||
            (convertToLower(person[i].sex) == convertToLower(term)) ||
-           (person [i].yearOfBirth == term) || (person[i].yearOfDeath == term))
+           (person [i].yearOfBirth == term) || (person[i].yearOfDeath == term)||
+           (person[i].yearOfBirth == number)||
+           ((person[i].yearOfDeath == number) && number != "0"))
         {
             found = true;
         }
@@ -159,17 +161,6 @@ void search(vector<TolPers> person, int count)
         {
             found = true;
         }
-
-        /*else if(person[i].yearOfBirth == number)
-        {
-            found = true;
-        }
-        else if(person[i].yearOfDeath == number)
-        {
-            found = true;
-        }*/
-
-
         if(found)
         {
             printPerson(person, i);
