@@ -226,7 +226,7 @@ int main()
 {
     vector<TolPers> personur;
     int count = 0;
-    int selected;
+    int selected = 1000;
     int sortSelect;
     retriveInfo(personur, count);
 
