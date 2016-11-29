@@ -10,8 +10,8 @@ struct TolPers{
     string middleInitial;
     string lastName;
     string sex;
-    string yearOfBirth;
-    string yearOfDeath;
+    int yearOfBirth;
+    int yearOfDeath;
 };
 
 void updateFile(vector<TolPers> person, int num, int& count)
@@ -42,8 +42,8 @@ void retriveInfo(vector<TolPers>& person, int& count)
     string middleInitial;
     string lastName;
     string sex;
-    string birth;
-    string death;
+    int birth;
+    int death;
     TolPers pers;
     while(file >> name >> middleInitial >> lastName >> sex >> birth >> death)
     {
@@ -85,6 +85,7 @@ int sortSelection()
 
 void InputPeople(vector<TolPers>& person, int& count)
 {
+    bool legit = false;
     int numOfPeople;
     cout << "Select number or people: ";
     cin >> numOfPeople;
@@ -100,17 +101,58 @@ void InputPeople(vector<TolPers>& person, int& count)
         cin >> pers.lastName;
         cout << "Sex: ";
         cin >> pers.sex;
-        cout << "Year of birth: ";
-        cin >> pers.yearOfBirth;
-        cout << "Year of death: ";
-        cin >> pers.yearOfDeath;
+        while(!legit)
+        {
+            cout << "Year of birth: ";
+            cin >> pers.yearOfBirth;
+            if(pers.yearOfBirth > 0 && pers.yearOfBirth < 2250)
+            {
+                legit = true;
+            }
+            else
+            {
+                legit = false;
+                cout << "Invalid year!" << endl;
+            }
+        }
+        legit = false;
+        while(!legit)
+        {
+            cout << "Year of death: ";
+            cin >> pers.yearOfDeath;
+            if(pers.yearOfDeath >= 0 && pers.yearOfDeath < 2250)
+            {
+                if(pers.yearOfDeath != 0)
+                {
+                    if(pers.yearOfDeath > pers.yearOfBirth)
+                    {
+                        legit = true;
+                    }
+                    else
+                    {
+                        legit = false;
+                        cout << "Invalid year!" << endl;
+                    }
+                }
+                else
+                {
+                    legit = true;
+                }
+            }
+            else
+            {
+                legit = false;
+                cout << "Invalid year!" << endl;
+            }
+        }
+
         person.push_back(pers);
     }
     updateFile(person, numOfPeople, count);
 }
 void printPerson(vector<TolPers> person, int i)
 {
-    cout << "First name: " << person[i].name ;
+    cout << "Name: " << person[i].name ;
     if(person[i].middleInitial != "0")
     {
     cout << " " << person[i].middleInitial;
@@ -118,7 +160,7 @@ void printPerson(vector<TolPers> person, int i)
     cout << " " << person[i].lastName << endl
          << "Sex: " << person[i].sex << endl
          << "Year of birth: " << person[i].yearOfBirth << endl;
-    if(person[i].yearOfDeath != "0")
+    if(person[i].yearOfDeath != 0)
     {
         cout << "Year of Death: " << person[i].yearOfDeath << endl;
     }
@@ -149,7 +191,7 @@ void search(vector<TolPers> person, int count)
 
     bool found = false;
     string term;
-    cout << "Type what you are looking for in lowercase letters " << endl;
+    cout << "What are you looking for? " << endl;
     cin.ignore();
     getline(cin,term);
     for(int i = 0; i < count; i++)
@@ -158,9 +200,8 @@ void search(vector<TolPers> person, int count)
            (convertToLower(person[i].middleInitial) == convertToLower(term))||
            (convertToLower(person[i].lastName) == convertToLower(term))||
            (convertToLower(person[i].sex) == convertToLower(term)) ||
-           (person [i].yearOfBirth == term) || (person[i].yearOfDeath == term)||
-           (person[i].yearOfBirth == term)||
-           ((person[i].yearOfDeath == term) && term != "0"))
+           (person[i].yearOfBirth == stoi(term, 0, 10)) ||
+           ((person[i].yearOfDeath == stoi(term, 0, 10)) && stoi(term, 0, 10) != 0))
         {
             found = true;
         }
