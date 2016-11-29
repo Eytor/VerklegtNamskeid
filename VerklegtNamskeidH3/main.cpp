@@ -10,8 +10,8 @@ struct TolPers{
     string middleInitial;
     string lastName;
     string sex;
-    int yearOfBirth;
-    int yearOfDeath;
+    string yearOfBirth;
+    string yearOfDeath;
 };
 
 void updateFile(vector<TolPers> person, int num, int& count)
@@ -42,8 +42,8 @@ void retriveInfo(vector<TolPers>& person, int& count)
     string middleInitial;
     string lastName;
     string sex;
-    int birth;
-    int death;
+    string birth;
+    string death;
     TolPers pers;
     while(file >> name >> middleInitial >> lastName >> sex >> birth >> death)
     {
@@ -75,13 +75,13 @@ int selection()
 void InputPeople(vector<TolPers>& person, int& count)
 {
     int numOfPeople;
-    cout << "Select number or people:";
+    cout << "Select number or people: ";
     cin >> numOfPeople;
     TolPers pers;
     for(int i = 0; i < numOfPeople; i++)
     {
 
-        cout << "Name: ";
+        cout << "First name: ";
         cin >> pers.name;
         cout << "Middle initial: ";
         cin >> pers.middleInitial;
@@ -99,7 +99,7 @@ void InputPeople(vector<TolPers>& person, int& count)
 }
 void printPerson(vector<TolPers> person, int i)
 {
-    cout << "Name: " << person[i].name ;
+    cout << "First name: " << person[i].name ;
     if(person[i].middleInitial != "0")
     {
     cout << " " << person[i].middleInitial;
@@ -107,7 +107,7 @@ void printPerson(vector<TolPers> person, int i)
     cout << " " << person[i].lastName << endl
          << "Sex: " << person[i].sex << endl
          << "Year of birth: " << person[i].yearOfBirth << endl;
-    if(person[i].yearOfDeath != 0)
+    if(person[i].yearOfDeath != "0")
     {
         cout << "Year of Death: " << person[i].yearOfDeath << endl;
     }
@@ -132,12 +132,13 @@ string convertToLower(string temp)
     return lowerCaseString;
 }
 
+
 void search(vector<TolPers> person, int count)
 {
 
     bool found = false;
     string term;
-    cout << "what are you looking for? " << endl;
+    cout << "Type what you are looking for in lowercase letters " << endl;
     cin.ignore();
     getline(cin,term);
     //int number; hér þurfum við að breyta string í int
@@ -146,7 +147,8 @@ void search(vector<TolPers> person, int count)
         if((convertToLower(person[i].name) == convertToLower(term))||
            (convertToLower(person[i].middleInitial) == convertToLower(term))||
            (convertToLower(person[i].lastName) == convertToLower(term))||
-           (convertToLower(person[i].sex) == convertToLower(term)))
+           (convertToLower(person[i].sex) == convertToLower(term)) ||
+           (person [i].yearOfBirth == term) || (person[i].yearOfDeath == term))
         {
             found = true;
         }
