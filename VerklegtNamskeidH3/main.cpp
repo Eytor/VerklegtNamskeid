@@ -93,7 +93,7 @@ void InputPeople(vector<TolPers>& person, int& count)
     for(int i = 0; i < numOfPeople; i++)
     {
 
-        cout << "First name: ";
+        cout << "Name: ";
         cin >> pers.name;
         cout << "Middle initial: ";
         cin >> pers.middleInitial;
