@@ -71,6 +71,17 @@ int selection()
     return selectNum;
 
 }
+int sortSelection()
+{
+    int selectNum;
+    cout << "1. Order by first name." << endl
+         << "2. Order by last name." << endl
+         << "3. Order by year of birth." << endl
+         << "4. Order by year of death." << endl;
+    cin >> selectNum;
+    return selectNum;
+
+}
 
 void InputPeople(vector<TolPers>& person, int& count)
 {
@@ -141,7 +152,6 @@ void search(vector<TolPers> person, int count)
     cout << "Type what you are looking for in lowercase letters " << endl;
     cin.ignore();
     getline(cin,term);
-    //int number; hér þurfum við að breyta string í int
     for(int i = 0; i < count; i++)
     {
         if((convertToLower(person[i].name) == convertToLower(term))||
@@ -176,6 +186,7 @@ int main()
     vector<TolPers> personur;
     int count = 0;
     int selected;
+    int sortSelect;
     retriveInfo(personur, count);
 
     while(selected != 0){
@@ -193,6 +204,23 @@ int main()
             search(personur, count);
             break;
         case 4:
+            sortSelect = sortSelection();
+            switch (sortSelect) {
+            case 1:
+
+                break;
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+            case 4:
+
+                break;
+            default:
+                break;
+            }
             break;
         case 0:
             cout << "Goodbye!" << endl;
