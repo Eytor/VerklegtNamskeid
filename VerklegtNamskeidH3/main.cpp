@@ -87,7 +87,7 @@ void InputPeople(vector<TolPers>& person, int& count)
 {
     bool legit = false;
     int numOfPeople;
-    cout << "Select number or people: ";
+    cout << "Select number of people: ";
     cin >> numOfPeople;
     TolPers pers;
     for(int i = 0; i < numOfPeople; i++)
@@ -99,7 +99,7 @@ void InputPeople(vector<TolPers>& person, int& count)
         cin >> pers.middleInitial;
         cout << "Last name: ";
         cin >> pers.lastName;
-        cout << "Sex: ";
+        cout << "Gender: ";
         cin >> pers.sex;
         while(!legit)
         {
@@ -158,7 +158,7 @@ void printPerson(vector<TolPers> person, int i)
     cout << " " << person[i].middleInitial;
     }
     cout << " " << person[i].lastName << endl
-         << "Sex: " << person[i].sex << endl
+         << "Gender: " << person[i].sex << endl
          << "Year of birth: " << person[i].yearOfBirth << endl;
     if(person[i].yearOfDeath != 0)
     {
@@ -191,7 +191,7 @@ void search(vector<TolPers> person, int count)
 
     bool found = false;
     string term;
-    cout << "What are you looking for? " << endl;
+    cout << "What are you looking for?" << endl;
     cin.ignore();
     getline(cin,term);
     for(int i = 0; i < count; i++)
