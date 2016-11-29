@@ -149,8 +149,8 @@ void search(vector<TolPers> person, int count)
            (convertToLower(person[i].lastName) == convertToLower(term))||
            (convertToLower(person[i].sex) == convertToLower(term)) ||
            (person [i].yearOfBirth == term) || (person[i].yearOfDeath == term)||
-           (person[i].yearOfBirth == number)||
-           ((person[i].yearOfDeath == number) && number != "0"))
+           (person[i].yearOfBirth == term)||
+           ((person[i].yearOfDeath == term) && term != "0"))
         {
             found = true;
         }
