@@ -63,7 +63,7 @@ int selection()
 {
     int selectNum;
     cout << "1. Input people." << endl
-         << "2. Display List." << endl
+         << "2. Display list." << endl
          << "3. Search from list" << endl
          << "4. Order list." << endl
          << "0. Quit." << endl;
