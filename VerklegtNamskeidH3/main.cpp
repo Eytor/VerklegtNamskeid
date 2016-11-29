@@ -1,12 +1,13 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <locale>
 
 using namespace std;
 
 struct TolPers{
     string name;
-    char middleInitial;
+    string middleInitial;
     string lastName;
     string sex;
     int yearOfBirth;
@@ -38,7 +39,7 @@ void retriveInfo(vector<TolPers>& person, int& count)
     ifstream file;
     file.open ("list.txt");
     string name;
-    char middleInitial;
+    string middleInitial;
     string lastName;
     string sex;
     int birth;
@@ -96,23 +97,82 @@ void InputPeople(vector<TolPers>& person, int& count)
     }
     updateFile(person, numOfPeople, count);
 }
+void printPerson(vector<TolPers> person, int i)
+{
+    cout << "Name: " << person[i].name ;
+    if(person[i].middleInitial != "0")
+    {
+    cout << " " << person[i].middleInitial;
+    }
+    cout << " " << person[i].lastName << endl
+         << "Sex: " << person[i].sex << endl
+         << "Year of birth: " << person[i].yearOfBirth << endl;
+    if(person[i].yearOfDeath != 0)
+    {
+        cout << "Year of Death: " << person[i].yearOfDeath << endl;
+    }
+    cout << endl;
+}
+
 void displayList(vector<TolPers> person, int count)
 {
     for(int i = 0; i < count; i++)
     {
-        cout << "Name: " << person[i].name ;
-        if(person[i].middleInitial != '0')
+        printPerson(person, i);
+    }
+}
+string convertToLower(string temp)
+{
+    locale loc;
+    string lowerCaseString;
+    for(unsigned int i = 0; i < temp.length(); i++)
+    {
+        lowerCaseString += tolower(temp[i],loc);
+    }
+    return lowerCaseString;
+}
+
+void search(vector<TolPers> person, int count)
+{
+
+    bool found = false;
+    string term;
+    cout << "what are you looking for? " << endl;
+    cin.ignore();
+    getline(cin,term);
+    //int number; hér þurfum við að breyta string í int
+    for(int i = 0; i < count; i++)
+    {
+        if((convertToLower(person[i].name) == convertToLower(term))||
+           (convertToLower(person[i].middleInitial) == convertToLower(term))||
+           (convertToLower(person[i].lastName) == convertToLower(term))||
+           (convertToLower(person[i].sex) == convertToLower(term)))
         {
-        cout << " " << person[i].middleInitial;
+            found = true;
         }
-        cout << " " << person[i].lastName << endl
-             << "Sex: " << person[i].sex << endl
-             << "Year of birth: " << person[i].yearOfBirth << endl;
-        if(person[i].yearOfDeath != 0)
+        else if((convertToLower(person[i].name + " " + person[i].middleInitial + " " + person[i].lastName) == convertToLower(term))||
+                (convertToLower(person[i].name + " " + person[i].lastName) == convertToLower(term))||
+                (convertToLower(person[i].name + " " + person[i].middleInitial) == convertToLower(term))||
+                (convertToLower(person[i].middleInitial + " " + person[i].lastName) == convertToLower(term)))
         {
-            cout << "Year of Death: " << person[i].yearOfDeath << endl;
+            found = true;
         }
-        cout << endl;
+
+        /*else if(person[i].yearOfBirth == number)
+        {
+            found = true;
+        }
+        else if(person[i].yearOfDeath == number)
+        {
+            found = true;
+        }*/
+
+
+        if(found)
+        {
+            printPerson(person, i);
+            found = false;
+        }
     }
 }
 
@@ -137,6 +197,7 @@ int main()
             cout << endl;
         break;
         case 3:
+            search(personur, count);
             break;
         case 4:
             break;
