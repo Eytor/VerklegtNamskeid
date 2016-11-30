@@ -96,7 +96,7 @@ void InputPeople(vector<TolPers>& person, int& count)
 
         cout << "Name: ";
         cin >> pers.name;
-        cout << "Middle initial: ";
+        cout << "Middle initial(insert 0 if empty): ";
         cin >> pers.middleInitial;
         cout << "Last name: ";
         cin >> pers.lastName;
