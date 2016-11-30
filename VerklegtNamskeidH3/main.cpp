@@ -4,6 +4,8 @@
 #include <locale>
 #include <iomanip>
 #include <string>
+#include <stdio.h>
+#include <ctype.h>
 
 using namespace std;
 
@@ -238,30 +240,43 @@ string convertToLower(string temp)
 
 void search(vector<TolPers> person, int count)
 {
-
     bool found = false;
+    bool containsLetter = false;
     string term;
     cout << "What are you looking for?" << endl;
     cin.ignore();
     getline(cin,term);
+    for(int i = 0; i < term.length(); i++)
+    {
+        if(isalpha(term[i]))
+        {
+            containsLetter = true;
+        }
+    }
     for(int i = 0; i < count; i++)
     {
-        if((convertToLower(person[i].name) == convertToLower(term))||
-           (convertToLower(person[i].middleInitial) == convertToLower(term))||
-           (convertToLower(person[i].lastName) == convertToLower(term))||
-           (convertToLower(person[i].sex) == convertToLower(term)) ||
-           (person[i].yearOfBirth == stoi(term, 0, 10)) ||
-           ((person[i].yearOfDeath == stoi(term, 0, 10)) && stoi(term, 0, 10) != 0))
+        if(containsLetter)
+        {
+            if((convertToLower(person[i].name) == convertToLower(term))||
+               (convertToLower(person[i].middleInitial) == convertToLower(term))||
+               (convertToLower(person[i].lastName) == convertToLower(term))||
+               (convertToLower(person[i].sex) == convertToLower(term)))
+            {
+                found = true;
+            }
+            else if((convertToLower(person[i].name + " " + person[i].middleInitial + " " + person[i].lastName) == convertToLower(term))||
+                    (convertToLower(person[i].name + " " + person[i].lastName) == convertToLower(term))||
+                    (convertToLower(person[i].name + " " + person[i].middleInitial) == convertToLower(term))||
+                    (convertToLower(person[i].middleInitial + " " + person[i].lastName) == convertToLower(term)))
+            {
+                found = true;
+            }
+        }
+        else if((person[i].yearOfBirth == stoi(term, 0, 10)) || ((person[i].yearOfDeath == stoi(term, 0, 10)) && stoi(term, 0, 10) != 0))
         {
             found = true;
         }
-        else if((convertToLower(person[i].name + " " + person[i].middleInitial + " " + person[i].lastName) == convertToLower(term))||
-                (convertToLower(person[i].name + " " + person[i].lastName) == convertToLower(term))||
-                (convertToLower(person[i].name + " " + person[i].middleInitial) == convertToLower(term))||
-                (convertToLower(person[i].middleInitial + " " + person[i].lastName) == convertToLower(term)))
-        {
-            found = true;
-        }
+
         if(found)
         {
             printPerson(person, i);
