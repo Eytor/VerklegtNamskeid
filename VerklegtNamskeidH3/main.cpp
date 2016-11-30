@@ -88,9 +88,18 @@ int sortSelection()
 void InputPeople(vector<TolPers>& person, int& count)
 {
     bool legit = false;
+   // bool legitPeople = true;
     int numOfPeople;
     cout << "Select number of people: ";
     cin >> numOfPeople;
+    while (cin.fail()||numOfPeople<0)
+    {
+        cin.clear();
+        cin.ignore(100, '\n');
+        cout << "invalid size. Select number from 1-100 ";
+        cin >> numOfPeople;
+    }
+
     TolPers pers;
     for(int i = 0; i < numOfPeople; i++)
     {
@@ -103,21 +112,21 @@ void InputPeople(vector<TolPers>& person, int& count)
         cin >> pers.lastName;
         cout << "Gender: ";
         cin >> pers.sex;
-        while(!legit)
-        {
+    //    while(!legit)
+      //  {
             cout << "Year of birth: ";
-            cin >> pers.yearOfBirth;
-            if(pers.yearOfBirth > 0 && pers.yearOfBirth < 2250)
+             cin >> pers.yearOfBirth;
+            while (cin.fail()||pers.yearOfBirth <= 0 || pers.yearOfBirth > 2251)
             {
-                legit = true;
+                cin.clear();
+                cin.ignore(100, '\n');
+                cout << "invalid size. Select year from 1-2250 ";
+                cin >> pers.yearOfBirth;
+
+
             }
-            else
-            {
-                legit = false;
-                cout << "Invalid year!" << endl;
-            }
-        }
-        legit = false;
+     //   }
+       legit = false;
         while(!legit)
         {
             cout << "Year of death: ";
