@@ -197,14 +197,18 @@ void printPerson(vector<TolPers> person, int i)
 
 void displayList(vector<TolPers> person, int count)
 {
-    const char seperator = ' ';
-    const int firstNameWidth = 25;
-    const int sexWidth = 5;
-    const int yearWidth = 6;
-    cout << left << setw(firstNameWidth) << setfill(seperator) << "Name"
-         << left << setw(sexWidth) << setfill(seperator) << "Sex"
-         << left << setw(yearWidth) << setfill(seperator) << "YoB"
-         << left << setw(yearWidth) << setfill(seperator) << "YoD" << endl;
+    if(person.empty() == false)
+    {
+        const char seperator = ' ';
+        const int firstNameWidth = 25;
+        const int sexWidth = 5;
+        const int yearWidth = 6;
+        cout << left << setw(firstNameWidth) << setfill(seperator) << "Name"
+             << left << setw(sexWidth) << setfill(seperator) << "Sex"
+             << left << setw(yearWidth) << setfill(seperator) << "YoB"
+             << left << setw(yearWidth) << setfill(seperator) << "YoD" << endl;
+    }
+
 
     for(int i = 0; i < count; i++)
     {
