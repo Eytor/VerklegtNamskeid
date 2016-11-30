@@ -176,12 +176,11 @@ void printPerson(vector<TolPers> person, int i)
 
     if(person[i].middleInitial != "0")
     {
-        fullName = person[i].name + " " + person[i].lastName;
+        fullName = person[i].name + " " + person[i].middleInitial + " " + person[i].lastName;
     }
     else
     {
-        fullName = person[i].name + " " + person[i].middleInitial + " " + person[i].lastName;
-    }
+        fullName = person[i].name + " " + person[i].lastName;    }
 
     cout << left << setw(nameWidth) << setfill(seperator) << fullName;
     cout << left << setw(sexWidth) << setfill(seperator) << person[i].sex;
