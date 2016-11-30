@@ -174,6 +174,8 @@ void printPerson(vector<TolPers> person, int i)
     }
     cout << endl;*/
 
+    int nameLength;
+
     cout << left << setw(firstNameWidth) << setfill(seperator) << person[i].name;
     if(person[i].middleInitial != "0")
     {
