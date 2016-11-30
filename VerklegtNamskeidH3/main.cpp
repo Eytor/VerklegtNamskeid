@@ -87,8 +87,7 @@ int sortSelection()
 
 void InputPeople(vector<TolPers>& person, int& count)
 {
-    bool legit = false;
-   // bool legitPeople = true;
+
     int numOfPeople;
     cout << "Select number of people: ";
     cin >> numOfPeople;
@@ -112,8 +111,7 @@ void InputPeople(vector<TolPers>& person, int& count)
         cin >> pers.lastName;
         cout << "Gender: ";
         cin >> pers.sex;
-    //    while(!legit)
-      //  {
+
             cout << "Year of birth: ";
              cin >> pers.yearOfBirth;
             while (cin.fail()||pers.yearOfBirth <= 0 || pers.yearOfBirth > 2251)
@@ -125,37 +123,18 @@ void InputPeople(vector<TolPers>& person, int& count)
 
 
             }
-     //   }
-       legit = false;
-        while(!legit)
-        {
-            cout << "Year of death: ";
+
+            cout << "Year of Death, Zero if alive: ";
             cin >> pers.yearOfDeath;
-            if(pers.yearOfDeath >= 0 && pers.yearOfDeath < 2250)
-            {
-                if(pers.yearOfDeath != 0)
-                {
-                    if(pers.yearOfDeath > pers.yearOfBirth)
-                    {
-                        legit = true;
-                    }
-                    else
-                    {
-                        legit = false;
-                        cout << "Invalid year!" << endl;
-                    }
-                }
-                else
-                {
-                    legit = true;
-                }
-            }
-            else
-            {
-                legit = false;
-                cout << "Invalid year!" << endl;
-            }
-        }
+           while (cin.fail() || pers.yearOfDeath < 0 || pers.yearOfDeath > 2251 ||
+                 ((pers.yearOfDeath < pers.yearOfBirth) && pers.yearOfDeath !=0))
+           {
+               cin.clear();
+               cin.ignore(100, '\n');
+               cout << "invalid size. Select year from 0-2250 ";
+               cin >> pers.yearOfDeath;
+           }
+
 
         person.push_back(pers);
     }
