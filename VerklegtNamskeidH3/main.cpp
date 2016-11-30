@@ -183,12 +183,12 @@ void printPerson(vector<TolPers> person, int i)
     {
         cout << left << setw(mIWidth) << setfill(seperator) << ' ';
     }
-    cout << left << setw(lastNameWidth) << setfill(seperator) << person[i].lastName;
-    cout << left << setw(sexWidth) << setfill(seperator) << person[i].sex;
+    cout << left << setw(lastNameWidth) << setfill(seperator) << person[i].lastName
+         << left << setw(sexWidth) << setfill(seperator) << person[i].sex;
     if(person[i].yearOfDeath != 0)
     {
-        cout << left << setw(yearWidth) << setfill(seperator) << person[i].yearOfBirth;
-        cout << left << setw(yearWidth) << setfill(seperator) << person[i].yearOfDeath << endl;
+        cout << left << setw(yearWidth) << setfill(seperator) << person[i].yearOfBirth
+             << left << setw(yearWidth) << setfill(seperator) << person[i].yearOfDeath << endl;
     }
     else
     {
@@ -202,10 +202,10 @@ void displayList(vector<TolPers> person, int count)
     const int firstNameWidth = 25;
     const int sexWidth = 5;
     const int yearWidth = 6;
-    cout << left << setw(firstNameWidth) << setfill(seperator) << "Name";
-    cout << left << setw(sexWidth) << setfill(seperator) << "Sex";
-    cout << left << setw(yearWidth) << setfill(seperator) << "YoB";
-    cout << left << setw(yearWidth) << setfill(seperator) << "YoD" << endl;
+    cout << left << setw(firstNameWidth) << setfill(seperator) << "Name"
+         << left << setw(sexWidth) << setfill(seperator) << "Sex"
+         << left << setw(yearWidth) << setfill(seperator) << "YoB"
+         << left << setw(yearWidth) << setfill(seperator) << "YoD" << endl;
 
     for(int i = 0; i < count; i++)
     {
