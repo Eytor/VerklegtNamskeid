@@ -2,6 +2,7 @@
 #include <vector>
 #include <fstream>
 #include <locale>
+#include <iomanip>
 
 using namespace std;
 
@@ -152,23 +153,60 @@ void InputPeople(vector<TolPers>& person, int& count)
 }
 void printPerson(vector<TolPers> person, int i)
 {
-    cout << "Name: " << person[i].name ;
+    const char seperator = ' ';
+    const int firstNameWidth = 11;
+    const int mIWidth = 4;
+    const int lastNameWidth = 10;
+    const int sexWidth = 5;
+    const int yearWidth = 6;
+
+    /*cout << person[i].name ;
     if(person[i].middleInitial != "0")
     {
     cout << " " << person[i].middleInitial;
     }
-    cout << " " << person[i].lastName << endl
-         << "Gender: " << person[i].sex << endl
-         << "Year of birth: " << person[i].yearOfBirth << endl;
+    cout << " " << person[i].lastName << "\t"
+         << person[i].sex << "\t"
+         << person[i].yearOfBirth << "\t";
+    if(person[i].yearOfDeath != "0")
+    {
+        cout << person[i].yearOfDeath << "\t";
+    }
+    cout << endl;*/
+
+    cout << left << setw(firstNameWidth) << setfill(seperator) << person[i].name;
+    if(person[i].middleInitial != "0")
+    {
+        cout << left << setw(mIWidth) << setfill(seperator) << person[i].middleInitial;
+    }
+    else
+    {
+        cout << left << setw(mIWidth) << setfill(seperator) << ' ';
+    }
+    cout << left << setw(lastNameWidth) << setfill(seperator) << person[i].lastName;
+    cout << left << setw(sexWidth) << setfill(seperator) << person[i].sex;
     if(person[i].yearOfDeath != 0)
     {
-        cout << "Year of Death: " << person[i].yearOfDeath << endl;
+        cout << left << setw(yearWidth) << setfill(seperator) << person[i].yearOfBirth;
+        cout << left << setw(yearWidth) << setfill(seperator) << person[i].yearOfDeath << endl;
     }
-    cout << endl;
+    else
+    {
+        cout << left << setw(yearWidth) << setfill(seperator) << person[i].yearOfBirth << endl;
+    }
 }
 
 void displayList(vector<TolPers> person, int count)
 {
+    const char seperator = ' ';
+    const int firstNameWidth = 25;
+    const int sexWidth = 5;
+    const int yearWidth = 6;
+    cout << left << setw(firstNameWidth) << setfill(seperator) << "Name";
+    cout << left << setw(sexWidth) << setfill(seperator) << "Sex";
+    cout << left << setw(yearWidth) << setfill(seperator) << "YoB";
+    cout << left << setw(yearWidth) << setfill(seperator) << "YoD" << endl;
+
     for(int i = 0; i < count; i++)
     {
         printPerson(person, i);
