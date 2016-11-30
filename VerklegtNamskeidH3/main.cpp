@@ -64,6 +64,7 @@ void retriveInfo(vector<TolPers>& person, int& count)
 int selection()
 {
     int selectNum;
+    cout << "Hello! Please enter one of the following commands:" << endl << endl;
     cout << "1. Input people." << endl
          << "2. Display list." << endl
          << "3. Search from list" << endl
@@ -76,6 +77,7 @@ int selection()
 int sortSelection()
 {
     int selectNum;
+    cout << "Enter one of the following commands:" << endl << endl;
     cout << "1. Order by first name." << endl
          << "2. Order by last name." << endl
          << "3. Order by year of birth." << endl
