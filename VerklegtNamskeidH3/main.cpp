@@ -64,7 +64,7 @@ void retriveInfo(vector<TolPers>& person, int& count)
 int selection()
 {
     int selectNum;
-    cout << "Hello! Please enter one of the following commands:" << endl << endl;
+    cout << "Hello! Please enter one of the following commands." << endl << endl;
     cout << "1. Input people." << endl
          << "2. Display list." << endl
          << "3. Search from list" << endl
@@ -97,7 +97,7 @@ void InputPeople(vector<TolPers>& person, int& count)
     {
         cin.clear();
         cin.ignore(100, '\n');
-        cout << "invalid size. Select number from 1-100 ";
+        cout << "Invalid size. Select number from 1-100 ";
         cin >> numOfPeople;
     }
 
@@ -107,7 +107,7 @@ void InputPeople(vector<TolPers>& person, int& count)
 
         cout << "Name: ";
         cin >> pers.name;
-        cout << "Middle initial(insert 0 if empty): ";
+        cout << "Middle initial, enter '0' if empty: ";
         cin >> pers.middleInitial;
         cout << "Last name: ";
         cin >> pers.lastName;
@@ -120,20 +120,20 @@ void InputPeople(vector<TolPers>& person, int& count)
             {
                 cin.clear();
                 cin.ignore(100, '\n');
-                cout << "invalid size. Select year from 1-2250 ";
+                cout << "Invalid size. Enter year from 1-2250 ";
                 cin >> pers.yearOfBirth;
 
 
             }
 
-            cout << "Year of Death, Zero if alive: ";
+            cout << "Year of Death, enter '0' if alive: ";
             cin >> pers.yearOfDeath;
            while (cin.fail() || pers.yearOfDeath < 0 || pers.yearOfDeath > 2251 ||
                  ((pers.yearOfDeath < pers.yearOfBirth) && pers.yearOfDeath !=0))
            {
                cin.clear();
                cin.ignore(100, '\n');
-               cout << "invalid size. Select year from 0-2250 ";
+               cout << "Invalid size. Enter year from 0-2250 ";
                cin >> pers.yearOfDeath;
            }
 
@@ -194,9 +194,9 @@ void displayList(vector<TolPers> person, int count)
         const int sexWidth = 5;
         const int yearWidth = 6;
         cout << left << setw(firstNameWidth) << setfill(seperator) << "Name"
-             << left << setw(sexWidth) << setfill(seperator) << "Sex"
-             << left << setw(yearWidth) << setfill(seperator) << "YoB"
-             << left << setw(yearWidth) << setfill(seperator) << "YoD" << endl;
+             << left << setw(sexWidth) << setfill(seperator) << "Gender"
+             << left << setw(yearWidth) << setfill(seperator) << "Birth"
+             << left << setw(yearWidth) << setfill(seperator) << "Death" << endl;
     }
 
 
