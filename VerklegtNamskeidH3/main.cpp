@@ -3,6 +3,7 @@
 #include <fstream>
 #include <locale>
 #include <iomanip>
+#include <string>
 
 using namespace std;
 
@@ -154,11 +155,10 @@ void InputPeople(vector<TolPers>& person, int& count)
 void printPerson(vector<TolPers> person, int i)
 {
     const char seperator = ' ';
-    const int firstNameWidth = 11;
-    const int mIWidth = 4;
-    const int lastNameWidth = 10;
     const int sexWidth = 5;
     const int yearWidth = 6;
+    const int nameWidth = 25;
+    string fullName;
 
     /*cout << person[i].name ;
     if(person[i].middleInitial != "0")
@@ -174,19 +174,17 @@ void printPerson(vector<TolPers> person, int i)
     }
     cout << endl;*/
 
-    int nameLength;
-
-    cout << left << setw(firstNameWidth) << setfill(seperator) << person[i].name;
     if(person[i].middleInitial != "0")
     {
-        cout << left << setw(mIWidth) << setfill(seperator) << person[i].middleInitial;
+        fullName = person[i].name + " " + person[i].lastName;
     }
     else
     {
-        cout << left << setw(mIWidth) << setfill(seperator) << ' ';
+        fullName = person[i].name + " " + person[i].middleInitial + " " + person[i].lastName;
     }
-    cout << left << setw(lastNameWidth) << setfill(seperator) << person[i].lastName
-         << left << setw(sexWidth) << setfill(seperator) << person[i].sex;
+
+    cout << left << setw(nameWidth) << setfill(seperator) << fullName;
+    cout << left << setw(sexWidth) << setfill(seperator) << person[i].sex;
     if(person[i].yearOfDeath != 0)
     {
         cout << left << setw(yearWidth) << setfill(seperator) << person[i].yearOfBirth
