@@ -14,9 +14,11 @@ public:
     void printPerson(int i);
     void displayList();
     void search();
+    void giveHead();
     int editSelect();
     void edit();
     void addToList();
+    void deletePerson();
 private:
     DomainService _service;
     vector<TolPers> _tempInput;

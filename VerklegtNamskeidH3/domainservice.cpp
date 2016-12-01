@@ -15,6 +15,10 @@ void DomainService::updateFile()
 {
     _data.updateFile(_personur);
 }
+void DomainService::updateTrash()
+{
+    _data.updateTrash(_trashBin);
+}
 
 void DomainService::addToList(vector<TolPers> input)
 {
@@ -122,8 +126,9 @@ string DomainService::convertToLower(string unfilteredString)
     return lowerCaseString;
 }
 
-void DomainService::search(string keyword)
+vector <int> DomainService::search(string keyword)
 {
+    vector <int> searchResult;
     bool found = false;
     bool containsLetter = false;
     for(unsigned int i = 0; i < keyword.length(); i++)
@@ -158,11 +163,13 @@ void DomainService::search(string keyword)
         }
 
         if(found)
-        {
-            printPerson(i);
-            found = false;
-        }
-    }
+                {
+                    searchResult.push_back(i);
+                    found = false;
+
+                }
+            }
+    return searchResult;
 }
 
 void DomainService::whatToSort(int selector)
@@ -281,4 +288,19 @@ void DomainService::edit(int personID, int Selection)
             break;
     }
     updateFile();
+}
+
+void DomainService::deletePerson(int i)
+{
+    TolPers pers;
+    pers.name = _personur[i].name;
+    pers.middleInitial = _personur[i].name;
+    pers.lastName = _personur[i].lastName;
+    pers.sex = _personur[i].sex;
+    pers.yearOfBirth = _personur[i].yearOfBirth;
+    pers.yearOfDeath = _personur[i].yearOfDeath;
+    _trashBin.push_back(pers);
+    _personur.erase(_personur.begin()+i);
+    updateFile();
+    updateTrash();
 }

@@ -19,6 +19,8 @@ int ConsoleUI::selection()
          << "3. Search from list" << endl
          << "4. Order list." << endl
          << "5. Edit list." << endl
+         << "6. Delete person." << endl
+         << "7. Recyclebin." << endl
          << "0. Quit." << endl;
     cin >> selectNum;
     return selectNum;
@@ -45,11 +47,11 @@ void ConsoleUI::run()
         selected = selection();
         switch (selected) {
         case 1:
-             addToList();
+            addToList();
             cout << endl;
             break;
         case 2:
-             displayList();
+            displayList();
             cout << endl;
         break;
         case 3:
@@ -60,6 +62,9 @@ void ConsoleUI::run()
             break;
         case 5:
             edit();
+            break;
+        case 6:
+            deletePerson();
             break;
         case 0:
             cout << "Goodbye!" << endl;
@@ -147,6 +152,21 @@ void ConsoleUI::displayList()
     }
 }
 
+void ConsoleUI::giveHead()
+{
+        const char seperator = ' ';
+        const int firstNameWidth = 40;
+        const int sexWidth = 8;
+        const int yearWidth = 8;
+
+
+        cout << left << setw(firstNameWidth) << setfill(seperator) << "Name"
+             << left << setw(sexWidth) << setfill(seperator) << "Gender"
+             << left << setw(yearWidth) << setfill(seperator) << "Birth"
+             << left << setw(yearWidth) << setfill(seperator) << "Death" << endl;
+
+}
+
 void ConsoleUI::search()
 {
 
@@ -154,7 +174,28 @@ void ConsoleUI::search()
     cout << "What are you looking for?" << endl;
     cin.ignore();
     getline(cin,keyword);
-     _service.search(keyword);
+
+     vector<int> searchResult =  _service.search(keyword);
+     if(searchResult.size() == 1)
+     {
+         cout <<"Found 1 result." << endl;
+     }
+     else if(searchResult.size() == 0)
+     {
+         cout <<"No match found. ";
+     }
+     else
+     {
+         cout <<"Found " << searchResult.size()  <<" results." << endl;
+     }
+        giveHead();
+     for (unsigned int i = 0; i<searchResult.size(); i++)
+     {
+         int count = searchResult[i];
+          printPerson(count);
+     }
+     cout << endl;
+
 }
 
 int ConsoleUI::editSelect()
@@ -294,4 +335,36 @@ void ConsoleUI::addToList(){
         _tempInput.push_back(pers);
         _service.addToList(_tempInput);
     }
+}
+
+void ConsoleUI::deletePerson()
+{
+    unsigned int personToDelete = 0;
+    bool validChoice = false;
+    bool empty =  _service.getEmptyStatus();
+    unsigned int size = _service.getListSize();
+
+    if(!empty)
+    {
+        cout << "----------------------------------------------------------------" << endl;
+        for(unsigned int i = 0; i < size; i++)
+        {
+            cout << (i + 1) << ". ";
+            printPerson(i);
+        }
+
+        while(!validChoice)
+        {
+            cout << "----------------------------------------------------------------" << endl;
+            cout << "Select one person from above: ";
+            cin >> personToDelete;
+            if(personToDelete > 0 && personToDelete <= size)
+            {
+                validChoice = true;
+            }
+        }
+        personToDelete--;
+        _service.deletePerson(personToDelete);
+    }
+
 }

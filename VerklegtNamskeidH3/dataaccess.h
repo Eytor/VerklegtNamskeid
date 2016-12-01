@@ -21,6 +21,7 @@ public:
     void test();
     void retriveInfo(vector<TolPers> &person, vector<TolPers> &tBin);
     void updateFile(vector<TolPers> person);
+    void updateTrash(vector<TolPers> trash);
 private:
 
 };

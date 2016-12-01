@@ -13,6 +13,7 @@ public:
     DomainService();
     void retriveList();
     void updateFile();
+    void updateTrash();
     void addToList();
     string getName(int i);
     string getFirstName(int i);
@@ -26,11 +27,11 @@ public:
     void printPerson(int i);
     void displayList();
     string convertToLower(string unfilteredString);
-    void search(string keyword);
+    vector<int> search(string keyword);
     void whatToSort(int selector);
-
     void edit(int personID, int Selection);
     void addToList(vector<TolPers> input);
+    void deletePerson(int i);
 private:
     vector<TolPers> _personur;
     vector<TolPers> _trashBin;
