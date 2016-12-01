@@ -8,7 +8,7 @@ DomainService::DomainService()
 
 void DomainService::retriveList()
 {
-    _data.retriveInfo(_personur);
+    _data.retriveInfo(_personur, _trashBin);
 }
 
 void DomainService::updateFile()
