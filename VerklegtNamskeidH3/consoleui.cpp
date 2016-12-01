@@ -75,6 +75,8 @@ void ConsoleUI::run()
         case 6:
             deletePerson();
             break;
+        case 7:
+            break;
         case 0:
             cout << "Goodbye!" << endl;
             break;
@@ -344,6 +346,7 @@ void ConsoleUI::addToList(){
         _tempInput.push_back(pers);        
     }
     _service.addToList(_tempInput);
+    _tempInput.clear();
 }
 
 void ConsoleUI::deletePerson()
@@ -374,6 +377,10 @@ void ConsoleUI::deletePerson()
         }
         personToDelete--;
         _service.deletePerson(personToDelete);
+    }
+    else
+    {
+        cout << "List is empty!";
     }
 
 }
