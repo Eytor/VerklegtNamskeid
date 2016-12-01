@@ -220,7 +220,7 @@ void ConsoleUI::edit()
 
 void ConsoleUI::addToList(){
     int numOfPeople;
-    cout << "\n Select number of people: ";
+    cout << "\nSelect number of people: ";
     cin >> numOfPeople;
     while (cin.fail()||numOfPeople<0)
     {
@@ -233,7 +233,7 @@ void ConsoleUI::addToList(){
     TolPers pers;
     for(int i = 0; i < numOfPeople; i++)
     {
-        cout << "Name: ";
+        cout << "\nName: ";
         cin >> pers.name;
         cout << "Middle initial, enter '0' if empty: ";
         cin >> pers.middleInitial;
@@ -264,5 +264,6 @@ void ConsoleUI::addToList(){
            cin >> pers.yearOfDeath;
        }
         _tempInput.push_back(pers);
+        _service.addToList(_tempInput);
     }
 }
