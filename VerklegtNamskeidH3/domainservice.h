@@ -30,6 +30,7 @@ public:
     void whatToSort(int selector);
 
     void edit(int personID, int Selection);
+    void addToList(vector<TolPers> input);
 private:
     vector<TolPers> _personur;
     vector<TolPers> _trashBin;
