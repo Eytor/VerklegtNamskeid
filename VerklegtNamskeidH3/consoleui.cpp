@@ -119,6 +119,21 @@ void ConsoleUI::displayList()
     }
 }
 
+void ConsoleUI::giveHead()
+{
+        const char seperator = ' ';
+        const int firstNameWidth = 40;
+        const int sexWidth = 8;
+        const int yearWidth = 8;
+
+
+        cout << left << setw(firstNameWidth) << setfill(seperator) << "Name"
+             << left << setw(sexWidth) << setfill(seperator) << "Gender"
+             << left << setw(yearWidth) << setfill(seperator) << "Birth"
+             << left << setw(yearWidth) << setfill(seperator) << "Death" << endl;
+
+}
+
 void ConsoleUI::search()
 {
 
@@ -126,7 +141,28 @@ void ConsoleUI::search()
     cout << "What are you looking for?" << endl;
     cin.ignore();
     getline(cin,keyword);
-     _service.search(keyword);
+
+     vector<int> searchResult =  _service.search(keyword);
+     if(searchResult.size() == 1)
+     {
+         cout <<"Found 1 result." << endl;
+     }
+     else if(searchResult.size() == 0)
+     {
+         cout <<"No match found. ";
+     }
+     else
+     {
+         cout <<"Found " << searchResult.size()  <<" results." << endl;
+     }
+        giveHead();
+     for (unsigned int i = 0; i<searchResult.size(); i++)
+     {
+         int count = searchResult[i];
+          printPerson(count);
+     }
+     cout << endl;
+
 }
 
 int ConsoleUI::editSelect()

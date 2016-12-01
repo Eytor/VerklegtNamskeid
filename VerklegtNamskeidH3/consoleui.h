@@ -13,6 +13,7 @@ public:
     void printPerson(int i);
     void displayList();
     void search();
+    void giveHead();
     int editSelect();
     void edit();
     void addToList();

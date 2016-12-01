@@ -24,7 +24,7 @@ public:
     void printPerson(int i);
     void displayList();
     string convertToLower(string unfilteredString);
-    void search(string keyword);
+    vector <int> search(string keyword);
     void edit(int personID, int Selection);
     void addToList(vector<TolPers> input);
 private:

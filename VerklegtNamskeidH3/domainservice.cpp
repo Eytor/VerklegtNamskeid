@@ -122,8 +122,9 @@ string DomainService::convertToLower(string unfilteredString)
     return lowerCaseString;
 }
 
-void DomainService::search(string keyword)
+vector <int> DomainService::search(string keyword)
 {
+    vector <int> searchResult;
     bool found = false;
     bool containsLetter = false;
     for(unsigned int i = 0; i < keyword.length(); i++)
@@ -158,11 +159,13 @@ void DomainService::search(string keyword)
         }
 
         if(found)
-        {
-            printPerson(i);
-            found = false;
-        }
-    }
+                {
+                    searchResult.push_back(i);
+                    found = false;
+
+                }
+            }
+    return searchResult;
 }
 void DomainService::edit(int personID, int Selection)
 {
