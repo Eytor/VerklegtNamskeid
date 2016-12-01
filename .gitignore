@@ -2,4 +2,5 @@ build-VerklegtNamskeidH3-Desktop_Qt_5_7_0_MinGW_32bit-Debug/
 build-VerklegtNamskeidH3-Desktop_Qt_5_3_MinGW_32bit-Debug/
 build-VerklegtNamskeidH3-Desktop_Qt_5_7_0_clang_64bit-Debug/
 VerklegtNamskeid/
-VerklegtNamskeidH3.pro.user
+*.user
+*.exe
