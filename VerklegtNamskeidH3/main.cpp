@@ -66,12 +66,15 @@ void retriveInfo(vector<TolPers>& person, int& count)
 int selection()
 {
     int selectNum;
-    cout << "Hello! Please enter one of the following commands." << endl << endl;
+    cout << "Hello! Please enter one of the following commands." << endl;
+    cout << "--------------------------------------------------" << endl;
     cout << "1. Input people." << endl
          << "2. Display list." << endl
          << "3. Search from list" << endl
          << "4. Order list." << endl
          << "0. Quit." << endl;
+    cout << "--------------------------------------------------" << endl;
+
     cin >> selectNum;
     return selectNum;
 
@@ -99,7 +102,7 @@ void InputPeople(vector<TolPers>& person, int& count)
     {
         cin.clear();
         cin.ignore(100, '\n');
-        cout << "Invalid size. Select number from 1-100 ";
+        cout << "Invalid size. Select number from 1-100, '0' for main menu ";
         cin >> numOfPeople;
     }
 
@@ -195,6 +198,7 @@ void displayList(vector<TolPers> person, int count)
         const int firstNameWidth = 25;
         const int sexWidth = 5;
         const int yearWidth = 6;
+
         cout << left << setw(firstNameWidth) << setfill(seperator) << "Name"
              << left << setw(sexWidth) << setfill(seperator) << "Gender"
              << left << setw(yearWidth) << setfill(seperator) << "Birth"
