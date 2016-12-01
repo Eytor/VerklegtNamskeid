@@ -5,10 +5,12 @@ DataAccess::DataAccess()
 
 }
 
-void DataAccess::retriveInfo(vector<TolPers>& person)
+void DataAccess::retriveInfo(vector<TolPers>& person, vector<TolPers>& trash)
 {
     ifstream file;
+    ifstream trash;
     file.open ("list.txt");
+    trash.open ("bin.txt");
     string name, middleInitial, lastName, sex;
     int birth, death;
     TolPers pers;
@@ -22,8 +24,20 @@ void DataAccess::retriveInfo(vector<TolPers>& person)
         pers.yearOfDeath = death;
         person.push_back(pers);
     }
+    while(trash >> name >> middleInitial >> lastName >> sex >> birth >> death)
+    {
+        pers.name = name;
+        pers.middleInitial = middleInitial;
+        pers.lastName = lastName;
+        pers.sex = sex;
+        pers.yearOfBirth = birth;
+        pers.yearOfDeath = death;
+        trash.push_back(pers);
+    }
+
     file.close();
 }
+
 void DataAccess::updateFile(vector<TolPers> person)
 {
     ofstream file;

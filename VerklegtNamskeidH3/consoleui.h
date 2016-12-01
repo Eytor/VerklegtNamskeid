@@ -14,6 +14,8 @@ public:
     void printPerson(int i);
     void displayList();
     void search();
+    int editSelect();
+    void edit();
 private:
     DomainService _service;
 };

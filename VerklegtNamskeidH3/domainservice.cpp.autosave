@@ -100,20 +100,17 @@ string DomainService::getLastName(int i)
 
 string DomainService::getGender(int i)
 {
-    string gender = _personur[i].sex;
-    return gender;
+    return _personur[i].sex;
 }
 
 int DomainService::getYoB(int i)
 {
-    int YoD = _personur[i].yearOfBirth;
-    return YoD;
+    return _personur[i].yearOfBirth;
 }
 
 int DomainService::getYoD(int i)
 {
-    int YoD =_personur[i].yearOfDeath;
-    return YoD;
+    return _personur[i].yearOfDeath;
 }
 
 int DomainService::getListSize()
@@ -204,63 +201,6 @@ void DomainService::search(string keyword)
         }
     }
 }
-<<<<<<< HEAD
-
-void DomainService::whatToSort(int selector)
-{
-    if(selector == 1)
-    {
-        for(int i = 0; i < getListSize(); i++)
-        {
-            for(int j = 0; j < getListSize(); j++)
-            {
-                if(_personur[i].name < _personur[j].name)
-                {
-                    swap(_personur[i], _personur[j]);
-                }
-            }
-        }
-    }
-    else if(selector == 2)
-    {
-        for(int i = 0; i < getListSize(); i++)
-        {
-            for(int j = 0; j < getListSize(); j++)
-            {
-                if(_personur[i].lastName < _personur[j].lastName)
-                {
-                    swap(_personur[i], _personur[j]);
-                }
-            }
-        }
-    }
-    else if(selector == 3)
-    {
-        for(int i = 0; i < getListSize(); i++)
-        {
-            for(int j = 0; j < getListSize(); j++)
-            {
-                if(_personur[i].yearOfBirth < _personur[j].yearOfBirth)
-                {
-                    swap(_personur[i], _personur[j]);
-                }
-            }
-        }
-    }
-    else if(selector == 4)
-    {
-        for(int i = 0; i < getListSize(); i++)
-        {
-            for(int j = 0; j < getListSize(); j++)
-            {
-                if(_personur[i].yearOfDeath < _personur[j].yearOfDeath)
-                {
-                    swap(_personur[i], _personur[j]);
-                }
-            }
-        }
-    }
-=======
 void DomainService::edit(int personID, int Selection)
 {
     bool valid = true;
@@ -321,5 +261,4 @@ void DomainService::edit(int personID, int Selection)
             break;
     }
     updateFile();
->>>>>>> 257d4298b1174805a736547c5b0facf75c8999d2
 }

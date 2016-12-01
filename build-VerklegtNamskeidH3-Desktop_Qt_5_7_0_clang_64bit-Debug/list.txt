@@ -1,10 +1,2 @@
-sindri	0	pet	k	1996	1997
-hahahahahahahahahahahaha	0	hehehehehehehe	k	1995	2000
-hahahahahahahahahaha	0	hehehehehehehehe	k	1996	2000
-hahahaha	0	hehehehehe	k	1996	2000
-hahahahaha	0	hehehehehe	k	1994	2000
-sindri	0	pet	k	1996	2000
-sindri	0	pet	k	1996	2000
-sindri	0	pet	k	1996	2000
-joi	einar	isaksson	k	1995	2016
-Rakel	0	Matt	Kvk	1998	0
+Sindri	0	Petursson	KK	1996	0
+Brynjar	0	Barkarson	KK	1996	2020
