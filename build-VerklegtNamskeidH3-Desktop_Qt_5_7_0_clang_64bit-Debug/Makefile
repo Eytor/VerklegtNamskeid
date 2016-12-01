@@ -50,10 +50,12 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../VerklegtNamskeidH3/main.cpp \
 		../VerklegtNamskeidH3/consoleui.cpp \
-		../VerklegtNamskeidH3/performerservice.cpp 
+		../VerklegtNamskeidH3/domainservice.cpp \
+		../VerklegtNamskeidH3/dataaccess.cpp 
 OBJECTS       = main.o \
 		consoleui.o \
-		performerservice.o
+		domainservice.o \
+		dataaccess.o
 DIST          = ../../../../Qt/5.7/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.7/clang_64/mkspecs/qdevice.pri \
 		../../../../Qt/5.7/clang_64/mkspecs/features/device_config.prf \
@@ -186,6 +188,7 @@ DIST          = ../../../../Qt/5.7/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.7/clang_64/mkspecs/features/qt_config.prf \
 		../../../../Qt/5.7/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../../Qt/5.7/clang_64/mkspecs/features/spec_post.prf \
+		../VerklegtNamskeidH3/.qmake.stash \
 		../../../../Qt/5.7/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt/5.7/clang_64/mkspecs/features/default_pre.prf \
 		../../../../Qt/5.7/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -207,9 +210,11 @@ DIST          = ../../../../Qt/5.7/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt/5.7/clang_64/mkspecs/features/yacc.prf \
 		../../../../Qt/5.7/clang_64/mkspecs/features/lex.prf \
 		../VerklegtNamskeidH3/VerklegtNamskeidH3.pro ../VerklegtNamskeidH3/consoleui.h \
-		../VerklegtNamskeidH3/performerservice.h ../VerklegtNamskeidH3/main.cpp \
+		../VerklegtNamskeidH3/domainservice.h \
+		../VerklegtNamskeidH3/dataaccess.h ../VerklegtNamskeidH3/main.cpp \
 		../VerklegtNamskeidH3/consoleui.cpp \
-		../VerklegtNamskeidH3/performerservice.cpp
+		../VerklegtNamskeidH3/domainservice.cpp \
+		../VerklegtNamskeidH3/dataaccess.cpp
 QMAKE_TARGET  = VerklegtNamskeidH3
 DESTDIR       = 
 TARGET        = VerklegtNamskeidH3
@@ -353,6 +358,7 @@ Makefile: ../VerklegtNamskeidH3/VerklegtNamskeidH3.pro ../../../../Qt/5.7/clang_
 		../../../../Qt/5.7/clang_64/mkspecs/features/qt_config.prf \
 		../../../../Qt/5.7/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../../Qt/5.7/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../Qt/5.7/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt/5.7/clang_64/mkspecs/features/default_pre.prf \
 		../../../../Qt/5.7/clang_64/mkspecs/features/mac/default_pre.prf \
@@ -508,6 +514,7 @@ Makefile: ../VerklegtNamskeidH3/VerklegtNamskeidH3.pro ../../../../Qt/5.7/clang_
 ../../../../Qt/5.7/clang_64/mkspecs/features/qt_config.prf:
 ../../../../Qt/5.7/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../../../Qt/5.7/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../Qt/5.7/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../../../Qt/5.7/clang_64/mkspecs/features/default_pre.prf:
 ../../../../Qt/5.7/clang_64/mkspecs/features/mac/default_pre.prf:
@@ -544,8 +551,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../VerklegtNamskeidH3/consoleui.h ../VerklegtNamskeidH3/performerservice.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../VerklegtNamskeidH3/main.cpp ../VerklegtNamskeidH3/consoleui.cpp ../VerklegtNamskeidH3/performerservice.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../VerklegtNamskeidH3/consoleui.h ../VerklegtNamskeidH3/domainservice.h ../VerklegtNamskeidH3/dataaccess.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../VerklegtNamskeidH3/main.cpp ../VerklegtNamskeidH3/consoleui.cpp ../VerklegtNamskeidH3/domainservice.cpp ../VerklegtNamskeidH3/dataaccess.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -587,14 +594,22 @@ compiler_clean:
 
 ####### Compile
 
-main.o: ../VerklegtNamskeidH3/main.cpp 
+main.o: ../VerklegtNamskeidH3/main.cpp ../VerklegtNamskeidH3/consoleui.h \
+		../VerklegtNamskeidH3/domainservice.h \
+		../VerklegtNamskeidH3/dataaccess.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../VerklegtNamskeidH3/main.cpp
 
-consoleui.o: ../VerklegtNamskeidH3/consoleui.cpp ../VerklegtNamskeidH3/consoleui.h
+consoleui.o: ../VerklegtNamskeidH3/consoleui.cpp ../VerklegtNamskeidH3/consoleui.h \
+		../VerklegtNamskeidH3/domainservice.h \
+		../VerklegtNamskeidH3/dataaccess.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o consoleui.o ../VerklegtNamskeidH3/consoleui.cpp
 
-performerservice.o: ../VerklegtNamskeidH3/performerservice.cpp ../VerklegtNamskeidH3/performerservice.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o performerservice.o ../VerklegtNamskeidH3/performerservice.cpp
+domainservice.o: ../VerklegtNamskeidH3/domainservice.cpp ../VerklegtNamskeidH3/domainservice.h \
+		../VerklegtNamskeidH3/dataaccess.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o domainservice.o ../VerklegtNamskeidH3/domainservice.cpp
+
+dataaccess.o: ../VerklegtNamskeidH3/dataaccess.cpp ../VerklegtNamskeidH3/dataaccess.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dataaccess.o ../VerklegtNamskeidH3/dataaccess.cpp
 
 ####### Install
 
