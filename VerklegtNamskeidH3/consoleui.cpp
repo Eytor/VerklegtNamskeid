@@ -11,6 +11,8 @@ ConsoleUI::ConsoleUI()
 int ConsoleUI::selection()
 {
     int selectNum;
+    cout << "Hello! Plese select one of the following commands." << endl;
+    cout << "--------------------------------------------------" << endl;
     cout << "1. Add to List." << endl
          << "2. Display List." << endl
          << "3. Search from list" << endl
@@ -70,9 +72,9 @@ void ConsoleUI::run()
 void ConsoleUI::printPerson(int i)
 {
     const char seperator = ' ';
-    const int sexWidth = 5;
-    const int yearWidth = 6;
-    const int nameWidth = 25;
+    const int sexWidth = 8;
+    const int yearWidth = 8;
+    const int nameWidth = 40;
     string fullName =  _service.getName(i);
     string gender =  _service.getGender(i);
     int YoB =  _service.getYoB(i);
@@ -80,7 +82,7 @@ void ConsoleUI::printPerson(int i)
 
     cout << left << setw(nameWidth) << setfill(seperator) << fullName;
     cout << left << setw(sexWidth) << setfill(seperator) << gender;
-    if(YoB != 0)
+    if(YoD != 0)
     {
         cout << left << setw(yearWidth) << setfill(seperator) << YoB
              << left << setw(yearWidth) << setfill(seperator) << YoD << endl;
@@ -98,9 +100,9 @@ void ConsoleUI::displayList()
     if(!empty)
     {
         const char seperator = ' ';
-        const int firstNameWidth = 25;
-        const int sexWidth = 5;
-        const int yearWidth = 6;
+        const int firstNameWidth = 40;
+        const int sexWidth = 8;
+        const int yearWidth = 8;
         cout << left << setw(firstNameWidth) << setfill(seperator) << "Name"
              << left << setw(sexWidth) << setfill(seperator) << "Gender"
              << left << setw(yearWidth) << setfill(seperator) << "Birth"
