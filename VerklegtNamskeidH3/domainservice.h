@@ -27,12 +27,9 @@ public:
     void displayList();
     string convertToLower(string unfilteredString);
     void search(string keyword);
-<<<<<<< HEAD
     void whatToSort(int selector);
 
-=======
     void edit(int personID, int Selection);
->>>>>>> 257d4298b1174805a736547c5b0facf75c8999d2
 private:
     vector<TolPers> _personur;
     DataAccess _data;

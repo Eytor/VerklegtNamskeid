@@ -204,7 +204,6 @@ void DomainService::search(string keyword)
         }
     }
 }
-<<<<<<< HEAD
 
 void DomainService::whatToSort(int selector)
 {
@@ -260,7 +259,6 @@ void DomainService::whatToSort(int selector)
             }
         }
     }
-=======
 void DomainService::edit(int personID, int Selection)
 {
     bool valid = true;
@@ -321,5 +319,4 @@ void DomainService::edit(int personID, int Selection)
             break;
     }
     updateFile();
->>>>>>> 257d4298b1174805a736547c5b0facf75c8999d2
 }
