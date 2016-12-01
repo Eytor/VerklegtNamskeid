@@ -15,8 +15,10 @@ public:
     void search();
     int editSelect();
     void edit();
+    void addToList();
 private:
     DomainService _service;
+    vector<TolPers> _tempInput;
 };
 
 #endif // CONSOLEUI_H

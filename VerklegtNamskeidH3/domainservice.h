@@ -28,6 +28,7 @@ public:
     void edit(int personID, int Selection);
 private:
     vector<TolPers> _personur;
+    vector<TolPers> _trashBin;
     DataAccess _data;
     int _count;
 };
