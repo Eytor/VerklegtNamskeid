@@ -19,7 +19,7 @@ class DataAccess
 public:
     DataAccess();
     void test();
-    void retriveInfo(vector<TolPers> &person);
+    void retriveInfo(vector<TolPers> &person, vector<TolPers> &tBin);
     void updateFile(vector<TolPers> person);
 private:
 

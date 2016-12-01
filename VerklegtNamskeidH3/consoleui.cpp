@@ -245,3 +245,52 @@ void ConsoleUI::edit()
     }
 
 }
+
+void ConsoleUI::addToList(){
+    int numOfPeople;
+    cout << "\n Select number of people: ";
+    cin >> numOfPeople;
+    while (cin.fail()||numOfPeople<0)
+    {
+        cin.clear();
+        cin.ignore(100, '\n');
+        cout << "Invalid size. Select number from 1-100 ";
+        cin >> numOfPeople;
+    }
+
+    TolPers pers;
+    for(int i = 0; i < numOfPeople; i++)
+    {
+        cout << "Name: ";
+        cin >> pers.name;
+        cout << "Middle initial, enter '0' if empty: ";
+        cin >> pers.middleInitial;
+        cout << "Last name: ";
+        cin >> pers.lastName;
+        cout << "Gender: ";
+        cin >> pers.sex;
+        cout << "Year of birth: ";
+        cin >> pers.yearOfBirth;
+
+        while (cin.fail()||pers.yearOfBirth <= 0 || pers.yearOfBirth > 2251)
+        {
+            cin.clear();
+            cin.ignore(100, '\n');
+            cout << "Invalid size. Enter year from 1-2250 ";
+            cin >> pers.yearOfBirth;
+        }
+
+        cout << "Year of Death, enter '0' if alive: ";
+        cin >> pers.yearOfDeath;
+
+       while (cin.fail() || pers.yearOfDeath < 0 || pers.yearOfDeath > 2251 ||
+             ((pers.yearOfDeath < pers.yearOfBirth) && pers.yearOfDeath !=0))
+       {
+           cin.clear();
+           cin.ignore(100, '\n');
+           cout << "Invalid size. Enter year from 0-2250 ";
+           cin >> pers.yearOfDeath;
+       }
+        _tempInput.push_back(pers);
+    }
+}
