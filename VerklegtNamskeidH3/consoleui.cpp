@@ -66,9 +66,9 @@ void ConsoleUI::run()
 void ConsoleUI::printPerson(int i)
 {
     const char seperator = ' ';
-    const int sexWidth = 5;
-    const int yearWidth = 6;
-    const int nameWidth = 25;
+    const int sexWidth = 8;
+    const int yearWidth = 8;
+    const int nameWidth = 40;
     string fullName =  _service.getName(i);
     string gender =  _service.getGender(i);
     int YoB =  _service.getYoB(i);
@@ -94,9 +94,9 @@ void ConsoleUI::displayList()
     if(!empty)
     {
         const char seperator = ' ';
-        const int firstNameWidth = 25;
-        const int sexWidth = 5;
-        const int yearWidth = 6;
+        const int firstNameWidth = 40;
+        const int sexWidth = 8;
+        const int yearWidth = 8;
         cout << left << setw(firstNameWidth) << setfill(seperator) << "Name"
              << left << setw(sexWidth) << setfill(seperator) << "Gender"
              << left << setw(yearWidth) << setfill(seperator) << "Birth"
