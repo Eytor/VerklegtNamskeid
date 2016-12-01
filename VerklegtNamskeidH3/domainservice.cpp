@@ -219,6 +219,7 @@ void DomainService::whatToSort(int selector)
             }
         }
     }
+    updateFile();
 }
 void DomainService::edit(int personID, int Selection)
 {
