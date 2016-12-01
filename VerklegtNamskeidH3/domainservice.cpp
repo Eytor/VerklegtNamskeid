@@ -259,6 +259,7 @@ void DomainService::whatToSort(int selector)
             }
         }
     }
+}
 void DomainService::edit(int personID, int Selection)
 {
     bool valid = true;
