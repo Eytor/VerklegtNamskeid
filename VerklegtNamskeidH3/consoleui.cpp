@@ -311,7 +311,7 @@ void ConsoleUI::addToList(){
     TolPers pers;
     for(int i = 0; i < numOfPeople; i++)
     {
-        cout << "\nName: ";
+        cout << "\nFirst name: ";
         cin >> pers.name;
         cout << "Middle initial, enter '0' if empty: ";
         cin >> pers.middleInitial;
@@ -341,9 +341,9 @@ void ConsoleUI::addToList(){
            cout << "Invalid size. Enter year from 0-2250 ";
            cin >> pers.yearOfDeath;
        }
-        _tempInput.push_back(pers);
-        _service.addToList(_tempInput);
+        _tempInput.push_back(pers);        
     }
+    _service.addToList(_tempInput);
 }
 
 void ConsoleUI::deletePerson()
