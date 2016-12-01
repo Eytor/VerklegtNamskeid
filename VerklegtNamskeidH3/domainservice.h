@@ -26,6 +26,7 @@ public:
     string convertToLower(string unfilteredString);
     void search(string keyword);
     void edit(int personID, int Selection);
+    void addToList(vector<TolPers> input);
 private:
     vector<TolPers> _personur;
     vector<TolPers> _trashBin;

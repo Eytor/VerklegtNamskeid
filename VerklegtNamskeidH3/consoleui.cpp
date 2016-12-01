@@ -45,7 +45,7 @@ void ConsoleUI::run()
         selected = selection();
         switch (selected) {
         case 1:
-             _service.addToList();
+             addToList();
             cout << endl;
             break;
         case 2:

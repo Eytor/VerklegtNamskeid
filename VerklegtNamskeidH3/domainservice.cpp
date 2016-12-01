@@ -18,11 +18,16 @@ void DomainService::updateFile()
 
 void DomainService::addToList(vector<TolPers> input)
 {
-
+    TolPers pers;
     for(unsigned int i = 0; i < input.size(); i++)
     {
-
-
+        pers.name = input[i].name;
+        pers.middleInitial = input[i].middleInitial;
+        pers.lastName = input[i].lastName;
+        pers.sex = input[i].sex;
+        pers.yearOfBirth = input[i].yearOfBirth;
+        pers.yearOfDeath = input[i].yearOfDeath;
+        _personur.push_back(pers);
     }
     updateFile();
 }
