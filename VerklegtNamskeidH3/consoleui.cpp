@@ -11,8 +11,16 @@ ConsoleUI::ConsoleUI()
 int ConsoleUI::selection()
 {
     int selectNum;
+    static bool helloCounter = true;
     cout << "--------------------------------------------------" << endl;
-    cout << "Hello! Plese select one of the following commands." << endl;
+
+    if(helloCounter){
+    cout << "Hello! Please select one of the following commands." << endl;
+    helloCounter = false;
+    }
+    else{
+    cout << "   Please select one of the following commands." << endl;
+    }
     cout << "--------------------------------------------------" << endl;
     cout << "1. Add to List." << endl
          << "2. Display List." << endl
@@ -22,6 +30,7 @@ int ConsoleUI::selection()
          << "6. Delete person." << endl
          << "7. Recyclebin." << endl
          << "0. Quit." << endl;
+
     cin >> selectNum;
     return selectNum;
 }
