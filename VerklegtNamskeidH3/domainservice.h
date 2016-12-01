@@ -2,6 +2,8 @@
 #define DOMAINSERVICE_H
 #include "dataaccess.h"
 #include <iomanip>
+#include <stdio.h>
+#include <cstring>
 
 using namespace std;
 
@@ -24,7 +26,13 @@ public:
     void printPerson(int i);
     void displayList();
     string convertToLower(string unfilteredString);
+<<<<<<< HEAD
     vector <int> search(string keyword);
+=======
+    void search(string keyword);
+    void whatToSort(int selector);
+
+>>>>>>> b6d7a9d42ae2920a6790cbdc4a14cc1a9e2301de
     void edit(int personID, int Selection);
     void addToList(vector<TolPers> input);
 private:

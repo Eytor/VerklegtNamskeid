@@ -167,6 +167,62 @@ vector <int> DomainService::search(string keyword)
             }
     return searchResult;
 }
+
+void DomainService::whatToSort(int selector)
+{
+    if(selector == 1)
+    {
+        for(int i = 0; i < getListSize(); i++)
+        {
+            for(int j = 0; j < getListSize(); j++)
+            {
+                if(_personur[i].name < _personur[j].name)
+                {
+                    swap(_personur[i], _personur[j]);
+                }
+            }
+        }
+    }
+    else if(selector == 2)
+    {
+        for(int i = 0; i < getListSize(); i++)
+        {
+            for(int j = 0; j < getListSize(); j++)
+            {
+                if(_personur[i].lastName < _personur[j].lastName)
+                {
+                    swap(_personur[i], _personur[j]);
+                }
+            }
+        }
+    }
+    else if(selector == 3)
+    {
+        for(int i = 0; i < getListSize(); i++)
+        {
+            for(int j = 0; j < getListSize(); j++)
+            {
+                if(_personur[i].yearOfBirth < _personur[j].yearOfBirth)
+                {
+                    swap(_personur[i], _personur[j]);
+                }
+            }
+        }
+    }
+    else if(selector == 4)
+    {
+        for(int i = 0; i < getListSize(); i++)
+        {
+            for(int j = 0; j < getListSize(); j++)
+            {
+                if(_personur[i].yearOfDeath < _personur[j].yearOfDeath)
+                {
+                    swap(_personur[i], _personur[j]);
+                }
+            }
+        }
+    }
+}
 void DomainService::edit(int personID, int Selection)
 {
     bool valid = true;

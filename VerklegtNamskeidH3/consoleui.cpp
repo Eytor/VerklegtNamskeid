@@ -56,6 +56,7 @@ void ConsoleUI::run()
             search();
             break;
         case 4:
+            sortSelector();
             break;
         case 5:
             edit();
@@ -67,6 +68,33 @@ void ConsoleUI::run()
             cout << "Wrong input" << endl;
             break;
         }
+    }
+}
+
+void ConsoleUI::sortSelector()
+{
+    int selected;
+    selected = sortSelection();
+    switch (selected) {
+    case 1:
+        _service.whatToSort(selected);
+        displayList();
+        break;
+    case 2:
+        _service.whatToSort(selected);
+        displayList();
+        break;
+    case 3:
+        _service.whatToSort(selected);
+        displayList();
+        break;
+    case 4:
+        _service.whatToSort(selected);
+        displayList();
+        break;
+    default:
+        cout << "Wrong input" << endl;
+        break;
     }
 }
 

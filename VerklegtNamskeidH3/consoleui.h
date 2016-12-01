@@ -10,6 +10,7 @@ public:
     int selection();
     int sortSelection();
     void run();
+    void sortSelector();
     void printPerson(int i);
     void displayList();
     void search();
