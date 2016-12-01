@@ -11,8 +11,10 @@ TEMPLATE = app
 
 SOURCES += main.cpp \
     consoleui.cpp \
-    performerservice.cpp
+    domainservice.cpp \
+    dataaccess.cpp
 
 HEADERS += \
     consoleui.h \
-    performerservice.h
+    domainservice.h \
+    dataaccess.h
