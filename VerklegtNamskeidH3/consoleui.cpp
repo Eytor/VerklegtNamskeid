@@ -80,8 +80,11 @@ void ConsoleUI::printPerson(int i)
     cout << left << setw(sexWidth) << setfill(seperator) << gender;
     if(YoB != 0)
     {
-        cout << left << setw(yearWidth) << setfill(seperator) << YoB
-             << left << setw(yearWidth) << setfill(seperator) << YoD << endl;
+        cout << left << setw(yearWidth) << setfill(seperator) << YoB;
+        if(YoD != 0)
+        {
+            cout << left << setw(yearWidth) << setfill(seperator) << YoD << endl;
+        }
     }
     else
     {
