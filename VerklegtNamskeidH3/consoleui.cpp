@@ -11,6 +11,8 @@ ConsoleUI::ConsoleUI()
 int ConsoleUI::selection()
 {
     int selectNum;
+    cout << "Hello! Plese select one of the following commands." << endl;
+    cout << "--------------------------------------------------" << endl;
     cout << "1. Add to List." << endl
          << "2. Display List." << endl
          << "3. Search from list" << endl
