@@ -15,6 +15,7 @@ int ConsoleUI::selection()
          << "2. Display List." << endl
          << "3. Search from list" << endl
          << "4. Order list." << endl
+         << "5. Edit list." << endl
          << "0. Quit." << endl;
     cin >> selectNum;
     return selectNum;
@@ -52,6 +53,9 @@ void ConsoleUI::run()
             search();
             break;
         case 4:
+            break;
+        case 5:
+            edit();
             break;
         case 0:
             cout << "Goodbye!" << endl;
@@ -111,6 +115,7 @@ void ConsoleUI::displayList()
         cout << "List is empty!";
     }
 }
+
 void ConsoleUI::search()
 {
 
@@ -119,4 +124,90 @@ void ConsoleUI::search()
     cin.ignore();
     getline(cin,keyword);
      _service.search(keyword);
+}
+
+int ConsoleUI::editSelect()
+{
+    int editChoice;
+    cout << "What do you want to edit" << endl
+         << "1. First name" << endl
+         << "2. Middle initial" << endl
+         << "3. Last name" << endl
+         << "4. Gender" << endl
+         << "5. Year of birth" << endl
+         << "6. Year of Death" << endl;
+    cin >> editChoice;
+    return editChoice;
+}
+
+void ConsoleUI::edit()
+{
+    unsigned int personToEdit = 0;
+    bool validChoice = false;
+    bool empty =  _service.getEmptyStatus();
+    unsigned int size = _service.getListSize();
+    int choice;
+
+    if(!empty)
+    {
+        for(unsigned int i = 0; i < size; i++)
+        {
+            cout << (i + 1) << ". ";
+            printPerson(i);
+        }
+
+        while(!validChoice)
+        {
+            cout << "Select one of the above: ";
+            cin >> personToEdit;
+            if(personToEdit > 0 && personToEdit <= size)
+            {
+                validChoice = true;
+            }
+        }
+
+        personToEdit--;
+        validChoice = false;
+
+        while(!validChoice)
+        {
+            choice = editSelect();
+            switch (choice) {
+            case 1:
+                validChoice = true;
+                cout << "Old first name: " << _service.getFirstName(personToEdit) << endl << "New first name: ";
+                break;
+            case 2:
+                validChoice = true;
+                cout << "Old middle initial: " << _service.getMiddleInitial(personToEdit) << endl << "New middle initial: ";
+                break;
+            case 3:
+                validChoice = true;
+                cout << "Old last name: " << _service.getLastName(personToEdit) << endl << "New last name: ";
+                break;
+            case 4:
+                validChoice = true;
+                cout << "Old gender: " << _service.getGender(personToEdit) << endl << "New gender: ";
+                break;
+            case 5:
+                validChoice = true;
+                cout << "Old year of birth: " << _service.getYoB(personToEdit) << endl << "New year of birth: ";
+                break;
+            case 6:
+                validChoice = true;
+                cout << "Old year of death: " << _service.getYoD(personToEdit) << endl << "New year of death: ";
+                break;
+            default:
+                cout << "Wrong input.";
+                break;
+            }
+        }
+
+        _service.edit(personToEdit, choice);
+    }
+    else
+    {
+        cout << "List empty, cannot edit!";
+    }
+
 }

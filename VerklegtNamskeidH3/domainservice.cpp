@@ -8,14 +8,12 @@ DomainService::DomainService()
 
 void DomainService::retriveList()
 {
-    DataAccess data;
-    data.retriveInfo(_personur);
+    _data.retriveInfo(_personur);
 }
 
 void DomainService::updateFile()
 {
-    DataAccess data;
-    data.updateFile(_personur);
+    _data.updateFile(_personur);
 }
 
 void DomainService::addToList()
@@ -83,6 +81,21 @@ string DomainService::getName(int i)
         fullName = _personur[i].name + " " + _personur[i].lastName;
     }
     return fullName;
+}
+
+string DomainService::getFirstName(int i)
+{
+    return _personur[i].name;
+}
+
+string DomainService::getMiddleInitial(int i)
+{
+    return _personur[i].middleInitial;
+}
+
+string DomainService::getLastName(int i)
+{
+    return _personur[i].lastName;
 }
 
 string DomainService::getGender(int i)
@@ -190,4 +203,65 @@ void DomainService::search(string keyword)
             found = false;
         }
     }
+}
+void DomainService::edit(int personID, int Selection)
+{
+    bool valid = true;
+    string tempString;
+    int tempYear;
+    switch (Selection) {
+        case 1:
+        cin >> tempString;
+        _personur[personID].name = tempString;
+            break;
+        case 2 :
+        cin >> tempString;
+        _personur[personID].middleInitial = tempString;
+            break;
+        case 3:
+        cin >> tempString;
+        _personur[personID].lastName = tempString;
+            break;
+        case 4:
+        cin >> tempString;
+        _personur[personID].sex = tempString;
+            break;
+        case 5:
+        do
+        {
+            cin >> tempYear;
+            if(tempYear > _personur[personID].yearOfDeath)
+            {
+                valid = false;
+                cout << "Year of birth Cannot be larger than year of death." << endl
+                     << "Year of death is: " << _personur[personID].yearOfDeath << endl
+                     << "New year of death: ";
+            }
+            else
+            {
+                valid = true;
+            }
+        }while(!valid);
+        _personur[personID].yearOfBirth = tempYear;
+            break;
+        case 6:
+        do
+        {
+            cin >> tempYear;
+            if(tempYear < _personur[personID].yearOfBirth && tempYear != 0)
+            {
+                valid = false;
+                cout << "Year of death Cannot be less than year of birth." << endl
+                     << "Year of birth is: " << _personur[personID].yearOfBirth << endl
+                     << "New year of death: ";
+            }
+            else
+            {
+                valid = true;
+            }
+        }while(!valid);
+        _personur[personID].yearOfDeath = tempYear;
+            break;
+    }
+    updateFile();
 }

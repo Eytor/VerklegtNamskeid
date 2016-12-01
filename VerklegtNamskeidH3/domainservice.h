@@ -13,6 +13,9 @@ public:
     void updateFile();
     void addToList();
     string getName(int i);
+    string getFirstName(int i);
+    string getMiddleInitial(int i);
+    string getLastName(int i);
     string getGender(int i);
     int getYoB(int i);
     int getYoD(int i);
@@ -22,8 +25,10 @@ public:
     void displayList();
     string convertToLower(string unfilteredString);
     void search(string keyword);
+    void edit(int personID, int Selection);
 private:
     vector<TolPers> _personur;
+    DataAccess _data;
     int _count;
 };
 
