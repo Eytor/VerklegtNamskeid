@@ -357,7 +357,7 @@ void ConsoleUI::deletePerson()
             {
                 cin.clear();
                 cin.ignore(100, '\n');
-                cout << "Invalid command. Select number of the person you want to delete." << endl;
+                cout << "Invalid command. Select the number of the person you want to delete." << endl;
 
                 cin >> personToDelete;
             }
@@ -436,12 +436,24 @@ void ConsoleUI::recoverFromTrash()
             cout << line << endl;
             cout << "Select one person from above: ";
             cin >> personToRecover;
+
+            while (cin.fail()||personToRecover<0)
+            {
+                cin.clear();
+                cin.ignore(100, '\n');
+                cout << "Invalid command. Select '0' for main menu" << endl
+                << "Select the number of the person you want to recover: ";
+
+                cin >> personToRecover;
+            }
+
             if(personToRecover > 0 && personToRecover <= size)
             {
                 validChoice = true;
             }
         }
         personToRecover--;
+        cout << endl << "The person was recovered successfully!" << endl << endl;
         _service.recoverFromTrash(personToRecover);
     }
     else
