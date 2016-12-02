@@ -324,7 +324,7 @@ void DomainService::deletePerson(int i)
 {
     TolPers pers;
     pers.name = _personur[i].name;
-    pers.middleInitial = _personur[i].name;
+    pers.middleInitial = _personur[i].middleInitial;
     pers.lastName = _personur[i].lastName;
     pers.sex = _personur[i].sex;
     pers.yearOfBirth = _personur[i].yearOfBirth;
