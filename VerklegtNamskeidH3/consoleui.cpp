@@ -274,6 +274,7 @@ void ConsoleUI::edit()
                 cin >> editChoice;
             }
 
+
             choice = editChoice;
             switch (choice)
             {
@@ -321,6 +322,7 @@ void ConsoleUI::addToList()
     int numOfPeople;
     cout << "\nSelect number of people: ";
     cin >> numOfPeople;
+    string temp;
     while (cin.fail()||numOfPeople<0)
     {
         cin.clear();
@@ -335,7 +337,8 @@ void ConsoleUI::addToList()
         cout << "\nFirst name: ";
         cin >> pers.name;
         cout << "Middle initial, enter '0' if empty: ";
-        cin >> pers.middleInitial;
+        cin >> temp;
+        pers.middleInitial = temp[0];
         cout << "Last name: ";
         cin >> pers.lastName;
         cout << "Gender: ";
@@ -499,3 +502,4 @@ void ConsoleUI::recoverFromTrash()
         cout << "The trash bin is empty." << endl;
     }
 }
+

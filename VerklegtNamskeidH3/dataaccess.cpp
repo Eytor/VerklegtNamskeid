@@ -55,10 +55,6 @@ void DataAccess::updateFile(vector<TolPers> person)
         }
         file.close();
     }
-    else
-    {
-        cout << "Error: Could not open file!";
-    }
 }
 
 
@@ -78,10 +74,6 @@ void DataAccess::updateTrash(vector<TolPers> trash)
             trashbin << trash[i].yearOfDeath << endl ;
         }
         trashbin.close();
-    }
-    else
-    {
-        cout << "Error: Could not open file!";
     }
 }
 

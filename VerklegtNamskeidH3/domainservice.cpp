@@ -270,7 +270,7 @@ void DomainService::edit(int personID, int Selection)
             break;
         case 2 :
         cin >> tempString;
-        _personur[personID].middleInitial = tempString;
+        _personur[personID].middleInitial = tempString[0];
             break;
         case 3:
         cin >> tempString;
