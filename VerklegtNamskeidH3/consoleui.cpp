@@ -137,14 +137,7 @@ void ConsoleUI::displayList(int list)
     bool empty =  _service.getEmptyStatus(list);
     if(!empty)
     {
-        const char seperator = ' ';
-        const int firstNameWidth = 40;
-        const int sexWidth = 8;
-        const int yearWidth = 8;
-        cout << left << setw(firstNameWidth) << setfill(seperator) << "Name"
-             << left << setw(sexWidth) << setfill(seperator) << "Gender"
-             << left << setw(yearWidth) << setfill(seperator) << "Birth"
-             << left << setw(yearWidth) << setfill(seperator) << "Death" << endl;
+      giveHead();
         for(int i = 0; i < listSize; i++)
         {
             printPerson(list, i);
