@@ -76,6 +76,7 @@ void ConsoleUI::run()
             deletePerson();
             break;
         case 7:
+            trashSelection();
             break;
         case 0:
             cout << "Goodbye!" << endl;
@@ -383,4 +384,59 @@ void ConsoleUI::deletePerson()
         cout << "List is empty!";
     }
 
+}
+
+int ConsoleUI::trashSelection()
+{
+    int selectNum;
+    cout << "1. View recycle bin." << endl
+         << "2. Recover from recycle bin." << endl
+         << "3. Empty recycle bin." << endl;
+    cin >> selectNum;
+    return selectNum;
+}
+void ConsoleUI::trashSelector()
+{
+    int selected;
+    selected = trashSelection();
+    switch (selected) {
+    case 1:
+        displayTrash();
+        break;
+    case 2:
+        // Empty TODO
+        break;
+    case 3:
+        // Recover TODO
+        break;
+    default:
+        cout << "Wrong input" << endl;
+        break;
+    }
+}
+
+
+void ConsoleUI::displayTrash()
+{
+    int listSize =  _service.getListSize();
+    bool empty =  _service.getEmptyStatus();
+    if(!empty)
+    {
+        const char seperator = ' ';
+        const int firstNameWidth = 40;
+        const int sexWidth = 8;
+        const int yearWidth = 8;
+        cout << left << setw(firstNameWidth) << setfill(seperator) << "Name"
+             << left << setw(sexWidth) << setfill(seperator) << "Gender"
+             << left << setw(yearWidth) << setfill(seperator) << "Birth"
+             << left << setw(yearWidth) << setfill(seperator) << "Death" << endl;
+        for(int i = 0; i < listSize; i++)
+        {
+            printPerson(i);
+        }
+    }
+    else
+    {
+        cout << "The list is empty!";
+    }
 }
