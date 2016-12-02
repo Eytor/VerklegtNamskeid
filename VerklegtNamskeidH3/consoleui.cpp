@@ -34,7 +34,7 @@ void ConsoleUI::run()
              << "4. Order list." << endl
              << "5. Edit list." << endl
              << "6. Delete person." << endl
-             << "7. Recyclebin." << endl
+             << "7. Recycle bin." << endl
              << "0. Quit." << endl;
 
         cin >> selected;
@@ -229,6 +229,15 @@ void ConsoleUI::edit()
             cout << "----------------------------------------------------------------" << endl;
             cout << "Select one person from above: ";
             cin >> personToEdit;
+
+            while (cin.fail()||personToEdit<=0)
+            {
+                cin.clear();
+                cin.ignore(100, '\n');
+                cout << "Invalid command. Select the number of the person you want to edit." << endl;
+                cin >> personToEdit;
+            }
+
             if(personToEdit > 0 && personToEdit <= size)
             {
                 validChoice = true;
@@ -250,6 +259,21 @@ void ConsoleUI::edit()
                  << "5. Year of birth" << endl
                  << "6. Year of Death" << endl;
             cin >> editChoice;
+
+            while (cin.fail()||editChoice<0)
+            {
+                cin.clear();
+                cin.ignore(100, '\n');
+                cout << "Invalid command." << endl
+                << "1. First name" << endl
+                << "2. Middle initial" << endl
+                << "3. Last name" << endl
+                << "4. Gender" << endl
+                << "5. Year of birth" << endl
+                << "6. Year of Death" << endl;
+                cin >> editChoice;
+            }
+
             choice = editChoice;
             switch (choice)
             {
@@ -278,7 +302,7 @@ void ConsoleUI::edit()
                 cout << "Current year of death: " << _service.getYoD(1, personToEdit) << endl << "New year of death: ";
                 break;
             default:
-                cout << "Wrong input.";
+                validChoice = true;
                 break;
             }
         }
