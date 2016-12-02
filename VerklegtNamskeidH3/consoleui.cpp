@@ -83,6 +83,18 @@ void ConsoleUI::sortSelector()
          << "4. Order by year of death." << endl;
     cin >> selected;
 
+    while (cin.fail()||selected<0)
+    {
+        cin.clear();
+        cin.ignore(100, '\n');
+        cout << "Invalid input. Select number from 1-4, '0' for main menu" << endl
+             << "1. Order by first name." << endl
+             << "2. Order by last name." << endl
+             << "3. Order by year of birth." << endl
+             << "4. Order by year of death." << endl;
+        cin >> selected;
+    }
+
     switch (selected)
     {
     case 1:
