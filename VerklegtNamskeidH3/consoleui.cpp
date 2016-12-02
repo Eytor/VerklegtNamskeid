@@ -287,7 +287,7 @@ void ConsoleUI::addToList(){
     {
         cin.clear();
         cin.ignore(100, '\n');
-        cout << "Invalid size. Select number from 1-100 ";
+        cout << "Invalid size. Select number from 1-100: ";
         cin >> numOfPeople;
     }
 
@@ -309,7 +309,7 @@ void ConsoleUI::addToList(){
         {
             cin.clear();
             cin.ignore(100, '\n');
-            cout << "Invalid size. Enter year from 1-2250 ";
+            cout << "Invalid size. Enter year from 1-2250: ";
             cin >> pers.yearOfBirth;
         }
 
@@ -352,17 +352,28 @@ void ConsoleUI::deletePerson()
             cout << line << endl;
             cout << "Select one person from above: ";
             cin >> personToDelete;
+
+            while (cin.fail()||personToDelete<=0)
+            {
+                cin.clear();
+                cin.ignore(100, '\n');
+                cout << "Invalid command. Select number of the person you want to delete." << endl;
+
+                cin >> personToDelete;
+            }
+
             if(personToDelete > 0 && personToDelete <= size)
             {
                 validChoice = true;
             }
         }
         personToDelete--;
+        cout << endl << "The person was deleted successfully!" << endl << endl;
         _service.deletePerson(personToDelete);
     }
     else
     {
-        cout << "List is empty!";
+        cout << "The list is empty!" << endl;
     }
 
 }
