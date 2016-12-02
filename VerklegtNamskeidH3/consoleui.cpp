@@ -16,7 +16,7 @@ void ConsoleUI::run()
     while(selected != 0)
     {
         static bool helloCounter = true;
-        cout << "--------------------------------------------------" << endl;
+        cout << "---------------------------------------------------" << endl;
 
         if(helloCounter)
         {
@@ -27,7 +27,7 @@ void ConsoleUI::run()
         {
             cout << "   Please select one of the following commands." << endl;
         }
-        cout << "--------------------------------------------------" << endl;
+        cout << "---------------------------------------------------" << endl;
         cout << "1. Add to List." << endl
              << "2. Display List." << endl
              << "3. Search from list" << endl
@@ -289,7 +289,7 @@ void ConsoleUI::addToList()
     {
         cin.clear();
         cin.ignore(100, '\n');
-        cout << "Invalid size. Select number from 1-100: ";
+        cout << "Invalid size. Enter number from 1-100, '0' for main menu" << endl;
         cin >> numOfPeople;
     }
 
