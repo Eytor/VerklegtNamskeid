@@ -10,7 +10,7 @@ ConsoleUI::ConsoleUI()
 
 void ConsoleUI::run()
 {
-     _service.retriveList();
+    _service.retriveList();
 
     int selected = 1000;
     while(selected != 0)
@@ -48,7 +48,7 @@ void ConsoleUI::run()
         case 2:
             displayList(1);
             cout << endl;
-        break;
+            break;
         case 3:
             search();
             break;
@@ -137,7 +137,7 @@ void ConsoleUI::displayList(int list)
     bool empty =  _service.getEmptyStatus(list);
     if(!empty)
     {
-      giveHead();
+        giveHead();
         for(int i = 0; i < listSize; i++)
         {
             printPerson(list, i);
@@ -151,16 +151,16 @@ void ConsoleUI::displayList(int list)
 
 void ConsoleUI::giveHead()
 {
-        const char seperator = ' ';
-        const int firstNameWidth = 40;
-        const int sexWidth = 8;
-        const int yearWidth = 8;
+    const char seperator = ' ';
+    const int firstNameWidth = 40;
+    const int sexWidth = 8;
+    const int yearWidth = 8;
 
 
-        cout << left << setw(firstNameWidth) << setfill(seperator) << "Name"
-             << left << setw(sexWidth) << setfill(seperator) << "Gender"
-             << left << setw(yearWidth) << setfill(seperator) << "Birth"
-             << left << setw(yearWidth) << setfill(seperator) << "Death" << endl;
+    cout << left << setw(firstNameWidth) << setfill(seperator) << "Name"
+         << left << setw(sexWidth) << setfill(seperator) << "Gender"
+         << left << setw(yearWidth) << setfill(seperator) << "Birth"
+         << left << setw(yearWidth) << setfill(seperator) << "Death" << endl;
 
 }
 
@@ -172,26 +172,26 @@ void ConsoleUI::search()
     cin.ignore();
     getline(cin,keyword);
 
-     vector<int> searchResult =  _service.search(keyword);
-     if(searchResult.size() == 1)
-     {
-         cout <<"Found 1 result." << endl;
-     }
-     else if(searchResult.size() == 0)
-     {
-         cout <<"No match found. ";
-     }
-     else
-     {
-         cout <<"Found " << searchResult.size()  << " results." << endl;
-     }
-        giveHead();
-     for (unsigned int i = 0; i<searchResult.size(); i++)
-     {
-         int count = searchResult[i];
-          printPerson(1, count);
-     }
-     cout << endl;
+    vector<int> searchResult =  _service.search(keyword);
+    if(searchResult.size() == 1)
+    {
+        cout <<"Found 1 result." << endl;
+    }
+    else if(searchResult.size() == 0)
+    {
+        cout <<"No match found. ";
+    }
+    else
+    {
+        cout <<"Found " << searchResult.size()  << " results." << endl;
+    }
+    giveHead();
+    for (unsigned int i = 0; i<searchResult.size(); i++)
+    {
+        int count = searchResult[i];
+        printPerson(1, count);
+    }
+    cout << endl;
 
 }
 
@@ -239,7 +239,8 @@ void ConsoleUI::edit()
                  << "6. Year of Death" << endl;
             cin >> editChoice;
             choice = editChoice;
-            switch (choice) {
+            switch (choice)
+            {
             case 1:
                 validChoice = true;
                 cout << "Current first name: " << _service.getFirstName(personToEdit) << endl << "New first name: ";
@@ -279,7 +280,8 @@ void ConsoleUI::edit()
 
 }
 
-void ConsoleUI::addToList(){
+void ConsoleUI::addToList()
+{
     int numOfPeople;
     cout << "\nSelect number of people: ";
     cin >> numOfPeople;
@@ -316,14 +318,14 @@ void ConsoleUI::addToList(){
         cout << "Year of Death, enter '0' if alive: ";
         cin >> pers.yearOfDeath;
 
-       while (cin.fail() || pers.yearOfDeath < 0 || pers.yearOfDeath > 2251 ||
-             ((pers.yearOfDeath < pers.yearOfBirth) && pers.yearOfDeath !=0))
-       {
-           cin.clear();
-           cin.ignore(100, '\n');
-           cout << "Invalid size. Enter year from 0-2250 ";
-           cin >> pers.yearOfDeath;
-       }
+        while (cin.fail() || pers.yearOfDeath < 0 || pers.yearOfDeath > 2251 ||
+                ((pers.yearOfDeath < pers.yearOfBirth) && pers.yearOfDeath !=0))
+        {
+            cin.clear();
+            cin.ignore(100, '\n');
+            cout << "Invalid size. Enter year from 0-2250 ";
+            cin >> pers.yearOfDeath;
+        }
         _tempInput.push_back(pers);
     }
     _service.addToList(_tempInput);
@@ -391,9 +393,9 @@ void ConsoleUI::trashSelector()
         cin.clear();
         cin.ignore(100, '\n');
         cout << "Invalid command. Select '0' for main menu" << endl
-        << "1. View recycle bin." << endl
-        << "2. Recover from recycle bin." << endl
-        << "3. Empty recycle bin." << endl;
+             << "1. View recycle bin." << endl
+             << "2. Recover from recycle bin." << endl
+             << "3. Empty recycle bin." << endl;
 
         cin >> selected;
     }
@@ -437,12 +439,12 @@ void ConsoleUI::recoverFromTrash()
             cout << "Select one person from above: ";
             cin >> personToRecover;
 
-            while (cin.fail()||personToRecover<0)
+            while (cin.fail()||personToRecover <= 0)
             {
                 cin.clear();
                 cin.ignore(100, '\n');
                 cout << "Invalid command. Select '0' for main menu" << endl
-                << "Select the number of the person you want to recover: ";
+                     << "Select the number of the person you want to recover: ";
 
                 cin >> personToRecover;
             }
