@@ -33,6 +33,7 @@ public:
     void addToList(vector<TolPers> input);
     void deletePerson(int i);
     void emptyTrash();
+    void recoverFromTrash(int i);
 private:
     vector<TolPers> _personur;
     vector<TolPers> _trashBin;

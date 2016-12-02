@@ -22,6 +22,7 @@ public:
     void displayTrash();
     int trashSelection();
     void trashSelector();
+    void recoverFromTrash();
 private:
     DomainService _service;
     vector<TolPers> _tempInput;
