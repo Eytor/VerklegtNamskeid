@@ -385,6 +385,19 @@ void ConsoleUI::trashSelector()
          << "2. Recover from recycle bin." << endl
          << "3. Empty recycle bin." << endl;
     cin >> selected;
+
+    while (cin.fail()||selected<0)
+    {
+        cin.clear();
+        cin.ignore(100, '\n');
+        cout << "Invalid command. Select '0' for main menu" << endl
+        << "1. View recycle bin." << endl
+        << "2. Recover from recycle bin." << endl
+        << "3. Empty recycle bin." << endl;
+
+        cin >> selected;
+    }
+
     switch (selected)
     {
     case 1:
@@ -433,6 +446,6 @@ void ConsoleUI::recoverFromTrash()
     }
     else
     {
-        cout << "Trash bin is empty." << endl;
+        cout << "The trash bin is empty." << endl;
     }
 }
