@@ -7,8 +7,6 @@ class ConsoleUI
 {
 public:
     ConsoleUI();
-    int selection();
-    int sortSelection();
     void run();
     void sortSelector();
     void printPerson(int list, int i);
@@ -20,7 +18,6 @@ public:
     void addToList();
     void deletePerson();
     void displayTrash();
-    int trashSelection();
     void trashSelector();
     void recoverFromTrash();
 private:

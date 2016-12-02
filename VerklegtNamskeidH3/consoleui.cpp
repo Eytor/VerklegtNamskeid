@@ -8,53 +8,39 @@ ConsoleUI::ConsoleUI()
 
 }
 
-int ConsoleUI::selection()
-{
-    int selectNum;
-    static bool helloCounter = true;
-    cout << "--------------------------------------------------" << endl;
-
-    if(helloCounter){
-    cout << "Hello! Please select one of the following commands." << endl;
-    helloCounter = false;
-    }
-    else{
-    cout << "   Please select one of the following commands." << endl;
-    }
-    cout << "--------------------------------------------------" << endl;
-    cout << "1. Add to List." << endl
-         << "2. Display List." << endl
-         << "3. Search from list" << endl
-         << "4. Order list." << endl
-         << "5. Edit list." << endl
-         << "6. Delete person." << endl
-         << "7. Recyclebin." << endl
-         << "0. Quit." << endl;
-
-    cin >> selectNum;
-    return selectNum;
-}
-
-int ConsoleUI::sortSelection()
-{
-    int selectNum;
-    cout << "1. Order by first name." << endl
-         << "2. Order by last name." << endl
-         << "3. Order by year of birth." << endl
-         << "4. Order by year of death." << endl;
-    cin >> selectNum;
-    return selectNum;
-}
-
 void ConsoleUI::run()
 {
-
      _service.retriveList();
 
     int selected = 1000;
-    while(selected != 0){
-        selected = selection();
-        switch (selected) {
+    while(selected != 0)
+    {
+        static bool helloCounter = true;
+        cout << "--------------------------------------------------" << endl;
+
+        if(helloCounter)
+        {
+            cout << "Hello! Please select one of the following commands." << endl;
+            helloCounter = false;
+        }
+        else
+        {
+            cout << "   Please select one of the following commands." << endl;
+        }
+        cout << "--------------------------------------------------" << endl;
+        cout << "1. Add to List." << endl
+             << "2. Display List." << endl
+             << "3. Search from list" << endl
+             << "4. Order list." << endl
+             << "5. Edit list." << endl
+             << "6. Delete person." << endl
+             << "7. Recyclebin." << endl
+             << "0. Quit." << endl;
+
+        cin >> selected;
+
+        switch (selected)
+        {
         case 1:
             addToList();
             cout << endl;
@@ -91,8 +77,14 @@ void ConsoleUI::run()
 void ConsoleUI::sortSelector()
 {
     int selected;
-    selected = sortSelection();
-    switch (selected) {
+    cout << "1. Order by first name." << endl
+         << "2. Order by last name." << endl
+         << "3. Order by year of birth." << endl
+         << "4. Order by year of death." << endl;
+    cin >> selected;
+
+    switch (selected)
+    {
     case 1:
         _service.whatToSort(selected);
         displayList(1);
@@ -210,21 +202,6 @@ void ConsoleUI::search()
 
 }
 
-int ConsoleUI::editSelect()
-{
-    int editChoice;
-    cout << "--------------------------------------------------" << endl
-         << "What do you want to edit?" << endl
-         << "1. First name" << endl
-         << "2. Middle initial" << endl
-         << "3. Last name" << endl
-         << "4. Gender" << endl
-         << "5. Year of birth" << endl
-         << "6. Year of Death" << endl;
-    cin >> editChoice;
-    return editChoice;
-}
-
 void ConsoleUI::edit()
 {
     unsigned int personToEdit = 0;
@@ -258,7 +235,17 @@ void ConsoleUI::edit()
 
         while(!validChoice)
         {
-            choice = editSelect();
+            int editChoice;
+            cout << "--------------------------------------------------" << endl
+                 << "What do you want to edit?" << endl
+                 << "1. First name" << endl
+                 << "2. Middle initial" << endl
+                 << "3. Last name" << endl
+                 << "4. Gender" << endl
+                 << "5. Year of birth" << endl
+                 << "6. Year of Death" << endl;
+            cin >> editChoice;
+            choice = editChoice;
             switch (choice) {
             case 1:
                 validChoice = true;
@@ -387,20 +374,15 @@ void ConsoleUI::deletePerson()
 
 }
 
-int ConsoleUI::trashSelection()
+void ConsoleUI::trashSelector()
 {
-    int selectNum;
+    int selected;
     cout << "1. View recycle bin." << endl
          << "2. Recover from recycle bin." << endl
          << "3. Empty recycle bin." << endl;
-    cin >> selectNum;
-    return selectNum;
-}
-
-void ConsoleUI::trashSelector()
-{
-    int selected = trashSelection();
-    switch (selected) {
+    cin >> selected;
+    switch (selected)
+    {
     case 1:
         displayList(2);
         break;
