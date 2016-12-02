@@ -211,9 +211,11 @@ void ConsoleUI::edit()
 {
     unsigned int personToEdit = 0;
     bool validChoice = false;
+    bool validYear = false;
     bool empty =  _service.getEmptyStatus(1);
     unsigned int size = _service.getListSize(1);
     int choice;
+    string tempString;
 
     if(!empty)
     {
@@ -281,26 +283,71 @@ void ConsoleUI::edit()
             case 1:
                 validChoice = true;
                 cout << "Current first name: " << _service.getFirstName(personToEdit) << endl << "New first name: ";
+                cin >> tempString;
                 break;
             case 2:
                 validChoice = true;
                 cout << "Current middle initial: " << _service.getMiddleInitial(personToEdit) << endl << "New middle initial, enter '0' for none: ";
+                cin >> tempString;
                 break;
             case 3:
                 validChoice = true;
                 cout << "Current last name: " << _service.getLastName(personToEdit) << endl << "New last name: ";
+                cin >> tempString;
                 break;
             case 4:
                 validChoice = true;
                 cout << "Current gender: " << _service.getGender(1, personToEdit) << endl << "New gender: ";
+                cin >> tempString;
                 break;
             case 5:
                 validChoice = true;
-                cout << "Current year of birth: " << _service.getYoB(1, personToEdit) << endl << "New year of birth: ";
+                cin >> tempString;
+                while(!validYear)
+                {
+                    cout << "Current year of birth: " << _service.getYoB(1, personToEdit) << endl << "New year of birth: ";
+                    cin >> tempString;
+                    if(_service.checkIfLegitYear(tempString) == true)
+                    {
+                        int tempYear = stoi(tempString);
+                        if(tempYear > _service.getYoD(1, personToEdit) && _service.getYoD(1, personToEdit != 0))
+                        {
+                            cout << "Year of birth Cannot be larger than year of death." << endl;
+                        }
+                        else
+                        {
+                            validYear = true;
+                        }
+                    }
+                    else
+                    {
+                        cout << "Year must only contain digits!" << endl;
+                    }
+                }
                 break;
             case 6:
                 validChoice = true;
-                cout << "Current year of death: " << _service.getYoD(1, personToEdit) << endl << "New year of death: ";
+                while(!validYear)
+                {
+                    cout << "Current year of death: " << _service.getYoD(1, personToEdit) << endl << "New year of death: ";
+                    cin >> tempString;
+                    if(_service.checkIfLegitYear(tempString) == true)
+                    {
+                        int tempYear = stoi(tempString);
+                        if(tempYear < _service.getYoB(1, personToEdit) && tempYear != 0)
+                        {
+                            cout << "Year of death Cannot be less than year of birth." << endl;
+                        }
+                        else
+                        {
+                            validYear = true;
+                        }
+                    }
+                    else
+                    {
+                        cout << "Invalid year!" << endl;
+                    }
+                }
                 break;
             default:
                 validChoice = true;
@@ -308,7 +355,7 @@ void ConsoleUI::edit()
             }
         }
 
-        _service.edit(personToEdit, choice);
+        _service.edit(personToEdit, choice, tempString);
     }
     else
     {

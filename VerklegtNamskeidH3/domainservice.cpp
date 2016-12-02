@@ -258,62 +258,31 @@ void DomainService::whatToSort(int selector)
     updateFile();
 }
 
-void DomainService::edit(int personID, int Selection)
+void DomainService::edit(int personID, int Selection, string s)
 {
-    bool valid = true;
-    string tempString;
+    string tempString = s;
     int tempYear;
+    if(Selection == 5 || Selection == 6)
+    {
+        tempYear = stoi(s);
+    }
     switch (Selection) {
         case 1:
-        cin >> tempString;
         _personur[personID].name = tempString;
             break;
         case 2 :
-        cin >> tempString;
         _personur[personID].middleInitial = tempString[0];
             break;
         case 3:
-        cin >> tempString;
         _personur[personID].lastName = tempString;
             break;
         case 4:
-        cin >> tempString;
         _personur[personID].sex = tempString;
             break;
         case 5:
-        do
-        {
-            cin >> tempYear;
-            if(tempYear > _personur[personID].yearOfDeath)
-            {
-                valid = false;
-                cout << "Year of birth Cannot be larger than year of death." << endl
-                     << "Year of death is: " << _personur[personID].yearOfDeath << endl
-                     << "New year of death: ";
-            }
-            else
-            {
-                valid = true;
-            }
-        }while(!valid);
         _personur[personID].yearOfBirth = tempYear;
             break;
         case 6:
-        do
-        {
-            cin >> tempYear;
-            if(tempYear < _personur[personID].yearOfBirth && tempYear != 0)
-            {
-                valid = false;
-                cout << "Year of death Cannot be less than year of birth." << endl
-                     << "Year of birth is: " << _personur[personID].yearOfBirth << endl
-                     << "New year of death: ";
-            }
-            else
-            {
-                valid = true;
-            }
-        }while(!valid);
         _personur[personID].yearOfDeath = tempYear;
             break;
     }
@@ -354,4 +323,24 @@ void DomainService::recoverFromTrash(int i)
     _trashBin.erase(_trashBin.begin()+i);
     updateFile();
     updateTrash();
+}
+
+bool DomainService::checkIfLegitYear(string s)
+{
+    bool containsLetter;
+    for(unsigned int i = 0; i < s.length(); i++)
+    {
+        if(isalpha(s[i]))
+        {
+            containsLetter = true;
+        }
+    }
+    if(!containsLetter)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }

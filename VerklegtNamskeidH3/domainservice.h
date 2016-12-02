@@ -43,7 +43,7 @@ public:
     //Function that sorts the list in different ways
     void whatToSort(int selector);
     //Function that edits a value of a person
-    void edit(int personID, int Selection);
+    void edit(int personID, int Selection, string s);
     //Function that adds a person to the list
     void addToList(vector<TolPers> input);
     //Function that sends a person to the recycle bin
@@ -52,6 +52,8 @@ public:
     void emptyTrash();
     //Function that recovers everything from the recycle bin
     void recoverFromTrash(int i);
+    //Function that checks if string contains only digits
+    bool checkIfLegitYear(string s);
 private:
     vector<TolPers> _personur;
     vector<TolPers> _trashBin;
