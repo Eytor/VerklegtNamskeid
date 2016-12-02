@@ -152,7 +152,7 @@ void ConsoleUI::displayList(int list)
     }
     else
     {
-        cout << "The list is empty!";
+        cout << "The list is empty!" << endl;
     }
 }
 
@@ -392,11 +392,48 @@ void ConsoleUI::trashSelector()
         displayList(2);
         break;
     case 2:
+        recoverFromTrash();
         break;
     case 3:
         _service.emptyTrash();
         break;
     default:
         break;
+    }
+}
+
+void ConsoleUI::recoverFromTrash()
+{
+    unsigned int personToRecover = 0;
+    bool validChoice = false;
+    bool empty =  _service.getEmptyStatus(2);
+    unsigned int size = _service.getListSize(2);
+    string line = "----------------------------------------------------------------";
+
+    if(!empty)
+    {
+        cout << line << endl;
+        for(unsigned int i = 0; i < size; i++)
+        {
+            cout << (i + 1) << ". ";
+            printPerson(2, i);
+        }
+
+        while(!validChoice)
+        {
+            cout << line << endl;
+            cout << "Select one person from above: ";
+            cin >> personToRecover;
+            if(personToRecover > 0 && personToRecover <= size)
+            {
+                validChoice = true;
+            }
+        }
+        personToRecover--;
+        _service.recoverFromTrash(personToRecover);
+    }
+    else
+    {
+        cout << "Trash bin is empty." << endl;
     }
 }

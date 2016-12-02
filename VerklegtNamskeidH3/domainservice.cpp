@@ -324,7 +324,7 @@ void DomainService::deletePerson(int i)
 {
     TolPers pers;
     pers.name = _personur[i].name;
-    pers.middleInitial = _personur[i].name;
+    pers.middleInitial = _personur[i].middleInitial;
     pers.lastName = _personur[i].lastName;
     pers.sex = _personur[i].sex;
     pers.yearOfBirth = _personur[i].yearOfBirth;
@@ -339,4 +339,19 @@ void DomainService::emptyTrash()
 {
     _trashBin.clear();
     _data.emptyTrash();
+}
+
+void DomainService::recoverFromTrash(int i)
+{
+    TolPers pers;
+    pers.name = _trashBin[i].name;
+    pers.middleInitial = _trashBin[i].middleInitial;
+    pers.lastName = _trashBin[i].lastName;
+    pers.sex = _trashBin[i].sex;
+    pers.yearOfBirth = _trashBin[i].yearOfBirth;
+    pers.yearOfDeath = _trashBin[i].yearOfDeath;
+    _personur.push_back(pers);
+    _trashBin.erase(_trashBin.begin()+i);
+    updateFile();
+    updateTrash();
 }

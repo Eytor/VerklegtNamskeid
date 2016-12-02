@@ -19,6 +19,7 @@ public:
     void deletePerson();
     void displayTrash();
     void trashSelector();
+    void recoverFromTrash();
 private:
     DomainService _service;
     vector<TolPers> _tempInput;
