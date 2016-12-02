@@ -11,8 +11,8 @@ public:
     int sortSelection();
     void run();
     void sortSelector();
-    void printPerson(int i);
-    void displayList();
+    void printPerson(int list, int i);
+    void displayList(int list);
     void search();
     void giveHead();
     int editSelect();

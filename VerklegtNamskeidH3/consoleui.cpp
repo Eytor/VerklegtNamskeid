@@ -60,7 +60,7 @@ void ConsoleUI::run()
             cout << endl;
             break;
         case 2:
-            displayList();
+            displayList(1);
             cout << endl;
         break;
         case 3:
@@ -95,19 +95,19 @@ void ConsoleUI::sortSelector()
     switch (selected) {
     case 1:
         _service.whatToSort(selected);
-        displayList();
+        displayList(1);
         break;
     case 2:
         _service.whatToSort(selected);
-        displayList();
+        displayList(1);
         break;
     case 3:
         _service.whatToSort(selected);
-        displayList();
+        displayList(1);
         break;
     case 4:
         _service.whatToSort(selected);
-        displayList();
+        displayList(1);
         break;
     default:
         cout << "Wrong input" << endl;
@@ -115,16 +115,16 @@ void ConsoleUI::sortSelector()
     }
 }
 
-void ConsoleUI::printPerson(int i)
+void ConsoleUI::printPerson(int list, int i)
 {
     const char seperator = ' ';
     const int sexWidth = 8;
     const int yearWidth = 8;
     const int nameWidth = 40;
-    string fullName =  _service.getName(i);
-    string gender =  _service.getGender(i);
-    int YoB =  _service.getYoB(i);
-    int YoD =  _service.getYoD(i);
+    string fullName =  _service.getName(list, i);
+    string gender =  _service.getGender(list, i);
+    int YoB =  _service.getYoB(list, i);
+    int YoD =  _service.getYoD(list, i);
 
     cout << left << setw(nameWidth) << setfill(seperator) << fullName;
     cout << left << setw(sexWidth) << setfill(seperator) << gender;
@@ -139,10 +139,10 @@ void ConsoleUI::printPerson(int i)
     }
 }
 
-void ConsoleUI::displayList()
+void ConsoleUI::displayList(int list)
 {
-    int listSize =  _service.getListSize();
-    bool empty =  _service.getEmptyStatus();
+    int listSize =  _service.getListSize(list);
+    bool empty =  _service.getEmptyStatus(list);
     if(!empty)
     {
         const char seperator = ' ';
@@ -155,7 +155,7 @@ void ConsoleUI::displayList()
              << left << setw(yearWidth) << setfill(seperator) << "Death" << endl;
         for(int i = 0; i < listSize; i++)
         {
-            printPerson(i);
+            printPerson(list, i);
         }
     }
     else
@@ -198,13 +198,13 @@ void ConsoleUI::search()
      }
      else
      {
-         cout <<"Found " << searchResult.size()  <<" results." << endl;
+         cout <<"Found " << searchResult.size()  << " results." << endl;
      }
         giveHead();
      for (unsigned int i = 0; i<searchResult.size(); i++)
      {
          int count = searchResult[i];
-          printPerson(count);
+          printPerson(1, count);
      }
      cout << endl;
 
@@ -229,8 +229,8 @@ void ConsoleUI::edit()
 {
     unsigned int personToEdit = 0;
     bool validChoice = false;
-    bool empty =  _service.getEmptyStatus();
-    unsigned int size = _service.getListSize();
+    bool empty =  _service.getEmptyStatus(1);
+    unsigned int size = _service.getListSize(1);
     int choice;
 
     if(!empty)
@@ -239,7 +239,7 @@ void ConsoleUI::edit()
         for(unsigned int i = 0; i < size; i++)
         {
             cout << (i + 1) << ". ";
-            printPerson(i);
+            printPerson(1, i);
         }
 
         while(!validChoice)
@@ -274,15 +274,15 @@ void ConsoleUI::edit()
                 break;
             case 4:
                 validChoice = true;
-                cout << "Current gender: " << _service.getGender(personToEdit) << endl << "New gender: ";
+                cout << "Current gender: " << _service.getGender(1, personToEdit) << endl << "New gender: ";
                 break;
             case 5:
                 validChoice = true;
-                cout << "Current year of birth: " << _service.getYoB(personToEdit) << endl << "New year of birth: ";
+                cout << "Current year of birth: " << _service.getYoB(1, personToEdit) << endl << "New year of birth: ";
                 break;
             case 6:
                 validChoice = true;
-                cout << "Current year of death: " << _service.getYoD(personToEdit) << endl << "New year of death: ";
+                cout << "Current year of death: " << _service.getYoD(1, personToEdit) << endl << "New year of death: ";
                 break;
             default:
                 cout << "Wrong input.";
@@ -298,7 +298,6 @@ void ConsoleUI::edit()
     }
 
 }
-
 void ConsoleUI::addToList(){
     int numOfPeople;
     cout << "\nSelect number of people: ";
@@ -344,7 +343,7 @@ void ConsoleUI::addToList(){
            cout << "Invalid size. Enter year from 0-2250 ";
            cin >> pers.yearOfDeath;
        }
-        _tempInput.push_back(pers);        
+        _tempInput.push_back(pers);
     }
     _service.addToList(_tempInput);
     _tempInput.clear();
@@ -354,21 +353,22 @@ void ConsoleUI::deletePerson()
 {
     unsigned int personToDelete = 0;
     bool validChoice = false;
-    bool empty =  _service.getEmptyStatus();
-    unsigned int size = _service.getListSize();
+    bool empty =  _service.getEmptyStatus(1);
+    unsigned int size = _service.getListSize(1);
+    string line = "----------------------------------------------------------------";
 
     if(!empty)
     {
-        cout << "----------------------------------------------------------------" << endl;
+        cout << line << endl;
         for(unsigned int i = 0; i < size; i++)
         {
             cout << (i + 1) << ". ";
-            printPerson(i);
+            printPerson(1, i);
         }
 
         while(!validChoice)
         {
-            cout << "----------------------------------------------------------------" << endl;
+            cout << line << endl;
             cout << "Select one person from above: ";
             cin >> personToDelete;
             if(personToDelete > 0 && personToDelete <= size)
@@ -386,6 +386,31 @@ void ConsoleUI::deletePerson()
 
 }
 
+void ConsoleUI::displayTrash()
+{
+    int listSize =  _service.getListSize(2);
+    bool empty =  _service.getEmptyStatus(2);
+    if(!empty)
+    {
+        const char seperator = ' ';
+        const int firstNameWidth = 40;
+        const int sexWidth = 8;
+        const int yearWidth = 8;
+        cout << left << setw(firstNameWidth) << setfill(seperator) << "Name"
+             << left << setw(sexWidth) << setfill(seperator) << "Gender"
+             << left << setw(yearWidth) << setfill(seperator) << "Birth"
+             << left << setw(yearWidth) << setfill(seperator) << "Death" << endl;
+        for(int i = 0; i < listSize; i++)
+        {
+            printPerson(2, i);
+        }
+    }
+    else
+    {
+        cout << "The list is empty!" << endl;
+    }
+}
+
 int ConsoleUI::trashSelection()
 {
     int selectNum;
@@ -395,6 +420,7 @@ int ConsoleUI::trashSelection()
     cin >> selectNum;
     return selectNum;
 }
+
 void ConsoleUI::trashSelector()
 {
     int selected;
@@ -416,27 +442,3 @@ void ConsoleUI::trashSelector()
 }
 
 
-void ConsoleUI::displayTrash()
-{
-    int listSize =  _service.getListSize();
-    bool empty =  _service.getEmptyStatus();
-    if(!empty)
-    {
-        const char seperator = ' ';
-        const int firstNameWidth = 40;
-        const int sexWidth = 8;
-        const int yearWidth = 8;
-        cout << left << setw(firstNameWidth) << setfill(seperator) << "Name"
-             << left << setw(sexWidth) << setfill(seperator) << "Gender"
-             << left << setw(yearWidth) << setfill(seperator) << "Birth"
-             << left << setw(yearWidth) << setfill(seperator) << "Death" << endl;
-        for(int i = 0; i < listSize; i++)
-        {
-            printPerson(i);
-        }
-    }
-    else
-    {
-        cout << "The list is empty!";
-    }
-}

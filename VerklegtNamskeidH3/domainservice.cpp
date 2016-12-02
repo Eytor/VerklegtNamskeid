@@ -15,6 +15,7 @@ void DomainService::updateFile()
 {
     _data.updateFile(_personur);
 }
+
 void DomainService::updateTrash()
 {
     _data.updateTrash(_trashBin);
@@ -36,18 +37,33 @@ void DomainService::addToList(vector<TolPers> input)
     updateFile();
 }
 
-string DomainService::getName(int i)
+string DomainService::getName(int list, int i)
 {
     string fullName;
-    if(_personur[i].middleInitial != "0")
+    if(list == 1)
     {
-        fullName = _personur[i].name + " " + _personur[i].middleInitial + " " + _personur[i].lastName;
+        if(_personur[i].middleInitial != "0")
+        {
+            fullName = _personur[i].name + " " + _personur[i].middleInitial + " " + _personur[i].lastName;
+        }
+        else
+        {
+            fullName = _personur[i].name + " " + _personur[i].lastName;
+        }
+        return fullName;
     }
-    else
-    {
-        fullName = _personur[i].name + " " + _personur[i].lastName;
+    else{
+        if(_personur[i].middleInitial != "0")
+        {
+            fullName = _trashBin[i].name + " " + _trashBin[i].middleInitial + " " + _trashBin[i].lastName;
+        }
+        else
+        {
+            fullName = _trashBin[i].name + " " + _trashBin[i].lastName;
+        }
+        return fullName;
     }
-    return fullName;
+
 }
 
 string DomainService::getFirstName(int i)
@@ -65,54 +81,67 @@ string DomainService::getLastName(int i)
     return _personur[i].lastName;
 }
 
-string DomainService::getGender(int i)
+string DomainService::getGender(int list, int i)
 {
-    return _personur[i].sex;
-}
-
-int DomainService::getYoB(int i)
-{
-    return _personur[i].yearOfBirth;
-}
-
-int DomainService::getYoD(int i)
-{
-    return _personur[i].yearOfDeath;
-}
-
-int DomainService::getListSize()
-{
-    int size = _personur.size();
-    return size;
-}
-bool DomainService::getEmptyStatus()
-{
-    bool empty = _personur.empty();
-    return empty;
-}
-
-void DomainService::printPerson(int i)
-{
-    const char seperator = ' ';
-    const int sexWidth = 5;
-    const int yearWidth = 6;
-    const int nameWidth = 25;
-    string fullName = getName(i);
-    string gender = getGender(i);
-    int YoB = getYoB(i);
-    int YoD = getYoD(i);
-
-    cout << left << setw(nameWidth) << setfill(seperator) << fullName;
-    cout << left << setw(sexWidth) << setfill(seperator) << gender;
-    if(YoD != 0)
+    if(list == 1)
     {
-        cout << left << setw(yearWidth) << setfill(seperator) << YoB
-             << left << setw(yearWidth) << setfill(seperator) << YoD << endl;
+        return _personur[i].sex;
     }
     else
     {
-        cout << left << setw(yearWidth) << setfill(seperator) << YoB << endl;
+        return _trashBin[i].sex;
     }
+
+}
+
+int DomainService::getYoB(int list, int i)
+{
+    if(list == 1)
+    {
+        return _personur[i].yearOfBirth;
+    }
+    else
+    {
+        return _trashBin[i].yearOfBirth;
+    }
+}
+
+int DomainService::getYoD(int list, int i)
+{
+    if(list == 1)
+    {
+        return _personur[i].yearOfDeath;
+    }
+    else
+    {
+        return _trashBin[i].yearOfDeath;
+    }
+}
+
+int DomainService::getListSize(int list)
+{
+    if(list == 1)
+    {
+        return _personur.size();
+    }
+    else
+    {
+        return _trashBin.size();
+    }
+}
+
+bool DomainService::getEmptyStatus(int list)
+{
+    bool empty;
+    if(list == 1)
+    {
+        empty = _personur.empty();
+    }
+    else
+    {
+        empty = _trashBin.empty();
+    }
+    return empty;
 }
 
 string DomainService::convertToLower(string unfilteredString)
@@ -176,9 +205,9 @@ void DomainService::whatToSort(int selector)
 {
     if(selector == 1)
     {
-        for(int i = 0; i < getListSize(); i++)
+        for(int i = 0; i < getListSize(1); i++)
         {
-            for(int j = 0; j < getListSize(); j++)
+            for(int j = 0; j < getListSize(1); j++)
             {
                 if(_personur[i].name < _personur[j].name)
                 {
@@ -189,9 +218,9 @@ void DomainService::whatToSort(int selector)
     }
     else if(selector == 2)
     {
-        for(int i = 0; i < getListSize(); i++)
+        for(int i = 0; i < getListSize(1); i++)
         {
-            for(int j = 0; j < getListSize(); j++)
+            for(int j = 0; j < getListSize(1); j++)
             {
                 if(_personur[i].lastName < _personur[j].lastName)
                 {
@@ -202,9 +231,9 @@ void DomainService::whatToSort(int selector)
     }
     else if(selector == 3)
     {
-        for(int i = 0; i < getListSize(); i++)
+        for(int i = 0; i < getListSize(1); i++)
         {
-            for(int j = 0; j < getListSize(); j++)
+            for(int j = 0; j < getListSize(1); j++)
             {
                 if(_personur[i].yearOfBirth < _personur[j].yearOfBirth)
                 {
@@ -215,9 +244,9 @@ void DomainService::whatToSort(int selector)
     }
     else if(selector == 4)
     {
-        for(int i = 0; i < getListSize(); i++)
+        for(int i = 0; i < getListSize(1); i++)
         {
-            for(int j = 0; j < getListSize(); j++)
+            for(int j = 0; j < getListSize(1); j++)
             {
                 if(_personur[i].yearOfDeath < _personur[j].yearOfDeath)
                 {
@@ -228,6 +257,7 @@ void DomainService::whatToSort(int selector)
     }
     updateFile();
 }
+
 void DomainService::edit(int personID, int Selection)
 {
     bool valid = true;
