@@ -53,7 +53,7 @@ string DomainService::getName(int list, int i)
         return fullName;
     }
     else{
-        if(_personur[i].middleInitial != "0")
+        if(_trashBin[i].middleInitial != "0")
         {
             fullName = _trashBin[i].name + " " + _trashBin[i].middleInitial + " " + _trashBin[i].lastName;
         }
