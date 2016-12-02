@@ -82,3 +82,8 @@ void DataAccess::updateTrash(vector<TolPers> trash)
         cout << "Error: Could not open file!";
     }
 }
+
+void DataAccess::emptyTrash()
+{
+    remove("bin.txt");
+}

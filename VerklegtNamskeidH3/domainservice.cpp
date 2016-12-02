@@ -334,3 +334,9 @@ void DomainService::deletePerson(int i)
     updateFile();
     updateTrash();
 }
+
+void DomainService::emptyTrash()
+{
+    _trashBin.clear();
+    _data.emptyTrash();
+}

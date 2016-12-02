@@ -32,6 +32,7 @@ public:
     void edit(int personID, int Selection);
     void addToList(vector<TolPers> input);
     void deletePerson(int i);
+    void emptyTrash();
 private:
     vector<TolPers> _personur;
     vector<TolPers> _trashBin;

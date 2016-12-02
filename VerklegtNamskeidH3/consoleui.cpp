@@ -404,9 +404,12 @@ void ConsoleUI::trashSelector()
     case 1:
         displayList(2);
         break;
+    case 2:
+        break;
+    case 3:
+        _service.emptyTrash();
+        break;
     default:
         break;
     }
 }
-
-
