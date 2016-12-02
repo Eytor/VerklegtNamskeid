@@ -202,21 +202,6 @@ void ConsoleUI::search()
 
 }
 
-int ConsoleUI::editSelect()
-{
-    int editChoice;
-    cout << "--------------------------------------------------" << endl
-         << "What do you want to edit?" << endl
-         << "1. First name" << endl
-         << "2. Middle initial" << endl
-         << "3. Last name" << endl
-         << "4. Gender" << endl
-         << "5. Year of birth" << endl
-         << "6. Year of Death" << endl;
-    cin >> editChoice;
-    return editChoice;
-}
-
 void ConsoleUI::edit()
 {
     unsigned int personToEdit = 0;
@@ -250,7 +235,17 @@ void ConsoleUI::edit()
 
         while(!validChoice)
         {
-            choice = editSelect();
+            int editChoice;
+            cout << "--------------------------------------------------" << endl
+                 << "What do you want to edit?" << endl
+                 << "1. First name" << endl
+                 << "2. Middle initial" << endl
+                 << "3. Last name" << endl
+                 << "4. Gender" << endl
+                 << "5. Year of birth" << endl
+                 << "6. Year of Death" << endl;
+            cin >> editChoice;
+            choice = editChoice;
             switch (choice) {
             case 1:
                 validChoice = true;
