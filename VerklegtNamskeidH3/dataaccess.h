@@ -3,6 +3,7 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
+#include <QtSql>
 
 using namespace std;
 // Struct declared for the vectors we use.
