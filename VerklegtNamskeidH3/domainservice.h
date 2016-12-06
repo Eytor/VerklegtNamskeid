@@ -46,6 +46,8 @@ public:
     void edit(int personID, int Selection, string s);
     //Function that adds a person to the list
     void addToList(vector<TempTolPers> input);
+
+    void addToComp(vector<TempTolComp> input);
     //Function that sends a person to the recycle bin
     void deletePerson(int i);
     //Function that empties the recycle bin

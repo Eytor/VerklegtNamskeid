@@ -36,6 +36,25 @@ void DomainService::addToList(vector<TempTolPers> input)
     _data.addToPeople(_tempPersonur);
     _tempPersonur.clear();
     _personur.clear();
+    _computer.clear();
+    retriveList();
+}
+
+void DomainService::addToComp(vector<TempTolComp> input)
+{
+    TempTolComp comp;
+    for(unsigned int i = 0; i < input.size(); i++)
+    {
+        comp.name = input[i].name;
+        comp.type = input[i].type;
+        comp.built = input[i].built;
+        comp.year = input[i].year;
+        _tempComputer.push_back(comp);
+    }
+    _data.addToComputers(_tempComputer);
+    _tempComputer.clear();
+    _personur.clear();
+    _computer.clear();
     retriveList();
 }
 
