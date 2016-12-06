@@ -213,21 +213,15 @@ void DomainService::edit(int personID, int Selection, string s)
     }
     switch (Selection) {
         case 1:
-        _personur[personID].name = tempString;
+        _personur[personID].fullName = tempString;
             break;
         case 2 :
-        _personur[personID].middleInitial = tempString[0];
+        _personur[personID].gender = tempString;
             break;
         case 3:
-        _personur[personID].lastName = tempString;
-            break;
-        case 4:
-        _personur[personID].sex = tempString;
-            break;
-        case 5:
         _personur[personID].yearOfBirth = tempYear;
             break;
-        case 6:
+        case 4:
         _personur[personID].yearOfDeath = tempYear;
             break;
     }
@@ -237,10 +231,8 @@ void DomainService::edit(int personID, int Selection, string s)
 void DomainService::deletePerson(int i)
 {
     TolPers pers;
-    pers.name = _personur[i].name;
-    pers.middleInitial = _personur[i].middleInitial;
-    pers.lastName = _personur[i].lastName;
-    pers.sex = _personur[i].sex;
+    pers.fullName = _personur[i].fullName;
+    pers.gender = _personur[i].gender;
     pers.yearOfBirth = _personur[i].yearOfBirth;
     pers.yearOfDeath = _personur[i].yearOfDeath;
     _trashBin.push_back(pers);
