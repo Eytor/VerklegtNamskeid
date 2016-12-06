@@ -31,6 +31,10 @@ public:
     DataAccess();
     // Function that gets the info from the database
     void getFromDB(vector<TolComp>& computer, vector<TolPers>& person);
+
+    void addToComputers(vector<TolComp> computer);
+
+    void addToPeople(vector<TolPers> people);
     // Function to retrive all info from both files that contain the list and the trash.
     void retriveInfo(vector<TolPers> &person, vector<TolPers> &tBin);
     // Function that updates the file that contains the list.
