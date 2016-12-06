@@ -24,9 +24,9 @@ void DataAccess::getFromDB(vector<TolComp>& computer, vector<TolPers>& person)
         comp.ID = query.value("ID").toUInt();
         comp.name = query.value("Name").toString().toStdString();
         comp.type = query.value("Type").toString().toStdString();
-        comp.built = query.value("Built");
+        comp.built = query.value("Built").toBool();
         comp.year = query.value("Year").toUInt();
-        computers.push_back(comp);
+        computer.push_back(comp);
     }
 
     query.exec("SELECT * FROM People");
