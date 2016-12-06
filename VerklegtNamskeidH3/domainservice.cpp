@@ -258,10 +258,8 @@ void DomainService::emptyTrash()
 void DomainService::recoverFromTrash(int i)
 {
     TolPers pers;
-    pers.name = _trashBin[i].name;
-    pers.middleInitial = _trashBin[i].middleInitial;
-    pers.lastName = _trashBin[i].lastName;
-    pers.sex = _trashBin[i].sex;
+    pers.fullName = _trashBin[i].fullName;
+    pers.gender = _trashBin[i].gender;
     pers.yearOfBirth = _trashBin[i].yearOfBirth;
     pers.yearOfDeath = _trashBin[i].yearOfDeath;
     _personur.push_back(pers);
