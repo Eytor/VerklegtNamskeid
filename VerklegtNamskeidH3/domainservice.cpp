@@ -6,7 +6,7 @@ DomainService::DomainService()
 
 }
 
-void DomainService::retriveList()
+/*void DomainService::retriveList()
 {
     _data.retriveInfo(_personur, _trashBin);
 }
@@ -20,7 +20,7 @@ void DomainService::updateTrash()
 {
     _data.updateTrash(_trashBin);
 }
-
+*/
 void DomainService::addToList(vector<TolPers> input)
 {
     TolPers pers;
@@ -32,7 +32,7 @@ void DomainService::addToList(vector<TolPers> input)
         pers.yearOfDeath = input[i].yearOfDeath;
         _personur.push_back(pers);
     }
-    updateFile();
+    //updateFile();
 }
 
 string DomainService::getName(int list, int i)
@@ -200,7 +200,7 @@ void DomainService::whatToSort(int selector)
             }
         }
     }
-    updateFile();
+    //updateFile();
 }
 
 void DomainService::edit(int personID, int Selection, string s)
@@ -225,7 +225,7 @@ void DomainService::edit(int personID, int Selection, string s)
         _personur[personID].yearOfDeath = tempYear;
             break;
     }
-    updateFile();
+    //updateFile();
 }
 
 void DomainService::deletePerson(int i)
@@ -237,14 +237,14 @@ void DomainService::deletePerson(int i)
     pers.yearOfDeath = _personur[i].yearOfDeath;
     _trashBin.push_back(pers);
     _personur.erase(_personur.begin()+i);
-    updateFile();
-    updateTrash();
+    //updateFile();
+    //updateTrash();
 }
 
 void DomainService::emptyTrash()
 {
     _trashBin.clear();
-    _data.emptyTrash();
+ //   _data.emptyTrash();
 }
 
 void DomainService::recoverFromTrash(int i)
@@ -256,8 +256,8 @@ void DomainService::recoverFromTrash(int i)
     pers.yearOfDeath = _trashBin[i].yearOfDeath;
     _personur.push_back(pers);
     _trashBin.erase(_trashBin.begin()+i);
-    updateFile();
-    updateTrash();
+//    updateFile();
+//    updateTrash();
 }
 
 bool DomainService::checkIfLegitYear(string s)

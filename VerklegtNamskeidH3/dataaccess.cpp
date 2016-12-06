@@ -43,7 +43,7 @@ void DataAccess::getFromDB(vector<TolComp>& computer, vector<TolPers>& person)
     db.close();
 }
 
-void DataAccess::retriveInfo(vector<TolPers>& person, vector<TolPers>& tBin)
+/*void DataAccess::retriveInfo(vector<TolPers>& person, vector<TolPers>& tBin)
 {
     ifstream file, trash;
     file.open ("list.txt");
@@ -75,7 +75,7 @@ void DataAccess::retriveInfo(vector<TolPers>& person, vector<TolPers>& tBin)
     trash.close();
 }
 
-void DataAccess::updateFile(vector<TolPers> person)
+ void DataAccess::updateFile(vector<TolPers> person)
 {
     ofstream file;
     remove("list.txt");
@@ -95,8 +95,7 @@ void DataAccess::updateFile(vector<TolPers> person)
     }
 }
 
-
-void DataAccess::updateTrash(vector<TolPers> trash)
+ void DataAccess::updateTrash(vector<TolPers> trash)
 {
     ofstream trashbin;
     trashbin.open("bin.txt");
@@ -119,3 +118,4 @@ void DataAccess::emptyTrash()
 {
     remove("bin.txt");
 }
+*/
