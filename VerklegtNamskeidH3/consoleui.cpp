@@ -10,7 +10,7 @@ ConsoleUI::ConsoleUI()
 
 void ConsoleUI::run()
 {
-//    _service.retriveList();
+    _service.retriveList();
 
     int selected = 1000;
     while(selected != 0)

@@ -6,11 +6,12 @@ DomainService::DomainService()
 
 }
 
-/*void DomainService::retriveList()
+void DomainService::retriveList()
 {
-    _data.retriveInfo(_personur, _trashBin);
+    //_data.retriveInfo(_personur, _trashBin);
+    _data.getFromDB(_computer, _personur);
 }
-
+/*
 void DomainService::updateFile()
 {
     _data.updateFile(_personur);
@@ -161,6 +162,7 @@ vector <int> DomainService::search(string keyword)
 
 void DomainService::whatToSort(int selector)
 {
+
     if(selector == 1)
     {
         for(int i = 0; i < getListSize(1); i++)

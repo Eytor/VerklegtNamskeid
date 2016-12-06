@@ -7,6 +7,22 @@
 
 using namespace std;
 
+struct tempPers
+{
+    string fullName;
+    string gender;
+    int yearOfBirth;
+    int yearOfDeath;
+};
+
+struct tempComp
+{
+    string name;
+    string type;
+    bool built;
+    int year;
+};
+
 class DomainService
 {
 public:
@@ -56,6 +72,7 @@ public:
     bool checkIfLegitYear(string s);
 private:
     vector<TolPers> _personur;
+    vector<TolComp> _computer;
     vector<TolPers> _trashBin;
     DataAccess _data;
     int _count;
