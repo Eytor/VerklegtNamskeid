@@ -4,7 +4,7 @@
 #include <iostream>
 #include <fstream>
 #include <QtSql>
-
+#include <string>
 using namespace std;
 // Struct declared for the vectors we use.
 struct TolPers
@@ -21,7 +21,7 @@ struct TolComp
     int ID;
     string name;
     string type;
-    bool built;
+    int built;
     int year;
 };
 

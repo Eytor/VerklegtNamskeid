@@ -56,7 +56,12 @@ void DataAccess::addToComputers(vector<TolComp> computer)
 
     for(unsigned int i = 0; i < computer.size(); i++)
     {
-        query.exec("INSERT INTO Computers(Name, Type, Built, Year) VALUES(" + computer[i].name + ", " + computer[i].type + ", " + computer[i].built + ", " + computer[i].year + ")");
+        string name = computer[i].name;
+        string type = computer[i].type;
+        string built = to_string(computer[i].built);
+        string year = to_string(computer[i].year);
+        string insert = "INSERT INTO Computers(Name, Type, Built, Year) VALUES('" + name + "', '" + type + "', '" + built+ "', '" + year + "')";
+        query.exec(insert);
     }
 
 
