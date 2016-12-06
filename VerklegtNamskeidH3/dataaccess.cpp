@@ -43,6 +43,26 @@ void DataAccess::getFromDB(vector<TolComp>& computer, vector<TolPers>& person)
     db.close();
 }
 
+void DataAccess::addToComputers(vector<TolComp> computer)
+{
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString Tolvunarfraedi = "Tolvunarfraedi.sqlite";
+    db.setDatabaseName(Tolvunarfraedi);
+
+    db.open();
+
+    QSqlQuery query(db);
+
+    for(int i = 0; i < computer.size(); i++)
+    {
+        query.exec('INSERT INTO Computers(Name, Type, Built, Year) VALUES(' + computer[i].name + ', ' + computer[i].type + ', ' + computer[i].built + ', ' + computer[i].year + ')';
+    }
+
+
+
+    db.close();
+}
 /*void DataAccess::retriveInfo(vector<TolPers>& person, vector<TolPers>& tBin)
 {
     ifstream file, trash;
