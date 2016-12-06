@@ -5,6 +5,44 @@ DataAccess::DataAccess()
 
 }
 
+void DataAccess::getFromDB(vector<TolComp>& computer, vector<TolPers>& person)
+{
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString Tolvunarfraedi = "Tolvunarfraedi.sqlite";
+    db.setDatabaseName(Tolvunarfraedi);
+
+    db.open();
+
+    QSqlQuery query(db);
+
+    query.exec("SELECT * FROM Computers");
+
+    TolComp comp;
+    while(query.next())
+    {
+        comp.ID = query.value("ID").toUInt();
+        comp.name = query.value("Name").toString().toStdString();
+        comp.type = query.value("Type").toString().toStdString();
+        comp.built = query.value("Built");
+        comp.year = query.value("Year").toUInt();
+        computers.push_back(comp);
+    }
+
+    query.exec("SELECT * FROM People");
+    TolPers pers;
+    while(query.next())
+    {
+        pers.ID = query.value("ID").toUInt();
+        pers.fullName = query.value("FullName").toString().toStdString();
+        pers.gender = query.value("Gender").toString().toStdString();
+        pers.yearOfBirth = query.value("Yob").toUInt();
+        pers.yearOfDeath = query.value("Yod").toUInt();
+        person.push_back(pers);
+    }
+    db.close();
+}
+
 void DataAccess::retriveInfo(vector<TolPers>& person, vector<TolPers>& tBin)
 {
     ifstream file, trash;

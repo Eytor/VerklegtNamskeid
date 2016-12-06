@@ -26,10 +26,8 @@ void DomainService::addToList(vector<TolPers> input)
     TolPers pers;
     for(unsigned int i = 0; i < input.size(); i++)
     {
-        pers.name = input[i].name;
-        pers.middleInitial = input[i].middleInitial;
-        pers.lastName = input[i].lastName;
-        pers.sex = input[i].sex;
+        pers.fullName = input[i].fullName;
+        pers.gender = input[i].gender;
         pers.yearOfBirth = input[i].yearOfBirth;
         pers.yearOfDeath = input[i].yearOfDeath;
         _personur.push_back(pers);
@@ -42,54 +40,23 @@ string DomainService::getName(int list, int i)
     string fullName;
     if(list == 1)
     {
-        if(_personur[i].middleInitial != "0")
-        {
-            fullName = _personur[i].name + " " + _personur[i].middleInitial + " " + _personur[i].lastName;
-        }
-        else
-        {
-            fullName = _personur[i].name + " " + _personur[i].lastName;
-        }
-        return fullName;
+        return _personur[i].fullName;
     }
-    else{
-        if(_trashBin[i].middleInitial != "0")
-        {
-            fullName = _trashBin[i].name + " " + _trashBin[i].middleInitial + " " + _trashBin[i].lastName;
-        }
-        else
-        {
-            fullName = _trashBin[i].name + " " + _trashBin[i].lastName;
-        }
-        return fullName;
+    else
+    {
+        return _trashBin[i].fullName;
     }
 
 }
-
-string DomainService::getFirstName(int i)
-{
-    return _personur[i].name;
-}
-
-string DomainService::getMiddleInitial(int i)
-{
-    return _personur[i].middleInitial;
-}
-
-string DomainService::getLastName(int i)
-{
-    return _personur[i].lastName;
-}
-
 string DomainService::getGender(int list, int i)
 {
     if(list == 1)
     {
-        return _personur[i].sex;
+        return _personur[i].gender;
     }
     else
     {
-        return _trashBin[i].sex;
+        return _trashBin[i].gender;
     }
 
 }
@@ -171,17 +138,8 @@ vector <int> DomainService::search(string keyword)
     {
         if(containsLetter)
         {
-            if((convertToLower(_personur[i].name) == convertToLower(keyword))||
-               (convertToLower(_personur[i].middleInitial) == convertToLower(keyword))||
-               (convertToLower(_personur[i].lastName) == convertToLower(keyword))||
-               (convertToLower(_personur[i].sex) == convertToLower(keyword)))
-            {
-                found = true;
-            }
-            else if((convertToLower(_personur[i].name + " " + _personur[i].middleInitial + " " + _personur[i].lastName) == convertToLower(keyword))||
-                    (convertToLower(_personur[i].name + " " + _personur[i].lastName) == convertToLower(keyword))||
-                    (convertToLower(_personur[i].name + " " + _personur[i].middleInitial) == convertToLower(keyword))||
-                    (convertToLower(_personur[i].middleInitial + " " + _personur[i].lastName) == convertToLower(keyword)))
+            if((convertToLower(_personur[i].fullName) == convertToLower(keyword))||
+               (convertToLower(_personur[i].gender) == convertToLower(keyword)))
             {
                 found = true;
             }
@@ -209,20 +167,7 @@ void DomainService::whatToSort(int selector)
         {
             for(int j = 0; j < getListSize(1); j++)
             {
-                if(_personur[i].name < _personur[j].name)
-                {
-                    swap(_personur[i], _personur[j]);
-                }
-            }
-        }
-    }
-    else if(selector == 2)
-    {
-        for(int i = 0; i < getListSize(1); i++)
-        {
-            for(int j = 0; j < getListSize(1); j++)
-            {
-                if(_personur[i].lastName < _personur[j].lastName)
+                if(_personur[i].fullName < _personur[j].fullName)
                 {
                     swap(_personur[i], _personur[j]);
                 }

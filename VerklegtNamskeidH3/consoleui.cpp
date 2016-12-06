@@ -381,15 +381,10 @@ void ConsoleUI::addToList()
     TolPers pers;
     for(int i = 0; i < numOfPeople; i++)
     {
-        cout << "\nFirst name: ";
-        cin >> pers.name;
-        cout << "Middle initial, enter '0' if empty: ";
-        cin >> temp;
-        pers.middleInitial = temp[0];
-        cout << "Last name: ";
-        cin >> pers.lastName;
+        cout << "\nFull name: ";
+        cin >> pers.fullName;
         cout << "Gender: ";
-        cin >> pers.sex;
+        cin >> pers.gender;
         cout << "Year of birth: ";
         cin >> pers.yearOfBirth;
 
