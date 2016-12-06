@@ -27,6 +27,7 @@ void DataAccess::getFromDB(vector<TolComp>& computer, vector<TolPers>& person)
         comp.built = query.value("Built").toBool();
         comp.year = query.value("Year").toUInt();
         computer.push_back(comp);
+        _previousCompSize++;
     }
 
     query.exec("SELECT * FROM People");
@@ -43,7 +44,7 @@ void DataAccess::getFromDB(vector<TolComp>& computer, vector<TolPers>& person)
     db.close();
 }
 
-void DataAccess::addToComputers(vector<TolComp> computer)
+void DataAccess::addToComputers(vector<TempTolComp> computer)
 {
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -58,17 +59,16 @@ void DataAccess::addToComputers(vector<TolComp> computer)
     {
         query.prepare("INSERT INTO Computers(Name, Type, Built, Year) "
                       "VALUES(:name, :type, :built, :year)");
-        query.bindValue(":name", computer[i].name);
-        query.bindValue(":type", computer[i].type);
+        query.bindValue(":name", computer[i].name.c_str());
+        query.bindValue(":type", computer[i].type.c_str());
         query.bindValue(":built", computer[i].built);
         query.bindValue(":year", computer[i].year);
         query.exec();
     }
-
     db.close();
 }
 
-void DataAccess::addToPeople(vector<TolPers> people)
+void DataAccess::addToPeople(vector<TempTolPers> people)
 {
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -81,7 +81,13 @@ void DataAccess::addToPeople(vector<TolPers> people)
 
     for(unsigned int i = 0; i < people.size(); i++)
     {
-        //query.exec("INSERT INTO People(FullName, Gender, Yob, Yod) VALUES(" + people[i].fullName + ", " + people[i].gender + ", " + people[i].yearOfBirth + ", " + people[i].yearOfDeath + ")");
+        query.prepare("INSERT INTO People(FullName, Gender, Yob, Yod) "
+                      "VALUES(:name, :gender, :yob, :yod)");
+        query.bindValue(":name", people[i].fullName.c_str());
+        query.bindValue(":gender", people[i].gender.c_str());
+        query.bindValue(":yob", people[i].yearOfBirth);
+        query.bindValue(":yod", people[i].yearOfDeath);
+        query.exec();
     }
 
 

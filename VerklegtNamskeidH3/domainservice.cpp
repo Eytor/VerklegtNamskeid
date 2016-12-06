@@ -10,7 +10,6 @@ void DomainService::retriveList()
 {
     //_data.retriveInfo(_personur, _trashBin);
     _data.getFromDB(_computer, _personur);
-    _data.addToComputers(_computer);
 }
 /*
 void DomainService::updateFile()
@@ -23,18 +22,21 @@ void DomainService::updateTrash()
     _data.updateTrash(_trashBin);
 }
 */
-void DomainService::addToList(vector<TolPers> input)
+void DomainService::addToList(vector<TempTolPers> input)
 {
-    TolPers pers;
+    TempTolPers pers;
     for(unsigned int i = 0; i < input.size(); i++)
     {
         pers.fullName = input[i].fullName;
         pers.gender = input[i].gender;
         pers.yearOfBirth = input[i].yearOfBirth;
         pers.yearOfDeath = input[i].yearOfDeath;
-        _personur.push_back(pers);
+        _tempPersonur.push_back(pers);
     }
-    //updateFile();
+    _data.addToPeople(_tempPersonur);
+    _tempPersonur.clear();
+    _personur.clear();
+    retriveList();
 }
 
 string DomainService::getName(int list, int i)

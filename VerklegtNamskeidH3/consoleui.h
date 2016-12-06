@@ -32,7 +32,7 @@ public:
     void recoverFromTrash();
 private:
     DomainService _service;
-    vector<TolPers> _tempInput;
+    vector<TempTolPers> _tempInput;
 };
 
 #endif // CONSOLEUI_H

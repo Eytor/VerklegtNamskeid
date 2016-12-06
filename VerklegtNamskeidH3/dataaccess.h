@@ -25,16 +25,32 @@ struct TolComp
     int year;
 };
 
+struct TempTolPers
+{
+    string fullName;
+    string gender;
+    int yearOfBirth;
+    int yearOfDeath;
+};
+
+struct TempTolComp
+{
+    string name;
+    string type;
+    int built;
+    int year;
+};
+
 class DataAccess
 {
 public:
     DataAccess();
     // Function that gets the info from the database
     void getFromDB(vector<TolComp>& computer, vector<TolPers>& person);
-
-    void addToComputers(vector<TolComp> computer);
-
-    void addToPeople(vector<TolPers> people);
+    // --------------------------------------> ADD COMMENT HERE <--------------------------------------
+    void addToComputers(vector<TempTolComp> computer);
+    // --------------------------------------> ADD COMMENT HERE <--------------------------------------
+    void addToPeople(vector<TempTolPers> people);
     // Function to retrive all info from both files that contain the list and the trash.
     void retriveInfo(vector<TolPers> &person, vector<TolPers> &tBin);
     // Function that updates the file that contains the list.
@@ -43,6 +59,9 @@ public:
     void updateTrash(vector<TolPers> trash);
     // Function that deletes the trash file.
     void emptyTrash();
+private:
+    int _previousCompSize;
+    int _previousPeopleSize;
 };
 
 #endif // DATAACCESS_H

@@ -7,22 +7,6 @@
 
 using namespace std;
 
-struct tempPers
-{
-    string fullName;
-    string gender;
-    int yearOfBirth;
-    int yearOfDeath;
-};
-
-struct tempComp
-{
-    string name;
-    string type;
-    bool built;
-    int year;
-};
-
 class DomainService
 {
 public:
@@ -61,7 +45,7 @@ public:
     //Function that edits a value of a person
     void edit(int personID, int Selection, string s);
     //Function that adds a person to the list
-    void addToList(vector<TolPers> input);
+    void addToList(vector<TempTolPers> input);
     //Function that sends a person to the recycle bin
     void deletePerson(int i);
     //Function that empties the recycle bin
@@ -73,6 +57,8 @@ public:
 private:
     vector<TolPers> _personur;
     vector<TolComp> _computer;
+    vector<TempTolComp> _tempComputer;
+    vector<TempTolPers> _tempPersonur;
     vector<TolPers> _trashBin;
     DataAccess _data;
     int _count;

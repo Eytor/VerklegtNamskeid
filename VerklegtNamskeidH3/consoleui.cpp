@@ -378,7 +378,7 @@ void ConsoleUI::addToList()
         cin >> numOfPeople;
     }
 
-    TolPers pers;
+    TempTolPers pers;
     for(int i = 0; i < numOfPeople; i++)
     {
         cout << "\nFull name: ";
