@@ -10,6 +10,7 @@ void DomainService::retriveList()
 {
     //_data.retriveInfo(_personur, _trashBin);
     _data.getFromDB(_computer, _personur);
+    _data.addToComputers(_computer);
 }
 /*
 void DomainService::updateFile()

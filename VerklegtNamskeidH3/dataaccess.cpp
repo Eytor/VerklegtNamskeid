@@ -56,14 +56,14 @@ void DataAccess::addToComputers(vector<TolComp> computer)
 
     for(unsigned int i = 0; i < computer.size(); i++)
     {
-        string name = computer[i].name;
-        string type = computer[i].type;
-        string built = to_string(computer[i].built);
-        string year = to_string(computer[i].year);
-        string insert = "INSERT INTO Computers(Name, Type, Built, Year) VALUES('" + name + "', '" + type + "', '" + built+ "', '" + year + "')";
-        query.exec(insert);
+        query.prepare("INSERT INTO Computers(Name, Type, Built, Year) "
+                      "VALUES(:name, :type, :built, :year)");
+        query.bindValue(":name", computer[i].name);
+        query.bindValue(":type", computer[i].type);
+        query.bindValue(":built", computer[i].built);
+        query.bindValue(":year", computer[i].year);
+        query.exec();
     }
-
 
     db.close();
 }
@@ -81,7 +81,7 @@ void DataAccess::addToPeople(vector<TolPers> people)
 
     for(unsigned int i = 0; i < people.size(); i++)
     {
-        query.exec("INSERT INTO People(FullName, Gender, Yob, Yod) VALUES(" + people[i].fullName + ", " + people[i].gender + ", " + people[i].yearOfBirth + ", " + people[i].yearOfDeath + ")");
+        //query.exec("INSERT INTO People(FullName, Gender, Yob, Yod) VALUES(" + people[i].fullName + ", " + people[i].gender + ", " + people[i].yearOfBirth + ", " + people[i].yearOfDeath + ")");
     }
 
 
