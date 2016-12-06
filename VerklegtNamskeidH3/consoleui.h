@@ -23,6 +23,8 @@ public:
     void edit();
     //Gives the user an option to add one or more people to the list
     void addToList();
+    //Adds a computer to the database
+    void addToComp();
     //Sends a person to the recycle bin
     void deletePerson();
     /*Gives the user options to display the recycle bin,
@@ -33,6 +35,7 @@ public:
 private:
     DomainService _service;
     vector<TempTolPers> _tempInput;
+    vector<TempTolComp> _tempCompInput;
 };
 
 #endif // CONSOLEUI_H

@@ -35,6 +35,7 @@ void ConsoleUI::run()
              << "5. Edit list." << endl
              << "6. Delete person." << endl
              << "7. Recycle bin." << endl
+             << "8. Add to computers." << endl
              << "0. Quit." << endl;
 
         cin >> selected;
@@ -63,6 +64,9 @@ void ConsoleUI::run()
             break;
         case 7:
             trashSelector();
+            break;
+        case 8:
+            addToComp();
             break;
         case 0:
             cout << "Goodbye!" << endl;
@@ -369,7 +373,6 @@ void ConsoleUI::addToList()
     int numOfPeople;
     cout << "\nSelect number of people: ";
     cin >> numOfPeople;
-    string temp;
     while (cin.fail()||numOfPeople<0)
     {
         cin.clear();
@@ -411,6 +414,36 @@ void ConsoleUI::addToList()
     }
     _service.addToList(_tempInput);
     _tempInput.clear();
+}
+
+void ConsoleUI::addToComp()
+{
+    int numOfComputers;
+    cout << "Select number of computers to insert: ";
+    cin >> numOfComputers;
+    while(cin.fail()||numOfComputers<0)
+    {
+        cin.clear();
+        cin.ignore(100,'\n');
+        cout << "Invalid size. Enter number from 1-100, '0' for main menu" << endl;
+    }
+
+    TempTolComp comps;
+    for(int i = 0; i < numOfComputers; i++)
+    {
+        cout << "\nName: ";
+        cin >> comps.name;
+        cout << "Type: ";
+        cin >> comps.type;
+        cout << "Built: ";
+        cin >> comps.built;
+        cout << "Year: ";
+        cin >> comps.year;
+
+        _tempCompInput.push_back(comps);
+    }
+    _service.addToComp(_tempCompInput);
+    _tempCompInput.clear();
 }
 
 void ConsoleUI::deletePerson()
