@@ -8,20 +8,8 @@ DomainService::DomainService()
 
 void DomainService::retriveList()
 {
-    //_data.retriveInfo(_personur, _trashBin);
     _data.getFromDB(_computer, _personur);
 }
-/*
-void DomainService::updateFile()
-{
-    _data.updateFile(_personur);
-}
-
-void DomainService::updateTrash()
-{
-    _data.updateTrash(_trashBin);
-}
-*/
 void DomainService::addToList(vector<TempTolPers> input)
 {
     TempTolPers pers;
@@ -263,7 +251,6 @@ void DomainService::whatToSort(int selector)
             }
         }
     }
-    //updateFile();
 }
 
 void DomainService::edit(int personID, int Selection, string s)
@@ -288,7 +275,6 @@ void DomainService::edit(int personID, int Selection, string s)
         _personur[personID].yearOfDeath = tempYear;
             break;
     }
-    //updateFile();
 }
 
 void DomainService::deletePerson(int i)
@@ -301,14 +287,11 @@ void DomainService::deletePerson(int i)
     _trashBin.push_back(pers);
     _data.deletePerson(i);
     _personur.erase(_personur.begin()+i);
-    //updateFile();
-    //updateTrash();
 }
 
 void DomainService::emptyTrash()
 {
     _trashBin.clear();
- //   _data.emptyTrash();
 }
 
 void DomainService::recoverFromTrash(int i)
@@ -320,8 +303,6 @@ void DomainService::recoverFromTrash(int i)
     pers.yearOfDeath = _trashBin[i].yearOfDeath;
     _personur.push_back(pers);
     _trashBin.erase(_trashBin.begin()+i);
-//    updateFile();
-//    updateTrash();
 }
 
 bool DomainService::checkIfLegitYear(string s)
