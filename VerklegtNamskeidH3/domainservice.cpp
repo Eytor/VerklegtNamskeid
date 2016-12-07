@@ -10,6 +10,7 @@ void DomainService::retriveList()
 {
     _data.getFromDB(_computer, _personur);
 }
+
 void DomainService::addToList(vector<TempTolPers> input)
 {
     TempTolPers pers;
@@ -279,14 +280,20 @@ void DomainService::edit(int personID, int Selection, string s)
 
 void DomainService::deletePerson(int i)
 {
+    /*
     TolPers pers;
     pers.fullName = _personur[i].fullName;
     pers.gender = _personur[i].gender;
     pers.yearOfBirth = _personur[i].yearOfBirth;
     pers.yearOfDeath = _personur[i].yearOfDeath;
     _trashBin.push_back(pers);
+
+    _personur.erase(_personur.begin()+i);//*/
     _data.deletePerson(i);
-    _personur.erase(_personur.begin()+i);
+    _personur.clear();
+    _computer.clear();
+    retriveList();
+
 }
 
 void DomainService::emptyTrash()
