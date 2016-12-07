@@ -53,9 +53,13 @@ int DomainService::getID(int list, int i)
     {
         return _personur[i].ID;
     }
-    if(list == 2)
+    else if(list == 3)
     {
         return _computer[i].ID;
+    }
+    else
+    {
+        //TODO
     }
 }
 
@@ -278,18 +282,16 @@ void DomainService::edit(int personID, int Selection, string s)
     }
 }
 
-void DomainService::deletePerson(int i)
+void DomainService::deleteFromList(int list, int i)
 {
-    /*
-    TolPers pers;
-    pers.fullName = _personur[i].fullName;
-    pers.gender = _personur[i].gender;
-    pers.yearOfBirth = _personur[i].yearOfBirth;
-    pers.yearOfDeath = _personur[i].yearOfDeath;
-    _trashBin.push_back(pers);
-
-    _personur.erase(_personur.begin()+i);//*/
-    _data.deletePerson(i);
+    if(list == 1)
+    {
+        _data.deletePerson(i);
+    }
+    else
+    {
+        _data.deleteComputer(i);
+    }
     _personur.clear();
     _computer.clear();
     retriveList();

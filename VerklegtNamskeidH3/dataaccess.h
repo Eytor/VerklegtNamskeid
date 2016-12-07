@@ -53,6 +53,8 @@ public:
     void addToPeople(vector<TempTolPers> people);
     // --------------------------------------> ADD COMMENT HERE <--------------------------------------
     void deletePerson(int i);
+
+    void deleteComputer(int i);
     // Function to retrive all info from both files that contain the list and the trash.
     void retriveInfo(vector<TolPers> &person, vector<TolPers> &tBin);
     // Function that updates the file that contains the list.

@@ -104,7 +104,24 @@ void DataAccess::deletePerson(int i)
     db.open();
 
     QSqlQuery query(db);
-    query.prepare("DELETE FROM PEOPLE "
+    query.prepare("DELETE FROM People "
+                  "WHERE ID = :id");
+    query.bindValue(":id", i);
+    query.exec();
+
+}
+
+void DataAccess::deleteComputer(int i)
+{
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString Tolvunarfraedi = "Tolvunarfraedi.sqlite";
+    db.setDatabaseName(Tolvunarfraedi);
+
+    db.open();
+
+    QSqlQuery query(db);
+    query.prepare("DELETE FROM Computers "
                   "WHERE ID = :id");
     query.bindValue(":id", i);
     query.exec();

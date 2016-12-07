@@ -249,8 +249,6 @@ void ConsoleUI::search()
 
 }
 
-
-
 void ConsoleUI::addToList()
 {
     int numOfPeople;
@@ -270,10 +268,7 @@ void ConsoleUI::addToList()
         cout << "\nFull name: ";
         cin.ignore();
         getline(cin,pers.fullName);
-       // cin >> pers.fullName;
         cout << "Gender: ";
-      //  cin >> pers.gender;
-        cin.ignore();
         getline(cin,pers.gender);
         cout << "Year of birth: ";
         cin >> pers.yearOfBirth;
@@ -347,12 +342,13 @@ void ConsoleUI::addToComp()
     _tempCompInput.clear();
 }
 
-void ConsoleUI::deletePerson()
+void ConsoleUI::deleteFromList(int list)
 {
-    unsigned int personToDelete = 0;
+    unsigned int selectDelete = 0;
+    unsigned int toDelete = 0;
     bool validChoice = false;
-    bool empty =  _service.getEmptyStatus(1);
-    unsigned int size = _service.getListSize(1);
+    bool empty =  _service.getEmptyStatus(list);
+    unsigned int size = _service.getListSize(list);
     string line = "----------------------------------------------------------------";
 
     if(!empty)
@@ -360,43 +356,45 @@ void ConsoleUI::deletePerson()
         cout << line << endl;
         for(unsigned int i = 0; i < size; i++)
         {
-            cout << _service.getID(1, i) << ". ";
-            printPerson(1, i);
+            cout << (i+1) << ". ";
+            if(list < 3)
+            {
+                printPerson(list, i);
+            }
+            else
+            {
+                printComputer(list, i);
+            }
         }
 
         while(!validChoice)
         {
             cout << line << endl;
             cout << "Select the ID number of one person from above: ";
-            cin >> personToDelete;
+            cin >> selectDelete;
 
-            while (cin.fail()||personToDelete<=0)
+            while (cin.fail()||selectDelete<=0)
             {
                 cin.clear();
                 cin.ignore(100, '\n');
                 cout << "Invalid command. Select the number of the person you want to delete." << endl;
 
-                cin >> personToDelete;
+                cin >> selectDelete;
             }
 
-            if(personToDelete > 0 && personToDelete <= size)
+            if(selectDelete > 0 && selectDelete <= size)
             {
                 validChoice = true;
             }
         }
+        toDelete =_service.getID(list, selectDelete-1);
         cout << endl << "The person was deleted successfully!" << endl << endl;
-        _service.deletePerson(personToDelete);
+        _service.deleteFromList(list, toDelete);
     }
     else
     {
         cout << "The list is empty!" << endl;
     }
-
-}
-
-void ConsoleUI::deleteComputer()
-{
-    /* TODO!!!!*/
 
 }
 
@@ -407,17 +405,20 @@ void ConsoleUI::deleteSelect()
             "1. Delete from Computer Scientists." << endl <<
             "2. Delete from Computers." << endl;
     cin >> selected;
-    switch(selected)
+    if(cin.fail() || (selected > 0 && selected < 3))
     {
-    case 1:
-        deletePerson();
-        break;
-    case 2:
-        deleteComputer();
-        break;
-    default:
-        cout << "Wrong input";
-        break;
+        if(selected == 1)
+        {
+            deleteFromList(selected);
+        }
+        else
+        {
+            deleteFromList(3);
+        }
+    }
+    else
+    {
+        cout << "FATAL ERROR: USER TO STUPID TO SELECT NUMBER FROM LIST ABOVE!";
     }
 
 }

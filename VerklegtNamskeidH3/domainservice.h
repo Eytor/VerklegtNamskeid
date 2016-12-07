@@ -57,7 +57,7 @@ public:
     // --------------------------------------> ADD COMMENT HERE <--------------------------------------
     int getID(int list, int i);
     //Function that sends a person to the recycle bin
-    void deletePerson(int i);
+    void deleteFromList(int list, int i);
     //Function that empties the recycle bin
     void emptyTrash();
     //Function that recovers everything from the recycle bin

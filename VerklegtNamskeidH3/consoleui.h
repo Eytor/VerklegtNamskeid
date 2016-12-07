@@ -28,7 +28,7 @@ public:
     //Adds a computer to the database
     void addToComp();
     //Sends a person to the recycle bin
-    void deletePerson();
+    void deleteFromList(int list);
     // --------------------------------------> ADD COMMENT HERE <--------------------------------------
     void deleteComputer();
     // --------------------------------------> ADD COMMENT HERE <--------------------------------------
