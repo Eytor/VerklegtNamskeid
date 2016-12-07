@@ -46,7 +46,7 @@ class DataAccess
 public:
     DataAccess();
     // Function that gets the info from the database
-    void getFromDB(vector<TolComp>& computer, vector<TolPers>& person);
+    void getFromDB(vector<TolComp>& computer, vector<TolPers>& person, vector<TolComp> &deletedComputer, vector<TolPers> &deletedPerson);
     // --------------------------------------> ADD COMMENT HERE <--------------------------------------
     void addToComputers(vector<TempTolComp> computer);
     // --------------------------------------> ADD COMMENT HERE <--------------------------------------
@@ -62,7 +62,10 @@ public:
     // Function that updates the trash file.
     void updateTrash(vector<TolPers> trash);
     // Function that deletes the trash file.
-    void emptyTrash();
+    void addToDeletedPeople(vector<TempTolPers> people);
+    void addToDeletedComputers(vector<TempTolComp> computer);
+    void emptyDeletedPeople();
+    void emptyDeletedComputers();
 private:
     int _previousCompSize;
     int _previousPeopleSize;

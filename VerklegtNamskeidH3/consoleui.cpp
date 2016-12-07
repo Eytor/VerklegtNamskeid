@@ -187,13 +187,13 @@ void ConsoleUI::displayList(int list)
         giveHead();
         for(int i = 0; i < listSize; i++)
         {
-            if(list == 3)
+            if(list <= 2)
             {
-                printComputer(list, i);
+                printPerson(list, i);
             }
             else
             {
-                printPerson(list, i);
+                printComputer(list, i);
             }
         }
     }
@@ -387,9 +387,10 @@ void ConsoleUI::deleteFromList(int list)
                 validChoice = true;
             }
         }
-        toDelete =_service.getID(list, selectDelete-1);
+        selectDelete--;
+        toDelete =_service.getID(list, selectDelete);
         cout << endl << "The person was deleted successfully!" << endl << endl;
-        _service.deleteFromList(list, toDelete);
+        _service.deleteFromList(list, toDelete, selectDelete);
     }
     else
     {
@@ -445,14 +446,34 @@ void ConsoleUI::trashSelector()
 
     switch (selected)
     {
-    case 1:
-        displayList(2);
+    case 1:        
+        cout << "1. Deleted People." << endl
+             << "2. Deleted Computers." << endl;
+        cin >> selected;
+        switch (selected)
+        {
+        case 1:
+            displayList(2);
+            break;
+        case 2:
+            displayList(4);
+        default:
+            break;
+        }
         break;
     case 2:
         recoverFromTrash();
         break;
     case 3:
-        _service.emptyTrash();
+        cout << "1. Empty Deleted People." << endl
+             << "2. Empty Deleted Computers." << endl
+             << "3. Empty All.";
+        cin >> selected;
+        if(selected > 0 && selected <= 3) // þarf að bæta við villumeldingu
+        {
+            _service.emptyTrash(selected);
+        }
+
         break;
     default:
         break;

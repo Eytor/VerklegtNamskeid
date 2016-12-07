@@ -8,7 +8,7 @@ DomainService::DomainService()
 
 void DomainService::retriveList()
 {
-    _data.getFromDB(_computer, _personur);
+    _data.getFromDB(_computer, _personur, _deletedComputer, _deletedPersonur);
 }
 
 void DomainService::addToList(vector<TempTolPers> input)
@@ -53,13 +53,17 @@ int DomainService::getID(int list, int i)
     {
         return _personur[i].ID;
     }
+    else if(list == 2)
+    {
+        return _deletedPersonur[i].ID;
+    }
     else if(list == 3)
     {
         return _computer[i].ID;
     }
     else
     {
-        //TODO
+        return _deletedComputer[i].ID;
     }
 }
 
@@ -69,30 +73,56 @@ string DomainService::getName(int list, int i)
     {
         return _personur[i].fullName;
     }
-    if(list == 3)
+    else if(list == 2)
+    {
+        return _deletedPersonur[i].fullName;
+    }
+    else if(list == 3)
     {
         return _computer[i].name;
     }
     else
     {
-        return _trashBin[i].fullName;
+        return _deletedComputer[i].name;
     }
 
 }
 
 string DomainService::getType(int list, int i)
 {
-    return _computer[i].type;
+    if(list == 3)
+    {
+        return _computer[i].type;
+    }
+    else
+    {
+        return _deletedComputer[i].type;
+    }
+
 }
 
 int DomainService::getBuiltStatus(int list, int i)
 {
-    return _computer[i].built;
+    if(list == 3)
+    {
+        return _computer[i].built;
+    }
+    else
+    {
+        return _deletedComputer[i].built;
+    }
 }
 
 int DomainService::getYear(int list, int i)
 {
-    return _computer[i].year;
+    if(list == 3)
+    {
+        return _computer[i].year;
+    }
+    else
+    {
+        return _deletedComputer[i].year;
+    }
 }
 
 string DomainService::getGender(int list, int i)
@@ -103,7 +133,7 @@ string DomainService::getGender(int list, int i)
     }
     else
     {
-        return _trashBin[i].gender;
+        return _deletedPersonur[i].gender;
     }
 
 }
@@ -116,7 +146,7 @@ int DomainService::getYoB(int list, int i)
     }
     else
     {
-        return _trashBin[i].yearOfBirth;
+        return _deletedPersonur[i].yearOfBirth;
     }
 }
 
@@ -128,7 +158,7 @@ int DomainService::getYoD(int list, int i)
     }
     else
     {
-        return _trashBin[i].yearOfDeath;
+        return _deletedPersonur[i].yearOfDeath;
     }
 }
 
@@ -138,22 +168,29 @@ int DomainService::getListSize(int list)
     {
         return _personur.size();
     }
+    else if(list == 2)
+    {
+        return _deletedPersonur.size();
+    }
     else if(list == 3)
     {
         return _computer.size();
     }
     else
     {
-        return _trashBin.size();
+        return _deletedComputer.size();
     }
 }
 
 bool DomainService::getEmptyStatus(int list)
 {
-    bool empty;
     if(list == 1)
     {
-        empty = _personur.empty();
+        return _personur.empty();
+    }
+    else if(list == 2)
+    {
+        return _deletedPersonur.empty();
     }
     else if(list == 3)
     {
@@ -161,9 +198,8 @@ bool DomainService::getEmptyStatus(int list)
     }
     else
     {
-        empty = _trashBin.empty();
+        return _deletedComputer.empty();
     }
-    return empty;
 }
 
 string DomainService::convertToLower(string unfilteredString)
@@ -282,15 +318,31 @@ void DomainService::edit(int personID, int Selection, string s)
     }
 }
 
-void DomainService::deleteFromList(int list, int i)
+void DomainService::deleteFromList(int list, int id, int i)
 {
     if(list == 1)
     {
-        _data.deletePerson(i);
+        TempTolPers pers;
+        pers.fullName = _personur[i].fullName;
+        pers.gender = _personur[i].gender;
+        pers.yearOfBirth = _personur[i].yearOfBirth;
+        pers.yearOfDeath = _personur[i].yearOfDeath;
+        _tempPersonur.push_back(pers);
+        _data.addToDeletedPeople(_tempPersonur);
+        _data.deletePerson(id);
+        _tempPersonur.clear();
     }
     else
     {
-        _data.deleteComputer(i);
+        TempTolComp comp;
+        comp.name = _computer[i].name;
+        comp.type = _computer[i].type;
+        comp.built = _computer[i].built;
+        comp.year = _computer[i].year;
+        _tempComputer.push_back(comp);
+        _data.addToDeletedComputers(_tempComputer);
+        _data.deleteComputer(id);
+        _tempComputer.clear();
     }
     _personur.clear();
     _computer.clear();
@@ -298,20 +350,30 @@ void DomainService::deleteFromList(int list, int i)
 
 }
 
-void DomainService::emptyTrash()
+void DomainService::emptyTrash(int list)
 {
-    _trashBin.clear();
+    if(list == 1)
+    {
+        _deletedPersonur.clear();
+        _data.emptyDeletedPeople();
+    }
+    else if(list == 2)
+    {
+        _deletedComputer.clear();
+        _data.emptyDeletedComputers();
+    }
+    else
+    {
+        _deletedPersonur.clear();
+        _deletedComputer.clear();
+        _data.emptyDeletedPeople();
+        _data.emptyDeletedComputers();
+    }
 }
 
 void DomainService::recoverFromTrash(int i)
 {
-    TolPers pers;
-    pers.fullName = _trashBin[i].fullName;
-    pers.gender = _trashBin[i].gender;
-    pers.yearOfBirth = _trashBin[i].yearOfBirth;
-    pers.yearOfDeath = _trashBin[i].yearOfDeath;
-    _personur.push_back(pers);
-    _trashBin.erase(_trashBin.begin()+i);
+    cout << i;
 }
 
 bool DomainService::checkIfLegitYear(string s)

@@ -57,9 +57,9 @@ public:
     // --------------------------------------> ADD COMMENT HERE <--------------------------------------
     int getID(int list, int i);
     //Function that sends a person to the recycle bin
-    void deleteFromList(int list, int i);
+    void deleteFromList(int list, int id, int i);
     //Function that empties the recycle bin
-    void emptyTrash();
+    void emptyTrash(int list);
     //Function that recovers everything from the recycle bin
     void recoverFromTrash(int i);
     //Function that checks if string contains only digits
@@ -67,11 +67,11 @@ public:
 private:
     vector<TolPers> _personur;
     vector<TolComp> _computer;
+    vector<TolPers> _deletedPersonur;
+    vector<TolComp> _deletedComputer;
     vector<TempTolComp> _tempComputer;
     vector<TempTolPers> _tempPersonur;
-    vector<TolPers> _trashBin;
     DataAccess _data;
-    int _count;
 };
 
 #endif // DOMAINSERVICE_H
