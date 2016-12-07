@@ -20,6 +20,13 @@ public:
     //Function that takes first name, middle initial and last name
     //and combines them into one string and returns it
     string getName(int list, int i);
+
+    string getType(int list, int i);
+    int getBuiltStatus(int list, int i);
+    int getYear(int list, int i);
+
+
+
     //Gets the first name and returns it
     string getFirstName(int i);
     //Gets the middle initial and returns it

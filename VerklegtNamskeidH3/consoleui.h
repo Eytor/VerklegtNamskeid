@@ -13,6 +13,8 @@ public:
     void sortSelector();
     //Prints out information about one person
     void printPerson(int list, int i);
+
+    void printComputer(int list, int i);
     //Displays a list of all the person
     void displayList(int list);
     //Takes in input from user and searches for it

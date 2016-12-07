@@ -28,14 +28,15 @@ void ConsoleUI::run()
             cout << "   Please select one of the following commands." << endl;
         }
         cout << "---------------------------------------------------" << endl;
-        cout << "1. Add to List." << endl
-             << "2. Display List." << endl
-             << "3. Search from list" << endl
-             << "4. Order list." << endl
-             << "5. Edit list." << endl
-             << "6. Delete person." << endl
-             << "7. Recycle bin." << endl
-             << "8. Add to computers." << endl
+        cout << "1. Add to Computer Scientists." << endl
+             << "2. Add to Computers." << endl
+             << "3. Display Computer Scientists." << endl
+             << "4. Display Computers." << endl
+             << "5. Search from list" << endl
+             << "6. Order list." << endl
+             << "7. Edit list." << endl
+             << "8. Delete person." << endl
+             << "9. Recycle bin." << endl
              << "0. Quit." << endl;
 
         cin >> selected;
@@ -47,26 +48,29 @@ void ConsoleUI::run()
             cout << endl;
             break;
         case 2:
-            displayList(1);
+            addToComp();
             cout << endl;
             break;
         case 3:
-            search();
+            displayList(1);
             break;
         case 4:
-            sortSelector();
+            displayList(3);
             break;
         case 5:
-            //edit();
+            search();
             break;
         case 6:
-            deletePerson();
+            sortSelector();
             break;
         case 7:
-            trashSelector();
+            //edit();
             break;
         case 8:
-            addToComp();
+            deletePerson();
+            break;
+        case 9:
+            trashSelector();
             break;
         case 0:
             cout << "Goodbye!" << endl;
@@ -146,6 +150,29 @@ void ConsoleUI::printPerson(int list, int i)
         cout << left << setw(yearWidth) << setfill(seperator) << YoB << endl;
     }
 }
+void ConsoleUI::printComputer(int list, int i)
+{
+    const char seperator = ' ';
+    const int sexWidth = 8;
+    const int yearWidth = 8;
+    const int nameWidth = 40;
+    string name =  _service.getName(list, i);
+    string type =  _service.getType(list, i);
+    int built =  _service.getBuiltStatus(list, i);
+    int year =  _service.getYear(list, i);
+
+    cout << left << setw(nameWidth) << setfill(seperator) << name;
+    cout << left << setw(sexWidth) << setfill(seperator) << type;
+    if(built != 0)
+    {
+        cout << left << setw(yearWidth) << setfill(seperator) << built
+             << left << setw(yearWidth) << setfill(seperator) << year << endl;
+    }
+    else
+    {
+        cout << left << setw(yearWidth) << setfill(seperator) << built << endl;
+    }
+}
 
 void ConsoleUI::displayList(int list)
 {
@@ -156,7 +183,14 @@ void ConsoleUI::displayList(int list)
         giveHead();
         for(int i = 0; i < listSize; i++)
         {
-            printPerson(list, i);
+            if(list == 3)
+            {
+                printComputer(list, i);
+            }
+            else
+            {
+                printPerson(list, i);
+            }
         }
     }
     else
@@ -577,4 +611,3 @@ void ConsoleUI::recoverFromTrash()
         cout << "The trash bin is empty." << endl;
     }
 }
-

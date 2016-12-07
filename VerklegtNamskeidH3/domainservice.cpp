@@ -60,10 +60,13 @@ void DomainService::addToComp(vector<TempTolComp> input)
 
 string DomainService::getName(int list, int i)
 {
-    string fullName;
     if(list == 1)
     {
         return _personur[i].fullName;
+    }
+    if(list == 3)
+    {
+        return _computer[i].name;
     }
     else
     {
@@ -71,6 +74,22 @@ string DomainService::getName(int list, int i)
     }
 
 }
+
+string DomainService::getType(int list, int i)
+{
+    return _computer[i].type;
+}
+
+int DomainService::getBuiltStatus(int list, int i)
+{
+    return _computer[i].built;
+}
+
+int DomainService::getYear(int list, int i)
+{
+    return _computer[i].year;
+}
+
 string DomainService::getGender(int list, int i)
 {
     if(list == 1)
@@ -114,6 +133,10 @@ int DomainService::getListSize(int list)
     {
         return _personur.size();
     }
+    else if(list == 3)
+    {
+        return _computer.size();
+    }
     else
     {
         return _trashBin.size();
@@ -126,6 +149,10 @@ bool DomainService::getEmptyStatus(int list)
     if(list == 1)
     {
         empty = _personur.empty();
+    }
+    else if(list == 3)
+    {
+        return _computer.empty();
     }
     else
     {
