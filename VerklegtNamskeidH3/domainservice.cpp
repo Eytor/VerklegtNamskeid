@@ -341,7 +341,7 @@ void DomainService::deleteFromList(int list, int id, int i)
         pers.yearOfDeath = _deletedPersonur[i].yearOfDeath;
         _tempPersonur.push_back(pers);
         _data.addToPeople(_tempPersonur);
-        _data.deleteDeletedComputer(id);
+        _data.deleteDeletedPerson(id);
         _tempPersonur.clear();
     }
     else if(list == 3)
@@ -365,7 +365,7 @@ void DomainService::deleteFromList(int list, int id, int i)
         comp.year = _deletedComputer[i].year;
         _tempComputer.push_back(comp);
         _data.addToComputers(_tempComputer);
-        _data.deleteDeletedPerson(id);
+        _data.deleteDeletedComputer(id);
         _tempComputer.clear();
     }
     _deletedComputer.clear();
