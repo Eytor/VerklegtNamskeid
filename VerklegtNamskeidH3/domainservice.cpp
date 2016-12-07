@@ -332,7 +332,19 @@ void DomainService::deleteFromList(int list, int id, int i)
         _data.deletePerson(id);
         _tempPersonur.clear();
     }
-    else
+    else if(list == 2)
+    {
+        TempTolPers pers;
+        pers.fullName = _deletedPersonur[i].fullName;
+        pers.gender = _deletedPersonur[i].gender;
+        pers.yearOfBirth = _deletedPersonur[i].yearOfBirth;
+        pers.yearOfDeath = _deletedPersonur[i].yearOfDeath;
+        _tempPersonur.push_back(pers);
+        _data.addToPeople(_tempPersonur);
+        _data.deleteDeletedComputer(id);
+        _tempPersonur.clear();
+    }
+    else if(list == 3)
     {
         TempTolComp comp;
         comp.name = _computer[i].name;
@@ -344,6 +356,20 @@ void DomainService::deleteFromList(int list, int id, int i)
         _data.deleteComputer(id);
         _tempComputer.clear();
     }
+    else
+    {
+        TempTolComp comp;
+        comp.name = _deletedComputer[i].name;
+        comp.type = _deletedComputer[i].type;
+        comp.built = _deletedComputer[i].built;
+        comp.year = _deletedComputer[i].year;
+        _tempComputer.push_back(comp);
+        _data.addToComputers(_tempComputer);
+        _data.deleteDeletedPerson(id);
+        _tempComputer.clear();
+    }
+    _deletedComputer.clear();
+    _deletedPersonur.clear();
     _personur.clear();
     _computer.clear();
     retriveList();
@@ -369,11 +395,6 @@ void DomainService::emptyTrash(int list)
         _data.emptyDeletedPeople();
         _data.emptyDeletedComputers();
     }
-}
-
-void DomainService::recoverFromTrash(int i)
-{
-    cout << i;
 }
 
 bool DomainService::checkIfLegitYear(string s)

@@ -37,7 +37,7 @@ public:
     recover a person from the recycle or empty the recycle bin*/
     void trashSelector();
     //Recovers a person from the recycle bin
-    void recoverFromTrash();
+    void recoverFromTrash(int list);
 private:
     DomainService _service;
     vector<TempTolPers> _tempInput;

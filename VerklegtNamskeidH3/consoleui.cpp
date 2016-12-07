@@ -462,7 +462,19 @@ void ConsoleUI::trashSelector()
         }
         break;
     case 2:
-        recoverFromTrash();
+        cout << "1. Recover People." << endl
+             << "2. Recover Computers." << endl;
+        cin >> selected;
+        switch (selected)
+        {
+        case 1:
+            recoverFromTrash(2);
+            break;
+        case 2:
+            recoverFromTrash(4);
+        default:
+            break;
+        }
         break;
     case 3:
         cout << "1. Empty Deleted People." << endl
@@ -480,12 +492,13 @@ void ConsoleUI::trashSelector()
     }
 }
 
-void ConsoleUI::recoverFromTrash()
+void ConsoleUI::recoverFromTrash(int list)
 {
+    unsigned int toRecover = 0;
     unsigned int personToRecover = 0;
     bool validChoice = false;
-    bool empty =  _service.getEmptyStatus(2);
-    unsigned int size = _service.getListSize(2);
+    bool empty =  _service.getEmptyStatus(list);
+    unsigned int size = _service.getListSize(list);
     string line = "----------------------------------------------------------------";
 
     if(!empty)
@@ -494,7 +507,14 @@ void ConsoleUI::recoverFromTrash()
         for(unsigned int i = 0; i < size; i++)
         {
             cout << (i + 1) << ". ";
-            printPerson(2, i);
+            if(list < 3)
+            {
+                printPerson(list, i);
+            }
+            else
+            {
+                printComputer(list, i);
+            }
         }
 
         while(!validChoice)
@@ -519,8 +539,9 @@ void ConsoleUI::recoverFromTrash()
             }
         }
         personToRecover--;
+        toRecover =_service.getID(list, personToRecover);
         cout << endl << "The person was recovered successfully!" << endl << endl;
-        _service.recoverFromTrash(personToRecover);
+        _service.deleteFromList(list, toRecover, personToRecover);
     }
     else
     {

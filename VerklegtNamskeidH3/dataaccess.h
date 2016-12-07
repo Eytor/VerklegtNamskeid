@@ -54,7 +54,11 @@ public:
     // --------------------------------------> ADD COMMENT HERE <--------------------------------------
     void deletePerson(int i);
 
+    void deleteDeletedPerson(int i);
+
     void deleteComputer(int i);
+
+    void deleteDeletedComputer(int i);
     // Function to retrive all info from both files that contain the list and the trash.
     void retriveInfo(vector<TolPers> &person, vector<TolPers> &tBin);
     // Function that updates the file that contains the list.

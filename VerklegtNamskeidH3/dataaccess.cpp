@@ -135,6 +135,23 @@ void DataAccess::deletePerson(int i)
 
 }
 
+void DataAccess::deleteDeletedPerson(int i)
+{
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString Tolvunarfraedi = "Tolvunarfraedi.sqlite";
+    db.setDatabaseName(Tolvunarfraedi);
+
+    db.open();
+
+    QSqlQuery query(db);
+    query.prepare("DELETE FROM DeletedPeople "
+                  "WHERE ID = :id");
+    query.bindValue(":id", i);
+    query.exec();
+
+}
+
 void DataAccess::deleteComputer(int i)
 {
     QSqlDatabase db;
@@ -146,6 +163,23 @@ void DataAccess::deleteComputer(int i)
 
     QSqlQuery query(db);
     query.prepare("DELETE FROM Computers "
+                  "WHERE ID = :id");
+    query.bindValue(":id", i);
+    query.exec();
+
+}
+
+void DataAccess::deleteDeletedComputer(int i)
+{
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString Tolvunarfraedi = "Tolvunarfraedi.sqlite";
+    db.setDatabaseName(Tolvunarfraedi);
+
+    db.open();
+
+    QSqlQuery query(db);
+    query.prepare("DELETE FROM DeletedComputers "
                   "WHERE ID = :id");
     query.bindValue(":id", i);
     query.exec();

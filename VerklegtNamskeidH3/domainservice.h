@@ -61,7 +61,7 @@ public:
     //Function that empties the recycle bin
     void emptyTrash(int list);
     //Function that recovers everything from the recycle bin
-    void recoverFromTrash(int i);
+    void recoverFromTrash(int list, int id, int i);
     //Function that checks if string contains only digits
     bool checkIfLegitYear(string s);
 private:
