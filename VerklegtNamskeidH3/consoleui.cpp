@@ -265,9 +265,13 @@ void ConsoleUI::addToList()
     for(int i = 0; i < numOfPeople; i++)
     {
         cout << "\nFull name: ";
-        cin >> pers.fullName;
+        cin.ignore();
+        getline(cin,pers.fullName);
+       // cin >> pers.fullName;
         cout << "Gender: ";
-        cin >> pers.gender;
+      //  cin >> pers.gender;
+        cin.ignore();
+        getline(cin,pers.gender);
         cout << "Year of birth: ";
         cin >> pers.yearOfBirth;
 
