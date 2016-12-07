@@ -319,13 +319,27 @@ void ConsoleUI::addToComp()
     for(int i = 0; i < numOfComputers; i++)
     {
         cout << "\nName: ";
-        cin >> comps.name;
+        cin.ignore();
+        getline(cin,comps.name);
         cout << "Type: ";
-        cin >> comps.type;
-        cout << "Built: ";
+        getline(cin,comps.type);
+        cout << "Built? '1' for true, '0' for false : ";
         cin >> comps.built;
+
+        while(comps.built != 1 && comps.built !=0)
+        {
+
+            cin.clear();
+            cin.ignore(100, '\n');
+            cout << "Invalid command. Enter '1' if the computer have been built, enter '0' if not." << endl;
+            cin >> comps.built;
+        }
+
+        if(comps.built == 1)
+        {
         cout << "Year: ";
         cin >> comps.year;
+        }
 
         _tempCompInput.push_back(comps);
     }
