@@ -35,7 +35,7 @@ void ConsoleUI::run()
              << "5. Search from list" << endl
              << "6. Order list." << endl
              << "7. Edit list." << endl
-             << "8. Delete person." << endl
+             << "8. Delete." << endl
              << "9. Recycle bin." << endl
              << "0. Quit." << endl;
 
@@ -67,7 +67,7 @@ void ConsoleUI::run()
             //edit();
             break;
         case 8:
-            deletePerson();
+            deleteSelect();
             break;
         case 9:
             trashSelector();
@@ -150,6 +150,7 @@ void ConsoleUI::printPerson(int list, int i)
         cout << left << setw(yearWidth) << setfill(seperator) << YoB << endl;
     }
 }
+
 void ConsoleUI::printComputer(int list, int i)
 {
     const char seperator = ' ';
@@ -402,6 +403,7 @@ void ConsoleUI::search()
 
 }
 */
+
 void ConsoleUI::addToList()
 {
     int numOfPeople;
@@ -493,14 +495,14 @@ void ConsoleUI::deletePerson()
         cout << line << endl;
         for(unsigned int i = 0; i < size; i++)
         {
-            cout << (i + 1) << ". ";
+            cout << _service.getID(1, i) << ". ";
             printPerson(1, i);
         }
 
         while(!validChoice)
         {
             cout << line << endl;
-            cout << "Select one person from above: ";
+            cout << "Select the ID number of one person from above: ";
             cin >> personToDelete;
 
             while (cin.fail()||personToDelete<=0)
@@ -517,13 +519,40 @@ void ConsoleUI::deletePerson()
                 validChoice = true;
             }
         }
-        personToDelete--;
         cout << endl << "The person was deleted successfully!" << endl << endl;
         _service.deletePerson(personToDelete);
     }
     else
     {
         cout << "The list is empty!" << endl;
+    }
+
+}
+
+void ConsoleUI::deleteComputer()
+{
+    /* TODO!!!!*/
+
+}
+
+void ConsoleUI::deleteSelect()
+{
+    int selected;
+    cout << "Select one of the options below:" << endl <<
+            "1. Delete from Computer Scientists." << endl <<
+            "2. Delete from Computers." << endl;
+    cin >> selected;
+    switch(selected)
+    {
+    case 1:
+        deletePerson();
+        break;
+    case 2:
+        deleteComputer();
+        break;
+    default:
+        cout << "Wrong input";
+        break;
     }
 
 }

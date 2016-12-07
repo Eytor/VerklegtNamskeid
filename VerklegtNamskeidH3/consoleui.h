@@ -13,7 +13,7 @@ public:
     void sortSelector();
     //Prints out information about one person
     void printPerson(int list, int i);
-
+    // --------------------------------------> ADD COMMENT HERE <--------------------------------------
     void printComputer(int list, int i);
     //Displays a list of all the person
     void displayList(int list);
@@ -29,6 +29,10 @@ public:
     void addToComp();
     //Sends a person to the recycle bin
     void deletePerson();
+    // --------------------------------------> ADD COMMENT HERE <--------------------------------------
+    void deleteComputer();
+    // --------------------------------------> ADD COMMENT HERE <--------------------------------------
+    void deleteSelect();
     /*Gives the user options to display the recycle bin,
     recover a person from the recycle or empty the recycle bin*/
     void trashSelector();

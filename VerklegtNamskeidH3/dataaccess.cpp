@@ -93,6 +93,24 @@ void DataAccess::addToPeople(vector<TempTolPers> people)
 
     db.close();
 }
+
+void DataAccess::deletePerson(int i)
+{
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString Tolvunarfraedi = "Tolvunarfraedi.sqlite";
+    db.setDatabaseName(Tolvunarfraedi);
+
+    db.open();
+
+    QSqlQuery query(db);
+    query.prepare("DELETE FROM PEOPLE "
+                  "WHERE ID = :id");
+    query.bindValue(":id", i);
+    query.exec();
+
+}
+
 /*void DataAccess::retriveInfo(vector<TolPers>& person, vector<TolPers>& tBin)
 {
     ifstream file, trash;

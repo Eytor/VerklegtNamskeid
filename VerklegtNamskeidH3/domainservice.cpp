@@ -58,6 +58,18 @@ void DomainService::addToComp(vector<TempTolComp> input)
     retriveList();
 }
 
+int DomainService::getID(int list, int i)
+{
+    if(list == 1)
+    {
+        return _personur[i].ID;
+    }
+    if(list == 2)
+    {
+        return _computer[i].ID;
+    }
+}
+
 string DomainService::getName(int list, int i)
 {
     if(list == 1)
@@ -287,6 +299,7 @@ void DomainService::deletePerson(int i)
     pers.yearOfBirth = _personur[i].yearOfBirth;
     pers.yearOfDeath = _personur[i].yearOfDeath;
     _trashBin.push_back(pers);
+    _data.deletePerson(i);
     _personur.erase(_personur.begin()+i);
     //updateFile();
     //updateTrash();

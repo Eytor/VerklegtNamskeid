@@ -20,13 +20,12 @@ public:
     //Function that takes first name, middle initial and last name
     //and combines them into one string and returns it
     string getName(int list, int i);
-
+    // --------------------------------------> ADD COMMENT HERE <--------------------------------------
     string getType(int list, int i);
+    // --------------------------------------> ADD COMMENT HERE <--------------------------------------
     int getBuiltStatus(int list, int i);
+    // --------------------------------------> ADD COMMENT HERE <--------------------------------------
     int getYear(int list, int i);
-
-
-
     //Gets the first name and returns it
     string getFirstName(int i);
     //Gets the middle initial and returns it
@@ -53,8 +52,10 @@ public:
     void edit(int personID, int Selection, string s);
     //Function that adds a person to the list
     void addToList(vector<TempTolPers> input);
-
+    // --------------------------------------> ADD COMMENT HERE <--------------------------------------
     void addToComp(vector<TempTolComp> input);
+    // --------------------------------------> ADD COMMENT HERE <--------------------------------------
+    int getID(int list, int i);
     //Function that sends a person to the recycle bin
     void deletePerson(int i);
     //Function that empties the recycle bin
