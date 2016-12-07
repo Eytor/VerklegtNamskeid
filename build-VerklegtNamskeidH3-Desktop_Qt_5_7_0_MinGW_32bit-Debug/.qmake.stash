@@ -1,0 +1,12 @@
+QMAKE_DEFAULT_INCDIRS = \
+    "C:/Users/Stoinn/Desktop/HR 1 2016-17/verklegt1/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include" \
+    "C:/Users/Stoinn/Desktop/HR 1 2016-17/verklegt1/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed" \
+    "C:/Users/Stoinn/Desktop/HR 1 2016-17/verklegt1/Tools/mingw530_32/i686-w64-mingw32/include" \
+    "C:/Users/Stoinn/Desktop/HR 1 2016-17/verklegt1/Tools/mingw530_32/i686-w64-mingw32/include/c++" \
+    "C:/Users/Stoinn/Desktop/HR 1 2016-17/verklegt1/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32" \
+    "C:/Users/Stoinn/Desktop/HR 1 2016-17/verklegt1/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward"
+QMAKE_DEFAULT_LIBDIRS = \
+    "C:/Users/Stoinn/Desktop/HR 1 2016-17/verklegt1/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0" \
+    "C:/Users/Stoinn/Desktop/HR 1 2016-17/verklegt1/Tools/mingw530_32/lib/gcc" \
+    "C:/Users/Stoinn/Desktop/HR 1 2016-17/verklegt1/Tools/mingw530_32/i686-w64-mingw32/lib" \
+    "C:/Users/Stoinn/Desktop/HR 1 2016-17/verklegt1/Tools/mingw530_32/lib"
