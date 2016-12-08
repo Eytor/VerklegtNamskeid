@@ -234,30 +234,6 @@ void DomainService::whatToSort(int data, int col, int ord)
     _data.sort(_personur, _computer, data, col, ord);
 }
 
-void DomainService::edit(int personID, int Selection, string s)
-{
-    string tempString = s;
-    int tempYear;
-    if(Selection == 5 || Selection == 6)
-    {
-        tempYear = stoi(s);
-    }
-    switch (Selection) {
-        case 1:
-        _personur[personID].fullName = tempString;
-            break;
-        case 2 :
-        _personur[personID].gender = tempString;
-            break;
-        case 3:
-        _personur[personID].yearOfBirth = tempYear;
-            break;
-        case 4:
-        _personur[personID].yearOfDeath = tempYear;
-            break;
-    }
-}
-
 void DomainService::deleteFromList(int list, int id, int i)
 {
     if(list == 1)
@@ -354,5 +330,28 @@ bool DomainService::checkIfLegitYear(string s)
     else
     {
         return false;
+    }
+}
+void DomainService::editPerson(int ID, int selection, string s)
+{
+    string tempString = s;
+    int tempYear;
+    if(selection == 3 || selection == 4)
+    {
+        tempYear = stoi(tempString);
+    }
+    switch (selection) {
+        case 1:
+
+            break;
+        case 2 :
+
+            break;
+        case 3:
+
+            break;
+        case 4:
+
+            break;
     }
 }

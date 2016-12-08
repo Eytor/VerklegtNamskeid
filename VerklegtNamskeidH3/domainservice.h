@@ -49,7 +49,7 @@ public:
     //Function that sorts the list in different ways
     void whatToSort(int data, int col, int ord);
     //Function that edits a value of a person
-    void edit(int personID, int Selection, string s);
+    void editPerson(int personID, int Selection, string s);
     //Function that adds a person to the list
     void addToList(vector<TempTolPers> input);
     // --------------------------------------> ADD COMMENT HERE <--------------------------------------

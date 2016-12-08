@@ -290,3 +290,18 @@ void DataAccess::search(vector<TempTolSearch> &something, string s)
         something.push_back(searching);
     }
 }
+void DataAccess::editPerson(int ID, string tempString)
+{
+
+
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString Tolvunarfraedi = "Tolvunarfraedi.sqlite";
+    db.setDatabaseName(Tolvunarfraedi);
+
+    db.open();
+
+    QSqlQuery query(db);
+
+    //sqlite> UPDATE People SET Name = 'tempstring' WHERE ID = ID;
+}

@@ -597,3 +597,62 @@ void ConsoleUI::selectListToOrder()
     }
 
 }
+void ConsoleUI::edit()
+{
+    unsigned int personToEdit = 0;
+    unsigned int whatToEdit = 0;
+    bool validChoice = false;
+    bool empty =  _service.getEmptyStatus(1);
+    unsigned int size = _service.getListSize(1);
+    string line = "----------------------------------------------------------------";
+    string edited;
+    if(!empty)
+    {
+        cout << line << endl;
+        for(unsigned int i = 0; i < size; i++)
+        {
+            cout << _service.getID(1, i) << ". ";
+            printPerson(1, i);
+        }
+
+        while(!validChoice)
+        {
+            cout << line << endl;
+            cout << "Select the ID number of one person from above to edit: ";
+            cin >> personToEdit;
+
+            while (cin.fail()||personToEdit<=0)
+            {
+                cin.clear();
+                cin.ignore(100, '\n');
+                cout << "Invalid command. Select the number of the person you want to edit." << endl;
+
+                cin >> personToEdit;
+                int id = _service.getID(1, personToEdit);
+            }
+            cout << "Select what to edit: 1.Name  2.Gender  3. Year of birth  4. Year of death" << endl;
+            cin >> whatToEdit;
+                    while (cin.fail()||whatToEdit<=0 || whatToEdit>4)
+                    {
+                        cin.clear();
+                        cin.ignore(100, '\n');
+                        cout << "Invalid command. Select what you want to edit 1-4." << endl;
+
+                        cin >> whatToEdit;
+                    }
+            if(personToEdit > 0 && personToEdit <= size && whatToEdit>0 && whatToEdit<5)
+            {
+               cin.ignore();
+               getline(cin, edited);
+                validChoice = true;
+            }
+        }
+        cout << endl << "The person was edited successfully!" << endl << endl;
+        _service.editPerson(personToEdit, whatToEdit, edited);
+    }
+    else
+    {
+        cout << "The list is empty!" << endl;
+    }
+
+}
