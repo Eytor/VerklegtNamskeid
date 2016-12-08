@@ -70,6 +70,7 @@ public:
     void addToDeletedComputers(vector<TempTolComp> computer);
     void emptyDeletedPeople();
     void emptyDeletedComputers();
+    void search(string s);
 
     void sort(int datab, int col, int ord);
 private:
