@@ -47,7 +47,7 @@ public:
     //Function that recives a string and searches for it on the list
     vector<TempTolSearch> search(string keyword);
     //Function that sorts the list in different ways
-    void whatToSort(int selector);
+    void whatToSort(vector<TempTolPers> &persVector, vector<TempTolComp> &compVector, int selector, int col, int ord);
     //Function that edits a value of a person
     void edit(int personID, int Selection, string s);
     //Function that adds a person to the list

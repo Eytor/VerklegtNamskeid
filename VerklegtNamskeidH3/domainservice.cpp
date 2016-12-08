@@ -220,9 +220,9 @@ vector <TempTolSearch> DomainService::search(string keyword)
     return searchResult;
 }
 
-void DomainService::whatToSort(int data, int col, int ord)
+void DomainService::whatToSort(vector<TempTolPers>& persVector, vector<TempTolComp>& compVector, int data, int col, int ord)
 {
-    _data.sort(data, col, ord);
+    _data.sort(persVector, compVector, data, col, ord);
 }
 
 void DomainService::edit(int personID, int Selection, string s)

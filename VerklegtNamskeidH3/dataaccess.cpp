@@ -264,7 +264,7 @@ void DataAccess::emptyDeletedComputers()
 }
 
 
-void DataAccess::sort(int datab, int col, int ord)
+void DataAccess::sort(vector<TempTolPers>& persVector, vector<TempTolComp>& compVector, int datab, int col, int ord)
 {
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -338,13 +338,39 @@ void DataAccess::sort(int datab, int col, int ord)
     query.bindValue(":order", order.c_str());
     query.exec();
 
+    if(datab == 1)
+    {
+        TempTolPers pers;
+        while(query.next())
+        {
+            pers.fullName = query.value("FullName").toString().toStdString();
+            pers.gender = query.value("Gender").toString().toStdString();
+            pers.yearOfBirth = query.value("Yob").toUInt();
+            pers.yearOfDeath = query.value("Yod").toUInt();
+            persVector.push_back(pers);
+        }
+
+    }
+    else
+    {
+        TempTolComp comp;
+        while(query.next())
+        {
+            comp.name = query.value("Name").toString().toStdString();
+            comp.type = query.value("Type").toString().toStdString();
+            comp.built = query.value("Built").toBool();
+            comp.year = query.value("Year").toUInt();
+            compVector.push_back(comp);
+        }
+    }
+
 
 
     db.close();
 
 }
 
-void DataAccess::search(vector<TempTolSearch> something,string s)
+void DataAccess::search(vector<TempTolSearch> &something, string s)
 {
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");

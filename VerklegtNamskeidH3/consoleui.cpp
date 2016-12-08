@@ -589,7 +589,47 @@ void ConsoleUI::selectListToOrder()
                 "1. Order in ascending order." << endl <<
                 "2. Order in descending order." << endl;
         cin >> orderSelect;
-        //_service.sort(selectedList, colSelect, orderSelect);
+        _service.whatToSort(_tempInput, _tempCompInput, selectedList, colSelect, orderSelect);
+        giveHead(selectedList);
+        const char seperator = ' ';
+        const int sexWidth = 14;
+        const int yearWidth = 8;
+        const int nameWidth = 40;
+
+        if(selectedList == 1)
+        {
+            for(unsigned int i = 0; i < _tempInput.size(); i++)
+            {
+                cout << left << setw(nameWidth) << setfill(seperator) << _tempInput[i].fullName;
+                cout << left << setw(sexWidth) << setfill(seperator) << _tempInput[i].gender;
+                if(_tempInput[i].yearOfDeath != 0)
+                {
+                    cout << left << setw(yearWidth) << setfill(seperator) << _tempInput[i].yearOfBirth
+                         << left << setw(yearWidth) << setfill(seperator) << _tempInput[i].yearOfDeath;
+                }
+                else
+                {
+                    cout << left << setw(yearWidth) << setfill(seperator) << _tempInput[i].yearOfBirth;
+                }
+            }
+        }
+        else
+        {
+            for(unsigned int i = 0; i < _tempCompInput.size(); i++)
+            {
+                cout << left << setw(nameWidth) << setfill(seperator) << _tempCompInput[i].name;
+                cout << left << setw(sexWidth) << setfill(seperator) << _tempCompInput[i].type;
+                if(_tempCompInput[i].built != 0)
+                {
+                    cout << left << setw(yearWidth) << setfill(seperator) << _tempCompInput[i].built
+                         << left << setw(yearWidth) << setfill(seperator) << _tempCompInput[i].year;
+                }
+                else
+                {
+                    cout << left << setw(yearWidth) << setfill(seperator) << _tempCompInput[i].built;
+                }
+            }
+        }
     }
     else
     {

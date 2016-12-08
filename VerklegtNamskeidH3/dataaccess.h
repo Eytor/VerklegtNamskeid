@@ -86,9 +86,9 @@ public:
     void addToDeletedComputers(vector<TempTolComp> computer);
     void emptyDeletedPeople();
     void emptyDeletedComputers();
-    void search(vector<TempTolSearch> something, string s);
+    void search(vector<TempTolSearch>& something, string s);
 
-    void sort(int datab, int col, int ord);
+    void sort(vector<TempTolPers>& persVector, vector<TempTolComp>& compVector, int datab, int col, int ord);
 private:
     int _previousCompSize;
     int _previousPeopleSize;
