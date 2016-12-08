@@ -413,7 +413,7 @@ void ConsoleUI::deleteFromList(int list)
         }
         selectDelete--;
         toDelete =_service.getID(list, selectDelete);
-        cout << endl << "The person was deleted successfully!" << endl << endl;
+        cout << endl << "The delete was successful!" << endl << endl;
         _service.deleteFromList(list, toDelete, selectDelete);
     }
     else
@@ -564,7 +564,7 @@ void ConsoleUI::recoverFromTrash(int list)
         }
         personToRecover--;
         toRecover =_service.getID(list, personToRecover);
-        cout << endl << "The person was recovered successfully!" << endl << endl;
+        cout << endl << "The recovery was successful!" << endl << endl;
         _service.deleteFromList(list, toRecover, personToRecover);
     }
     else
