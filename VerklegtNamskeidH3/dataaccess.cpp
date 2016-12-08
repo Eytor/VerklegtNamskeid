@@ -343,3 +343,23 @@ void DataAccess::sort(int datab, int col, int ord)
     db.close();
 
 }
+
+void DataAccess::search(string s)
+{
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString Tolvunarfraedi = "Tolvunarfraedi.sqlite";
+    db.setDatabaseName(Tolvunarfraedi);
+
+    db.open();
+
+    QSqlQuery query(db);
+    query.exec("SELECT FullName, Gender, Yob, Yod FROM People"
+               "WHERE FullName LIKE '%:search%'"
+               "OR Gender LIKE '%:search%'"
+               "OR Yob LIKE '%:search%'"
+               "OR Yod LIKE '%:search%'");
+    query.bindValue(":search", s.c_str());
+    query.exec();
+    db.close();
+}
