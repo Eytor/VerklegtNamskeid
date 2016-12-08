@@ -64,7 +64,7 @@ void ConsoleUI::run()
             search(1);
             break;
         case 6:
-            sortSelector();
+            selectListToOrder();
             break;
         case 7:
             //edit();
@@ -85,49 +85,50 @@ void ConsoleUI::run()
     }
 }
 
-void ConsoleUI::sortSelector()
+int ConsoleUI::sortSelector(int list)
 {
     int selected;
-    cout << "1. Order by first name." << endl
-         << "2. Order by last name." << endl
-         << "3. Order by year of birth." << endl
-         << "4. Order by year of death." << endl;
-    cin >> selected;
+        if (list == 1)
+        {
+            cout << "1. Order by name." << endl
+                 << "2. Order by gender." << endl
+                 << "3. Order by year of birth." << endl
+                 << "4. Order by year of death." << endl;
+                 cin >> selected;
 
-    while (cin.fail()||selected<0)
-    {
-        cin.clear();
-        cin.ignore(100, '\n');
-        cout << "Invalid input. Select number from 1-4, '0' for main menu" << endl
-             << "1. Order by first name." << endl
-             << "2. Order by last name." << endl
-             << "3. Order by year of birth." << endl
-             << "4. Order by year of death." << endl;
-        cin >> selected;
-    }
+            while (cin.fail()||selected<0)
+            {
+                cin.clear();
+                cin.ignore(100, '\n');
+                cout << "Invalid input. Select number from 1-4, '0' for main menu" << endl
+                     << "1. Order by name." << endl
+                     << "2. Order by gender." << endl
+                     << "3. Order by year of birth." << endl
+                     << "4. Order by year of death." << endl;
+                cin >> selected;
+            }
+        }
+        else
+        {
+            cout << "1. Order by name." << endl
+                 << "2. Order by type." << endl
+                 << "3. Order by built." << endl
+                 << "4. Order by year." << endl;
+                 cin >> selected;
 
-    switch (selected)
-    {
-    case 1:
-        _service.whatToSort(selected);
-        displayList(1);
-        break;
-    case 2:
-        _service.whatToSort(selected);
-        displayList(1);
-        break;
-    case 3:
-        _service.whatToSort(selected);
-        displayList(1);
-        break;
-    case 4:
-        _service.whatToSort(selected);
-        displayList(1);
-        break;
-    default:
-        cout << "Wrong input" << endl;
-        break;
-    }
+            while (cin.fail()||selected<0)
+            {
+                cin.clear();
+                cin.ignore(100, '\n');
+                cout << "Invalid input. Select number from 1-4, '0' for main menu" << endl
+                     << "1. Order by name." << endl
+                     << "2. Order by type." << endl
+                     << "3. Order by built." << endl
+                     << "4. Order by year." << endl;
+                cin >> selected;
+            }
+        }
+    return selected;
 }
 
 void ConsoleUI::printPerson(int list, int i)
@@ -556,4 +557,29 @@ void ConsoleUI::recoverFromTrash(int list)
     {
         cout << "The trash bin is empty." << endl;
     }
+}
+
+void ConsoleUI::selectListToOrder()
+{
+    int selectedList;
+    int colSelect;
+    int orderSelect;
+    cout << "Select one of the options below:" << endl <<
+            "1. Order the list of scientists." << endl <<
+            "2. Order the list of computers." << endl;
+    cin >> selectedList;
+    if(cin.fail() || (selectedList > 0 && selectedList < 3))
+    {
+        colSelect = sortSelector(selectedList);
+        cout << "Select one of the options below:" << endl <<
+                "1. Order in ascending order." << endl <<
+                "2. Order in descending order." << endl;
+        cin >> orderSelect;
+        //_service.sort(selectedList, colSelect, orderSelect);
+    }
+    else
+    {
+        cout << "FATAL ERROR: USER TO STUPID TO SELECT NUMBER FROM LIST ABOVE!";
+    }
+
 }
