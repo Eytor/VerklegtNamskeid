@@ -133,7 +133,7 @@ void ConsoleUI::sortSelector()
 void ConsoleUI::printPerson(int list, int i)
 {
     const char seperator = ' ';
-    const int sexWidth = 8;
+    const int sexWidth = 14;
     const int yearWidth = 8;
     const int nameWidth = 40;
     string fullName =  _service.getName(list, i);
@@ -157,7 +157,7 @@ void ConsoleUI::printPerson(int list, int i)
 void ConsoleUI::printComputer(int list, int i)
 {
     const char seperator = ' ';
-    const int sexWidth = 8;
+    const int sexWidth = 14;
     const int yearWidth = 8;
     const int nameWidth = 40;
     string name =  _service.getName(list, i);
@@ -207,7 +207,7 @@ void ConsoleUI::giveHead(int i)
 {
     const char seperator = ' ';
     const int firstNameWidth = 40;
-    const int sexWidth = 8;
+    const int sexWidth = 14;
     const int yearWidth = 8;
 
     if (i == 1)
