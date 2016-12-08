@@ -213,40 +213,10 @@ string DomainService::convertToLower(string unfilteredString)
     return lowerCaseString;
 }
 
-vector <int> DomainService::search(string keyword)
+vector <TempTolSearch> DomainService::search(string keyword)
 {
-    vector <int> searchResult;
-    bool found = false;
-    bool containsLetter = false;
-    for(unsigned int i = 0; i < keyword.length(); i++)
-    {
-        if(isalpha(keyword[i]))
-        {
-            containsLetter = true;
-        }
-    }
-    for(unsigned int i = 0; i < _personur.size(); i++)
-    {
-        if(containsLetter)
-        {
-            if((convertToLower(_personur[i].fullName) == convertToLower(keyword))||
-               (convertToLower(_personur[i].gender) == convertToLower(keyword)))
-            {
-                found = true;
-            }
-        }
-        else if((_personur[i].yearOfBirth == stoi(keyword, 0, 10)) || ((_personur[i].yearOfDeath == stoi(keyword, 0, 10)) && stoi(keyword, 0, 10) != 0))
-        {
-            found = true;
-        }
-
-        if(found)
-                {
-                    searchResult.push_back(i);
-                    found = false;
-
-                }
-            }
+    vector <TempTolSearch> searchResult;
+    _data.search(searchResult,keyword);
     return searchResult;
 }
 

@@ -25,6 +25,14 @@ struct TolComp
     int year;
 };
 
+struct TolSearch
+{
+    string name;
+    string gender;
+    int yearOfBirth;
+    int yearOfDeath;
+};
+
 struct TempTolPers
 {
     string fullName;
@@ -39,6 +47,14 @@ struct TempTolComp
     string type;
     int built;
     int year;
+};
+
+struct TempTolSearch
+{
+    string name;
+    string gender;
+    int yearOfBirth;
+    int yearOfDeath;
 };
 
 class DataAccess
@@ -70,7 +86,7 @@ public:
     void addToDeletedComputers(vector<TempTolComp> computer);
     void emptyDeletedPeople();
     void emptyDeletedComputers();
-    void search(string s);
+    void search(vector<TempTolSearch> something, string s);
 
     void sort(int datab, int col, int ord);
 private:

@@ -344,7 +344,7 @@ void DataAccess::sort(int datab, int col, int ord)
 
 }
 
-void DataAccess::search(string s)
+void DataAccess::search(vector<TempTolSearch> something,string s)
 {
     QSqlDatabase db;
     db = QSqlDatabase::addDatabase("QSQLITE");
@@ -361,5 +361,26 @@ void DataAccess::search(string s)
                "OR Yod LIKE '%:search%'");
     query.bindValue(":search", s.c_str());
     query.exec();
+    /*
+    TolPers pers;
+     * while(query.next())
+    {
+        pers.ID = query.value("ID").toUInt();
+        pers.fullName = query.value("FullName").toString().toStdString();
+        pers.gender = query.value("Gender").toString().toStdString();
+        pers.yearOfBirth = query.value("Yob").toUInt();
+        pers.yearOfDeath = query.value("Yod").toUInt();
+        deletedPerson.push_back(pers);
+    }*/
+
+    TempTolSearch searching;
+    while(query.next())
+    {
+        searching.name = query.value("FullName").toString().toStdString();
+        searching.gender = query.value("Gender").toString().toStdString();
+        searching.yearOfBirth = query.value("Yob").toUInt();
+        searching.yearOfDeath = query.value("Yod").toUInt();
+        something.push_back(searching);
+    }
     db.close();
 }

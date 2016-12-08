@@ -45,7 +45,7 @@ public:
     //Converts a string to lower
     string convertToLower(string unfilteredString);
     //Function that recives a string and searches for it on the list
-    vector<int> search(string keyword);
+    vector<TempTolSearch> search(string keyword);
     //Function that sorts the list in different ways
     void whatToSort(int selector);
     //Function that edits a value of a person
@@ -71,6 +71,7 @@ private:
     vector<TolComp> _deletedComputer;
     vector<TempTolComp> _tempComputer;
     vector<TempTolPers> _tempPersonur;
+    vector<TempTolSearch> _tempSearch;
     DataAccess _data;
 };
 
