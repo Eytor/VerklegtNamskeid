@@ -18,9 +18,9 @@ public:
     //Displays a list of all the person
     void displayList(int list);
     //Takes in input from user and searches for it
-    void search();
+    void search(int list);
     //Outputs the header for displayList()
-    void giveHead();
+    void giveHead(int i);
     //Outputs a list of all people and gives the user an option to edit one of them
     void edit();
     //Gives the user an option to add one or more people to the list

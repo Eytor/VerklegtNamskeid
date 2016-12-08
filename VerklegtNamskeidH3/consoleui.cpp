@@ -61,7 +61,7 @@ void ConsoleUI::run()
             displayList(3);
             break;
         case 5:
-            search();
+            search(1);
             break;
         case 6:
             sortSelector();
@@ -184,7 +184,7 @@ void ConsoleUI::displayList(int list)
     bool empty =  _service.getEmptyStatus(list);
     if(!empty)
     {
-        giveHead();
+        giveHead(list);
         for(int i = 0; i < listSize; i++)
         {
             if(list <= 2)
@@ -203,22 +203,31 @@ void ConsoleUI::displayList(int list)
     }
 }
 
-void ConsoleUI::giveHead()
+void ConsoleUI::giveHead(int i)
 {
     const char seperator = ' ';
     const int firstNameWidth = 40;
     const int sexWidth = 8;
     const int yearWidth = 8;
 
-
+    if (i == 1)
+    {
     cout << left << setw(firstNameWidth) << setfill(seperator) << "Name"
          << left << setw(sexWidth) << setfill(seperator) << "Gender"
          << left << setw(yearWidth) << setfill(seperator) << "Birth"
          << left << setw(yearWidth) << setfill(seperator) << "Death" << endl;
+    }
+    else
+    {
+        cout << left << setw(firstNameWidth) << setfill(seperator) << "Name"
+             << left << setw(sexWidth) << setfill(seperator) << "Type"
+             << left << setw(yearWidth) << setfill(seperator) << "Built"
+             << left << setw(yearWidth) << setfill(seperator) << "Year" << endl;
+    }
 
 }
 
-void ConsoleUI::search()
+void ConsoleUI::search(int list)
 {
 
     string keyword;
@@ -239,7 +248,7 @@ void ConsoleUI::search()
     {
         cout <<"Found " << searchResult.size()  << " results." << endl;
     }
-    giveHead();
+    giveHead(list);
     for (unsigned int i = 0; i<searchResult.size(); i++)
     {
         int count = searchResult[i];
