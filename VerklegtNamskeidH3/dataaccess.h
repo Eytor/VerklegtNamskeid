@@ -70,6 +70,8 @@ public:
     void addToDeletedComputers(vector<TempTolComp> computer);
     void emptyDeletedPeople();
     void emptyDeletedComputers();
+
+    void sort(int datab, int col, int ord);
 private:
     int _previousCompSize;
     int _previousPeopleSize;

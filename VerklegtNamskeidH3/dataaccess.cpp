@@ -262,3 +262,84 @@ void DataAccess::emptyDeletedComputers()
     query.exec("DELETE FROM DeletedComputers");
 
 }
+
+
+void DataAccess::sort(int datab, int col, int ord)
+{
+    QSqlDatabase db;
+    db = QSqlDatabase::addDatabase("QSQLITE");
+    QString Tolvunarfraedi = "Tolvunarfraedi.sqlite";
+    db.setDatabaseName(Tolvunarfraedi);
+    string database;
+    string column;
+    string order;
+
+    db.open();
+
+    QSqlQuery query(db);
+
+    query.prepare("SELECT *"
+                  "FROM :database"
+                  "ORDER BY :column :order");
+    if(datab == 1)
+    {
+        database = "People";
+
+        if(col == 1)
+        {
+            column = "FullName";
+        }
+        else if(col == 2)
+        {
+            column = "Gender";
+        }
+        else if(col == 3)
+        {
+            column = "Yob";
+        }
+        else
+        {
+            column = "Yod";
+        }
+    }
+    else
+    {
+        database = "Computers";
+
+        if(col == 1)
+        {
+            column = "Name";
+        }
+        else if(col == 2)
+        {
+            column = "Type";
+        }
+        else if(col == 3)
+        {
+            column = "Built";
+        }
+        else
+        {
+            column = "Year";
+        }
+    }
+
+    if(ord == 1)
+    {
+        order = "ASC";
+    }
+    else
+    {
+        order = "DESC";
+    }
+
+    query.bindValue(":database", database.c_str());
+    query.bindValue(":column", column.c_str());
+    query.bindValue(":order", order.c_str());
+    query.exec();
+
+
+
+    db.close();
+
+}
