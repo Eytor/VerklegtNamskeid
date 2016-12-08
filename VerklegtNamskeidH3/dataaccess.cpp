@@ -240,7 +240,7 @@ void DataAccess::sort(vector<TolPers>& persVector, vector<TolComp>& compVector, 
         order = "DESC";
     }
 
-    query.exec("SELECT * FROM "+ database +" ORDER BY "+ column + " " + order);
+    query.exec("SELECT * FROM "+ database +" ORDER BY "+ column + " COLLATE NOCASE " + order);
 
     if(datab == 1)
     {
@@ -276,10 +276,10 @@ void DataAccess::search(vector<TempTolSearch> &something, string s)
     QSqlQuery query(_db);
     QString keyword = QString::fromStdString(s);
     query.exec("SELECT FullName, Gender, Yob, Yod FROM People"
-               "WHERE FullName LIKE " + keyword +
-               " OR Gender LIKE " + keyword +
-               " OR Yob LIKE " + keyword +
-               "OR Yod LIKE " + keyword);
+               "WHERE FullName LIKE %" + keyword +
+               "% OR Gender LIKE %" + keyword +
+               "% OR Yob LIKE %" + keyword +
+               "OR Yod LIKE %" + keyword + "%");
     TempTolSearch searching;
     while(query.next())
     {
