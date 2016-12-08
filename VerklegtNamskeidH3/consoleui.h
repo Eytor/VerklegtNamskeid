@@ -10,7 +10,7 @@ public:
     //Runs the main program, where the user can select what he can do
     void run();
     //Outputs the sort menu and lets the user pick what way to sort the list
-    void sortSelector();
+    int sortSelector(int list);
     //Prints out information about one person
     void printPerson(int list, int i);
     // --------------------------------------> ADD COMMENT HERE <--------------------------------------
@@ -38,6 +38,7 @@ public:
     void trashSelector();
     //Recovers a person from the recycle bin
     void recoverFromTrash(int list);
+    void selectListToOrder();
 private:
     DomainService _service;
     vector<TempTolPers> _tempInput;
