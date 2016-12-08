@@ -3,18 +3,16 @@
 DataAccess::DataAccess()
 {
 
+    _db = QSqlDatabase::addDatabase("QSQLITE");
+    QString Tolvunarfraedi = "Tolvunarfraedi.sqlite";
+    _db.setDatabaseName(Tolvunarfraedi);
+    _db.open();
+
 }
 
 void DataAccess::getFromDB(vector<TolComp>& computer, vector<TolPers>& person, vector<TolComp>& deletedComputer, vector<TolPers>& deletedPerson)
 {
-    QSqlDatabase db;
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString Tolvunarfraedi = "Tolvunarfraedi.sqlite";
-    db.setDatabaseName(Tolvunarfraedi);
-
-    db.open();
-
-    QSqlQuery query(db);
+    QSqlQuery query(_db);
 
     query.exec("SELECT * FROM Computers");
 
@@ -65,19 +63,11 @@ void DataAccess::getFromDB(vector<TolComp>& computer, vector<TolPers>& person, v
         pers.yearOfDeath = query.value("Yod").toUInt();
         deletedPerson.push_back(pers);
     }
-    db.close();
 }
 
 void DataAccess::addToComputers(vector<TempTolComp> computer)
 {
-    QSqlDatabase db;
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString Tolvunarfraedi = "Tolvunarfraedi.sqlite";
-    db.setDatabaseName(Tolvunarfraedi);
-
-    db.open();
-
-    QSqlQuery query(db);
+    QSqlQuery query(_db);
 
     for(unsigned int i = 0; i < computer.size(); i++)
     {
@@ -89,19 +79,11 @@ void DataAccess::addToComputers(vector<TempTolComp> computer)
         query.bindValue(":year", computer[i].year);
         query.exec();
     }
-    db.close();
 }
 
 void DataAccess::addToPeople(vector<TempTolPers> people)
 {
-    QSqlDatabase db;
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString Tolvunarfraedi = "Tolvunarfraedi.sqlite";
-    db.setDatabaseName(Tolvunarfraedi);
-
-    db.open();
-
-    QSqlQuery query(db);
+    QSqlQuery query(_db);
 
     for(unsigned int i = 0; i < people.size(); i++)
     {
@@ -113,21 +95,11 @@ void DataAccess::addToPeople(vector<TempTolPers> people)
         query.bindValue(":yod", people[i].yearOfDeath);
         query.exec();
     }
-
-
-    db.close();
 }
 
 void DataAccess::deletePerson(int i)
 {
-    QSqlDatabase db;
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString Tolvunarfraedi = "Tolvunarfraedi.sqlite";
-    db.setDatabaseName(Tolvunarfraedi);
-
-    db.open();
-
-    QSqlQuery query(db);
+    QSqlQuery query(_db);
     query.prepare("DELETE FROM People "
                   "WHERE ID = :id");
     query.bindValue(":id", i);
@@ -137,14 +109,7 @@ void DataAccess::deletePerson(int i)
 
 void DataAccess::deleteDeletedPerson(int i)
 {
-    QSqlDatabase db;
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString Tolvunarfraedi = "Tolvunarfraedi.sqlite";
-    db.setDatabaseName(Tolvunarfraedi);
-
-    db.open();
-
-    QSqlQuery query(db);
+    QSqlQuery query(_db);
     query.prepare("DELETE FROM DeletedPeople "
                   "WHERE ID = :id");
     query.bindValue(":id", i);
@@ -154,14 +119,7 @@ void DataAccess::deleteDeletedPerson(int i)
 
 void DataAccess::deleteComputer(int i)
 {
-    QSqlDatabase db;
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString Tolvunarfraedi = "Tolvunarfraedi.sqlite";
-    db.setDatabaseName(Tolvunarfraedi);
-
-    db.open();
-
-    QSqlQuery query(db);
+    QSqlQuery query(_db);
     query.prepare("DELETE FROM Computers "
                   "WHERE ID = :id");
     query.bindValue(":id", i);
@@ -171,14 +129,7 @@ void DataAccess::deleteComputer(int i)
 
 void DataAccess::deleteDeletedComputer(int i)
 {
-    QSqlDatabase db;
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString Tolvunarfraedi = "Tolvunarfraedi.sqlite";
-    db.setDatabaseName(Tolvunarfraedi);
-
-    db.open();
-
-    QSqlQuery query(db);
+    QSqlQuery query(_db);
     query.prepare("DELETE FROM DeletedComputers "
                   "WHERE ID = :id");
     query.bindValue(":id", i);
@@ -188,14 +139,7 @@ void DataAccess::deleteDeletedComputer(int i)
 
 void DataAccess::addToDeletedPeople(vector<TempTolPers> people)
 {
-    QSqlDatabase db;
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString Tolvunarfraedi = "Tolvunarfraedi.sqlite";
-    db.setDatabaseName(Tolvunarfraedi);
-
-    db.open();
-
-    QSqlQuery query(db);
+    QSqlQuery query(_db);
 
     for(unsigned int i = 0; i < people.size(); i++)
     {
@@ -207,20 +151,11 @@ void DataAccess::addToDeletedPeople(vector<TempTolPers> people)
         query.bindValue(":yod", people[i].yearOfDeath);
         query.exec();
     }
-
-    db.close();
 }
 
 void DataAccess::addToDeletedComputers(vector<TempTolComp> computer)
 {
-    QSqlDatabase db;
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString Tolvunarfraedi = "Tolvunarfraedi.sqlite";
-    db.setDatabaseName(Tolvunarfraedi);
-
-    db.open();
-
-    QSqlQuery query(db);
+    QSqlQuery query(_db);
 
     for(unsigned int i = 0; i < computer.size(); i++)
     {
@@ -232,55 +167,28 @@ void DataAccess::addToDeletedComputers(vector<TempTolComp> computer)
         query.bindValue(":year", computer[i].year);
         query.exec();
     }
-    db.close();
 }
 
 void DataAccess::emptyDeletedPeople()
 {
-    QSqlDatabase db;
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString Tolvunarfraedi = "Tolvunarfraedi.sqlite";
-    db.setDatabaseName(Tolvunarfraedi);
-
-    db.open();
-
-    QSqlQuery query(db);
+    QSqlQuery query(_db);
     query.exec("DELETE FROM DeletedPeople");
 
 }
 
 void DataAccess::emptyDeletedComputers()
 {
-    QSqlDatabase db;
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString Tolvunarfraedi = "Tolvunarfraedi.sqlite";
-    db.setDatabaseName(Tolvunarfraedi);
-
-    db.open();
-
-    QSqlQuery query(db);
+    QSqlQuery query(_db);
     query.exec("DELETE FROM DeletedComputers");
-
 }
 
 
-void DataAccess::sort(vector<TempTolPers>& persVector, vector<TempTolComp>& compVector, int datab, int col, int ord)
+void DataAccess::sort(vector<TolPers>& persVector, vector<TolComp>& compVector, int datab, int col, int ord)
 {
-    QSqlDatabase db;
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString Tolvunarfraedi = "Tolvunarfraedi.sqlite";
-    db.setDatabaseName(Tolvunarfraedi);
     string database;
     string column;
     string order;
-
-    db.open();
-
-    QSqlQuery query(db);
-
-    query.prepare("SELECT *"
-                  "FROM :database"
-                  "ORDER BY :column :order");
+    QSqlQuery query(_db);
     if(datab == 1)
     {
         database = "People";
@@ -333,6 +241,7 @@ void DataAccess::sort(vector<TempTolPers>& persVector, vector<TempTolComp>& comp
         order = "DESC";
     }
 
+    query.prepare("SELECT * FROM :database ORDER BY :column :order");
     query.bindValue(":database", database.c_str());
     query.bindValue(":column", column.c_str());
     query.bindValue(":order", order.c_str());
@@ -340,12 +249,13 @@ void DataAccess::sort(vector<TempTolPers>& persVector, vector<TempTolComp>& comp
 
     if(datab == 1)
     {
-        TempTolPers pers;
+        TolPers pers;
         while(query.next())
         {
+            pers.ID = query.value("ID").toUInt();
             pers.fullName = query.value("FullName").toString().toStdString();
             pers.gender = query.value("Gender").toString().toStdString();
-            pers.yearOfBirth = query.value("Yob").toUInt();
+            pers.yearOfBirth = query.value("Yob").toBool();
             pers.yearOfDeath = query.value("Yod").toUInt();
             persVector.push_back(pers);
         }
@@ -353,9 +263,10 @@ void DataAccess::sort(vector<TempTolPers>& persVector, vector<TempTolComp>& comp
     }
     else
     {
-        TempTolComp comp;
+        TolComp comp;
         while(query.next())
         {
+            comp.ID =  query.value("ID").toUInt();
             comp.name = query.value("Name").toString().toStdString();
             comp.type = query.value("Type").toString().toStdString();
             comp.built = query.value("Built").toBool();
@@ -363,23 +274,11 @@ void DataAccess::sort(vector<TempTolPers>& persVector, vector<TempTolComp>& comp
             compVector.push_back(comp);
         }
     }
-
-
-
-    db.close();
-
 }
 
 void DataAccess::search(vector<TempTolSearch> &something, string s)
 {
-    QSqlDatabase db;
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString Tolvunarfraedi = "Tolvunarfraedi.sqlite";
-    db.setDatabaseName(Tolvunarfraedi);
-
-    db.open();
-
-    QSqlQuery query(db);
+    QSqlQuery query(_db);
     query.exec("SELECT FullName, Gender, Yob, Yod FROM People"
                "WHERE FullName LIKE '%:search%'"
                "OR Gender LIKE '%:search%'"
@@ -408,5 +307,4 @@ void DataAccess::search(vector<TempTolSearch> &something, string s)
         searching.yearOfDeath = query.value("Yod").toUInt();
         something.push_back(searching);
     }
-    db.close();
 }

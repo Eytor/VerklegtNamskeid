@@ -8,6 +8,7 @@ DomainService::DomainService()
 
 void DomainService::retriveList()
 {
+    _data;
     _data.getFromDB(_computer, _personur, _deletedComputer, _deletedPersonur);
 }
 
@@ -220,9 +221,17 @@ vector <TempTolSearch> DomainService::search(string keyword)
     return searchResult;
 }
 
-void DomainService::whatToSort(vector<TempTolPers>& persVector, vector<TempTolComp>& compVector, int data, int col, int ord)
+void DomainService::whatToSort(int data, int col, int ord)
 {
-    _data.sort(persVector, compVector, data, col, ord);
+    if(data == 1)
+    {
+        _personur.clear();
+    }
+    else
+    {
+        _computer.clear();
+    }
+    _data.sort(_personur, _computer, data, col, ord);
 }
 
 void DomainService::edit(int personID, int Selection, string s)

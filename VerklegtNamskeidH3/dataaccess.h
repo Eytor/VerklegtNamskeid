@@ -88,10 +88,11 @@ public:
     void emptyDeletedComputers();
     void search(vector<TempTolSearch>& something, string s);
 
-    void sort(vector<TempTolPers>& persVector, vector<TempTolComp>& compVector, int datab, int col, int ord);
+    void sort(vector<TolPers> &persVector, vector<TolComp> &compVector, int datab, int col, int ord);
 private:
     int _previousCompSize;
     int _previousPeopleSize;
+    QSqlDatabase _db;
 };
 
 #endif // DATAACCESS_H
