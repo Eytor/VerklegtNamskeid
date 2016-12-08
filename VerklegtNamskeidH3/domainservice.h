@@ -45,11 +45,11 @@ public:
     //Converts a string to lower
     string convertToLower(string unfilteredString);
     //Function that recives a string and searches for it on the list
-    vector<TempTolSearch> search(string keyword);
+    void search(vector<TempTolPers>& searchResult, vector<TempTolComp>& searchResultComputers, string keyword);
     //Function that sorts the list in different ways
     void whatToSort(int data, int col, int ord);
     //Function that edits a value of a person
-    void editPerson(int personID, int Selection, string s);
+    void editPerson(int list, int personID, int Selection, string s);
     //Function that adds a person to the list
     void addToList(vector<TempTolPers> input);
     // --------------------------------------> ADD COMMENT HERE <--------------------------------------

@@ -8,7 +8,6 @@ DomainService::DomainService()
 
 void DomainService::retriveList()
 {
-    _data;
     _data.getFromDB(_computer, _personur, _deletedComputer, _deletedPersonur);
 }
 
@@ -214,11 +213,9 @@ string DomainService::convertToLower(string unfilteredString)
     return lowerCaseString;
 }
 
-vector <TempTolSearch> DomainService::search(string keyword)
+void DomainService::search(vector<TempTolPers>& searchResultPeople, vector<TempTolComp>& searchResultComputers, string keyword)
 {
-    vector <TempTolSearch> searchResult;
-    _data.search(searchResult,keyword);
-    return searchResult;
+    _data.search(searchResultPeople, searchResultComputers, keyword);
 }
 
 void DomainService::whatToSort(int data, int col, int ord)
@@ -332,10 +329,11 @@ bool DomainService::checkIfLegitYear(string s)
         return false;
     }
 }
-void DomainService::editPerson(int ID, int selection, string s)
+
+void DomainService::editPerson(int list, int ID, int selection, string s)
 {
     string tempString = s;
-    int tempYear;
+    int tempint;
     if(selection == 3 || selection == 4)
     {
         tempYear = stoi(tempString);

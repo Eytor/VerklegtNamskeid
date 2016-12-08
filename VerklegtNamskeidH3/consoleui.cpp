@@ -61,13 +61,13 @@ void ConsoleUI::run()
             displayList(3);
             break;
         case 5:
-            search(1);
+            search();
             break;
         case 6:
             selectListToOrder();
             break;
         case 7:
-            //edit();
+            edit();
             break;
         case 8:
             deleteSelect();
@@ -228,47 +228,79 @@ void ConsoleUI::giveHead(int i)
 
 }
 
-void ConsoleUI::search(int list)
+void ConsoleUI::search()
 {
+
+    const char seperator = ' ';
+    const int sexWidth = 14;
+    const int yearWidth = 8;
+    const int nameWidth = 40;
 
     string keyword;
     cout << "What are you looking for?" << endl;
     cin.ignore();
     getline(cin,keyword);
 
-    vector<TempTolSearch> searchResult =  _service.search(keyword);
-    if(searchResult.size() == 1)
+    _service.search(_tempInput, _tempCompInput, keyword);
+    if((_tempInput.size() + _tempCompInput.size()) > 0)
     {
-        cout <<"Found 1 result." << endl;
-    }
-    else if(searchResult.size() == 0)
-    {
-        cout <<"No match found. ";
-    }
-    else
-    {
-        cout <<"Found " << searchResult.size()  << " results." << endl;
-    }
-    giveHead(list);
-    const char seperator = ' ';
-    const int sexWidth = 14;
-    const int yearWidth = 8;
-    const int nameWidth = 40;
-
-    for (unsigned int i = 0; i<searchResult.size(); i++)
-    {
-        cout << left << setw(nameWidth) << setfill(seperator) << searchResult[i].name;
-        cout << left << setw(sexWidth) << setfill(seperator) << searchResult[i].gender;
-        if(searchResult[i].yearOfDeath != 0)
+        cout <<"Found " << (_tempInput.size() + _tempCompInput.size())  << " results." << endl << endl;
+        if(_tempInput.size() > 0)
         {
-            cout << left << setw(yearWidth) << setfill(seperator) << searchResult[i].yearOfBirth
-                 << left << setw(yearWidth) << setfill(seperator) << searchResult[i].yearOfDeath;
+            cout << "Found " << _tempInput.size()  << " results in computer scientists." << endl;
+            giveHead(1);
+            for (unsigned int i = 0; i < _tempInput.size(); i++)
+            {
+                cout << left << setw(nameWidth) << setfill(seperator) << _tempInput[i].fullName;
+                cout << left << setw(sexWidth) << setfill(seperator) << _tempInput[i].gender;
+                if(_tempInput[i].yearOfDeath != 0)
+                {
+                    cout << left << setw(yearWidth) << setfill(seperator) << _tempInput[i].yearOfBirth
+                         << left << setw(yearWidth) << setfill(seperator) << _tempInput[i].yearOfDeath << endl;
+                }
+                else
+                {
+                    cout << left << setw(yearWidth) << setfill(seperator) << _tempInput[i].yearOfBirth << endl;
+                }
+            }
+            cout << endl;
         }
         else
         {
-            cout << left << setw(yearWidth) << setfill(seperator) << searchResult[i].yearOfBirth;
+            cout << "Zero results found in computer scientist.";
         }
+
+        if(_tempCompInput.size() > 0)
+        {
+            cout << "Found " << _tempCompInput.size()  << " results in computers." << endl;
+            giveHead(3);
+            for(unsigned int i = 0; i < _tempCompInput.size(); i++)
+            {
+                cout << left << setw(nameWidth) << setfill(seperator) << _tempCompInput[i].name;
+                cout << left << setw(sexWidth) << setfill(seperator) << _tempCompInput[i].type;
+                if(_tempCompInput[i].built != 0)
+                {
+                    cout << left << setw(yearWidth) << setfill(seperator) << _tempCompInput[i].built
+                         << left << setw(yearWidth) << setfill(seperator) << _tempCompInput[i].year << endl;
+                }
+                else
+                {
+                    cout << left << setw(yearWidth) << setfill(seperator) << _tempCompInput[i].built << endl;
+                }
+            }
+        }
+        else
+        {
+            cout << "Zero results found in computers.";
+        }
+
     }
+    else
+    {
+        cout <<"No match found. ";
+    }
+    _tempCompInput.clear();
+    _tempInput.clear();
     cout << endl;
 
 }
@@ -394,7 +426,7 @@ void ConsoleUI::deleteFromList(int list)
         while(!validChoice)
         {
             cout << line << endl;
-            cout << "Select the ID number of one person from above: ";
+            cout << "Select the number of one person from above: ";
             cin >> selectDelete;
 
             while (cin.fail()||selectDelete<=0)
@@ -597,9 +629,142 @@ void ConsoleUI::selectListToOrder()
     }
 
 }
+
 void ConsoleUI::edit()
 {
-    unsigned int personToEdit = 0;
+    int list = 0;
+    int listSelect = 0;
+    unsigned int selectEdit = 0;
+    unsigned int toEdit = 0;
+    unsigned int whatToEdit = 0;
+    bool validChoice = false;
+    string edited;
+
+
+    cout << "Select from wich list you would like to edit" << endl <<
+            "1. Computer scientists." << endl <<
+            "2. Computers." << endl;
+    cin >> listSelect;
+    if(listSelect == 2)
+    {
+        list = 3;
+    }
+    else
+    {
+        list = listSelect;
+    }
+
+    bool empty =  _service.getEmptyStatus(list);
+    unsigned int size = _service.getListSize(list);
+    string line = "----------------------------------------------------------------";
+
+    if(!empty)
+    {
+        cout << line << endl;
+        for(unsigned int i = 0; i < size; i++)
+        {
+            cout << (i+1) << ". ";
+            if(list < 3)
+            {
+                printPerson(list, i);
+            }
+            else
+            {
+                printComputer(list, i);
+            }
+        }
+
+        while(!validChoice)
+        {
+            cout << line << endl;
+            if(list == 1)
+            {
+                cout << "Select the number of the person you want to edit: ";
+            }
+            else
+            {
+                cout << "Select the number of the computer you want to edit: ";
+            }
+            cin >> selectEdit;
+
+            while (cin.fail()||selectEdit <= 0)
+            {
+                cin.clear();
+                cin.ignore(100, '\n');
+                cout << "Invalid command. Select the number of the person you want to delete." << endl;
+
+                cin >> selectEdit;
+            }
+
+            if(selectEdit > 0 && selectEdit <= size)
+            {
+                validChoice = true;
+            }
+
+            cout << "Select what to edit: " << endl;
+            if(list == 1)
+            {
+                cout << "\n1. Name  \n2. Gender  \n3. Year of birth  \n4. Year of death\n";
+                cin >> whatToEdit;
+                if(whatToEdit == 1)
+                {
+                    cout << "New name: ";
+                    cin >> edited;
+                }
+                else if(whatToEdit == 2)
+                {
+                    cout << "New gender: ";
+                    cin >> edited;
+                }
+                else if(whatToEdit == 3)
+                {
+                    cout << "New year of birth: ";
+                    cin >> edited;
+                }
+                else
+                {
+                    cout << "New year of death: ";
+                    cin >> edited;
+                }
+            }
+            else
+            {
+                cout << "\n1. Name  \n2. Type  \n3. Built  \n4. Year \n";
+                if(whatToEdit == 1)
+                {
+                        cout << "New name: ";
+                        cin >> edited;
+                }
+                else if(whatToEdit == 2)
+                {
+                        cout << "New Type: ";
+                        cin >> edited;
+                }
+                else if(whatToEdit == 3)
+                {
+                        cout << "New built: ";
+                        cin >> edited;
+                }
+                else
+                {
+                        cout << "New Year: ";
+                        cin >> edited;
+                }
+                cin >> whatToEdit;
+            }\
+
+        }
+        selectEdit--;
+        toEdit =_service.getID(list, selectEdit);
+        cout << endl << "The delete was successful!" << endl << endl;
+        //_service.editPerson(list, toEdit, whatToEdit, edited);
+    }
+    else
+    {
+        cout << "The list is empty!" << endl;
+    }
+
+    /*unsigned int personToEdit = 0;
     unsigned int whatToEdit = 0;
     bool validChoice = false;
     bool empty =  _service.getEmptyStatus(1);
@@ -611,8 +776,15 @@ void ConsoleUI::edit()
         cout << line << endl;
         for(unsigned int i = 0; i < size; i++)
         {
-            cout << _service.getID(1, i) << ". ";
-            printPerson(1, i);
+            cout << (i+1) << ". ";
+            if(list < 3)
+            {
+                printPerson(list, i);
+            }
+            else
+            {
+                printComputer(list, i);
+            }
         }
 
         while(!validChoice)
@@ -653,6 +825,6 @@ void ConsoleUI::edit()
     else
     {
         cout << "The list is empty!" << endl;
-    }
+    }*/
 
 }

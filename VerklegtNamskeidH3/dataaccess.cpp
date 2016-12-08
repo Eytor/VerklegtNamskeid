@@ -250,7 +250,7 @@ void DataAccess::sort(vector<TolPers>& persVector, vector<TolComp>& compVector, 
             pers.ID = query.value("ID").toUInt();
             pers.fullName = query.value("FullName").toString().toStdString();
             pers.gender = query.value("Gender").toString().toStdString();
-            pers.yearOfBirth = query.value("Yob").toBool();
+            pers.yearOfBirth = query.value("Yob").toUInt();
             pers.yearOfDeath = query.value("Yod").toUInt();
             persVector.push_back(pers);
         }
@@ -271,23 +271,39 @@ void DataAccess::sort(vector<TolPers>& persVector, vector<TolComp>& compVector, 
     }
 }
 
-void DataAccess::search(vector<TempTolSearch> &something, string s)
+void DataAccess::search(vector<TempTolPers>& persOutput, vector<TempTolComp>& compOutput, string s)
 {
     QSqlQuery query(_db);
     QString keyword = QString::fromStdString(s);
-    query.exec("SELECT FullName, Gender, Yob, Yod FROM People"
-               "WHERE FullName LIKE %" + keyword +
-               "% OR Gender LIKE %" + keyword +
-               "% OR Yob LIKE %" + keyword +
-               "OR Yod LIKE %" + keyword + "%");
-    TempTolSearch searching;
+    query.exec("SELECT FullName, Gender, Yob, Yod "
+               "FROM People "
+               "WHERE FullName LIKE '%" + keyword + "%' "
+               "OR Gender LIKE '%" + keyword + "%' "
+               "OR Yob LIKE '%" + keyword + "%' "
+               "OR Yod LIKE '%" + keyword + "%'");
+    TempTolPers searchPeople;
     while(query.next())
     {
-        searching.name = query.value("FullName").toString().toStdString();
-        searching.gender = query.value("Gender").toString().toStdString();
-        searching.yearOfBirth = query.value("Yob").toUInt();
-        searching.yearOfDeath = query.value("Yod").toUInt();
-        something.push_back(searching);
+        searchPeople.fullName = query.value("FullName").toString().toStdString();
+        searchPeople.gender = query.value("Gender").toString().toStdString();
+        searchPeople.yearOfBirth = query.value("Yob").toUInt();
+        searchPeople.yearOfDeath = query.value("Yod").toUInt();
+        persOutput.push_back(searchPeople);
+    }
+    query.exec("SELECT Name, Type, Built, Year "
+               "FROM Computers "
+               "WHERE Name LIKE '%" + keyword + "%' "
+               "OR Type LIKE '%" + keyword + "%' "
+               "OR Built LIKE '%" + keyword + "%' "
+               "OR Year LIKE '%" + keyword + "%'");
+    TempTolComp searchComputers;
+    while(query.next())
+    {
+        searchComputers.name = query.value("Name").toString().toStdString();
+        searchComputers.type = query.value("Type").toString().toStdString();
+        searchComputers.built = query.value("Built").toUInt();
+        searchComputers.year = query.value("Year").toUInt();
+        compOutput.push_back(searchComputers);
     }
 }
 void DataAccess::editPerson(int ID, string tempString)
