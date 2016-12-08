@@ -182,12 +182,11 @@ void DataAccess::emptyDeletedComputers()
     query.exec("DELETE FROM DeletedComputers");
 }
 
-
 void DataAccess::sort(vector<TolPers>& persVector, vector<TolComp>& compVector, int datab, int col, int ord)
 {
-    string database;
-    string column;
-    string order;
+    QString database;
+    QString column;
+    QString order;
     QSqlQuery query(_db);
     if(datab == 1)
     {
@@ -241,11 +240,7 @@ void DataAccess::sort(vector<TolPers>& persVector, vector<TolComp>& compVector, 
         order = "DESC";
     }
 
-    query.prepare("SELECT * FROM :database ORDER BY :column :order");
-    query.bindValue(":database", database.c_str());
-    query.bindValue(":column", column.c_str());
-    query.bindValue(":order", order.c_str());
-    query.exec();
+    query.exec("SELECT * FROM "+ database +" ORDER BY "+ column + " " + order);
 
     if(datab == 1)
     {
@@ -279,25 +274,12 @@ void DataAccess::sort(vector<TolPers>& persVector, vector<TolComp>& compVector, 
 void DataAccess::search(vector<TempTolSearch> &something, string s)
 {
     QSqlQuery query(_db);
+    QString keyword = QString::fromStdString(s);
     query.exec("SELECT FullName, Gender, Yob, Yod FROM People"
-               "WHERE FullName LIKE '%:search%'"
-               "OR Gender LIKE '%:search%'"
-               "OR Yob LIKE '%:search%'"
-               "OR Yod LIKE '%:search%'");
-    query.bindValue(":search", s.c_str());
-    query.exec();
-    /*
-    TolPers pers;
-     * while(query.next())
-    {
-        pers.ID = query.value("ID").toUInt();
-        pers.fullName = query.value("FullName").toString().toStdString();
-        pers.gender = query.value("Gender").toString().toStdString();
-        pers.yearOfBirth = query.value("Yob").toUInt();
-        pers.yearOfDeath = query.value("Yod").toUInt();
-        deletedPerson.push_back(pers);
-    }*/
-
+               "WHERE FullName LIKE " + keyword +
+               " OR Gender LIKE " + keyword +
+               " OR Yob LIKE " + keyword +
+               "OR Yod LIKE " + keyword);
     TempTolSearch searching;
     while(query.next())
     {
