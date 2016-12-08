@@ -236,7 +236,7 @@ void ConsoleUI::search(int list)
     cin.ignore();
     getline(cin,keyword);
 
-    vector<int> searchResult =  _service.search(keyword);
+    vector<TempTolSearch> searchResult =  _service.search(keyword);
     if(searchResult.size() == 1)
     {
         cout <<"Found 1 result." << endl;
@@ -250,10 +250,24 @@ void ConsoleUI::search(int list)
         cout <<"Found " << searchResult.size()  << " results." << endl;
     }
     giveHead(list);
+    const char seperator = ' ';
+    const int sexWidth = 14;
+    const int yearWidth = 8;
+    const int nameWidth = 40;
+
     for (unsigned int i = 0; i<searchResult.size(); i++)
     {
-        int count = searchResult[i];
-        printPerson(1, count);
+        cout << left << setw(nameWidth) << setfill(seperator) << searchResult[i].name;
+        cout << left << setw(sexWidth) << setfill(seperator) << searchResult[i].gender;
+        if(searchResult[i].yearOfDeath != 0)
+        {
+            cout << left << setw(yearWidth) << setfill(seperator) << searchResult[i].yearOfBirth
+                 << left << setw(yearWidth) << setfill(seperator) << searchResult[i].yearOfDeath;
+        }
+        else
+        {
+            cout << left << setw(yearWidth) << setfill(seperator) << searchResult[i].yearOfBirth;
+        }
     }
     cout << endl;
 
