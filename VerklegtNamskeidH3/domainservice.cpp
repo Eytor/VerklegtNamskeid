@@ -220,48 +220,9 @@ vector <TempTolSearch> DomainService::search(string keyword)
     return searchResult;
 }
 
-void DomainService::whatToSort(int selector)
+void DomainService::whatToSort(int data, int col, int ord)
 {
-
-    if(selector == 1)
-    {
-        for(int i = 0; i < getListSize(1); i++)
-        {
-            for(int j = 0; j < getListSize(1); j++)
-            {
-                if(_personur[i].fullName < _personur[j].fullName)
-                {
-                    swap(_personur[i], _personur[j]);
-                }
-            }
-        }
-    }
-    else if(selector == 3)
-    {
-        for(int i = 0; i < getListSize(1); i++)
-        {
-            for(int j = 0; j < getListSize(1); j++)
-            {
-                if(_personur[i].yearOfBirth < _personur[j].yearOfBirth)
-                {
-                    swap(_personur[i], _personur[j]);
-                }
-            }
-        }
-    }
-    else if(selector == 4)
-    {
-        for(int i = 0; i < getListSize(1); i++)
-        {
-            for(int j = 0; j < getListSize(1); j++)
-            {
-                if(_personur[i].yearOfDeath < _personur[j].yearOfDeath)
-                {
-                    swap(_personur[i], _personur[j]);
-                }
-            }
-        }
-    }
+    _data.sort(data, col, ord);
 }
 
 void DomainService::edit(int personID, int Selection, string s)
