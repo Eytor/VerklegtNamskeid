@@ -548,7 +548,7 @@ void ConsoleUI::trashSelector()
           {
               cin.clear();
             cin.ignore(100, '\n');
-            cout << "Invalid command. Select'0' for main menu or try again" << endl
+            cout << "Invalid command. Select '0' for main menu or try again" << endl
                  << "1. Recover People." << endl
                  << "2. Recover Computers." << endl;
             cin >> selected;
@@ -581,6 +581,7 @@ void ConsoleUI::trashSelector()
        }
             if(selected > 0 && selected <= 3)
             {
+            cout << "The trash was emptied successfully!" << endl;
             _service.emptyTrash(selected);
             }
 
