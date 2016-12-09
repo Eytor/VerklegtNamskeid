@@ -446,7 +446,7 @@ void ConsoleUI::deleteFromList(int list)
             {
                 cin.clear();
                 cin.ignore(100, '\n');
-                cout << "Invalid command. Select the number of the person you want to delete." << endl;
+                cout << "\nInvalid command. Select the number of the person you want to delete." << endl;
 
                 cin >> selectDelete;
             }
