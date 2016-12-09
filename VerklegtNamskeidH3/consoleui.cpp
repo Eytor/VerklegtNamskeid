@@ -475,7 +475,16 @@ void ConsoleUI::deleteSelect()
             "1. Delete from Computer Scientists." << endl <<
             "2. Delete from Computers." << endl;
     cin >> selected;
-    if(cin.fail() || (selected > 0 && selected < 3))
+    while(cin.fail())
+    {
+        cin.clear();
+        cin.ignore(100, '\n');
+        cout << "Invalid selection select '0' for main menu or try again: " << endl <<
+                "1. Delete from Computer Scientists." << endl <<
+                "2. Delete from Computers." << endl;
+        cin >> selected;
+    }
+    if(selected > 0 && selected < 3)
     {
         if(selected == 1)
         {
@@ -488,7 +497,7 @@ void ConsoleUI::deleteSelect()
     }
     else
     {
-        cout << "FATAL ERROR: USER TO STUPID TO SELECT NUMBER FROM LIST ABOVE!";
+        cout << "FATAL ERROR: USER TO STUPID TO SELECT NUMBER FROM LIST ABOVE!" << endl;
     }
 
 }
