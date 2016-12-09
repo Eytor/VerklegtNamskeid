@@ -115,6 +115,7 @@ public:
     //Function that allows the user to link a person to a computer
     void linkPersonToComputer(int persID, int compID);
     void displayLinks(vector<TempTolLinking>& results);
+    void deleteLinks(int peopleOrComps, int i);
 private:
     int _previousCompSize;
     int _previousPeopleSize;

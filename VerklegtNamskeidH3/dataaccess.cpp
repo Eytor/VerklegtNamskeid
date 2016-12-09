@@ -116,10 +116,7 @@ void DataAccess::deletePerson(int i)
     query.bindValue(":id", i);
     query.exec();
 
-    query.prepare("DELETE FROM Linking"
-                  "WHERE PeopleID = :id");
-    query.bindValue(":id", i);
-
+    deleteLinks(1, i);
 }
 
 void DataAccess::deleteDeletedPerson(int i)
@@ -140,6 +137,7 @@ void DataAccess::deleteComputer(int i)
     query.bindValue(":id", i);
     query.exec();
 
+    deleteLinks(2, i);
 }
 
 void DataAccess::deleteDeletedComputer(int i)
@@ -418,5 +416,24 @@ void DataAccess::displayLinks(vector<TempTolLinking>& results)
         linkingStuff.personName = query.value("FullName").toString().toStdString();
         linkingStuff.linkID = query.value("ID").toUInt();
         results.push_back(linkingStuff);
+    }
+}
+
+void DataAccess::deleteLinks(int peopleOrComps, int i)
+{
+    QSqlQuery query(_db);
+    if(peopleOrComps == 1)
+    {
+        query.prepare("DELETE FROM Linking "
+                      "WHERE PeopleID = :id");
+        query.bindValue(":id", i);
+        query.exec();
+    }
+    else
+    {
+        query.prepare("DELETE FROM Linking "
+                      "WHERE ComputerID = :id");
+        query.bindValue(":id", i);
+        query.exec();
     }
 }

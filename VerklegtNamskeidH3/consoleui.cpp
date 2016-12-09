@@ -39,6 +39,7 @@ void ConsoleUI::run()
              << "9. Recycle bin." << endl
              << "10. Link Scientists to Computers." << endl
              << "11. Display links between Scientists and Computers" << endl
+             << "12. Delete Links" << endl
              << "69. Do you want to play a game?" << endl
              << "0. Quit." << endl;
 

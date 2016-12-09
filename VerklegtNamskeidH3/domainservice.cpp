@@ -293,6 +293,8 @@ void DomainService::deleteFromList(int list, int id, int i)
     _deletedPersonur.clear();
     _personur.clear();
     _computer.clear();
+    _linking.clear();
+    _tempLinking.clear();
     retriveList();
 
 }
@@ -358,5 +360,12 @@ void DomainService::linkPersonToComp(int persID, int compID)
 
 void DomainService::displayLinks(vector<TempTolLinking>& results)
 {
+    _deletedComputer.clear();
+    _deletedPersonur.clear();
+    _personur.clear();
+    _computer.clear();
+    _linking.clear();
+    _tempLinking.clear();
+    retriveList();
     _data.displayLinks(results);
 }
