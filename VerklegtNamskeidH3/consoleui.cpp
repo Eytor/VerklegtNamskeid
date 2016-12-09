@@ -102,7 +102,7 @@ int ConsoleUI::sortSelector(int list)
         << "4. Order by year of death." << endl;
         cin >> selected;
 
-        while (cin.fail()||selected<0)
+        while (cin.fail()||selected<1||selected>4)
         {
             cin.clear();
             cin.ignore(100, '\n');
@@ -122,7 +122,7 @@ int ConsoleUI::sortSelector(int list)
         << "4. Order by year." << endl;
         cin >> selected;
 
-        while (cin.fail()||selected<0)
+        while (cin.fail()||selected<1||selected>4)
         {
             cin.clear();
             cin.ignore(100, '\n');
@@ -682,6 +682,14 @@ void ConsoleUI::selectListToOrder()
         "1. Order in ascending order." << endl <<
         "2. Order in descending order." << endl;
         cin >> orderSelect;
+        while (cin.fail()||orderSelect>2||orderSelect<1)
+        {
+
+            cout << "Invalid input. \nSelect one of the options below:" << endl <<
+            "1. Order in ascending order." << endl <<
+            "2. Order in descending order." << endl;
+            cin >> orderSelect;
+        }
         _service.whatToSort(selectedList, colSelect, orderSelect);
     }
     else
@@ -854,8 +862,8 @@ void ConsoleUI::linkPeopleToComps()
     int compToEdit;
     bool peopleEmpty =  _service.getEmptyStatus(1);
     bool compsEmpty = _service.getEmptyStatus(3);
-    unsigned int peopleSize = _service.getListSize(1);
-    unsigned int compSize = _service.getListSize(3);
+    int peopleSize = _service.getListSize(1);
+    int compSize = _service.getListSize(3);
     if(peopleEmpty)
     {
         cout << "\nThere are no scientists in the database, please insert a scientist before linking to a computer" << endl;
@@ -866,21 +874,36 @@ void ConsoleUI::linkPeopleToComps()
     }
     else
     {
-        for(unsigned int i = 0; i < peopleSize; i++)
+        for(int i = 0; i < peopleSize; i++)
         {
             cout << (i+1) << ". ";
             printPerson(1, i);
         }
         cout << "Please select a scientist to link: " << endl;
         cin >> scientistSelected;
+        while(cin.fail() || scientistSelected > peopleSize)
+        {
+            cin.clear();
+            cin.ignore(100,'\n');
+            cout << "Invalid input. Select a scientist from above" << endl;
+            cin >> scientistSelected;
+        }
+
         cout << endl;
-        for(unsigned int i = 0; i < compSize; i++)
+        for(int i = 0; i < compSize; i++)
         {
             cout << (i+1) << ". ";
             printPerson(3, i);
         }
         cout << "Please select a computer to link: " << endl;
         cin >> computerSelected;
+        while(cin.fail() || computerSelected > compSize)
+        {
+            cin.clear();
+            cin.ignore(100,'\n');
+            cout << "Invalid input. Select a computer from above" << endl;
+            cin >> computerSelected;
+        }
 
         persToEdit = _service.getID(1, scientistSelected-1);
         compToEdit = _service.getID(3, computerSelected-1);
