@@ -247,7 +247,7 @@ void ConsoleUI::search()
         cout <<"Found " << (_tempInput.size() + _tempCompInput.size())  << " results." << endl << endl;
         if(_tempInput.size() > 0)
         {
-            cout << "Found " << _tempInput.size()  << " results in computer scientists." << endl;
+            cout << "Found " << _tempInput.size()  << " results in computer scientists. " << endl;
             giveHead(1);
             for (unsigned int i = 0; i < _tempInput.size(); i++)
             {
@@ -272,7 +272,7 @@ void ConsoleUI::search()
 
         if(_tempCompInput.size() > 0)
         {
-            cout << "Found " << _tempCompInput.size()  << " results in computers." << endl;
+            cout << "Found " << _tempCompInput.size()  << " results in computers. " << endl;
             giveHead(3);
             for(unsigned int i = 0; i < _tempCompInput.size(); i++)
             {
@@ -291,7 +291,7 @@ void ConsoleUI::search()
         }
         else
         {
-            cout << "Zero results found in computers.";
+            cout << "Zero results found in computers. ";
         }
 
     }
@@ -391,6 +391,14 @@ void ConsoleUI::addToComp()
         {
         cout << "Year: ";
         cin >> comps.year;
+
+          while(cin.fail() || comps.year > 2250  || comps.year < 1500)
+          {
+              cin.clear();
+              cin.ignore(100, '\n');
+              cout << "Invalid size. Enter year from 1500-2250 ";
+              cin >> comps.year;
+          }
         }
 
         _tempCompInput.push_back(comps);
@@ -489,11 +497,11 @@ void ConsoleUI::trashSelector()
          << "3. Empty recycle bin." << endl;
     cin >> selected;
 
-    while (cin.fail()||selected<0)
+    while (cin.fail()||selected<0|| selected > 3)
     {
         cin.clear();
         cin.ignore(100, '\n');
-        cout << "Invalid command. Select '0' for main menu" << endl
+        cout << "Invalid command. Select '0' for main menu or try again " << endl
              << "1. View recycle bin." << endl
              << "2. Recover from recycle bin." << endl
              << "3. Empty recycle bin." << endl;
@@ -501,12 +509,22 @@ void ConsoleUI::trashSelector()
         cin >> selected;
     }
 
+
     switch (selected)
     {
     case 1:        
         cout << "1. Deleted People." << endl
              << "2. Deleted Computers." << endl;
         cin >> selected;
+          while (cin.fail()||selected<0|| selected > 2)
+         {
+            cin.clear();
+            cin.ignore(100, '\n');
+            cout << "Invalid command. Select '0' for main menu or try again" << endl
+                 << "1. Deleted People." << endl
+                 << "2. Deleted Computers." << endl;
+            cin >> selected;
+         }
         switch (selected)
         {
         case 1:
@@ -514,7 +532,7 @@ void ConsoleUI::trashSelector()
             break;
         case 2:
             displayList(4);
-        default:
+        case 0:
             break;
         }
         break;
@@ -522,6 +540,15 @@ void ConsoleUI::trashSelector()
         cout << "1. Recover People." << endl
              << "2. Recover Computers." << endl;
         cin >> selected;
+         while (cin.fail()||selected<0|| selected >2)
+          {
+              cin.clear();
+            cin.ignore(100, '\n');
+            cout << "Invalid command. Select'0' for main menu or try again" << endl
+                 << "1. Recover People." << endl
+                 << "2. Recover Computers." << endl;
+            cin >> selected;
+           }
         switch (selected)
         {
         case 1:
@@ -529,22 +556,32 @@ void ConsoleUI::trashSelector()
             break;
         case 2:
             recoverFromTrash(4);
-        default:
+        case 0:
             break;
         }
         break;
     case 3:
         cout << "1. Empty Deleted People." << endl
              << "2. Empty Deleted Computers." << endl
-             << "3. Empty All.";
+             << "3. Empty All." << endl;
         cin >> selected;
-        if(selected > 0 && selected <= 3) // þarf að bæta við villumeldingu
-        {
+        while (cin.fail()||selected<0|| selected>3)
+       {
+          cin.clear();
+          cin.ignore(100, '\n');
+          cout << "Invalid command. Select '0' for main menu or try again" << endl
+               << "1. Empty Deleted People." << endl
+               << "2. Empty Deleted Computers." << endl
+               << "3. Empty All." << endl;
+          cin >> selected;
+       }
+            if(selected > 0 && selected <= 3)
+            {
             _service.emptyTrash(selected);
-        }
+            }
 
         break;
-    default:
+    case 0:
         break;
     }
 }
@@ -615,7 +652,14 @@ void ConsoleUI::selectListToOrder()
             "1. Order the list of scientists." << endl <<
             "2. Order the list of computers." << endl;
     cin >> selectedList;
-    if(cin.fail() || (selectedList > 0 && selectedList < 3))
+    while (cin.fail())
+    {
+      cin.clear();
+      cin.ignore(100, '\n');
+      cout << "Error select 1 to order scientists or 2 to order computers. " << endl;
+      cin >> selectedList;
+    }
+      if( (selectedList > 0 && selectedList < 3))
     {
         colSelect = sortSelector(selectedList);
         cout << "Select one of the options below:" << endl <<
@@ -626,7 +670,7 @@ void ConsoleUI::selectListToOrder()
             }
     else
     {
-        cout << "FATAL ERROR: USER TO STUPID TO SELECT NUMBER FROM LIST ABOVE!";
+        cout << "FATAL ERROR: USER TO STUPID TO SELECT NUMBER FROM LIST ABOVE!" << endl;
     }
 
 }
@@ -721,6 +765,7 @@ void ConsoleUI::edit()
                 {
                     cout << "New year of birth: ";
                     cin >> edited;
+
                 }
                 else
                 {
