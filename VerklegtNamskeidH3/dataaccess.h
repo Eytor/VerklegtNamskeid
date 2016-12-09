@@ -89,6 +89,7 @@ public:
     void search(vector<TempTolPers>& persOutput,vector<TempTolComp>& compOutput, string s);
     void editPerson(int list, int, int col, string);
     void sort(vector<TolPers> &persVector, vector<TolComp> &compVector, int datab, int col, int ord);
+    void linkPersonToComputer(int persID, int compID);
 private:
     int _previousCompSize;
     int _previousPeopleSize;

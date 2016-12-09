@@ -819,8 +819,9 @@ void ConsoleUI::edit()
 void ConsoleUI::linkPeopleToComps()
 {
     int scientistSelected;
-    int computerSelected
-;
+    int computerSelected;
+    int persToEdit;
+    int compToEdit;
     bool peopleEmpty =  _service.getEmptyStatus(1);
     bool compsEmpty = _service.getEmptyStatus(3);
     unsigned int peopleSize = _service.getListSize(1);
@@ -850,7 +851,12 @@ void ConsoleUI::linkPeopleToComps()
         }
         cout << "Please select a computer to link: " << endl;
         cin >> computerSelected;
-        _service.linkPersonToComp(scientistSelected, computerSelected);
+
+        persToEdit = _service.getID(1, scientistSelected-1);
+        compToEdit = _service.getID(3, computerSelected-1);
+
+        _service.linkPersonToComp(persToEdit, compToEdit);
+        //toEdit =_service.getID(list, selectEdit);
     }
 
 }

@@ -368,3 +368,13 @@ void DataAccess::editPerson(int list, int Id, int col, string tempString)
     query.exec(theQuery);
 
 }
+
+void DataAccess::linkPersonToComputer(int persID, int compID)
+{
+    QSqlQuery query(_db);
+    query.prepare("INSERT INTO Linking(ComputerID, peopleID)"
+                  "VALUES(:compID, :persID)");
+    query.bindValue(":persID", persID);
+    query.bindValue(":compID", compID);
+    query.exec();
+}

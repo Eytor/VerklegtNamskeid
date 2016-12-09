@@ -342,7 +342,7 @@ void DomainService::editPerson(int list, int ID, int selection, string s)
     retriveList();
 }
 
-void DomainService::linkPersonToComp(int personID, int compID)
+void DomainService::linkPersonToComp(int persID, int compID)
 {
-
+    _data.linkPersonToComputer(persID, compID);
 }
