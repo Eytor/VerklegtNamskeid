@@ -114,7 +114,9 @@ public:
     void sort(vector<TolPers> &persVector, vector<TolComp> &compVector, int datab, int col, int ord);
     //Function that allows the user to link a person to a computer
     void linkPersonToComputer(int persID, int compID);
+    //Displays the links
     void displayLinks(vector<TempTolLinking>& results);
+    //Deletes the links
     void deleteLinks(int peopleOrComps, int i);
 private:
     int _previousCompSize;
