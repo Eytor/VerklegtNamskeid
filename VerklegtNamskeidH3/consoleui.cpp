@@ -932,16 +932,20 @@ void ConsoleUI::displayLinks()
     bool empty = _service.getEmptyStatus(5);
     if(empty)
     {
-        cout << "No links exist" << endl;
+        cout << "\nNo links exist\n" << endl;
     }
-    cout << "-------------------------------------------------------------------------" << endl;
-    cout << left << setw(nameWidth) << setfill(seperator) << "Computer Scientist:"
-         << left << setw(nameWidth) << setfill(seperator) << "Computers:";
-    for(int i = 0; i < size; i++)
+    else
     {
-        cout << setw(nameWidth) << setfill(seperator) << _linkingDisplay[i].personName <<
-                setw(nameWidth) << setfill(seperator) << _linkingDisplay[i].computerName;
+        cout << "\n---------------------------------------------------" << endl;
+        cout << left << setw(nameWidth) << setfill(seperator) << "Computer Scientist:"
+             << left << setw(nameWidth) << setfill(seperator) << "Computers:";
+        for(int i = 0; i < size; i++)
+        {
+            cout << setw(nameWidth) << setfill(seperator) << _linkingDisplay[i].personName <<
+                    setw(nameWidth) << setfill(seperator) << _linkingDisplay[i].computerName;
+        }
     }
+
 }
 
 void ConsoleUI::DeleteLinks()
@@ -956,21 +960,24 @@ void ConsoleUI::DeleteLinks()
     bool empty = _service.getEmptyStatus(5);
     if(empty)
     {
-        cout << "No links exist" << endl;
+        cout << "\nNo links exist\n" << endl;
     }
-    cout << "-------------------------------------------------------------------------" << endl;
-    cout << left << setw(idWidth) << setfill(seperator) << "ID:" <<
-            left << setw(nameWidth) << setfill(seperator) << "Computer Scientist:"
-         << left << setw(nameWidth) << setfill(seperator) << "Computers:";
-    for(int i = 0; i < size; i++)
+    else
     {
-        cout << left << setw(idWidth) << setfill(seperator) << _linkingDisplay[i].linkID <<
-                left << setw(nameWidth) << setfill(seperator) << _linkingDisplay[i].personName <<
-                left << setw(nameWidth) << setfill(seperator) << _linkingDisplay[i].computerName;
+        cout << "\n---------------------------------------------------" << endl;
+        cout << left << setw(idWidth) << setfill(seperator) << "ID:" <<
+                left << setw(nameWidth) << setfill(seperator) << "Computer Scientist:"
+             << left << setw(nameWidth) << setfill(seperator) << "Computers:";
+        for(int i = 0; i < size; i++)
+        {
+            cout << left << setw(idWidth) << setfill(seperator) << _linkingDisplay[i].linkID <<
+                    left << setw(nameWidth) << setfill(seperator) << _linkingDisplay[i].personName <<
+                    left << setw(nameWidth) << setfill(seperator) << _linkingDisplay[i].computerName;
+        }
+        cout << "Select the ID of a link to delete" << endl;
+        cin >> selected;
+        _service.deleteLink(selected);
     }
-    cout << "Select the ID of a link to delete" << endl;
-    cin >> selected;
-    _service.deleteLink(selected);
 }
 
 void ConsoleUI::epic()
