@@ -327,7 +327,7 @@ void DataAccess::editPerson(int list, int Id, int col, string tempString)
     QString value = QString::fromStdString(tempString);
     bool containsDigits = false;
     int number;
-    for(int i = 0; i < tempString.size(); i++)
+    for(unsigned int i = 0; i < tempString.size(); i++)
     {
         if(value[i].isDigit())
         {
