@@ -34,12 +34,19 @@ public:
     // --------------------------------------> ADD COMMENT HERE <--------------------------------------
     void deleteSelect();
     /*Gives the user options to display the recycle bin,
-    recover a person from the recycle or empty the recycle bin*/
+     recover a person from the recycle or empty the recycle bin*/
     void trashSelector();
     //Recovers a person from the recycle bin
     void recoverFromTrash(int list);
     void selectListToOrder();
     void linkPeopleToComps();
+
+    void epic();
+    void printGrid (char grid[3][3]);
+    void insertPosition(char grid[3][3], char player);
+    void XorY(char& player);
+    char didIWin(char grid[3][3]);
+
 private:
     DomainService _service;
     vector<TempTolPers> _tempInput;

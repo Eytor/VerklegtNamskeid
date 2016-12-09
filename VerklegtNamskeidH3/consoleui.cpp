@@ -29,62 +29,64 @@ void ConsoleUI::run()
         }
         cout << "---------------------------------------------------" << endl;
         cout << "1. Add to Computer Scientists." << endl
-             << "2. Add to Computers." << endl
-             << "3. Display Computer Scientists." << endl
-             << "4. Display Computers." << endl
-             << "5. Search from list" << endl
-             << "6. Order list." << endl
-             << "7. Edit list." << endl
-             << "8. Delete." << endl
-             << "9. Recycle bin." << endl
-             << "10. Link Scientists to Computers." << endl
-             << "0. Quit." << endl;
+        << "2. Add to Computers." << endl
+        << "3. Display Computer Scientists." << endl
+        << "4. Display Computers." << endl
+        << "5. Search from list" << endl
+        << "6. Order list." << endl
+        << "7. Edit list." << endl
+        << "8. Delete." << endl
+        << "9. Recycle bin." << endl
+        << "10. Link Scientists to Computers." << endl
+        << "69. Do you want to play a game?" << endl
+        << "0. Quit." << endl;
 
         cin >> selected;
 
 
-
-
         switch (selected)
         {
-        case 1:
-            addToList();
-            cout << endl;
-            break;
-        case 2:
-            addToComp();
-            cout << endl;
-            break;
-        case 3:
-            displayList(1);
-            break;
-        case 4:
-            displayList(3);
-            break;
-        case 5:
-            search();
-            break;
-        case 6:
-            selectListToOrder();
-            break;
-        case 7:
-            edit();
-            break;
-        case 8:
-            deleteSelect();
-            break;
-        case 9:
-            trashSelector();
-            break;
-        case 10:
-            linkPeopleToComps();
-            break;
-        case 0:
-            cout << "Goodbye!" << endl;
-            break;
-        default:
-            cout << "Wrong input" << endl;
-            break;
+            case 1:
+                addToList();
+                cout << endl;
+                break;
+            case 2:
+                addToComp();
+                cout << endl;
+                break;
+            case 3:
+                displayList(1);
+                break;
+            case 4:
+                displayList(3);
+                break;
+            case 5:
+                search();
+                break;
+            case 6:
+                selectListToOrder();
+                break;
+            case 7:
+                edit();
+                break;
+            case 8:
+                deleteSelect();
+                break;
+            case 9:
+                trashSelector();
+                break;
+            case 10:
+                linkPeopleToComps();
+                break;
+            case 69:
+                epic();
+                break;
+            case 0:
+                cout << "Goodbye!" << endl;
+                break;
+            default:
+                cout << "Wrong input" << endl;
+                break;
         }
     }
 }
@@ -92,46 +94,46 @@ void ConsoleUI::run()
 int ConsoleUI::sortSelector(int list)
 {
     int selected;
-        if (list == 1)
-        {
-            cout << "1. Order by name." << endl
-                 << "2. Order by gender." << endl
-                 << "3. Order by year of birth." << endl
-                 << "4. Order by year of death." << endl;
-                 cin >> selected;
+    if (list == 1)
+    {
+        cout << "1. Order by name." << endl
+        << "2. Order by gender." << endl
+        << "3. Order by year of birth." << endl
+        << "4. Order by year of death." << endl;
+        cin >> selected;
 
-            while (cin.fail()||selected<0)
-            {
-                cin.clear();
-                cin.ignore(100, '\n');
-                cout << "Invalid input. Select number from 1-4, '0' for main menu" << endl
-                     << "1. Order by name." << endl
-                     << "2. Order by gender." << endl
-                     << "3. Order by year of birth." << endl
-                     << "4. Order by year of death." << endl;
-                cin >> selected;
-            }
-        }
-        else
+        while (cin.fail()||selected<0)
         {
-            cout << "1. Order by name." << endl
-                 << "2. Order by type." << endl
-                 << "3. Order by built." << endl
-                 << "4. Order by year." << endl;
-                 cin >> selected;
-
-            while (cin.fail()||selected<0)
-            {
-                cin.clear();
-                cin.ignore(100, '\n');
-                cout << "Invalid input. Select number from 1-4, '0' for main menu" << endl
-                     << "1. Order by name." << endl
-                     << "2. Order by type." << endl
-                     << "3. Order by built." << endl
-                     << "4. Order by year." << endl;
-                cin >> selected;
-            }
+            cin.clear();
+            cin.ignore(100, '\n');
+            cout << "Invalid input. Select number from 1-4, '0' for main menu" << endl
+            << "1. Order by name." << endl
+            << "2. Order by gender." << endl
+            << "3. Order by year of birth." << endl
+            << "4. Order by year of death." << endl;
+            cin >> selected;
         }
+    }
+    else
+    {
+        cout << "1. Order by name." << endl
+        << "2. Order by type." << endl
+        << "3. Order by built." << endl
+        << "4. Order by year." << endl;
+        cin >> selected;
+
+        while (cin.fail()||selected<0)
+        {
+            cin.clear();
+            cin.ignore(100, '\n');
+            cout << "Invalid input. Select number from 1-4, '0' for main menu" << endl
+            << "1. Order by name." << endl
+            << "2. Order by type." << endl
+            << "3. Order by built." << endl
+            << "4. Order by year." << endl;
+            cin >> selected;
+        }
+    }
     return selected;
 }
 
@@ -151,7 +153,7 @@ void ConsoleUI::printPerson(int list, int i)
     if(YoD != 0)
     {
         cout << left << setw(yearWidth) << setfill(seperator) << YoB
-             << left << setw(yearWidth) << setfill(seperator) << YoD << endl;
+        << left << setw(yearWidth) << setfill(seperator) << YoD << endl;
     }
     else
     {
@@ -175,7 +177,7 @@ void ConsoleUI::printComputer(int list, int i)
     if(built != 0)
     {
         cout << left << setw(yearWidth) << setfill(seperator) << built
-             << left << setw(yearWidth) << setfill(seperator) << year << endl;
+        << left << setw(yearWidth) << setfill(seperator) << year << endl;
     }
     else
     {
@@ -217,17 +219,17 @@ void ConsoleUI::giveHead(int i)
 
     if (i == 1)
     {
-    cout << left << setw(firstNameWidth) << setfill(seperator) << "Name"
-         << left << setw(sexWidth) << setfill(seperator) << "Gender"
-         << left << setw(yearWidth) << setfill(seperator) << "Birth"
-         << left << setw(yearWidth) << setfill(seperator) << "Death" << endl;
+        cout << left << setw(firstNameWidth) << setfill(seperator) << "Name"
+        << left << setw(sexWidth) << setfill(seperator) << "Gender"
+        << left << setw(yearWidth) << setfill(seperator) << "Birth"
+        << left << setw(yearWidth) << setfill(seperator) << "Death" << endl;
     }
     else
     {
         cout << left << setw(firstNameWidth) << setfill(seperator) << "Name"
-             << left << setw(sexWidth) << setfill(seperator) << "Type"
-             << left << setw(yearWidth) << setfill(seperator) << "Built"
-             << left << setw(yearWidth) << setfill(seperator) << "Year" << endl;
+        << left << setw(sexWidth) << setfill(seperator) << "Type"
+        << left << setw(yearWidth) << setfill(seperator) << "Built"
+        << left << setw(yearWidth) << setfill(seperator) << "Year" << endl;
     }
 
 }
@@ -260,7 +262,7 @@ void ConsoleUI::search()
                 if(_tempInput[i].yearOfDeath != 0)
                 {
                     cout << left << setw(yearWidth) << setfill(seperator) << _tempInput[i].yearOfBirth
-                         << left << setw(yearWidth) << setfill(seperator) << _tempInput[i].yearOfDeath << endl;
+                    << left << setw(yearWidth) << setfill(seperator) << _tempInput[i].yearOfDeath << endl;
                 }
                 else
                 {
@@ -285,7 +287,7 @@ void ConsoleUI::search()
                 if(_tempCompInput[i].built != 0)
                 {
                     cout << left << setw(yearWidth) << setfill(seperator) << _tempCompInput[i].built
-                         << left << setw(yearWidth) << setfill(seperator) << _tempCompInput[i].year << endl;
+                    << left << setw(yearWidth) << setfill(seperator) << _tempCompInput[i].year << endl;
                 }
                 else
                 {
@@ -345,7 +347,7 @@ void ConsoleUI::addToList()
         cin >> pers.yearOfDeath;
 
         while (cin.fail() || pers.yearOfDeath < 0 || pers.yearOfDeath > 2251 ||
-                ((pers.yearOfDeath < pers.yearOfBirth) && pers.yearOfDeath !=0))
+               ((pers.yearOfDeath < pers.yearOfBirth) && pers.yearOfDeath !=0))
         {
             cin.clear();
             cin.ignore(100, '\n');
@@ -393,16 +395,16 @@ void ConsoleUI::addToComp()
 
         if(comps.built == 1)
         {
-        cout << "Year: ";
-        cin >> comps.year;
+            cout << "Year: ";
+            cin >> comps.year;
 
-          while(cin.fail() || comps.year > 2250  || comps.year < 1500)
-          {
-              cin.clear();
-              cin.ignore(100, '\n');
-              cout << "Invalid size. Enter year from 1500-2250 ";
-              cin >> comps.year;
-          }
+            while(cin.fail() || comps.year > 2250  || comps.year < 1500)
+            {
+                cin.clear();
+                cin.ignore(100, '\n');
+                cout << "Invalid size. Enter year from 1500-2250 ";
+                cin >> comps.year;
+            }
         }
 
         _tempCompInput.push_back(comps);
@@ -472,16 +474,16 @@ void ConsoleUI::deleteSelect()
 {
     int selected;
     cout << "Select one of the options below:" << endl <<
-            "1. Delete from Computer Scientists." << endl <<
-            "2. Delete from Computers." << endl;
+    "1. Delete from Computer Scientists." << endl <<
+    "2. Delete from Computers." << endl;
     cin >> selected;
     while(cin.fail())
     {
         cin.clear();
         cin.ignore(100, '\n');
         cout << "Invalid selection select '0' for main menu or try again: " << endl <<
-                "1. Delete from Computer Scientists." << endl <<
-                "2. Delete from Computers." << endl;
+        "1. Delete from Computer Scientists." << endl <<
+        "2. Delete from Computers." << endl;
         cin >> selected;
     }
     if(selected > 0 && selected < 3)
@@ -506,8 +508,8 @@ void ConsoleUI::trashSelector()
 {
     int selected;
     cout << "1. View recycle bin." << endl
-         << "2. Recover from recycle bin." << endl
-         << "3. Empty recycle bin." << endl;
+    << "2. Recover from recycle bin." << endl
+    << "3. Empty recycle bin." << endl;
     cin >> selected;
 
     while (cin.fail()||selected<0|| selected > 3)
@@ -515,9 +517,9 @@ void ConsoleUI::trashSelector()
         cin.clear();
         cin.ignore(100, '\n');
         cout << "Invalid command. Select '0' for main menu or try again " << endl
-             << "1. View recycle bin." << endl
-             << "2. Recover from recycle bin." << endl
-             << "3. Empty recycle bin." << endl;
+        << "1. View recycle bin." << endl
+        << "2. Recover from recycle bin." << endl
+        << "3. Empty recycle bin." << endl;
 
         cin >> selected;
     }
@@ -525,78 +527,78 @@ void ConsoleUI::trashSelector()
 
     switch (selected)
     {
-    case 1:        
-        cout << "1. Deleted People." << endl
-             << "2. Deleted Computers." << endl;
-        cin >> selected;
-          while (cin.fail()||selected<0|| selected > 2)
-         {
-            cin.clear();
-            cin.ignore(100, '\n');
-            cout << "Invalid command. Select '0' for main menu or try again" << endl
-                 << "1. Deleted People." << endl
-                 << "2. Deleted Computers." << endl;
-            cin >> selected;
-         }
-        switch (selected)
-        {
         case 1:
-            displayList(2);
+            cout << "1. Deleted People." << endl
+            << "2. Deleted Computers." << endl;
+            cin >> selected;
+            while (cin.fail()||selected<0|| selected > 2)
+            {
+                cin.clear();
+                cin.ignore(100, '\n');
+                cout << "Invalid command. Select '0' for main menu or try again" << endl
+                << "1. Deleted People." << endl
+                << "2. Deleted Computers." << endl;
+                cin >> selected;
+            }
+            switch (selected)
+        {
+            case 1:
+                displayList(2);
+                break;
+            case 2:
+                displayList(4);
+            case 0:
+                break;
+        }
             break;
         case 2:
-            displayList(4);
-        case 0:
-            break;
-        }
-        break;
-    case 2:
-        cout << "1. Recover People." << endl
-             << "2. Recover Computers." << endl;
-        cin >> selected;
-         while (cin.fail()||selected<0|| selected >2)
-          {
-              cin.clear();
-            cin.ignore(100, '\n');
-            cout << "Invalid command. Select '0' for main menu or try again" << endl
-                 << "1. Recover People." << endl
-                 << "2. Recover Computers." << endl;
+            cout << "1. Recover People." << endl
+            << "2. Recover Computers." << endl;
             cin >> selected;
-           }
-        switch (selected)
+            while (cin.fail()||selected<0|| selected >2)
+            {
+                cin.clear();
+                cin.ignore(100, '\n');
+                cout << "Invalid command. Select '0' for main menu or try again" << endl
+                << "1. Recover People." << endl
+                << "2. Recover Computers." << endl;
+                cin >> selected;
+            }
+            switch (selected)
         {
-        case 1:
-            recoverFromTrash(2);
-            break;
-        case 2:
-            recoverFromTrash(4);
-        case 0:
-            break;
+            case 1:
+                recoverFromTrash(2);
+                break;
+            case 2:
+                recoverFromTrash(4);
+            case 0:
+                break;
         }
-        break;
-    case 3:
-        cout << "1. Empty Deleted People." << endl
-             << "2. Empty Deleted Computers." << endl
-             << "3. Empty All." << endl;
-        cin >> selected;
-        while (cin.fail()||selected<0|| selected>3)
-       {
-          cin.clear();
-          cin.ignore(100, '\n');
-          cout << "Invalid command. Select '0' for main menu or try again" << endl
-               << "1. Empty Deleted People." << endl
-               << "2. Empty Deleted Computers." << endl
-               << "3. Empty All." << endl;
-          cin >> selected;
-       }
+            break;
+        case 3:
+            cout << "1. Empty Deleted People." << endl
+            << "2. Empty Deleted Computers." << endl
+            << "3. Empty All." << endl;
+            cin >> selected;
+            while (cin.fail()||selected<0|| selected>3)
+            {
+                cin.clear();
+                cin.ignore(100, '\n');
+                cout << "Invalid command. Select '0' for main menu or try again" << endl
+                << "1. Empty Deleted People." << endl
+                << "2. Empty Deleted Computers." << endl
+                << "3. Empty All." << endl;
+                cin >> selected;
+            }
             if(selected > 0 && selected <= 3)
             {
-            cout << "The trash was emptied successfully!" << endl;
-            _service.emptyTrash(selected);
+                cout << "The trash was emptied successfully!" << endl;
+                _service.emptyTrash(selected);
             }
 
-        break;
-    case 0:
-        break;
+            break;
+        case 0:
+            break;
     }
 }
 
@@ -636,7 +638,7 @@ void ConsoleUI::recoverFromTrash(int list)
                 cin.clear();
                 cin.ignore(100, '\n');
                 cout << "Invalid command. Select '0' for main menu" << endl
-                     << "Select the number of the person you want to recover: ";
+                << "Select the number of the person you want to recover: ";
 
                 cin >> personToRecover;
             }
@@ -663,25 +665,25 @@ void ConsoleUI::selectListToOrder()
     int colSelect;
     int orderSelect;
     cout << "Select one of the options below:" << endl <<
-            "1. Order the list of scientists." << endl <<
-            "2. Order the list of computers." << endl;
+    "1. Order the list of scientists." << endl <<
+    "2. Order the list of computers." << endl;
     cin >> selectedList;
     while (cin.fail())
     {
-      cin.clear();
-      cin.ignore(100, '\n');
-      cout << "Error select '1' to order scientists or '2' to order computers. " << endl;
-      cin >> selectedList;
+        cin.clear();
+        cin.ignore(100, '\n');
+        cout << "Error select '1' to order scientists or '2' to order computers. " << endl;
+        cin >> selectedList;
     }
-      if( (selectedList > 0 && selectedList < 3))
+    if( (selectedList > 0 && selectedList < 3))
     {
         colSelect = sortSelector(selectedList);
         cout << "Select one of the options below:" << endl <<
-                "1. Order in ascending order." << endl <<
-                "2. Order in descending order." << endl;
+        "1. Order in ascending order." << endl <<
+        "2. Order in descending order." << endl;
         cin >> orderSelect;
         _service.whatToSort(selectedList, colSelect, orderSelect);
-            }
+    }
     else
     {
         cout << "FATAL ERROR: USER TO STUPID TO SELECT NUMBER FROM LIST ABOVE!" << endl;
@@ -701,15 +703,15 @@ void ConsoleUI::edit()
 
 
     cout << "Select from wich list you would like to edit" << endl <<
-            "1. Computer scientists." << endl <<
-            "2. Computers." << endl;
+    "1. Computer scientists." << endl <<
+    "2. Computers." << endl;
     cin >> listSelect;
     while (cin.fail())
     {
-      cin.clear();
-      cin.ignore(100, '\n');
-      cout << "Error select '1' to edit scientists or '2' to edit computers. " << endl;
-      cin >> listSelect;
+        cin.clear();
+        cin.ignore(100, '\n');
+        cout << "Error select '1' to edit scientists or '2' to edit computers. " << endl;
+        cin >> listSelect;
     }
 
     if(listSelect == 2)
@@ -775,10 +777,10 @@ void ConsoleUI::edit()
                 cin >> whatToEdit;
                 while (cin.fail())
                 {
-                  cin.clear();
-                  cin.ignore(100, '\n');
-                  cout << "Invalid input. Select '1' to edit Name, '2' to edit Gender, '3' to edit Year of birth or '4' to edit Year of death " << endl;
-                  cin >> whatToEdit;
+                    cin.clear();
+                    cin.ignore(100, '\n');
+                    cout << "Invalid input. Select '1' to edit Name, '2' to edit Gender, '3' to edit Year of birth or '4' to edit Year of death " << endl;
+                    cin >> whatToEdit;
                 }
 
                 if(whatToEdit == 1)
@@ -807,27 +809,27 @@ void ConsoleUI::edit()
             }
             else
             {
-                cout << "\n1. Name  \n2. Type  \n3. Built  \n4. Year \n";                
+                cout << "\n1. Name  \n2. Type  \n3. Built  \n4. Year \n";
                 cin >> whatToEdit;
                 if(whatToEdit == 1)
                 {
-                        cout << "New name: ";
-                        cin >> edited;
+                    cout << "New name: ";
+                    cin >> edited;
                 }
                 else if(whatToEdit == 2)
                 {
-                        cout << "New Type: ";
-                        cin >> edited;
+                    cout << "New Type: ";
+                    cin >> edited;
                 }
                 else if(whatToEdit == 3)
                 {
-                        cout << "New built: ";
-                        cin >> edited;
+                    cout << "New built: ";
+                    cin >> edited;
                 }
                 else
                 {
-                        cout << "New Year: ";
-                        cin >> edited;
+                    cout << "New Year: ";
+                    cin >> edited;
                 }
             }\
 
@@ -888,3 +890,165 @@ void ConsoleUI::linkPeopleToComps()
     }
 
 }
+
+void ConsoleUI::epic()
+{
+
+    char grid[3][3] = {{'1', '2', '3'},{'4', '5', '6'},{'7', '8', '9'}};
+    char player = 'X';
+    int umferdir = 0;
+
+
+    printGrid(grid);
+
+    while(1){
+
+        umferdir ++;
+        insertPosition(grid, player);
+
+        printGrid(grid);
+
+        if (didIWin(grid) == 'X') {
+            cout << "Winner is: X" << endl;
+            break;
+        }
+        else if (didIWin(grid) == 'O') {
+            cout << "Winner is: O" << endl;
+            break;
+        }
+        else if (didIWin(grid) == 'Q' && umferdir == 9) {
+            cout << "DRAW!" << endl;
+            break;
+        }
+        XorY(player);
+    }
+
+
+}
+
+
+
+void ConsoleUI::printGrid (char grid[3][3]){
+
+    for(int i = 0 ; i < 3 ; i++){
+
+        for(int k = 0 ; k < 3 ; k++){
+
+            cout << grid[i][k] << " ";
+        }
+        cout << endl;
+    }
+}
+
+
+void ConsoleUI::insertPosition(char grid[3][3], char player){
+
+    char position;
+
+    cout << player << " position: ";
+    cin >> position;
+
+    if (position == '1' && grid[0][0] == '1'){
+        grid[0][0] = player;
+    }
+    else if (position == '2' && grid[0][1] == '2'){
+        grid[0][1] = player;
+    }
+    else if (position == '3' && grid[0][2] == '3'){
+        grid[0][2] = player;
+    }
+    else if (position == '4' && grid[1][0] == '4'){
+        grid[1][0] = player;
+    }
+    else if (position == '5' && grid[1][1] == '5'){
+        grid[1][1] = player;
+    }
+    else if (position == '6' && grid[1][2] == '6'){
+        grid[1][2] = player;
+    }
+    else if (position == '7' && grid[2][0] == '7'){
+        grid[2][0] = player;
+    }
+    else if (position == '8' && grid[2][1] == '8'){
+        grid[2][1] = player;
+    }
+    else if (position == '9' && grid[2][2] == '9'){
+        grid[2][2] = player;
+    }
+    else{
+        cout << "Invalid Position!" << endl;
+        insertPosition(grid, player);
+    }
+}
+
+void ConsoleUI::XorY(char& player){
+
+    if(player == 'X'){
+        player = 'O';
+    }
+    else{
+        player = 'X';
+    }
+}
+
+char ConsoleUI::didIWin(char grid[3][3]){
+
+    if (grid[0][0] == 'X' && grid[0][1] == 'X' && grid[0][2] == 'X'){
+        return 'X';
+    }
+    else if (grid[1][0] == 'X' && grid[1][1] == 'X' && grid[1][2] == 'X'){
+        return 'X';
+    }
+    else if (grid[2][0] == 'X' && grid[2][1] == 'X' && grid[2][2] == 'X'){
+        return 'X';
+    }
+
+    else if (grid[0][0] == 'X' && grid[1][0] == 'X' && grid[2][0] == 'X'){
+        return 'X';
+    }
+    else if (grid[0][1] == 'X' && grid[1][1] == 'X' && grid[2][1] == 'X'){
+        return 'X';
+    }
+    else if (grid[0][2] == 'X' && grid[1][2] == 'X' && grid[2][2] == 'X'){
+        return 'X';
+    }
+
+    else if (grid[0][0] == 'X' && grid[1][1] == 'X' && grid[2][2] == 'X'){
+        return 'X';
+    }
+    else if (grid[2][0] == 'X' && grid[1][1] == 'X' && grid[0][2] == 'X'){
+        return 'X';
+    }
+
+
+    else if (grid[0][0] == 'O' && grid[0][1] == 'O' && grid[0][2] == 'O'){
+        return 'O';
+    }
+    else if (grid[1][0] == 'O' && grid[1][1] == 'O' && grid[1][2] == 'O'){
+        return 'O';
+    }
+    else if (grid[2][0] == 'O' && grid[2][1] == 'O' && grid[2][2] == 'O'){
+        return 'O';
+    }
+
+    else if (grid[0][0] == 'O' && grid[1][0] == 'O' && grid[2][0] == 'O'){
+        return 'O';
+    }
+    else if (grid[0][1] == 'O' && grid[1][1] == 'O' && grid[2][1] == 'O'){
+        return 'O';
+    }
+    else if (grid[0][2] == 'O' && grid[1][2] == 'O' && grid[2][2] == 'O'){
+        return 'O';
+    }
+
+    else if (grid[0][0] == 'O' && grid[1][1] == 'O' && grid[2][2] == 'O'){
+        return 'O';
+    }
+    else if (grid[2][0] == 'O' && grid[1][1] == 'O' && grid[0][2] == 'O'){
+        return 'O';
+    }
+
+    return 'Q';
+
+}
+
