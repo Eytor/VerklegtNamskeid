@@ -355,6 +355,12 @@ void DomainService::editPerson(int list, int ID, int selection, string s)
 void DomainService::linkPersonToComp(int persID, int compID)
 {
     _data.linkPersonToComputer(persID, compID);
+    _deletedComputer.clear();
+    _deletedPersonur.clear();
+    _personur.clear();
+    _computer.clear();
+    _linking.clear();
+    _tempLinking.clear();
     retriveList();
 }
 

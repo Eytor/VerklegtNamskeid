@@ -66,7 +66,9 @@ public:
     bool checkIfLegitYear(string s);
     //links a person to a computer
     void linkPersonToComp(int persID, int compID);
+    //Displays links between persons and computers
     void displayLinks(vector<TempTolLinking> &results);
+    //Deletes links between persons and computers
     void deleteLink(int id);
 private:
     vector<TolPers> _personur;

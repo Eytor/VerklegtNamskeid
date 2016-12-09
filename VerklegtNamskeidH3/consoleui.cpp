@@ -960,19 +960,20 @@ void ConsoleUI::DeleteLinks()
     bool empty = _service.getEmptyStatus(5);
     if(empty)
     {
-        cout << "\nNo links exist\n" << endl;
+        cout << "\nNo links exist" << endl;
     }
     else
     {
-        cout << "\n---------------------------------------------------" << endl;
+        cout << "--------------------------------------------------------" << endl;
         cout << left << setw(idWidth) << setfill(seperator) << "ID:" <<
-                left << setw(nameWidth) << setfill(seperator) << "Computer Scientist:"
-             << left << setw(nameWidth) << setfill(seperator) << "Computers:";
+                left << setw(nameWidth) << setfill(seperator) << "Scientist:"
+             << left << setw(nameWidth) << setfill(seperator) << "Computers:" << endl;
+        cout << "--------------------------------------------------------" << endl;
         for(int i = 0; i < size; i++)
         {
             cout << left << setw(idWidth) << setfill(seperator) << _linkingDisplay[i].linkID <<
                     left << setw(nameWidth) << setfill(seperator) << _linkingDisplay[i].personName <<
-                    left << setw(nameWidth) << setfill(seperator) << _linkingDisplay[i].computerName;
+                    left << setw(nameWidth) << setfill(seperator) << _linkingDisplay[i].computerName <<endl;
         }
         cout << "Select the ID of a link to delete" << endl;
         cin >> selected;
