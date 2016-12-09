@@ -353,6 +353,7 @@ void DomainService::editPerson(int list, int ID, int selection, string s)
 void DomainService::linkPersonToComp(int persID, int compID)
 {
     _data.linkPersonToComputer(persID, compID);
+    retriveList();
 }
 
 void DomainService::displayLinks(vector<TempTolLinking>& results)

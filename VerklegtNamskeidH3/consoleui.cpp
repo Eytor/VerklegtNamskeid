@@ -935,9 +935,8 @@ void ConsoleUI::displayLinks()
          << left << setw(nameWidth) << setfill(seperator) << "Computers:";
     for(int i = 0; i < size; i++)
     {
-        //cout << _linkingDisplay[i].personName << endl;
         cout << setw(nameWidth) << setfill(seperator) << _linkingDisplay[i].personName <<
-                setw(nameWidth) << setfill(seperator) << _linkingDisplay[i].computerName << endl;
+                setw(nameWidth) << setfill(seperator) << _linkingDisplay[i].computerName;
     }
 }
 

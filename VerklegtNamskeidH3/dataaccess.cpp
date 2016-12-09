@@ -116,6 +116,10 @@ void DataAccess::deletePerson(int i)
     query.bindValue(":id", i);
     query.exec();
 
+    query.prepare("DELETE FROM Linking"
+                  "WHERE PeopleID = :id");
+    query.bindValue(":id", i);
+
 }
 
 void DataAccess::deleteDeletedPerson(int i)
