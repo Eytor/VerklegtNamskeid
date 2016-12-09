@@ -63,17 +63,17 @@ public:
     DataAccess();
     // Function that gets the info from the database
     void getFromDB(vector<TolComp>& computer, vector<TolPers>& person, vector<TolComp> &deletedComputer, vector<TolPers> &deletedPerson);
-    // --------------------------------------> ADD COMMENT HERE <--------------------------------------
+    // Function that allows the user to add to the computer database
     void addToComputers(vector<TempTolComp> computer);
-    // --------------------------------------> ADD COMMENT HERE <--------------------------------------
+    // Function that allows the user to add to the people database
     void addToPeople(vector<TempTolPers> people);
-    // --------------------------------------> ADD COMMENT HERE <--------------------------------------
+    // Function that allows the user to add to delete a person
     void deletePerson(int i);
-
+    //delets a person from the trashbin
     void deleteDeletedPerson(int i);
-
+    //deletes a compputer
     void deleteComputer(int i);
-
+    //delets a computer from the trashbin
     void deleteDeletedComputer(int i);
     // Function to retrive all info from both files that contain the list and the trash.
     void retriveInfo(vector<TolPers> &person, vector<TolPers> &tBin);
@@ -83,12 +83,19 @@ public:
     void updateTrash(vector<TolPers> trash);
     // Function that deletes the trash file.
     void addToDeletedPeople(vector<TempTolPers> people);
+    // Adds a deleted computer to a recycle bin
     void addToDeletedComputers(vector<TempTolComp> computer);
+    // empties recycle bin for peopl
     void emptyDeletedPeople();
+    //empties recycle bin for computers
     void emptyDeletedComputers();
+    //Function that allows the user to search the database
     void search(vector<TempTolPers>& persOutput,vector<TempTolComp>& compOutput, string s);
+    //Function that allows the user to edit the database
     void editPerson(int list, int, int col, string);
+    //Function that allows the user to sort the database
     void sort(vector<TolPers> &persVector, vector<TolComp> &compVector, int datab, int col, int ord);
+    //Function that allows the user to link a person to a computer
     void linkPersonToComputer(int persID, int compID);
 private:
     int _previousCompSize;

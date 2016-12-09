@@ -13,7 +13,7 @@ public:
     int sortSelector(int list);
     //Prints out information about one person
     void printPerson(int list, int i);
-    // --------------------------------------> ADD COMMENT HERE <--------------------------------------
+    //prints out information about a computer
     void printComputer(int list, int i);
     //Displays a list of all the person
     void displayList(int list);
@@ -29,18 +29,20 @@ public:
     void addToComp();
     //Sends a person to the recycle bin
     void deleteFromList(int list);
-    // --------------------------------------> ADD COMMENT HERE <--------------------------------------
+    //deletes a person from the list
     void deleteComputer();
-    // --------------------------------------> ADD COMMENT HERE <--------------------------------------
+    //deletes a computer from the list
     void deleteSelect();
     /*Gives the user options to display the recycle bin,
      recover a person from the recycle or empty the recycle bin*/
     void trashSelector();
     //Recovers a person from the recycle bin
     void recoverFromTrash(int list);
+    //Selects a list to order
     void selectListToOrder();
+    //links a scientist to a computer
     void linkPeopleToComps();
-
+    //these following functions allow the user to play tic tac toe
     void epic();
     void printGrid (char grid[3][3]);
     void insertPosition(char grid[3][3], char player);

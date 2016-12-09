@@ -20,11 +20,11 @@ public:
     //Function that takes first name, middle initial and last name
     //and combines them into one string and returns it
     string getName(int list, int i);
-    // --------------------------------------> ADD COMMENT HERE <--------------------------------------
+    //gets the type and returns it
     string getType(int list, int i);
-    // --------------------------------------> ADD COMMENT HERE <--------------------------------------
+    //gets built status and returns
     int getBuiltStatus(int list, int i);
-    // --------------------------------------> ADD COMMENT HERE <--------------------------------------
+    //gets the year when it was built and returns it
     int getYear(int list, int i);
     //Gets the first name and returns it
     string getFirstName(int i);
@@ -52,9 +52,9 @@ public:
     void editPerson(int list, int personID, int Selection, string s);
     //Function that adds a person to the list
     void addToList(vector<TempTolPers> input);
-    // --------------------------------------> ADD COMMENT HERE <--------------------------------------
+    //adds a computer to the list
     void addToComp(vector<TempTolComp> input);
-    // --------------------------------------> ADD COMMENT HERE <--------------------------------------
+    //function that gets the id of a computer  or person
     int getID(int list, int i);
     //Function that sends a person to the recycle bin
     void deleteFromList(int list, int id, int i);
@@ -64,6 +64,7 @@ public:
     void recoverFromTrash(int list, int id, int i);
     //Function that checks if string contains only digits
     bool checkIfLegitYear(string s);
+    //links a person to a computer
     void linkPersonToComp(int persID, int compID);
 private:
     vector<TolPers> _personur;
