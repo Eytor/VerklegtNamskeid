@@ -306,7 +306,7 @@ void DataAccess::search(vector<TempTolPers>& persOutput, vector<TempTolComp>& co
         compOutput.push_back(searchComputers);
     }
 }
-void DataAccess::editPerson(int ID, string tempString)
+void DataAccess::editPerson(int Id, string tempString)
 {
 
 
@@ -319,5 +319,6 @@ void DataAccess::editPerson(int ID, string tempString)
 
     QSqlQuery query(db);
 
-    //sqlite> UPDATE People SET Name = 'tempstring' WHERE ID = ID;
+   // update
+   // SET ADDRESS = tempString WHERE ID = Id;
 }

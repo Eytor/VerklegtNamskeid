@@ -336,20 +336,20 @@ void DomainService::editPerson(int list, int ID, int selection, string s)
     int tempint;
     if(selection == 3 || selection == 4)
     {
-        tempYear = stoi(tempString);
+        tempint = stoi(tempString);
     }
     switch (selection) {
         case 1:
-
+            _personur[ID].fullName =tempString;
             break;
-        case 2 :
-
+        case 2:
+            _personur[ID].gender = tempString;
             break;
         case 3:
-
+             _personur[ID].yearOfBirth = tempint;
             break;
         case 4:
-
+             _personur[ID].yearOfDeath = tempint;
             break;
     }
 }
