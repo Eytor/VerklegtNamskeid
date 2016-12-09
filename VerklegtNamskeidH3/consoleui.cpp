@@ -102,7 +102,7 @@ int ConsoleUI::sortSelector(int list)
         << "4. Order by year of death." << endl;
         cin >> selected;
 
-        while (cin.fail()||selected<1||selected>4)
+        while (cin.fail()||selected<0||selected>4)
         {
             cin.clear();
             cin.ignore(100, '\n');
@@ -122,7 +122,7 @@ int ConsoleUI::sortSelector(int list)
         << "4. Order by year." << endl;
         cin >> selected;
 
-        while (cin.fail()||selected<1||selected>4)
+        while (cin.fail()||selected<0||selected>4)
         {
             cin.clear();
             cin.ignore(100, '\n');
