@@ -764,10 +764,20 @@ void ConsoleUI::edit()
             {
                 cout << "\n1. Name  \n2. Gender  \n3. Year of birth  \n4. Year of death\n";
                 cin >> whatToEdit;
+                while (cin.fail())
+                {
+                  cin.clear();
+                  cin.ignore(100, '\n');
+                  cout << "Invalid input. Select '1' to edit Name, '2' to edit Gender, '3' to edit Year of birth or '4' to edit Year of death " << endl;
+                  cin >> whatToEdit;
+                }
+
                 if(whatToEdit == 1)
                 {
                     cout << "New name: ";
-                    cin >> edited;
+                    cin.ignore();
+                    getline(cin,edited);
+
                 }
                 else if(whatToEdit == 2)
                 {
