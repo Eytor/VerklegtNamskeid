@@ -364,6 +364,7 @@ void ConsoleUI::addToComp()
         cin.clear();
         cin.ignore(100,'\n');
         cout << "Invalid size. Enter number from 1-100, '0' for main menu" << endl;
+        cin >> numOfComputers;
     }
 
     TempTolComp comps;
@@ -377,12 +378,12 @@ void ConsoleUI::addToComp()
         cout << "Built? '1' for true, '0' for false : ";
         cin >> comps.built;
 
-        while(comps.built != 1 && comps.built !=0)
+        while(cin.fail() || comps.built > 1 || comps.built < 0)
         {
 
             cin.clear();
             cin.ignore(100, '\n');
-            cout << "Invalid command. Enter '1' if the computer have been built, enter '0' if not." << endl;
+            cout << "Invalid command. Enter '1' if the computer was built, enter '0' if not." << endl;
             cin >> comps.built;
         }
 
