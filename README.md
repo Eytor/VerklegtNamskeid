@@ -18,7 +18,7 @@ You are presented with a list that is quite self explanatory.
 * Display links, does indeed display the relations.
 * Delete links, does also delete relations.
 * The game, small funny game with a twist, check it out.
-* Just read the read the instructions as you work your way through the commands.
+* Just read the instructions as you work your way through the commands.
 
 ## Known Bugs
 
