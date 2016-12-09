@@ -306,19 +306,62 @@ void DataAccess::search(vector<TempTolPers>& persOutput, vector<TempTolComp>& co
         compOutput.push_back(searchComputers);
     }
 }
-void DataAccess::editPerson(int Id, string tempString)
+
+void DataAccess::editPerson(int list, int Id, int col, string tempString, int tempint)
 {
+    QString database;
+    QString column;
+    QString value = QString::fromStdString(tempString);
+    QSqlQuery query(_db);
+    if(list == 1)
+    {
+        database = "People";
 
+        if(col == 1)
+        {
+            column = "FullName";
+        }
+        else if(col == 2)
+        {
+            column = "Gender";
+        }
+        else if(col == 3)
+        {
+            column = "Yob";
 
-    QSqlDatabase db;
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    QString Tolvunarfraedi = "Tolvunarfraedi.sqlite";
-    db.setDatabaseName(Tolvunarfraedi);
+            value = tempint;
+        }
+        else
+        {
+            column = "Yod";
+            value = tempint;
+        }
 
-    db.open();
+    }
+    else
+    {
+        database = "Computers";
 
-    QSqlQuery query(db);
+        if(col == 1)
+        {
+            column = "Name";
+        }
+        else if(col == 2)
+        {
+            column = "Type";
+        }
+        else if(col == 3)
+        {
+            column = "Built";
+            value = tempint;
+        }
+        else
+        {
+            column = "Year";
+            value = tempint;
+        }
+    }
 
-   // update
-   // SET ADDRESS = tempString WHERE ID = Id;
+    query.exec("UPDATE "+ database +" SET "+ column + " = "+ value +" WHERE ID = " + Id);
+
 }

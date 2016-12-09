@@ -333,23 +333,12 @@ bool DomainService::checkIfLegitYear(string s)
 void DomainService::editPerson(int list, int ID, int selection, string s)
 {
     string tempString = s;
-    int tempint;
-    if(selection == 3 || selection == 4)
-    {
-        tempint = stoi(tempString);
-    }
-    switch (selection) {
-        case 1:
-            _personur[ID].fullName =tempString;
-            break;
-        case 2:
-            _personur[ID].gender = tempString;
-            break;
-        case 3:
-             _personur[ID].yearOfBirth = tempint;
-            break;
-        case 4:
-             _personur[ID].yearOfDeath = tempint;
-            break;
-    }
+    int tempint = stoi(tempString);
+
+    _data.editPerson(list, ID, selection, tempString, tempint);
+    _personur.clear();
+    _computer.clear();
+    _deletedComputer.clear();
+    _deletedPersonur.clear();
+    retriveList();
 }

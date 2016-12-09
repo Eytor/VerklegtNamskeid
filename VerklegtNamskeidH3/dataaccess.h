@@ -87,7 +87,7 @@ public:
     void emptyDeletedPeople();
     void emptyDeletedComputers();
     void search(vector<TempTolPers>& persOutput,vector<TempTolComp>& compOutput, string s);
-    void editPerson(int, string);
+    void editPerson(int list, int, int col, string, int tempint);
     void sort(vector<TolPers> &persVector, vector<TolComp> &compVector, int datab, int col, int ord);
 private:
     int _previousCompSize;
