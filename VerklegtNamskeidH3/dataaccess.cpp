@@ -429,10 +429,17 @@ void DataAccess::deleteLinks(int peopleOrComps, int i)
         query.bindValue(":id", i);
         query.exec();
     }
-    else
+    else if(peopleOrComps == 2)
     {
         query.prepare("DELETE FROM Linking "
                       "WHERE ComputerID = :id");
+        query.bindValue(":id", i);
+        query.exec();
+    }
+    else
+    {
+        query.prepare("DELETE FROM Linking "
+                      "WHERE ID = :id");
         query.bindValue(":id", i);
         query.exec();
     }

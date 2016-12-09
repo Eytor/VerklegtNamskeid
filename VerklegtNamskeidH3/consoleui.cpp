@@ -83,6 +83,9 @@ void ConsoleUI::run()
         case 11:
             displayLinks();
             break;
+        case 12:
+            DeleteLinks();
+            break;
         case 69:
             epic();
             break;
@@ -941,6 +944,35 @@ void ConsoleUI::displayLinks()
     }
 }
 
+void ConsoleUI::DeleteLinks()
+{
+    int selected;
+    const char seperator = ' ';
+    const int nameWidth = 40;
+    const int idWidth = 6;
+
+    int size = _service.getListSize(5);
+    _service.displayLinks(_linkingDisplay);
+    bool empty = _service.getEmptyStatus(5);
+    if(empty)
+    {
+        cout << "No links exist" << endl;
+    }
+    cout << "-------------------------------------------------------------------------" << endl;
+    cout << left << setw(idWidth) << setfill(seperator) << "ID:" <<
+            left << setw(nameWidth) << setfill(seperator) << "Computer Scientist:"
+         << left << setw(nameWidth) << setfill(seperator) << "Computers:";
+    for(int i = 0; i < size; i++)
+    {
+        cout << left << setw(idWidth) << setfill(seperator) << _linkingDisplay[i].linkID <<
+                left << setw(nameWidth) << setfill(seperator) << _linkingDisplay[i].personName <<
+                left << setw(nameWidth) << setfill(seperator) << _linkingDisplay[i].computerName;
+    }
+    cout << "Select the ID of a link to delete" << endl;
+    cin >> selected;
+    _service.deleteLink(selected);
+}
+
 void ConsoleUI::epic()
 {
 
@@ -1160,4 +1192,3 @@ char ConsoleUI::didIWin(char grid[3][3])
     return 'Q';
 
 }
-

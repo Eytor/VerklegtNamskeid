@@ -369,3 +369,15 @@ void DomainService::displayLinks(vector<TempTolLinking>& results)
     retriveList();
     _data.displayLinks(results);
 }
+
+void DomainService::deleteLink(int id)
+{
+    _data.deleteLinks(3, id);
+    _deletedComputer.clear();
+    _deletedPersonur.clear();
+    _personur.clear();
+    _computer.clear();
+    _linking.clear();
+    _tempLinking.clear();
+    retriveList();
+}

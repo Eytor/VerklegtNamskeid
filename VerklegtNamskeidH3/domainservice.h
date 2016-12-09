@@ -67,6 +67,7 @@ public:
     //links a person to a computer
     void linkPersonToComp(int persID, int compID);
     void displayLinks(vector<TempTolLinking> &results);
+    void deleteLink(int id);
 private:
     vector<TolPers> _personur;
     vector<TolComp> _computer;

@@ -44,6 +44,8 @@ public:
     void linkPeopleToComps();
     //Displays links between computers and persons
     void displayLinks();
+    //Deletes a link between person and computer
+    void DeleteLinks();
     //these following functions allow the user to play tic tac toe
     void epic();
     void printGrid (char grid[3][3]);
