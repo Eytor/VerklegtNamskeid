@@ -307,7 +307,7 @@ void DataAccess::search(vector<TempTolPers>& persOutput, vector<TempTolComp>& co
     }
 }
 
-void DataAccess::editPerson(int list, int Id, int col, string tempString, int tempint)
+void DataAccess::editPerson(int list, int Id, int col, string tempString)
 {
     QString database;
     QString column;
@@ -329,12 +329,12 @@ void DataAccess::editPerson(int list, int Id, int col, string tempString, int te
         {
             column = "Yob";
 
-            value = tempint;
+            value = stoi(tempString);
         }
         else
         {
             column = "Yod";
-            value = tempint;
+            value = stoi(tempString);
         }
 
     }
@@ -353,12 +353,12 @@ void DataAccess::editPerson(int list, int Id, int col, string tempString, int te
         else if(col == 3)
         {
             column = "Built";
-            value = tempint;
+            value = stoi(tempString);
         }
         else
         {
             column = "Year";
-            value = tempint;
+            value = stoi(tempString);
         }
     }
 

@@ -333,9 +333,8 @@ bool DomainService::checkIfLegitYear(string s)
 void DomainService::editPerson(int list, int ID, int selection, string s)
 {
     string tempString = s;
-    int tempint = stoi(tempString);
 
-    _data.editPerson(list, ID, selection, tempString, tempint);
+    _data.editPerson(list, ID, selection, tempString);
     _personur.clear();
     _computer.clear();
     _deletedComputer.clear();

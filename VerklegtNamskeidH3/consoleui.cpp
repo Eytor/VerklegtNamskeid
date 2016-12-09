@@ -802,8 +802,7 @@ void ConsoleUI::edit()
         }
         selectEdit--;
         toEdit =_service.getID(list, selectEdit);
-        cout << endl << "The delete was successful!" << endl << endl;
-        //_service.editPerson(list, toEdit, whatToEdit, edited);
+        _service.editPerson(list, toEdit, whatToEdit, edited);
     }
     else
     {
