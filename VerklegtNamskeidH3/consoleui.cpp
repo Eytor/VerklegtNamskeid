@@ -775,7 +775,8 @@ void ConsoleUI::edit()
             }
             else
             {
-                cout << "\n1. Name  \n2. Type  \n3. Built  \n4. Year \n";
+                cout << "\n1. Name  \n2. Type  \n3. Built  \n4. Year \n";                
+                cin >> whatToEdit;
                 if(whatToEdit == 1)
                 {
                         cout << "New name: ";
@@ -796,7 +797,6 @@ void ConsoleUI::edit()
                         cout << "New Year: ";
                         cin >> edited;
                 }
-                cin >> whatToEdit;
             }\
 
         }

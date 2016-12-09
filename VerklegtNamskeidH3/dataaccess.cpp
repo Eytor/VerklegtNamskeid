@@ -361,7 +361,8 @@ void DataAccess::editPerson(int list, int Id, int col, string tempString)
             value = stoi(tempString);
         }
     }
+    QString theQuery = "UPDATE "+ database +" SET "+ column + " = '"+ value +"' WHERE ID = " + Id ;
 
-    query.exec("UPDATE "+ database +" SET "+ column + " = "+ value +" WHERE ID = " + Id);
+    query.exec(theQuery);
 
 }
