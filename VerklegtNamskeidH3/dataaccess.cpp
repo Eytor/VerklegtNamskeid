@@ -312,7 +312,9 @@ void DataAccess::editPerson(int list, int Id, int col, string tempString)
     QString database;
     QString column;
     QString value = QString::fromStdString(tempString);
+    QString theID = QString::number(Id);
     QSqlQuery query(_db);
+
     if(list == 1)
     {
         database = "People";
@@ -361,7 +363,7 @@ void DataAccess::editPerson(int list, int Id, int col, string tempString)
             value = stoi(tempString);
         }
     }
-    QString theQuery = "UPDATE "+ database +" SET "+ column + " = '"+ value +"' WHERE ID = " + Id ;
+    QString theQuery = "UPDATE "+ database +" SET "+ column + " = '"+ value +"' WHERE ID = " + theID ;
 
     query.exec(theQuery);
 
