@@ -74,6 +74,7 @@ private:
     vector<TempTolComp> _tempComputer;
     vector<TempTolPers> _tempPersonur;
     vector<TempTolSearch> _tempSearch;
+    vector<TolLinking> _linking;
     DataAccess _data;
 };
 

@@ -312,7 +312,19 @@ void DataAccess::editPerson(int list, int Id, int col, string tempString)
     QString database;
     QString column;
     QString value = QString::fromStdString(tempString);
-    int number = stoi(tempString);
+    bool containsDigits = false;
+    int number;
+    for(int i = 0; i < tempString.size(); i++)
+    {
+        if(value[i].isDigit())
+        {
+            containsDigits = true;
+        }
+    }
+    if(containsDigits)
+    {
+        number = stoi(tempString);
+    }
     QString theID = QString::number(Id);
     QSqlQuery query(_db);
 

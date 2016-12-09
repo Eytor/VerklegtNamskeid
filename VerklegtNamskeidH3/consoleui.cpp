@@ -38,6 +38,7 @@ void ConsoleUI::run()
              << "8. Delete." << endl
              << "9. Recycle bin." << endl
              << "10. Link Scientists to Computers." << endl
+             << "11. Display links between Scientists and Computers" << endl
              << "69. Do you want to play a game?" << endl
              << "0. Quit." << endl;
 
@@ -77,6 +78,9 @@ void ConsoleUI::run()
             break;
         case 10:
             linkPeopleToComps();
+            break;
+        case 11:
+            displayLinks();
             break;
         case 69:
             epic();
@@ -914,6 +918,22 @@ void ConsoleUI::linkPeopleToComps()
 
 }
 
+void ConsoleUI::displayLinks()
+{
+    const char seperator = ' ';
+    const int nameWidth = 40;
+    cout << left << setw(nameWidth) << setfill(seperator) << "Computer Scientist:"
+         << left << setw(nameWidth) << setfill(seperator) << "Computers:" << endl;
+    int size = _service.getListSize(5);
+    bool empty = _service.getEmptyStatus(5);
+    if(empty)
+    {
+        cout << "No links exist" << endl;
+    }
+
+
+}
+
 void ConsoleUI::epic()
 {
 
@@ -977,8 +997,6 @@ void ConsoleUI::epic()
 
 }
 
-
-
 void ConsoleUI::printGrid (char grid[3][3])
 {
 
@@ -993,7 +1011,6 @@ void ConsoleUI::printGrid (char grid[3][3])
         cout << endl;
     }
 }
-
 
 void ConsoleUI::insertPosition(char grid[3][3], char player)
 {

@@ -176,9 +176,13 @@ int DomainService::getListSize(int list)
     {
         return _computer.size();
     }
-    else
+    else if(list == 4)
     {
         return _deletedComputer.size();
+    }
+    else
+    {
+        return _linking.size();
     }
 }
 
@@ -196,9 +200,13 @@ bool DomainService::getEmptyStatus(int list)
     {
         return _computer.empty();
     }
-    else
+    else if(list == 4)
     {
         return _deletedComputer.empty();
+    }
+    else
+    {
+        return _linking.empty();
     }
 }
 

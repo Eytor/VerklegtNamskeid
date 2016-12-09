@@ -5,6 +5,9 @@
 #include <fstream>
 #include <QtSql>
 #include <string>
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
 using namespace std;
 // Struct declared for the vectors we use.
 struct TolPers
@@ -55,6 +58,13 @@ struct TempTolSearch
     string gender;
     int yearOfBirth;
     int yearOfDeath;
+};
+
+struct TolLinking
+{
+    string personName;
+    string computerName;
+    int linkID;
 };
 
 class DataAccess

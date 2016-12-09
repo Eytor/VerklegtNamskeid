@@ -42,6 +42,8 @@ public:
     void selectListToOrder();
     //links a scientist to a computer
     void linkPeopleToComps();
+    //Displays links between computers and persons
+    void displayLinks();
     //these following functions allow the user to play tic tac toe
     void epic();
     void printGrid (char grid[3][3]);
