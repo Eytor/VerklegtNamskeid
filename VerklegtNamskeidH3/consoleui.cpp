@@ -661,7 +661,7 @@ void ConsoleUI::selectListToOrder()
     {
       cin.clear();
       cin.ignore(100, '\n');
-      cout << "Error select 1 to order scientists or 2 to order computers. " << endl;
+      cout << "Error select '1' to order scientists or '2' to order computers. " << endl;
       cin >> selectedList;
     }
       if( (selectedList > 0 && selectedList < 3))
@@ -695,6 +695,14 @@ void ConsoleUI::edit()
             "1. Computer scientists." << endl <<
             "2. Computers." << endl;
     cin >> listSelect;
+    while (cin.fail())
+    {
+      cin.clear();
+      cin.ignore(100, '\n');
+      cout << "Error select '1' to edit scientists or '2' to edit computers. " << endl;
+      cin >> listSelect;
+    }
+
     if(listSelect == 2)
     {
         list = 3;
