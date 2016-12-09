@@ -922,16 +922,23 @@ void ConsoleUI::displayLinks()
 {
     const char seperator = ' ';
     const int nameWidth = 40;
-    cout << left << setw(nameWidth) << setfill(seperator) << "Computer Scientist:"
-         << left << setw(nameWidth) << setfill(seperator) << "Computers:" << endl;
+
     int size = _service.getListSize(5);
+    _service.displayLinks(_linkingDisplay);
     bool empty = _service.getEmptyStatus(5);
     if(empty)
     {
         cout << "No links exist" << endl;
     }
-
-
+    cout << "-------------------------------------------------------------------------" << endl;
+    cout << left << setw(nameWidth) << setfill(seperator) << "Computer Scientist:"
+         << left << setw(nameWidth) << setfill(seperator) << "Computers:";
+    for(int i = 0; i < size; i++)
+    {
+        //cout << _linkingDisplay[i].personName << endl;
+        cout << setw(nameWidth) << setfill(seperator) << _linkingDisplay[i].personName <<
+                setw(nameWidth) << setfill(seperator) << _linkingDisplay[i].computerName << endl;
+    }
 }
 
 void ConsoleUI::epic()

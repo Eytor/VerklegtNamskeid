@@ -8,7 +8,7 @@ DomainService::DomainService()
 
 void DomainService::retriveList()
 {
-    _data.getFromDB(_computer, _personur, _deletedComputer, _deletedPersonur);
+    _data.getFromDB(_computer, _personur, _deletedComputer, _deletedPersonur, _linking);
 }
 
 void DomainService::addToList(vector<TempTolPers> input)
@@ -353,4 +353,9 @@ void DomainService::editPerson(int list, int ID, int selection, string s)
 void DomainService::linkPersonToComp(int persID, int compID)
 {
     _data.linkPersonToComputer(persID, compID);
+}
+
+void DomainService::displayLinks(vector<TempTolLinking>& results)
+{
+    _data.displayLinks(results);
 }

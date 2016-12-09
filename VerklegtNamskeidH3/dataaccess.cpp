@@ -10,7 +10,7 @@ DataAccess::DataAccess()
 
 }
 
-void DataAccess::getFromDB(vector<TolComp>& computer, vector<TolPers>& person, vector<TolComp>& deletedComputer, vector<TolPers>& deletedPerson)
+void DataAccess::getFromDB(vector<TolComp>& computer, vector<TolPers>& person, vector<TolComp>& deletedComputer, vector<TolPers>& deletedPerson, vector<TolLinking>& linking)
 {
     QSqlQuery query(_db);
 
@@ -18,6 +18,7 @@ void DataAccess::getFromDB(vector<TolComp>& computer, vector<TolPers>& person, v
 
     TolComp comp;
     TolPers pers;
+    TolLinking link;
     while(query.next())
     {
         comp.ID = query.value("ID").toUInt();
@@ -62,6 +63,16 @@ void DataAccess::getFromDB(vector<TolComp>& computer, vector<TolPers>& person, v
         pers.yearOfBirth = query.value("Yob").toUInt();
         pers.yearOfDeath = query.value("Yod").toUInt();
         deletedPerson.push_back(pers);
+    }
+
+    query.exec("SELECT * FROM Linking");
+
+    while(query.next())
+    {
+        link.ID = query.value("ID").toUInt();
+        link.computerID = query.value("computerID").toUInt();
+        link.peopleID = query.value("PeopleID").toUInt();
+        linking.push_back(link);
     }
 }
 
@@ -390,4 +401,18 @@ void DataAccess::linkPersonToComputer(int persID, int compID)
     query.bindValue(":persID", persID);
     query.bindValue(":compID", compID);
     query.exec();
+}
+
+void DataAccess::displayLinks(vector<TempTolLinking>& results)
+{
+    QSqlQuery query(_db);
+    query.exec("SELECT People.FullName, Computers.Name, Linking.ID FROM People JOIN Linking ON (People.ID = Linking.PeopleID) JOIN Computers ON (Linking.ComputerID = Computers.ID)");
+    TempTolLinking linkingStuff;
+    while(query.next())
+    {
+        linkingStuff.computerName = query.value("Name").toString().toStdString();
+        linkingStuff.personName = query.value("FullName").toString().toStdString();
+        linkingStuff.linkID = query.value("ID").toUInt();
+        results.push_back(linkingStuff);
+    }
 }

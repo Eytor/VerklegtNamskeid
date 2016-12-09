@@ -36,6 +36,13 @@ struct TolSearch
     int yearOfDeath;
 };
 
+struct TolLinking
+{
+    int ID;
+    int computerID;
+    int peopleID;
+};
+
 struct TempTolPers
 {
     string fullName;
@@ -60,7 +67,7 @@ struct TempTolSearch
     int yearOfDeath;
 };
 
-struct TolLinking
+struct TempTolLinking
 {
     string personName;
     string computerName;
@@ -72,7 +79,7 @@ class DataAccess
 public:
     DataAccess();
     // Function that gets the info from the database
-    void getFromDB(vector<TolComp>& computer, vector<TolPers>& person, vector<TolComp> &deletedComputer, vector<TolPers> &deletedPerson);
+    void getFromDB(vector<TolComp>& computer, vector<TolPers>& person, vector<TolComp> &deletedComputer, vector<TolPers> &deletedPerson, vector<TolLinking> &linking);
     // Function that allows the user to add to the computer database
     void addToComputers(vector<TempTolComp> computer);
     // Function that allows the user to add to the people database
@@ -107,6 +114,7 @@ public:
     void sort(vector<TolPers> &persVector, vector<TolComp> &compVector, int datab, int col, int ord);
     //Function that allows the user to link a person to a computer
     void linkPersonToComputer(int persID, int compID);
+    void displayLinks(vector<TempTolLinking>& results);
 private:
     int _previousCompSize;
     int _previousPeopleSize;

@@ -55,6 +55,7 @@ private:
     DomainService _service;
     vector<TempTolPers> _tempInput;
     vector<TempTolComp> _tempCompInput;
+    vector<TempTolLinking> _linkingDisplay;
 };
 
 #endif // CONSOLEUI_H
