@@ -39,6 +39,7 @@ public:
     //Recovers a person from the recycle bin
     void recoverFromTrash(int list);
     void selectListToOrder();
+    void linkPeopleToComps();
 private:
     DomainService _service;
     vector<TempTolPers> _tempInput;

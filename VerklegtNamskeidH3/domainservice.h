@@ -64,6 +64,7 @@ public:
     void recoverFromTrash(int list, int id, int i);
     //Function that checks if string contains only digits
     bool checkIfLegitYear(string s);
+    void linkPersonToComp(int personID, int compID);
 private:
     vector<TolPers> _personur;
     vector<TolComp> _computer;

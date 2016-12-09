@@ -37,6 +37,7 @@ void ConsoleUI::run()
              << "7. Edit list." << endl
              << "8. Delete." << endl
              << "9. Recycle bin." << endl
+             << "10. Link Scientists to Computers." << endl
              << "0. Quit." << endl;
 
         cin >> selected;
@@ -74,6 +75,9 @@ void ConsoleUI::run()
             break;
         case 9:
             trashSelector();
+            break;
+        case 10:
+            linkPeopleToComps();
             break;
         case 0:
             cout << "Goodbye!" << endl;
@@ -736,7 +740,7 @@ void ConsoleUI::edit()
             {
                 cin.clear();
                 cin.ignore(100, '\n');
-                cout << "Invalid command. Select the number of the person you want to delete." << endl;
+                cout << "Invalid command. Select the number of the person you want to edit:" << endl;
 
                 cin >> selectEdit;
             }
@@ -809,5 +813,44 @@ void ConsoleUI::edit()
         cout << "The list is empty!" << endl;
     }
 
+
+}
+
+void ConsoleUI::linkPeopleToComps()
+{
+    int scientistSelected;
+    int computerSelected
+;
+    bool peopleEmpty =  _service.getEmptyStatus(1);
+    bool compsEmpty = _service.getEmptyStatus(3);
+    unsigned int peopleSize = _service.getListSize(1);
+    unsigned int compSize = _service.getListSize(3);
+    if(peopleEmpty)
+    {
+        cout << "\nThere are no scientists in the database, please insert a scientist before linking to a computer" << endl;
+    }
+    else if(compsEmpty)
+    {
+        cout << "\nThere are no computers in the database, please insert a computer before linking to a scientist" << endl;
+    }
+    else
+    {
+        for(unsigned int i = 0; i < peopleSize; i++)
+        {
+            cout << (i+1) << ". ";
+            printPerson(1, i);
+        }
+        cout << "Please select a scientist to link: " << endl;
+        cin >> scientistSelected;
+        cout << endl;
+        for(unsigned int i = 0; i < compSize; i++)
+        {
+            cout << (i+1) << ". ";
+            printPerson(3, i);
+        }
+        cout << "Please select a computer to link: " << endl;
+        cin >> computerSelected;
+        _service.linkPersonToComp(scientistSelected, computerSelected);
+    }
 
 }

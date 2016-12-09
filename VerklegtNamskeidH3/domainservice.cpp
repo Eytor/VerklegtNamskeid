@@ -341,3 +341,8 @@ void DomainService::editPerson(int list, int ID, int selection, string s)
     _deletedPersonur.clear();
     retriveList();
 }
+
+void DomainService::linkPersonToComp(int personID, int compID)
+{
+
+}
