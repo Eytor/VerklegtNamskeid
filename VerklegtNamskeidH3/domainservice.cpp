@@ -323,6 +323,59 @@ void DomainService::deleteFromList(int list, int id, vector<TolPers> backup)
     retriveList();
 
 }
+void DomainService::deleteFromComp(int list, int id, vector<TolComp> backup)
+{
+    if(list == 1)
+    {
+        _data.addToDeletedComputers(backup);
+        _data.deleteComputer(id);
+        _tempComputer.clear();
+    }
+    /*else if(list == 2)
+    {
+        TolPers pers;
+        pers.fullName = _deletedPersonur[i].fullName;
+        pers.gender = _deletedPersonur[i].gender;
+        pers.yearOfBirth = _deletedPersonur[i].yearOfBirth;
+        pers.yearOfDeath = _deletedPersonur[i].yearOfDeath;
+        _tempPersonur.push_back(pers);
+       // _data.addToPeople(_tempPersonur);
+        _data.deleteDeletedPerson(id);
+        _tempPersonur.clear();
+    }
+    else if(list == 3)
+    {
+        TolComp comp;
+        comp.name = _computer[i].name;
+        comp.type = _computer[i].type;
+        comp.built = _computer[i].built;
+        comp.year = _computer[i].year;
+        _tempComputer.push_back(comp);
+        _data.addToDeletedComputers(_tempComputer);
+        _data.deleteComputer(id);
+        _tempComputer.clear();
+    }
+    else
+    {
+        TolComp comp;
+        comp.name = _deletedComputer[i].name;
+        comp.type = _deletedComputer[i].type;
+        comp.built = _deletedComputer[i].built;
+        comp.year = _deletedComputer[i].year;
+        _tempComputer.push_back(comp);
+        _data.addToComputers(_tempComputer);
+        _data.deleteDeletedComputer(id);
+        _tempComputer.clear();
+    }*/
+    _deletedComputer.clear();
+    _deletedPersonur.clear();
+    _personur.clear();
+    _computer.clear();
+    _linking.clear();
+    _tempLinking.clear();
+    retriveList();
+
+}
 
 void DomainService::emptyTrash(int list)
 {

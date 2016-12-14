@@ -65,6 +65,8 @@ public:
     int getID(int list, int i);
     //Function that sends a person to the recycle bin
     void deleteFromList(int list, int id, vector<TolPers> backup);
+
+    void deleteFromComp(int list, int id, vector<TolComp> backup);
     //Function that empties the recycle bin
     void emptyTrash(int list);
     //Function that recovers everything from the recycle bin

@@ -250,3 +250,29 @@ void MainWindow::on_computer_button_clicked()
         ui->computer_year_input->clear();
     }
 }
+
+void MainWindow::on_computer_table_clicked(const QModelIndex &index)
+{
+    ui->computer_delete->setEnabled(true);
+}
+
+void MainWindow::on_computer_delete_clicked()
+{
+    _tempCompInput.clear();
+    int currentlySelectedComputer = ui->computer_table->currentIndex().row();
+    int computerID = _currentComputerDisplay[currentlySelectedComputer].ID;
+
+    TolComp comp;
+    comp.name = _currentComputerDisplay[currentlySelectedComputer].name;
+    comp.type = _currentComputerDisplay[currentlySelectedComputer].type;
+    comp.built =_currentComputerDisplay[currentlySelectedComputer].built;
+    comp.year = _currentComputerDisplay[currentlySelectedComputer].year;
+    _tempCompInput.push_back(comp);
+
+    _service.deleteFromComp(1, computerID, _tempCompInput);
+    _tempInput.clear();
+    ui->scientist_search->clear();
+    displayAllComputers();
+
+    ui->computer_delete->setEnabled(false);
+}

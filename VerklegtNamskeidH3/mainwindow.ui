@@ -21,7 +21,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="Scientists">
        <attribute name="title">
@@ -295,6 +295,9 @@
         </item>
         <item>
          <widget class="QPushButton" name="computer_delete">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
           <property name="text">
            <string>Delete Computer</string>
           </property>
@@ -526,7 +529,7 @@
      <x>0</x>
      <y>0</y>
      <width>1112</width>
-     <height>20</height>
+     <height>25</height>
     </rect>
    </property>
   </widget>
