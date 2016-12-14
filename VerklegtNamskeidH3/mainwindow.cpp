@@ -198,3 +198,55 @@ void MainWindow::on_computer_search_textChanged(const QString &arg1)
     }
     _tempCompInput.clear();
 }
+
+void MainWindow::on_computer_button_clicked()
+{
+    _tempCompInput.clear();
+    bool error = false;
+    ui->computer_name_error->clear();
+    ui->computer_type_error->clear();
+    ui->computer_built_error->clear();
+    ui->computer_year_error->clear();
+    QString name = ui->computer_name_input->text();
+    QString type = ui->computer_type_input->text();
+    QString built = ui->computer_built_input->text();
+    QString year = ui->computer_year_input->text();
+
+    if(name.isEmpty())
+    {
+        error = true;
+        ui->computer_name_error->setText("<span style='color: #b20c0c'>Name can not be empty!</span>");
+    }
+    if(type.isEmpty())
+    {
+        ui->computer_type_error->setText("<span style='color: #b20c0c'>Type can not be empty!</span>");
+        error = true;
+    }
+    if(built.isEmpty())
+    {
+        ui->computer_built_error->setText("<span style='color: #b20c0c'>Was it built or not, fucknugget!</span>");
+        error = true;
+    }
+    if(year.isEmpty())
+    {
+        year = "0";
+    }
+
+    if(!error)
+    {
+
+        TolComp comp;
+        comp.name = name.toStdString();
+        comp.type = type.toStdString();
+        comp.built = built.toInt(0, 10);
+        comp.year = year.toInt(0, 10);
+        _tempCompInput.push_back(comp);
+        _service.addToComp(_tempCompInput);
+        _tempCompInput.clear();
+        displayAllComputers();
+        ui->computer_name_input->clear();
+        ui->computer_type_input->clear();
+        ui->computer_built_input->clear();
+        ui->computer_year_input->clear();
+    }
+}

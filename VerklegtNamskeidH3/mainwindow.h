@@ -29,6 +29,8 @@ private slots:
 
     void on_computer_search_textChanged(const QString &arg1);
 
+    void on_computer_button_clicked();
+
 private:
     Ui::MainWindow *ui;
     DomainService _service;
