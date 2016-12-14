@@ -21,7 +21,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="Scientists">
        <attribute name="title">
@@ -419,6 +419,103 @@
         </item>
        </layout>
       </widget>
+      <widget class="QWidget" name="recycle_tab">
+       <attribute name="title">
+        <string>Recycle Bin</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_7">
+        <item>
+         <widget class="QTabWidget" name="computer_trash_table">
+          <property name="currentIndex">
+           <number>1</number>
+          </property>
+          <widget class="QWidget" name="scientist_trash_tab">
+           <attribute name="title">
+            <string>Scientists</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_5">
+            <item>
+             <widget class="QTableWidget" name="scientist_trash_table">
+              <property name="frameShape">
+               <enum>QFrame::WinPanel</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QGridLayout" name="gridLayout_2">
+              <item row="0" column="0">
+               <widget class="QPushButton" name="scientist_recover_button">
+                <property name="text">
+                 <string>Recover selected from bin</string>
+                </property>
+               </widget>
+              </item>
+              <item row="1" column="0">
+               <widget class="QPushButton" name="scientist_empty_button">
+                <property name="text">
+                 <string>Empty recycle bin</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="computer_trash_tab">
+           <attribute name="title">
+            <string>Computers</string>
+           </attribute>
+           <layout class="QVBoxLayout" name="verticalLayout_6">
+            <item>
+             <widget class="QTableWidget" name="computer_trash_table_2">
+              <property name="frameShape">
+               <enum>QFrame::WinPanel</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QGridLayout" name="gridLayout_3">
+              <item row="0" column="0">
+               <widget class="QPushButton" name="computer_recover_button">
+                <property name="text">
+                 <string>Recover selected from bin</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <widget class="QPushButton" name="computer_empty_button">
+              <property name="text">
+               <string>Empty recycle bin</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Calendar</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_8">
+        <item>
+         <widget class="QGroupBox" name="groupBox">
+          <property name="title">
+           <string>Calendar</string>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <item>
+            <widget class="QCalendarWidget" name="calendarWidget"/>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -429,7 +526,7 @@
      <x>0</x>
      <y>0</y>
      <width>1112</width>
-     <height>25</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>
