@@ -9,6 +9,8 @@ MainWindow::MainWindow(QWidget *parent) :
     _service.retriveList();
     displayAllScientists();
     displayAllComputers();
+    displayComputerTrash();
+    displayScientistTrash();
 }
 
 MainWindow::~MainWindow()
@@ -29,14 +31,14 @@ void MainWindow::displayAllScientists()
         QString YoB =  QString::number(_currentScientistDisplay[i].yearOfBirth);
         QString YoD =  QString::number(_currentScientistDisplay[i].yearOfDeath);
 
-        ui->scientist_table->setItem(i, 0, new QTableWidgetItem(fullName));//*
+        ui->scientist_table->setItem(i, 0, new QTableWidgetItem(fullName));
         ui->scientist_table->setItem(i, 1, new QTableWidgetItem(gender));
         ui->scientist_table->setItem(i, 2, new QTableWidgetItem(YoB));
 
         if(YoD != 0)
         {
             ui->scientist_table->setItem(1, 3, new QTableWidgetItem(YoD));
-        }//*/
+        }
     }
 }
 
@@ -60,6 +62,54 @@ void MainWindow::displayAllComputers()
         if(built != 0)
         {
             ui->computer_table->setItem(i, 3, new QTableWidgetItem(year));
+        }
+    }
+}
+
+void MainWindow::displayComputerTrash()
+{
+    ui->computer_trash_table->clearContents();
+    _currentComputerTrashDisplay = _service.getCompList(2);
+    ui->computer_trash_table->setRowCount(_currentComputerTrashDisplay.size());
+
+    for(unsigned int i = 0; i < _currentComputerTrashDisplay.size(); i++)
+    {
+        QString name =  QString::fromStdString(_currentComputerTrashDisplay[i].name);
+        QString type =  QString::fromStdString(_currentComputerTrashDisplay[i].type);
+        QString built =  QString::number(_currentComputerTrashDisplay[i].built);
+        QString year =  QString::number(_currentComputerTrashDisplay[i].year);
+
+        ui->computer_trash_table->setItem(i, 0, new QTableWidgetItem(name));
+        ui->computer_trash_table->setItem(i, 1, new QTableWidgetItem(type));
+        ui->computer_trash_table->setItem(i, 2, new QTableWidgetItem(built));
+
+        if(built != 0)
+        {
+            ui->computer_trash_table->setItem(i, 3, new QTableWidgetItem(year));
+        }
+    }
+}
+
+void MainWindow::displayScientistTrash()
+{
+    ui->scientist_trash_table->clearContents();
+    _currentScientistTrashDisplay = _service.getList(2);
+    ui->scientist_trash_table->setRowCount(_currentScientistTrashDisplay.size());
+
+    for(unsigned int i = 0; i < _currentScientistTrashDisplay.size(); i++)
+    {
+        QString fullName =  QString::fromStdString(_currentScientistTrashDisplay[i].fullName);
+        QString gender =  QString::fromStdString(_currentScientistTrashDisplay[i].gender);
+        QString YoB =  QString::number(_currentScientistTrashDisplay[i].yearOfBirth);
+        QString YoD =  QString::number(_currentScientistTrashDisplay[i].yearOfDeath);
+
+        ui->scientist_trash_table->setItem(i, 0, new QTableWidgetItem(fullName));
+        ui->scientist_trash_table->setItem(i, 1, new QTableWidgetItem(gender));
+        ui->scientist_trash_table->setItem(i, 2, new QTableWidgetItem(YoB));
+
+        if(YoD != 0)
+        {
+            ui->scientist_trash_table->setItem(1, 3, new QTableWidgetItem(YoD));
         }
     }
 }
@@ -275,4 +325,57 @@ void MainWindow::on_computer_delete_clicked()
     displayAllComputers();
 
     ui->computer_delete->setEnabled(false);
+}
+
+
+void MainWindow::on_computer_trash_table_clicked(const QModelIndex &index)
+{
+    ui->computer_recover_button->setEnabled(true);
+}
+
+void MainWindow::on_scientist_trash_table_clicked(const QModelIndex &index)
+{
+    ui->scientist_recover_button->setEnabled(true);
+}
+
+void MainWindow::on_computer_recover_button_clicked()
+{
+    _tempCompInput.clear();
+    int currentlySelectedComputer = ui->computer_trash_table->currentIndex().row();
+    int computerID = _currentComputerTrashDisplay[currentlySelectedComputer].ID;
+
+    TolComp comp;
+    comp.name = _currentComputerDisplay[currentlySelectedComputer].name;
+    comp.type = _currentComputerDisplay[currentlySelectedComputer].type;
+    comp.built =_currentComputerDisplay[currentlySelectedComputer].built;
+    comp.year = _currentComputerDisplay[currentlySelectedComputer].year;
+    _tempCompInput.push_back(comp);
+
+    _service.deleteFromComp(2, computerID, _tempCompInput);
+    _tempCompInput.clear();
+    displayAllComputers();
+    displayComputerTrash();
+
+    ui->computer_recover_button->setEnabled(false);
+}
+
+void MainWindow::on_scientist_recover_button_clicked()
+{
+    _tempInput.clear();
+    int currentlySelectedScientist = ui->scientist_trash_table->currentIndex().row();
+    int scientistID = _currentScientistTrashDisplay[currentlySelectedScientist].ID;
+
+    TolPers pers;
+    pers.fullName = _currentScientistTrashDisplay[currentlySelectedScientist].fullName;
+    pers.gender = _currentScientistTrashDisplay[currentlySelectedScientist].gender;
+    pers.yearOfBirth = _currentScientistTrashDisplay[currentlySelectedScientist].yearOfBirth;
+    pers.yearOfDeath = _currentScientistTrashDisplay[currentlySelectedScientist].yearOfDeath;
+    _tempInput.push_back(pers);
+
+    _service.deleteFromList(2, scientistID, _tempInput);
+    _tempInput.clear();
+    displayAllScientists();
+    displayScientistTrash();
+
+    ui->scientist_recover_button->setEnabled(false);
 }

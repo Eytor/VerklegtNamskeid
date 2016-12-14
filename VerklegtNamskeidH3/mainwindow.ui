@@ -21,7 +21,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="Scientists">
        <attribute name="title">
@@ -428,9 +428,9 @@
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_7">
         <item>
-         <widget class="QTabWidget" name="computer_trash_table">
+         <widget class="QTabWidget" name="trash_placeholder">
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="scientist_trash_tab">
            <attribute name="title">
@@ -442,12 +442,47 @@
               <property name="frameShape">
                <enum>QFrame::WinPanel</enum>
               </property>
+              <property name="selectionBehavior">
+               <enum>QAbstractItemView::SelectRows</enum>
+              </property>
+              <attribute name="horizontalHeaderDefaultSectionSize">
+               <number>255</number>
+              </attribute>
+              <attribute name="horizontalHeaderStretchLastSection">
+               <bool>true</bool>
+              </attribute>
+              <attribute name="verticalHeaderVisible">
+               <bool>false</bool>
+              </attribute>
+              <column>
+               <property name="text">
+                <string>Full name</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Gender</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Year of birth</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Year of death</string>
+               </property>
+              </column>
              </widget>
             </item>
             <item>
              <layout class="QGridLayout" name="gridLayout_2">
               <item row="0" column="0">
                <widget class="QPushButton" name="scientist_recover_button">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
                 <property name="text">
                  <string>Recover selected from bin</string>
                 </property>
@@ -470,16 +505,48 @@
            </attribute>
            <layout class="QVBoxLayout" name="verticalLayout_6">
             <item>
-             <widget class="QTableWidget" name="computer_trash_table_2">
+             <widget class="QTableWidget" name="computer_trash_table">
               <property name="frameShape">
                <enum>QFrame::WinPanel</enum>
               </property>
+              <attribute name="horizontalHeaderDefaultSectionSize">
+               <number>255</number>
+              </attribute>
+              <attribute name="horizontalHeaderStretchLastSection">
+               <bool>true</bool>
+              </attribute>
+              <attribute name="verticalHeaderVisible">
+               <bool>false</bool>
+              </attribute>
+              <column>
+               <property name="text">
+                <string>Name</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Type</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Built</string>
+               </property>
+              </column>
+              <column>
+               <property name="text">
+                <string>Year</string>
+               </property>
+              </column>
              </widget>
             </item>
             <item>
              <layout class="QGridLayout" name="gridLayout_3">
               <item row="0" column="0">
                <widget class="QPushButton" name="computer_recover_button">
+                <property name="enabled">
+                 <bool>false</bool>
+                </property>
                 <property name="text">
                  <string>Recover selected from bin</string>
                 </property>
@@ -529,9 +596,15 @@
      <x>0</x>
      <y>0</y>
      <width>1112</width>
-     <height>22</height>
+     <height>25</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuUltra_scientist_and_computer_database">
+    <property name="title">
+     <string>Ultra scientist and computer database</string>
+    </property>
+   </widget>
+   <addaction name="menuUltra_scientist_and_computer_database"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
