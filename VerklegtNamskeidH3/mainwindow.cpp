@@ -346,10 +346,10 @@ void MainWindow::on_computer_recover_button_clicked()
     int computerID = _currentComputerTrashDisplay[currentlySelectedComputer].ID;
 
     TolComp comp;
-    comp.name = _currentComputerDisplay[currentlySelectedComputer].name;
-    comp.type = _currentComputerDisplay[currentlySelectedComputer].type;
-    comp.built =_currentComputerDisplay[currentlySelectedComputer].built;
-    comp.year = _currentComputerDisplay[currentlySelectedComputer].year;
+    comp.name = _currentComputerTrashDisplay[currentlySelectedComputer].name;
+    comp.type = _currentComputerTrashDisplay[currentlySelectedComputer].type;
+    comp.built =_currentComputerTrashDisplay[currentlySelectedComputer].built;
+    comp.year = _currentComputerTrashDisplay[currentlySelectedComputer].year;
     _tempCompInput.push_back(comp);
 
     _service.deleteFromComp(2, computerID, _tempCompInput);
