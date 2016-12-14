@@ -21,7 +21,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="Scientists">
        <attribute name="title">
@@ -223,7 +223,7 @@
            <string/>
           </property>
           <property name="placeholderText">
-           <string>Year of death(leave empty if still alive)..</string>
+           <string>Year of death (leave empty if still alive)..</string>
           </property>
          </widget>
         </item>
@@ -381,7 +381,7 @@
         <item>
          <widget class="QLineEdit" name="computer_built_input">
           <property name="placeholderText">
-           <string>Built..</string>
+           <string>Built (1 if built, 0 if not).. </string>
           </property>
          </widget>
         </item>
@@ -485,14 +485,14 @@
                 </property>
                </widget>
               </item>
+              <item row="1" column="0">
+               <widget class="QPushButton" name="computer_empty_button">
+                <property name="text">
+                 <string>Empty recycle bin</string>
+                </property>
+               </widget>
+              </item>
              </layout>
-            </item>
-            <item>
-             <widget class="QPushButton" name="computer_empty_button">
-              <property name="text">
-               <string>Empty recycle bin</string>
-              </property>
-             </widget>
             </item>
            </layout>
           </widget>
@@ -529,7 +529,7 @@
      <x>0</x>
      <y>0</y>
      <width>1112</width>
-     <height>25</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
