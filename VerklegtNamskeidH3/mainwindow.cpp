@@ -59,7 +59,7 @@ void MainWindow::displayAllComputers()
 
         if(built != 0)
         {
-            ui->computer_table->setItem(1, 3, new QTableWidgetItem(year));
+            ui->computer_table->setItem(i, 3, new QTableWidgetItem(year));
         }
     }
 }
