@@ -45,6 +45,10 @@ private slots:
 
     void on_scientist_recover_button_clicked();
 
+    void on_computer_empty_button_clicked();
+
+    void on_scientist_empty_button_clicked();
+
 private:
     Ui::MainWindow *ui;
     DomainService _service;

@@ -211,9 +211,9 @@ void MainWindow::on_scientist_delete_clicked()
     _tempInput.clear();
     ui->scientist_search->clear();
     displayAllScientists();
+    displayScientistTrash();
 
     ui->scientist_delete->setEnabled(false);
-
 }
 
 
@@ -323,6 +323,7 @@ void MainWindow::on_computer_delete_clicked()
     _tempInput.clear();
     ui->scientist_search->clear();
     displayAllComputers();
+    displayComputerTrash();
 
     ui->computer_delete->setEnabled(false);
 }
@@ -378,4 +379,16 @@ void MainWindow::on_scientist_recover_button_clicked()
     displayScientistTrash();
 
     ui->scientist_recover_button->setEnabled(false);
+}
+
+void MainWindow::on_computer_empty_button_clicked()
+{
+    _service.emptyTrash(2);\
+    displayComputerTrash();
+}
+
+void MainWindow::on_scientist_empty_button_clicked()
+{
+    _service.emptyTrash(1);
+    displayScientistTrash();
 }
