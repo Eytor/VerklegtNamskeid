@@ -539,7 +539,19 @@ background-color:#008CBA;
            </widget>
           </item>
           <item>
-           <widget class="QTableWidget" name="computer_link_table"/>
+           <widget class="QTableWidget" name="computer_link_table">
+            <attribute name="horizontalHeaderStretchLastSection">
+             <bool>true</bool>
+            </attribute>
+            <attribute name="verticalHeaderVisible">
+             <bool>false</bool>
+            </attribute>
+            <column>
+             <property name="text">
+              <string>Compuer Name</string>
+             </property>
+            </column>
+           </widget>
           </item>
          </layout>
         </item>
@@ -755,7 +767,7 @@ background-color:#008CBA;
      <x>0</x>
      <y>0</y>
      <width>1112</width>
-     <height>44</height>
+     <height>45</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuUltra_scientist_and_computer_database">

@@ -54,6 +54,8 @@ private slots:
 
     void on_link_button_clicked();
 
+    void on_scientist_link_table_clicked(const QModelIndex &index);
+
 private:
     Ui::MainWindow *ui;
     DomainService _service;
@@ -67,6 +69,7 @@ private:
     vector<TolComp> _tempCompInput;
 
     vector<TolPersLink> _linkPersDisplay;
+    vector<TolCompLink> _linkCompDisplay;
 };
 
 #endif // MAINWINDOW_H

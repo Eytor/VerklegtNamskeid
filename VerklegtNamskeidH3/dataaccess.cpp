@@ -454,6 +454,22 @@ void DataAccess::displayScientistsWithLinks(vector<TolPersLink>& results)
     }
 }
 
+void DataAccess::displayCompsFromLink(int personID, vector<TolCompLink>& results)
+{
+    QSqlQuery query(_db);
+    QString ID = QString::number(personID);
+    query.exec("SELECT Computers.Name, Linking.ID, Linking.ComputerID FROM Computers JOIN Linking ON(Computers.ID=Linking.ComputerID) WHERE Linking.PeopleID = " + ID);
+
+    TolCompLink compsToLink;
+    while(query.next())
+    {
+        compsToLink.linkID = query.value("ID").toUInt();
+        compsToLink.compID = query.value("computerID").toUInt();
+        compsToLink.compName = query.value("Name").toString().toStdString();
+        results.push_back(compsToLink);
+    }
+}
+
 void DataAccess::deleteLinks(int peopleOrComps, int i)
 {
     QSqlQuery query(_db);

@@ -131,6 +131,8 @@ void MainWindow::displayLinksScientists()
     }
 }
 
+
+
 void MainWindow::on_scientist_search_textChanged(const QString &arg1)
 {
     ui->scientist_table->clearContents();
@@ -345,7 +347,6 @@ void MainWindow::on_computer_delete_clicked()
     ui->computer_delete->setEnabled(false);
 }
 
-
 void MainWindow::on_computer_trash_table_clicked(const QModelIndex &index)
 {
     ui->computer_recover_button->setEnabled(true);
@@ -471,3 +472,34 @@ void MainWindow::on_link_button_clicked()
     _service.linkPersonToComp(scientistID, computerID);
     displayLinksScientists();
 }
+
+void MainWindow::on_scientist_link_table_clicked(const QModelIndex &index)
+{
+    int selectedScientist = ui->scientist_link_table->currentIndex().row();
+    int scientistID = _linkPersDisplay[selectedScientist].ID;
+
+    ui->computer_link_table->clear();
+    _linkCompDisplay.clear();
+    _service.displayCompsLink(_linkCompDisplay, scientistID);
+
+    ui->computer_link_table->setRowCount(_linkCompDisplay.size());
+
+    for(unsigned int i = 0; i < _linkCompDisplay.size(); i++)
+    {
+        //QString linkID = QString::number(_linkCompDisplay[i].linkID);
+        //QString compID = QString::number(_linkCompDisplay[i].compID);
+        QString compName = QString::fromStdString(_linkCompDisplay[i].compName);
+
+        ui->computer_link_table->setItem(i, 0, new QTableWidgetItem(compName));
+    }
+
+
+}
+/*
+struct TolCompLink
+{
+    int linkID;
+    int compID;
+    string compName;
+};
+*/

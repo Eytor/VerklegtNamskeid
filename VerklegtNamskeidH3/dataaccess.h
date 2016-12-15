@@ -50,6 +50,13 @@ struct TolPersLink
     string  personName;
 };
 
+struct TolCompLink
+{
+    int linkID;
+    int compID;
+    string compName;
+};
+
 class DataAccess
 {
 public:
@@ -98,6 +105,7 @@ public:
     void displayScientistsWithLinks(vector<TolPersLink>& results);
     //Deletes the links
     void deleteLinks(int peopleOrComps, int i);
+    void displayCompsFromLink(int personID, vector<TolCompLink> &results);
 private:
     int _previousCompSize;
     int _previousPeopleSize;
