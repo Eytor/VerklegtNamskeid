@@ -10,6 +10,97 @@
     <height>742</height>
    </rect>
   </property>
+  <property name="palette">
+   <palette>
+    <active>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>53</red>
+        <green>53</green>
+        <blue>53</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>53</red>
+        <green>53</green>
+        <blue>53</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>53</red>
+        <green>53</green>
+        <blue>53</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </active>
+    <inactive>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>53</red>
+        <green>53</green>
+        <blue>53</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>53</red>
+        <green>53</green>
+        <blue>53</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>53</red>
+        <green>53</green>
+        <blue>53</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </inactive>
+    <disabled>
+     <colorrole role="Button">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>53</red>
+        <green>53</green>
+        <blue>53</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Base">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>53</red>
+        <green>53</green>
+        <blue>53</blue>
+       </color>
+      </brush>
+     </colorrole>
+     <colorrole role="Window">
+      <brush brushstyle="SolidPattern">
+       <color alpha="255">
+        <red>53</red>
+        <green>53</green>
+        <blue>53</blue>
+       </color>
+      </brush>
+     </colorrole>
+    </disabled>
+   </palette>
+  </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
@@ -31,6 +122,13 @@ background-color:rgb(75, 75, 75);
 color:#008CBB
 }
 
+QComboBox{
+color:#fff;
+}
+QComboBox:scientist_order_by_column{
+color:#fff;
+}
+
 QLabel{
 color:#fff;
 }
@@ -39,9 +137,10 @@ QWidget{
 background-color:rgb(53, 53, 53);
 }
 
+
 QTableView{
 background-color:rgb(53, 53, 53);
-border: 2px solid gray;
+border: 1px solid gray;
 color:#fff;
 }
 
@@ -78,23 +177,30 @@ font: 12pt &quot;MS Shell Dlg 2&quot;;
 
 QLineEdit{
 background-color:gray;
-border: 2px solid gray;
+border: 1px solid rgb(30, 30, 30);
 }
 QLineEdit:hover{
 background-color:rgb(75, 75, 75);
-border: 2px solid #008CBA ;
+border: 1px solid #008CBA ;
 }
 
 QPushButton{
   font-size: 12px;
   padding: 6px;
   color: #fff;
-  background-color: gray;
-  border-radius: 5px;
+  background-color: rgb(90,90,90);
+  border:1px solid rgb(30,30,30);
+  border-radius: 6px;
 }
 QPushButton:hover{
 background-color:#008CBA;
 }
+QPushButton:!enabled{
+border:  1px solid grey;
+color:grey;
+background-color:rgb(65, 65, 65)
+}
+
 </string>
   </property>
   <widget class="QWidget" name="centralWidget">
@@ -105,7 +211,7 @@ background-color:#008CBA;
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="Scientists">
        <attribute name="title">
@@ -126,6 +232,16 @@ background-color:#008CBA;
          </widget>
         </item>
         <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_10">
+          <item>
+           <widget class="QComboBox" name="scientist_order_by_column"/>
+          </item>
+          <item>
+           <widget class="QComboBox" name="scientist_order_by_asc_desc"/>
+          </item>
+         </layout>
+        </item>
+        <item>
          <widget class="QTableWidget" name="scientist_table">
           <property name="editTriggers">
            <set>QAbstractItemView::NoEditTriggers</set>
@@ -134,7 +250,7 @@ background-color:#008CBA;
            <enum>QAbstractItemView::SelectRows</enum>
           </property>
           <property name="sortingEnabled">
-           <bool>true</bool>
+           <bool>false</bool>
           </property>
           <attribute name="horizontalHeaderCascadingSectionResizes">
            <bool>true</bool>
@@ -146,7 +262,7 @@ background-color:#008CBA;
            <number>100</number>
           </attribute>
           <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
-           <bool>true</bool>
+           <bool>false</bool>
           </attribute>
           <attribute name="horizontalHeaderStretchLastSection">
            <bool>true</bool>
@@ -840,7 +956,11 @@ background-color:#008CBA;
      <x>0</x>
      <y>0</y>
      <width>1112</width>
+<<<<<<< HEAD
      <height>35</height>
+=======
+     <height>39</height>
+>>>>>>> 9ffbdd731a319f6aa12f52a2dd6903a0b6a3da02
     </rect>
    </property>
    <widget class="QMenu" name="menuUltra_scientist_and_computer_database">
