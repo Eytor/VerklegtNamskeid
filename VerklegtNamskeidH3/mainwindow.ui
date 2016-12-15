@@ -105,7 +105,7 @@ background-color:#008CBA;
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>3</number>
       </property>
       <widget class="QWidget" name="Scientists">
        <attribute name="title">
@@ -127,6 +127,9 @@ background-color:#008CBA;
         </item>
         <item>
          <widget class="QTableWidget" name="scientist_table">
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
           <property name="selectionBehavior">
            <enum>QAbstractItemView::SelectRows</enum>
           </property>
@@ -350,6 +353,9 @@ background-color:#008CBA;
         </item>
         <item>
          <widget class="QTableWidget" name="computer_table">
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
           <property name="selectionBehavior">
            <enum>QAbstractItemView::SelectRows</enum>
           </property>
@@ -538,6 +544,9 @@ background-color:#008CBA;
           </item>
           <item>
            <widget class="QTableWidget" name="scientist_link_table">
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
+            </property>
             <attribute name="horizontalHeaderStretchLastSection">
              <bool>true</bool>
             </attribute>
@@ -560,6 +569,9 @@ background-color:#008CBA;
           </item>
           <item>
            <widget class="QTableWidget" name="computer_link_table">
+            <property name="editTriggers">
+             <set>QAbstractItemView::NoEditTriggers</set>
+            </property>
             <property name="rowCount">
              <number>0</number>
             </property>
@@ -650,7 +662,7 @@ background-color:#008CBA;
         <item>
          <widget class="QTabWidget" name="trash_placeholder">
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="scientist_trash_tab">
            <attribute name="title">
@@ -661,6 +673,9 @@ background-color:#008CBA;
              <widget class="QTableWidget" name="scientist_trash_table">
               <property name="frameShape">
                <enum>QFrame::WinPanel</enum>
+              </property>
+              <property name="editTriggers">
+               <set>QAbstractItemView::NoEditTriggers</set>
               </property>
               <property name="selectionBehavior">
                <enum>QAbstractItemView::SelectRows</enum>
@@ -728,6 +743,9 @@ background-color:#008CBA;
              <widget class="QTableWidget" name="computer_trash_table">
               <property name="frameShape">
                <enum>QFrame::WinPanel</enum>
+              </property>
+              <property name="editTriggers">
+               <set>QAbstractItemView::NoEditTriggers</set>
               </property>
               <property name="alternatingRowColors">
                <bool>true</bool>
