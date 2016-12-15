@@ -223,6 +223,7 @@ void MainWindow::on_scientist_delete_clicked()
     string gender = ui->scientist_table->model()->data(ui->scientist_table->model()->index(currentlySelectedScientist,1)).toString().toStdString();
     int yob = ui->scientist_table->model()->data(ui->scientist_table->model()->index(currentlySelectedScientist,2)).toUInt();
     int yod = ui->scientist_table->model()->data(ui->scientist_table->model()->index(currentlySelectedScientist,3)).toUInt();
+    bool wasError = true;
 
     _currentScientistDisplay = _service.getList(1);
 
@@ -234,23 +235,27 @@ void MainWindow::on_scientist_delete_clicked()
            (yob == _currentScientistDisplay[i].yearOfBirth))
         {
             scientistID = _currentScientistDisplay[i].ID;
+            wasError =  false;
         }
     }
+    if(!wasError)
+    {
+        TolPers pers;
+        pers.fullName = name;
+        pers.gender = gender;
+        pers.yearOfBirth = yob;
+        pers.yearOfDeath = yod;
+        _tempInput.push_back(pers);
 
-    TolPers pers;
-    pers.fullName = name;
-    pers.gender = gender;
-    pers.yearOfBirth = yob;
-    pers.yearOfDeath = yod;
-    _tempInput.push_back(pers);
+        _service.deleteFromList(1, scientistID, _tempInput);
+        _tempInput.clear();
+        ui->scientist_search->clear();
+        displayAllScientists();
+        displayScientistTrash();
 
-    _service.deleteFromList(1, scientistID, _tempInput);
-    _tempInput.clear();
-    ui->scientist_search->clear();
-    displayAllScientists();
-    displayScientistTrash();
+        ui->scientist_delete->setEnabled(false);
 
-    ui->scientist_delete->setEnabled(false);
+    }
 }
 
 
