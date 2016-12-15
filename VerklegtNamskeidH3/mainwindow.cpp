@@ -492,8 +492,9 @@ void MainWindow::on_scientist_link_table_clicked(const QModelIndex &index)
         QString compName = QString::fromStdString(_linkCompDisplay[i].compName);
 
         ui->computer_link_table->setItem(i, 0, new QTableWidgetItem(compName));
-    }
 
+    }
+    ui->computer_link_table->setHorizontalHeaderItem(0, new QTableWidgetItem("Computer Name"));
 
 }
 /*
