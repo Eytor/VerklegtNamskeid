@@ -540,10 +540,19 @@ void MainWindow::on_link_button_clicked()
     }
     int scientistID = _currentScientistDisplay[scientistI].ID;
     int computerID = _currentComputerDisplay[computerI].ID;
-    _service.linkPersonToComp(scientistID, computerID);
-    displayLinksScientists();
 
-    ui->link_delete_button->setEnabled(false);
+    if(!_service.checkTheLinkExists(scientistID, computerID))
+    {
+        //Write in error message that link exists
+
+    }
+    else
+    {
+        _service.linkPersonToComp(scientistID, computerID);
+        displayLinksScientists();
+
+        ui->link_delete_button->setEnabled(false);
+    }
 }
 
 void MainWindow::on_scientist_link_table_clicked()
