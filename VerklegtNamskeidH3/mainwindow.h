@@ -3,6 +3,7 @@
 #include "domainservice.h"
 #include <QMainWindow>
 
+
 namespace Ui {
 class MainWindow;
 }
@@ -55,6 +56,8 @@ private slots:
     void on_link_button_clicked();
 
     void on_scientist_link_table_clicked(const QModelIndex &index);
+
+    void on_edit_button_clicked();
 
 private:
     Ui::MainWindow *ui;

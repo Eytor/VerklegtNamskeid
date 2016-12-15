@@ -105,13 +105,20 @@ background-color:#008CBA;
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="Scientists">
        <attribute name="title">
         <string>Scientists</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QPushButton" name="edit_button">
+          <property name="text">
+           <string>Edit</string>
+          </property>
+         </widget>
+        </item>
         <item>
          <widget class="QLineEdit" name="scientist_search">
           <property name="text">
@@ -767,7 +774,7 @@ background-color:#008CBA;
      <x>0</x>
      <y>0</y>
      <width>1112</width>
-     <height>45</height>
+     <height>35</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuUltra_scientist_and_computer_database">

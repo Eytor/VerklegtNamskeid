@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "edit.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -503,3 +504,10 @@ struct TolCompLink
     string compName;
 };
 */
+
+void MainWindow::on_edit_button_clicked()
+{
+    Edit edit;
+    edit.setModal(true);
+    edit.exec();
+}
