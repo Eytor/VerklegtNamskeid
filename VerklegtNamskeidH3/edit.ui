@@ -19,14 +19,14 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <widget class="QLabel" name="scientist_name">
+        <widget class="QLabel" name="edit_scientist_name">
          <property name="text">
           <string>Name:</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="scientist_name_error">
+        <widget class="QLabel" name="edit_scientist_name_error">
          <property name="text">
           <string/>
          </property>
@@ -35,7 +35,7 @@
       </layout>
      </item>
      <item>
-      <widget class="QLineEdit" name="scientist_name_input">
+      <widget class="QLineEdit" name="scientist_edit_name">
        <property name="text">
         <string/>
        </property>
@@ -47,14 +47,14 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_3">
        <item>
-        <widget class="QLabel" name="scientist_gender">
+        <widget class="QLabel" name="edit_scientist_gender">
          <property name="text">
           <string>Gender:</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="scientist_gender_error">
+        <widget class="QLabel" name="edit_scientist_gender_error">
          <property name="text">
           <string/>
          </property>
@@ -63,7 +63,7 @@
       </layout>
      </item>
      <item>
-      <widget class="QLineEdit" name="scientist_gender_input">
+      <widget class="QLineEdit" name="scientist_edit_gender">
        <property name="text">
         <string/>
        </property>
@@ -75,14 +75,14 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_4">
        <item>
-        <widget class="QLabel" name="scientist_yob">
+        <widget class="QLabel" name="edit_scientist_yob">
          <property name="text">
           <string>Year of birth:</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="scientist_yob_error">
+        <widget class="QLabel" name="edit_scientist_yob_error">
          <property name="text">
           <string/>
          </property>
@@ -91,7 +91,7 @@
       </layout>
      </item>
      <item>
-      <widget class="QLineEdit" name="scientist_yob_input">
+      <widget class="QLineEdit" name="scientist_edit_yob">
        <property name="text">
         <string/>
        </property>
@@ -103,14 +103,14 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_5">
        <item>
-        <widget class="QLabel" name="scientist_yod">
+        <widget class="QLabel" name="edit_scientist_yod">
          <property name="text">
           <string>Year of Death:</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="scientist_yod_error">
+        <widget class="QLabel" name="edit_scientist_yod_error">
          <property name="text">
           <string/>
          </property>
@@ -119,7 +119,7 @@
       </layout>
      </item>
      <item>
-      <widget class="QLineEdit" name="lineEdit"/>
+      <widget class="QLineEdit" name="scientist_edit_yod"/>
      </item>
     </layout>
    </item>
