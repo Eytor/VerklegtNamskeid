@@ -49,6 +49,10 @@ private slots:
 
     void on_scientist_empty_button_clicked();
 
+    void on_tabs_tabBarClicked(int index);
+
+    void on_link_button_clicked();
+
 private:
     Ui::MainWindow *ui;
     DomainService _service;

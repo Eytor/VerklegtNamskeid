@@ -83,7 +83,7 @@ void MainWindow::displayComputerTrash()
         ui->computer_trash_table->setItem(i, 1, new QTableWidgetItem(type));
         ui->computer_trash_table->setItem(i, 2, new QTableWidgetItem(built));
 
-        if(built != 0)
+        if(built != "0")
         {
             ui->computer_trash_table->setItem(i, 3, new QTableWidgetItem(year));
         }
@@ -107,7 +107,7 @@ void MainWindow::displayScientistTrash()
         ui->scientist_trash_table->setItem(i, 1, new QTableWidgetItem(gender));
         ui->scientist_trash_table->setItem(i, 2, new QTableWidgetItem(YoB));
 
-        if(YoD != 0)
+        if(YoD != "0")
         {
             ui->scientist_trash_table->setItem(1, 3, new QTableWidgetItem(YoD));
         }
@@ -391,4 +391,64 @@ void MainWindow::on_scientist_empty_button_clicked()
 {
     _service.emptyTrash(1);
     displayScientistTrash();
+}
+
+void MainWindow::on_tabs_tabBarClicked(int index)
+{
+    if(index == 2)
+    {
+        _currentComputerDisplay.clear();
+        _currentScientistDisplay.clear();
+        QString item;
+
+        _currentScientistDisplay = _service.getList(1);
+        _currentComputerDisplay = _service.getCompList(1);
+        for(unsigned int i = 0; i < _currentScientistDisplay.size(); i++)
+        {
+            item = QString::fromStdString(_currentScientistDisplay[i].fullName);
+            ui->scientist_dropdown->addItem(item);
+
+        }
+        for(unsigned int i = 0; i < _currentComputerDisplay.size(); i++)
+        {
+            item = QString::fromStdString(_currentComputerDisplay[i].name);
+            ui->computer_dropdown->addItem(item);
+        }
+
+        if(!_currentComputerDisplay.empty() && !_currentScientistDisplay.empty())
+        {
+            ui->link_button->setEnabled(true);
+        }
+        else
+        {
+            ui->link_button->setEnabled(false);
+        }
+    }
+}
+
+void MainWindow::on_link_button_clicked()
+{
+    _currentComputerDisplay.clear();
+    _currentScientistDisplay.clear();
+    _currentScientistDisplay = _service.getList(1);
+    _currentComputerDisplay = _service.getCompList(1);
+    int scientistI;
+    int computerI;
+    for(unsigned int i = 0; i < _currentScientistDisplay.size(); i++)
+    {
+        if(_currentScientistDisplay[i].fullName == ui->scientist_dropdown->currentText().toStdString())
+        {
+            scientistI = i;
+        }
+    }
+    for(unsigned int i = 0; i < _currentComputerDisplay.size(); i++)
+    {
+        if(_currentComputerDisplay[i].name == ui->computer_dropdown->currentText().toStdString())
+        {
+            computerI = i;
+        }
+    }
+    int scientistID = _currentScientistDisplay[scientistI].ID;
+    int computerID = _currentComputerDisplay[computerI].ID;
+    _service.linkPersonToComp(scientistID, computerID);
 }
