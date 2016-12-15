@@ -7,7 +7,15 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    ui->scientist_order_by_column->addItem("Full Name");
+    ui->scientist_order_by_column->addItem("Gender");
+    ui->scientist_order_by_column->addItem("Year Of Birth");
+    ui->scientist_order_by_column->addItem("Year of Death");
+    ui->scientist_order_by_asc_desc->addItem("Ascending");
+    ui->scientist_order_by_asc_desc->addItem("Descending");
     _service.retriveList();
+
+    scientistsOrder();
     displayAllScientists();
     displayAllComputers();
     displayComputerTrash();
@@ -18,6 +26,40 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::scientistsOrder()
+{
+    int column;
+    int order;
+    if(ui->scientist_order_by_column->currentText().toStdString() == "Full Name")
+    {
+        column = 1;
+    }
+    else if(ui->scientist_order_by_column->currentText().toStdString() == "Gender")
+    {
+        column = 2;
+    }
+    else if(ui->scientist_order_by_column->currentText().toStdString() == "Year Of Birth")
+    {
+        column = 3;
+    }
+    else if(ui->scientist_order_by_column->currentText().toStdString() == "Year of Death")
+    {
+        column = 4;
+    }
+
+    if(ui->scientist_order_by_column->currentText().toStdString() == "Ascending")
+    {
+        order = 1;
+    }
+    else if(ui->scientist_order_by_column->currentText().toStdString() == "Descending")
+    {
+        order = 2;
+    }
+    _service.whatToSort(1, column, order);
+
+    displayAllScientists();
 }
 
 void MainWindow::displayAllScientists()
@@ -218,44 +260,44 @@ void MainWindow::on_scientist_delete_clicked()
 {
     _tempInput.clear();
     int currentlySelectedScientist = ui->scientist_table->currentIndex().row();
-    int scientistID;
-    string name = ui->scientist_table->model()->data(ui->scientist_table->model()->index(currentlySelectedScientist,0)).toString().toStdString();
-    string gender = ui->scientist_table->model()->data(ui->scientist_table->model()->index(currentlySelectedScientist,1)).toString().toStdString();
-    int yob = ui->scientist_table->model()->data(ui->scientist_table->model()->index(currentlySelectedScientist,2)).toUInt();
-    int yod = ui->scientist_table->model()->data(ui->scientist_table->model()->index(currentlySelectedScientist,3)).toUInt();
-    bool wasError = true;
+    int scientistID = _currentScientistDisplay[currentlySelectedScientist].ID;
 
-    _currentScientistDisplay = _service.getList(1);
 
-    for(unsigned int i = 0; i < _currentScientistDisplay.size(); i++)
-    {
-        string name2 = _currentScientistDisplay[i].fullName;
-        string gender2 = _currentScientistDisplay[i].gender;
-        if((name == name2) && (gender == gender2) &&
-           (yob == _currentScientistDisplay[i].yearOfBirth))
-        {
-            scientistID = _currentScientistDisplay[i].ID;
-            wasError =  false;
-        }
-    }
-    if(!wasError)
-    {
-        TolPers pers;
-        pers.fullName = name;
-        pers.gender = gender;
-        pers.yearOfBirth = yob;
-        pers.yearOfDeath = yod;
-        _tempInput.push_back(pers);
+    TolPers pers;
+    pers.fullName = _currentScientistDisplay[currentlySelectedScientist].fullName;
+    pers.gender = _currentScientistDisplay[currentlySelectedScientist].gender;
+    pers.yearOfBirth = _currentScientistDisplay[currentlySelectedScientist].yearOfBirth;
+    pers.yearOfDeath = _currentScientistDisplay[currentlySelectedScientist].yearOfDeath;
+    _tempInput.push_back(pers);
 
-        _service.deleteFromList(1, scientistID, _tempInput);
-        _tempInput.clear();
-        ui->scientist_search->clear();
-        displayAllScientists();
-        displayScientistTrash();
+    _service.deleteFromList(1, scientistID, _tempInput);
+    _tempInput.clear();
+    ui->scientist_search->clear();
+    displayAllScientists();
+    displayScientistTrash();
 
-        ui->scientist_delete->setEnabled(false);
+    ui->scientist_delete->setEnabled(false);
 
-    }
+    /*_tempCompInput.clear();
+    int currentlySelectedComputer = ui->computer_table->currentIndex().row();
+    int computerID = _currentComputerDisplay[currentlySelectedComputer].ID;
+
+    TolComp comp;
+    comp.name = _currentComputerDisplay[currentlySelectedComputer].name;
+    comp.type = _currentComputerDisplay[currentlySelectedComputer].type;
+    comp.built =_currentComputerDisplay[currentlySelectedComputer].built;
+    comp.year = _currentComputerDisplay[currentlySelectedComputer].year;
+    _tempCompInput.push_back(comp);
+
+    _service.deleteFromComp(1, computerID, _tempCompInput);
+    _tempInput.clear();
+    ui->scientist_search->clear();
+    displayAllComputers();
+    displayComputerTrash();
+
+    ui->computer_delete->setEnabled(false);
+
+    ui->computer_edit_button->setEnabled(false);*/
 }
 
 
@@ -548,3 +590,13 @@ void MainWindow::on_link_delete_button_clicked()
     ui->computer_link_table->setRowCount(0);
 }
 
+
+void MainWindow::on_scientist_order_by_column_currentIndexChanged()
+{
+    scientistsOrder();
+}
+
+void MainWindow::on_scientist_order_by_asc_desc_currentIndexChanged()
+{
+    scientistsOrder();
+}

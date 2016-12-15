@@ -16,6 +16,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     void displayAllScientists();
+    void scientistsOrder();
     void displayAllComputers();
     void displayComputerTrash();
     void displayScientistTrash();
@@ -63,6 +64,10 @@ private slots:
 
     void on_link_delete_button_clicked();
 
+
+    void on_scientist_order_by_column_currentIndexChanged();
+
+    void on_scientist_order_by_asc_desc_currentIndexChanged();
 
 private:
     Ui::MainWindow *ui;
