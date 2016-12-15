@@ -18,6 +18,7 @@ public:
     void displayAllComputers();
     void displayComputerTrash();
     void displayScientistTrash();
+    void displayLinksScientists();
     void printPerson(int list, int i);
 private slots:
     void on_scientist_search_textChanged(const QString &arg1);
@@ -64,6 +65,8 @@ private:
     vector<TolComp> _currentComputerDisplay;
     vector<TolComp> _currentComputerTrashDisplay;
     vector<TolComp> _tempCompInput;
+
+    vector<TolPersLink> _linkPersDisplay;
 };
 
 #endif // MAINWINDOW_H

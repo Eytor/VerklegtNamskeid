@@ -395,6 +395,18 @@ void DomainService::displayLinks(vector<TempTolLinking>& results)
     _data.displayLinks(results);
 }
 
+void DomainService::displayScientistLink(vector<TolPersLink>& results)
+{
+    _deletedComputer.clear();
+    _deletedPersonur.clear();
+    _personur.clear();
+    _computer.clear();
+    _linking.clear();
+    _tempLinking.clear();
+    retriveList();
+    _data.displayScientistsWithLinks(results);
+}
+
 void DomainService::deleteLink(int id)
 {
     _data.deleteLinks(3, id);

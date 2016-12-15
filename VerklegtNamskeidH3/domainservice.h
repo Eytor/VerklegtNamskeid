@@ -79,6 +79,7 @@ public:
     void displayLinks(vector<TempTolLinking> &results);
     //Deletes links between persons and computers
     void deleteLink(int id);
+    void displayScientistLink(vector<TolPersLink>& results);
 private:
     vector<TolPers> _personur;
     vector<TolComp> _computer;
@@ -88,6 +89,7 @@ private:
     vector<TolComp> _tempComputer;
     vector<TolPers> _tempPersonur;
     vector<TempTolLinking> _tempLinking;
+    vector<TolPersLink> _tempPersLink;
     DataAccess _data;
 };
 

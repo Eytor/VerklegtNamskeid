@@ -44,6 +44,12 @@ struct TempTolLinking
     int linkID;
 };
 
+struct TolPersLink
+{
+    int ID;
+    string  personName;
+};
+
 class DataAccess
 {
 public:
@@ -89,6 +95,7 @@ public:
     void linkPersonToComputer(int persID, int compID);
     //Displays the links
     void displayLinks(vector<TempTolLinking>& results);
+    void displayScientistsWithLinks(vector<TolPersLink>& results);
     //Deletes the links
     void deleteLinks(int peopleOrComps, int i);
 private:

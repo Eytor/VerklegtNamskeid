@@ -441,6 +441,19 @@ void DataAccess::displayLinks(vector<TempTolLinking>& results)
     }
 }
 
+void DataAccess::displayScientistsWithLinks(vector<TolPersLink>& results)
+{
+    QSqlQuery query(_db);
+    query.exec("SELECT people.ID, FullName FROM People JOIN Linking ON(People.ID=Linking.PeopleID) WHERE Linking.PeopleID = People.ID GROUP BY FullName");
+    TolPersLink personsToLink;
+    while(query.next())
+    {
+        personsToLink.ID = query.value("ID").toUInt();
+        personsToLink.personName = query.value("FullName").toString().toStdString();
+        results.push_back(personsToLink);
+    }
+}
+
 void DataAccess::deleteLinks(int peopleOrComps, int i)
 {
     QSqlQuery query(_db);

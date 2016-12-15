@@ -114,6 +114,21 @@ void MainWindow::displayScientistTrash()
     }
 }
 
+void MainWindow::displayLinksScientists()
+{
+    ui->scientist_link_table->clearContents();
+    _service.displayScientistLink(_linkPersDisplay);
+    ui->scientist_link_table->setRowCount(_linkPersDisplay.size());
+
+    for(unsigned int i = 0; i < _linkPersDisplay.size(); i++)
+    {
+        QString ID = QString::number(_linkPersDisplay[i].ID);
+        QString fullName = QString::fromStdString(_linkPersDisplay[i].personName);
+
+        ui->scientist_link_table->setItem(i, 0, new QTableWidgetItem(fullName));
+    }
+}
+
 void MainWindow::on_scientist_search_textChanged(const QString &arg1)
 {
     ui->scientist_table->clearContents();
