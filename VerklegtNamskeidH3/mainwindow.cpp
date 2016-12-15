@@ -416,6 +416,8 @@ void MainWindow::on_tabs_tabBarClicked(int index)
 {
     if(index == 2)
     {
+        ui->scientist_dropdown->clear();
+        ui->computer_dropdown->clear();
         displayLinksScientists();
         _currentComputerDisplay.clear();
         _currentScientistDisplay.clear();
@@ -489,8 +491,6 @@ void MainWindow::on_scientist_link_table_clicked()
 
     for(unsigned int i = 0; i < _linkCompDisplay.size(); i++)
     {
-        //QString linkID = QString::number(_linkCompDisplay[i].linkID);
-        //QString compID = QString::number(_linkCompDisplay[i].compID);
         QString compName = QString::fromStdString(_linkCompDisplay[i].compName);
 
         ui->computer_link_table->setItem(i, 0, new QTableWidgetItem(compName));
@@ -499,14 +499,6 @@ void MainWindow::on_scientist_link_table_clicked()
     ui->computer_link_table->setHorizontalHeaderItem(0, new QTableWidgetItem("Computer Name"));
 
 }
-/*
-struct TolCompLink
-{
-    int linkID;
-    int compID;
-    string compName;
-};
-*/
 
 void MainWindow::on_edit_button_clicked()
 {
@@ -518,4 +510,14 @@ void MainWindow::on_edit_button_clicked()
 void MainWindow::on_computer_link_table_clicked()
 {
     ui->link_delete_button->setEnabled(true);
+}
+
+void MainWindow::on_link_delete_button_clicked()
+{
+    int selectedLink = ui->computer_link_table->currentIndex().row();
+    int linkID = _linkCompDisplay[selectedLink].linkID;
+    _service.deleteLink(linkID);
+    displayLinksScientists();
+    ui->computer_link_table->clearContents();
+    ui->computer_link_table->setRowCount(0);
 }
