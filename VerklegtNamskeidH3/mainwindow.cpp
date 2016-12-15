@@ -35,9 +35,9 @@ void MainWindow::displayAllScientists()
         ui->scientist_table->setItem(i, 1, new QTableWidgetItem(gender));
         ui->scientist_table->setItem(i, 2, new QTableWidgetItem(YoB));
 
-        if(YoD != 0)
+        if(YoD != "0")
         {
-            ui->scientist_table->setItem(1, 3, new QTableWidgetItem(YoD));
+            ui->scientist_table->setItem(i, 3, new QTableWidgetItem(YoD));
         }
     }
 }
@@ -59,7 +59,7 @@ void MainWindow::displayAllComputers()
         ui->computer_table->setItem(i, 1, new QTableWidgetItem(type));
         ui->computer_table->setItem(i, 2, new QTableWidgetItem(built));
 
-        if(built != 0)
+        if(built != "0")
         {
             ui->computer_table->setItem(i, 3, new QTableWidgetItem(year));
         }
@@ -133,7 +133,7 @@ void MainWindow::on_scientist_search_textChanged(const QString &arg1)
         ui->scientist_table->setItem(i, 1, new QTableWidgetItem(gender));
         ui->scientist_table->setItem(i, 2, new QTableWidgetItem(YoB));
 
-        if(YoD != 0)
+        if(YoD != "0")
         {
             ui->scientist_table->setItem(i, 3, new QTableWidgetItem(YoD));
         }
@@ -241,7 +241,7 @@ void MainWindow::on_computer_search_textChanged(const QString &arg1)
         ui->computer_table->setItem(i, 1, new QTableWidgetItem(type));
         ui->computer_table->setItem(i, 2, new QTableWidgetItem(built));
 
-        if(built != 0)
+        if(built != "0")
         {
             ui->computer_table->setItem(i, 3, new QTableWidgetItem(year));
         }
