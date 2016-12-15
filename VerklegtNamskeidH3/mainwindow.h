@@ -35,13 +35,13 @@ private slots:
 
     void on_computer_button_clicked();
 
-    void on_computer_table_clicked(const QModelIndex &index);
+    void on_computer_table_clicked();
 
     void on_computer_delete_clicked();
 
-    void on_computer_trash_table_clicked(const QModelIndex &index);
+    void on_computer_trash_table_clicked();
 
-    void on_scientist_trash_table_clicked(const QModelIndex &index);
+    void on_scientist_trash_table_clicked();
 
     void on_computer_recover_button_clicked();
 
@@ -55,9 +55,11 @@ private slots:
 
     void on_link_button_clicked();
 
-    void on_scientist_link_table_clicked(const QModelIndex &index);
+    void on_scientist_link_table_clicked();
 
     void on_edit_button_clicked();
+
+    void on_computer_link_table_clicked();
 
 private:
     Ui::MainWindow *ui;

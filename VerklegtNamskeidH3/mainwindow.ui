@@ -566,6 +566,16 @@ background-color:#008CBA;
          </layout>
         </item>
         <item>
+         <widget class="QPushButton" name="link_delete_button">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>Delete Link</string>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QLabel" name="label_2">
           <property name="text">
            <string>Select Scientist to link to:</string>
@@ -777,7 +787,7 @@ background-color:#008CBA;
      <x>0</x>
      <y>0</y>
      <width>1112</width>
-     <height>45</height>
+     <height>44</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuUltra_scientist_and_computer_database">

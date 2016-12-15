@@ -321,7 +321,7 @@ void MainWindow::on_computer_button_clicked()
     }
 }
 
-void MainWindow::on_computer_table_clicked(const QModelIndex &index)
+void MainWindow::on_computer_table_clicked()
 {
     ui->computer_delete->setEnabled(true);
 }
@@ -348,12 +348,12 @@ void MainWindow::on_computer_delete_clicked()
     ui->computer_delete->setEnabled(false);
 }
 
-void MainWindow::on_computer_trash_table_clicked(const QModelIndex &index)
+void MainWindow::on_computer_trash_table_clicked()
 {
     ui->computer_recover_button->setEnabled(true);
 }
 
-void MainWindow::on_scientist_trash_table_clicked(const QModelIndex &index)
+void MainWindow::on_scientist_trash_table_clicked()
 {
     ui->scientist_recover_button->setEnabled(true);
 }
@@ -472,9 +472,11 @@ void MainWindow::on_link_button_clicked()
     int computerID = _currentComputerDisplay[computerI].ID;
     _service.linkPersonToComp(scientistID, computerID);
     displayLinksScientists();
+
+    ui->link_delete_button->setEnabled(false);
 }
 
-void MainWindow::on_scientist_link_table_clicked(const QModelIndex &index)
+void MainWindow::on_scientist_link_table_clicked()
 {
     int selectedScientist = ui->scientist_link_table->currentIndex().row();
     int scientistID = _linkPersDisplay[selectedScientist].ID;
@@ -511,4 +513,9 @@ void MainWindow::on_edit_button_clicked()
     Edit edit;
     edit.setModal(true);
     edit.exec();
+}
+
+void MainWindow::on_computer_link_table_clicked()
+{
+    ui->link_delete_button->setEnabled(true);
 }
