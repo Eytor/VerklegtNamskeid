@@ -662,7 +662,7 @@ background-color:#008CBA;
         <item>
          <widget class="QTabWidget" name="trash_placeholder">
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="scientist_trash_tab">
            <attribute name="title">
@@ -840,7 +840,7 @@ background-color:#008CBA;
      <x>0</x>
      <y>0</y>
      <width>1112</width>
-     <height>44</height>
+     <height>35</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuUltra_scientist_and_computer_database">
