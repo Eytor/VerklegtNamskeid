@@ -363,7 +363,7 @@ void DomainService::editPerson(int list, int ID, int selection, string s)
 {
     string tempString = s;
 
-    _data.editPerson(list, ID, selection, tempString);
+    //_data.editPerson(list, ID, selection, tempString);
     _personur.clear();
     _computer.clear();
     _deletedComputer.clear();
