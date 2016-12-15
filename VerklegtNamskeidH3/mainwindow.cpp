@@ -541,15 +541,16 @@ void MainWindow::on_link_button_clicked()
     int scientistID = _currentScientistDisplay[scientistI].ID;
     int computerID = _currentComputerDisplay[computerI].ID;
 
-    if(!_service.checkTheLinkExists(scientistID, computerID))
+    if(_service.checkTheLinkExists(scientistID, computerID))
     {
-        //Write in error message that link exists
-
+        //Write in error message that link existsf
+        ui->Link_success_fail_label->setText("<span style='color:red'>Link already exists!</span>");
     }
     else
     {
         _service.linkPersonToComp(scientistID, computerID);
         displayLinksScientists();
+        ui->Link_success_fail_label->setText("<span style='color:red'>Success!!</span>");
 
         ui->link_delete_button->setEnabled(false);
     }

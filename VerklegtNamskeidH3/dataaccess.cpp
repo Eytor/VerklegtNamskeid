@@ -450,8 +450,12 @@ int DataAccess::checkIfLinkExists(int pID, int cID)
     QSqlQuery query(_db);
     QString persID = QString::number(pID);
     QString compID = QString::number(cID);
+    int counter = 0;
 
     query.exec("SELECT * FROM Linking WHERE ComputerID = " + compID + " AND PeopleID = " + persID);
-
-    return query.size();
+    while(query.next())
+    {
+        counter++;
+    }
+    return counter;
 }
