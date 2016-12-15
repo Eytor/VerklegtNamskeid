@@ -342,79 +342,28 @@ void DataAccess::searchComputers(vector<TolComp>& compOutput, string s)
     }
 }
 
-void DataAccess::editPerson(int list, int Id, int col, string tempString)
+void DataAccess::editPerson(int theId, string name, string theGender, string yearOfBirth, string yearOfDeath)
 {
-    QString database;
-    QString column;
-    QString value = QString::fromStdString(tempString);
-    bool containsDigits = false;
-    int number;
-    for(unsigned int i = 0; i < tempString.size(); i++)
-    {
-        if(value[i].isDigit())
-        {
-            containsDigits = true;
-        }
-    }
-    if(containsDigits)
-    {
-        number = stoi(tempString);
-    }
-    QString theID = QString::number(Id);
     QSqlQuery query(_db);
+    QString ID = QString::number(theId);
+    QString fullName = QString::fromStdString(name);
+    QString gender = QString::fromStdString(theGender);
+    QString yob = QString::fromStdString(yearOfBirth);
+    QString yod = QString::fromStdString(yearOfDeath);
 
-    if(list == 1)
-    {
-        database = "People";
+    query.exec("UPDATE People SET FullName = " + fullName + ", Gender = " + gender + ", Yob = " + yob + ", Yod = " + yod + "WHERE ID = " + ID);
+}
 
-        if(col == 1)
-        {
-            column = "FullName";
-        }
-        else if(col == 2)
-        {
-            column = "Gender";
-        }
-        else if(col == 3)
-        {
-            column = "Yob";
+void DataAccess::editComputer(int theId, string theName, string theType, bool isBuilt, string theYear)
+{
+    QSqlQuery query(_db);
+    QString ID = QString::number(theId);
+    QString name = QString::fromStdString(theName);
+    QString type = QString::fromStdString(theType);
+    bool built = isBuilt;
+    QString year = QString::fromStdString(theYear);
 
-            value = QString::number(number);
-        }
-        else
-        {
-            column = "Yod";
-            value = QString::number(number);
-        }
-
-    }
-    else
-    {
-        database = "Computers";
-
-        if(col == 1)
-        {
-            column = "Name";
-        }
-        else if(col == 2)
-        {
-            column = "Type";
-        }
-        else if(col == 3)
-        {
-            column = "Built";
-            value = QString::number(number);
-        }
-        else
-        {
-            column = "Year";
-            value = QString::number(number);
-        }
-    }
-    QString theQuery = "UPDATE "+ database +" SET "+ column + " = '"+ value +"' WHERE ID = " + theID ;
-
-    query.exec(theQuery);
-
+    query.exec();
 }
 
 void DataAccess::linkPersonToComputer(int persID, int compID)
@@ -494,4 +443,15 @@ void DataAccess::deleteLinks(int peopleOrComps, int i)
         query.bindValue(":id", i);
         query.exec();
     }
+}
+
+int DataAccess::checkIfLinkExists(int pID, int cID)
+{
+    QSqlQuery query(_db);
+    QString persID = QString::number(pID);
+    QString compID = QString::number(cID);
+
+    query.exec("SELECT * FROM Linking WHERE ComputerID = " + compID + " AND PeopleID = " + persID);
+
+    return query.size();
 }

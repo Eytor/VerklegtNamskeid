@@ -95,7 +95,9 @@ public:
 
     void searchComputers(vector<TolComp>& compOutput, string s);
     //Function that allows the user to edit the database
-    void editPerson(int list, int, int col, string);
+    void editPerson(int theId, string name, string theGender, string yearOfBirth, string yearOfDeath);
+    void editComputer(int theId, string theName, string theType, bool isBuilt, string theYear);
+
     //Function that allows the user to sort the database
     void sort(vector<TolPers> &persVector, vector<TolComp> &compVector, int datab, int col, int ord);
     //Function that allows the user to link a person to a computer
@@ -106,6 +108,7 @@ public:
     //Deletes the links
     void deleteLinks(int peopleOrComps, int i);
     void displayCompsFromLink(int personID, vector<TolCompLink> &results);
+    int checkIfLinkExists(int pID, int cID);
 private:
     int _previousCompSize;
     int _previousPeopleSize;
