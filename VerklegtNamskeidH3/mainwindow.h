@@ -57,11 +57,12 @@ private slots:
 
     void on_scientist_link_table_clicked();
 
-    void on_edit_button_clicked();
+    void on_scientist_edit_button_clicked();
 
     void on_computer_link_table_clicked();
 
     void on_link_delete_button_clicked();
+
 
 private:
     Ui::MainWindow *ui;

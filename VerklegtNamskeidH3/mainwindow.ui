@@ -105,20 +105,13 @@ background-color:#008CBA;
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="Scientists">
        <attribute name="title">
         <string>Scientists</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_2">
-        <item>
-         <widget class="QPushButton" name="edit_button">
-          <property name="text">
-           <string>Edit</string>
-          </property>
-         </widget>
-        </item>
         <item>
          <widget class="QLineEdit" name="scientist_search">
           <property name="text">
@@ -190,6 +183,16 @@ background-color:#008CBA;
           </property>
           <property name="text">
            <string>Delete scientist</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="scientist_edit_button">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>Edit</string>
           </property>
          </widget>
         </item>
@@ -391,6 +394,16 @@ background-color:#008CBA;
           </property>
           <property name="text">
            <string>Delete Computer</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="computer_edit_button">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>Edit</string>
           </property>
          </widget>
         </item>

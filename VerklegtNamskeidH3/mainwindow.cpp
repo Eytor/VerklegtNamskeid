@@ -240,6 +240,7 @@ void MainWindow::on_scientist_delete_clicked()
 void MainWindow::on_scientist_table_clicked()
 {
     ui->scientist_delete->setEnabled(true);
+    ui->scientist_edit_button->setEnabled(true);
 }
 
 void MainWindow::on_computer_search_textChanged(const QString &arg1)
@@ -324,6 +325,7 @@ void MainWindow::on_computer_button_clicked()
 void MainWindow::on_computer_table_clicked()
 {
     ui->computer_delete->setEnabled(true);
+    ui->computer_edit_button->setEnabled(true);
 }
 
 void MainWindow::on_computer_delete_clicked()
@@ -346,6 +348,8 @@ void MainWindow::on_computer_delete_clicked()
     displayComputerTrash();
 
     ui->computer_delete->setEnabled(false);
+
+    ui->computer_edit_button->setEnabled(false);
 }
 
 void MainWindow::on_computer_trash_table_clicked()
@@ -500,7 +504,7 @@ void MainWindow::on_scientist_link_table_clicked()
 
 }
 
-void MainWindow::on_edit_button_clicked()
+void MainWindow::on_scientist_edit_button_clicked()
 {
     Edit edit;
     edit.setModal(true);
@@ -521,3 +525,4 @@ void MainWindow::on_link_delete_button_clicked()
     ui->computer_link_table->clearContents();
     ui->computer_link_table->setRowCount(0);
 }
+
