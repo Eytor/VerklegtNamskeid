@@ -219,8 +219,8 @@ void MainWindow::on_scientist_delete_clicked()
     _tempInput.clear();
     int currentlySelectedScientist = ui->scientist_table->currentIndex().row();
     int scientistID;
-    QString name = ui->scientist_table->model()->data(ui->scientist_table->model()->index(currentlySelectedScientist,0)).toString();
-    QString gender = ui->scientist_table->model()->data(ui->scientist_table->model()->index(currentlySelectedScientist,1)).toString();
+    string name = ui->scientist_table->model()->data(ui->scientist_table->model()->index(currentlySelectedScientist,0)).toString().toStdString();
+    string gender = ui->scientist_table->model()->data(ui->scientist_table->model()->index(currentlySelectedScientist,1)).toString().toStdString();
     int yob = ui->scientist_table->model()->data(ui->scientist_table->model()->index(currentlySelectedScientist,2)).toUInt();
     int yod = ui->scientist_table->model()->data(ui->scientist_table->model()->index(currentlySelectedScientist,3)).toUInt();
 
@@ -228,16 +228,18 @@ void MainWindow::on_scientist_delete_clicked()
 
     for(unsigned int i = 0; i < _currentScientistDisplay.size(); i++)
     {
-        if((name.toStdString() == _currentScientistDisplay[i].fullName) && (gender.toStdString() == _currentScientistDisplay[i].gender) &&
-           (yod == _currentScientistDisplay[i].yearOfBirth))
+        string name2 = _currentScientistDisplay[i].fullName;
+        string gender2 = _currentScientistDisplay[i].gender;
+        if((name == name2) && (gender == gender2) &&
+           (yob == _currentScientistDisplay[i].yearOfBirth))
         {
             scientistID = _currentScientistDisplay[i].ID;
         }
     }
 
     TolPers pers;
-    pers.fullName = name.toStdString();
-    pers.gender = gender.toStdString();
+    pers.fullName = name;
+    pers.gender = gender;
     pers.yearOfBirth = yob;
     pers.yearOfDeath = yod;
     _tempInput.push_back(pers);
