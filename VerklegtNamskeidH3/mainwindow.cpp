@@ -32,28 +32,30 @@ void MainWindow::scientistsOrder()
 {
     int column;
     int order;
-    if(ui->scientist_order_by_column->currentText().toStdString() == "Full Name")
+    string sColumn = ui->scientist_order_by_column->currentText().toStdString();
+    string sOrder = ui->scientist_order_by_asc_desc->currentText().toStdString();
+    if(sColumn == "Full Name")
     {
         column = 1;
     }
-    else if(ui->scientist_order_by_column->currentText().toStdString() == "Gender")
+    else if(sColumn == "Gender")
     {
         column = 2;
     }
-    else if(ui->scientist_order_by_column->currentText().toStdString() == "Year Of Birth")
+    else if(sColumn == "Year Of Birth")
     {
         column = 3;
     }
-    else if(ui->scientist_order_by_column->currentText().toStdString() == "Year of Death")
+    else if(sColumn == "Year of Death")
     {
         column = 4;
     }
 
-    if(ui->scientist_order_by_column->currentText().toStdString() == "Ascending")
+    if(sOrder == "Ascending")
     {
         order = 1;
     }
-    else if(ui->scientist_order_by_column->currentText().toStdString() == "Descending")
+    else if(sOrder == "Descending")
     {
         order = 2;
     }
