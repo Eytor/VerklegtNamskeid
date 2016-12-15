@@ -430,3 +430,16 @@ void DomainService::deleteLink(int id)
     _tempLinking.clear();
     retriveList();
 }
+
+bool DomainService::checkTheLinkExists(int pID, int cID)
+{
+    int size = _data.checkIfLinkExists(pID, cID);
+    if(size > 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}

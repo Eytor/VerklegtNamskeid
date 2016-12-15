@@ -108,6 +108,7 @@ public:
     //Deletes the links
     void deleteLinks(int peopleOrComps, int i);
     void displayCompsFromLink(int personID, vector<TolCompLink> &results);
+    int checkIfLinkExists(int pID, int cID);
 private:
     int _previousCompSize;
     int _previousPeopleSize;

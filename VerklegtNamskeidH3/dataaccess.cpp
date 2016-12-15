@@ -444,3 +444,14 @@ void DataAccess::deleteLinks(int peopleOrComps, int i)
         query.exec();
     }
 }
+
+int DataAccess::checkIfLinkExists(int pID, int cID)
+{
+    QSqlQuery query(_db);
+    QString persID = QString::number(pID);
+    QString compID = QString::number(cID);
+
+    query.exec("SELECT * FROM Linking WHERE ComputerID = " + compID + " AND PeopleID = " + persID);
+
+    return query.size();
+}

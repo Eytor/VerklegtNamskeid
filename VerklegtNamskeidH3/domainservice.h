@@ -81,6 +81,8 @@ public:
     void deleteLink(int id);
     void displayScientistLink(vector<TolPersLink>& results);
     void displayCompsLink(vector<TolCompLink>& results, int id);
+    bool checkTheLinkExists(int pID, int cID);
+
 private:
     vector<TolPers> _personur;
     vector<TolComp> _computer;
