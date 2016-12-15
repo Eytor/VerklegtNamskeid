@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     displayAllComputers();
     displayComputerTrash();
     displayScientistTrash();
+    displayLinksScientists();
 }
 
 MainWindow::~MainWindow()
@@ -117,6 +118,7 @@ void MainWindow::displayScientistTrash()
 void MainWindow::displayLinksScientists()
 {
     ui->scientist_link_table->clearContents();
+    _linkPersDisplay.clear();
     _service.displayScientistLink(_linkPersDisplay);
     ui->scientist_link_table->setRowCount(_linkPersDisplay.size());
 
@@ -412,6 +414,7 @@ void MainWindow::on_tabs_tabBarClicked(int index)
 {
     if(index == 2)
     {
+        displayLinksScientists();
         _currentComputerDisplay.clear();
         _currentScientistDisplay.clear();
         QString item;
@@ -466,4 +469,5 @@ void MainWindow::on_link_button_clicked()
     int scientistID = _currentScientistDisplay[scientistI].ID;
     int computerID = _currentComputerDisplay[computerI].ID;
     _service.linkPersonToComp(scientistID, computerID);
+    displayLinksScientists();
 }
