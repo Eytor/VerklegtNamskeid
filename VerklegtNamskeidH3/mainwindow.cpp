@@ -582,9 +582,19 @@ void MainWindow::on_scientist_link_table_clicked()
 
 void MainWindow::on_scientist_edit_button_clicked()
 {
+    _currentEditID = 0;
+    int selected = ui->scientist_table->currentIndex().row();
+    _currentEditID = _currentScientistDisplay[selected].ID;
+    QString name = QString::fromStdString(_currentScientistDisplay[selected].fullName);
+    QString gender = QString::fromStdString(_currentScientistDisplay[selected].gender);
+    QString yob = QString::number(_currentScientistDisplay[selected].yearOfBirth);
+    QString yod = QString::number(_currentScientistDisplay[selected].yearOfDeath);
+    _edit.getCurrValues(name,gender,yob,yod);
     Edit edit;
     edit.setModal(true);
     edit.exec();
+    _currentEditID = 0;
+
 }
 
 void MainWindow::on_computer_link_table_clicked()

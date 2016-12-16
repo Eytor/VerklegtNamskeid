@@ -2,7 +2,8 @@
 #define MAINWINDOW_H
 #include "domainservice.h"
 #include <QMainWindow>
-
+#include <QDialog>
+#include "edit.h"
 
 namespace Ui {
 class MainWindow;
@@ -83,6 +84,8 @@ private:
 
     vector<TolPersLink> _linkPersDisplay;
     vector<TolCompLink> _linkCompDisplay;
+    int _currentEditID;
+    Edit _edit;
 };
 
 #endif // MAINWINDOW_H

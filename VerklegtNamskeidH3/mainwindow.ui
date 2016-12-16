@@ -806,7 +806,7 @@ background-color:rgb(65, 65, 65)
         <item>
          <widget class="QTabWidget" name="trash_placeholder">
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="scientist_trash_tab">
            <attribute name="title">
@@ -984,6 +984,7 @@ background-color:rgb(65, 65, 65)
      <x>0</x>
      <y>0</y>
      <width>1112</width>
+     <height>35</height>
      <height>39</height>
     </rect>
    </property>
