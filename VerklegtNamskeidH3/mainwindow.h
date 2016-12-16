@@ -34,8 +34,9 @@ private slots:
     void on_scientist_search_textChanged(const QString &arg1);
     // Add to Scientist Table button, when it's clicked it adds scientist to table and database
     void on_scientist_button_clicked();
-
+    //Sends a scientist to the recycle bin
     void on_scientist_delete_clicked();
+    //Clears everything
     void disableAndClearErrthing();
 
 

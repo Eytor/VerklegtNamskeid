@@ -107,7 +107,9 @@ public:
     void displayScientistsWithLinks(vector<TolPersLink>& results);
     //Deletes the links
     void deleteLinks(int peopleOrComps, int i);
+    //Displays computers from a link
     void displayCompsFromLink(int personID, vector<TolCompLink> &results);
+    //Checks if a link exists
     int checkIfLinkExists(int pID, int cID);
 private:
     int _previousCompSize;

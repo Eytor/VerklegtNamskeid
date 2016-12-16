@@ -49,8 +49,11 @@ public:
     void displayLinks(vector<TempTolLinking> &results);
     //Deletes links between persons and computers
     void deleteLink(int id);
+    //Displays scientist links
     void displayScientistLink(vector<TolPersLink>& results);
+    //Displays computers linked to scientists
     void displayCompsLink(vector<TolCompLink>& results, int id);
+    //Checks if a link exists
     bool checkTheLinkExists(int pID, int cID);
 private:
     vector<TolPers> _personur;
