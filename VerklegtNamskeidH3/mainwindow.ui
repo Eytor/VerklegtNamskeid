@@ -157,7 +157,7 @@ color:#008CBA;
 QMenuBar{
 background-color:rgb(53, 53, 53);
 padding:5px;
-font: 12pt &quot;MS Shell Dlg 2&quot;;
+font: 10pt &quot;MS Shell Dlg 2&quot;;
 }
 QMenu{
 background-color:rgb(53, 53, 53);
@@ -202,7 +202,9 @@ color:grey;
 background-color:rgb(65, 65, 65)
 }
 
-</string>
+QGroupBox{
+border: 1px solid gray;
+}</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -632,117 +634,159 @@ background-color:rgb(65, 65, 65)
          </layout>
         </item>
         <item>
-         <widget class="QLabel" name="label">
-          <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:x-large; font-weight:600;&quot;&gt;Add computer to list&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout">
+         <layout class="QHBoxLayout" name="horizontalLayout_14">
           <item>
-           <widget class="QLabel" name="computer_name_label">
-            <property name="text">
-             <string>Name:</string>
-            </property>
-           </widget>
+           <layout class="QVBoxLayout" name="verticalLayout_9">
+            <item>
+             <widget class="QGroupBox" name="groupBox_2">
+              <property name="minimumSize">
+               <size>
+                <width>500</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>16777215</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="title">
+               <string>Add computer to list</string>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_10">
+               <item>
+                <layout class="QHBoxLayout" name="NameAndError">
+                 <item>
+                  <widget class="QLabel" name="computer_name_label">
+                   <property name="text">
+                    <string>Name:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="computer_name_error">
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton">
+                 <property name="text">
+                  <string>PushButton</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="computer_name_input">
+                 <property name="placeholderText">
+                  <string>Name..</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="TypeAndError">
+                 <item>
+                  <widget class="QLabel" name="computer_type_label">
+                   <property name="text">
+                    <string>Type:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="computer_type_error">
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="computer_type_input">
+                 <property name="placeholderText">
+                  <string>Type..</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="BuiltAndError">
+                 <item>
+                  <widget class="QLabel" name="computer_built_label">
+                   <property name="text">
+                    <string>Built:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="computer_built_error">
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QComboBox" name="computer_built_input"/>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="YearAndError">
+                 <item>
+                  <widget class="QLabel" name="computer_year_lable">
+                   <property name="text">
+                    <string>Year:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="computer_year_error">
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="computer_year_input">
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Year..</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="computer_button">
+                 <property name="text">
+                  <string>Add</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item>
-           <widget class="QLabel" name="computer_name_error">
-            <property name="text">
-             <string/>
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
             </property>
-           </widget>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
           </item>
          </layout>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="computer_name_input">
-          <property name="placeholderText">
-           <string>Name..</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_6">
-          <item>
-           <widget class="QLabel" name="computer_type_label">
-            <property name="text">
-             <string>Type:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="computer_type_error">
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="computer_type_input">
-          <property name="placeholderText">
-           <string>Type..</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_7">
-          <item>
-           <widget class="QLabel" name="computer_built_label">
-            <property name="text">
-             <string>Built:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="computer_built_error">
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="QComboBox" name="computer_built_input"/>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_8">
-          <item>
-           <widget class="QLabel" name="computer_year_lable">
-            <property name="text">
-             <string>Year:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="computer_year_error">
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="computer_year_input">
-          <property name="text">
-           <string/>
-          </property>
-          <property name="placeholderText">
-           <string>Year..</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="computer_button">
-          <property name="text">
-           <string>Add</string>
-          </property>
-         </widget>
         </item>
        </layout>
       </widget>
@@ -1054,13 +1098,14 @@ background-color:rgb(65, 65, 65)
      <x>0</x>
      <y>0</y>
      <width>1112</width>
-     <height>39</height>
+     <height>36</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuUltra_scientist_and_computer_database">
     <property name="title">
      <string>Ultra scientist and computer database</string>
     </property>
+    <addaction name="actionClick_me"/>
    </widget>
    <addaction name="menuUltra_scientist_and_computer_database"/>
   </widget>
@@ -1073,6 +1118,11 @@ background-color:rgb(65, 65, 65)
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionClick_me">
+   <property name="text">
+    <string>Click me!</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>
