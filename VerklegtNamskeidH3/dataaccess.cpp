@@ -351,21 +351,20 @@ void DataAccess::editPerson(int theId, QString name, QString theGender, QString 
     QString yob = yearOfBirth;
     QString yod = yearOfDeath;
 
-    QString stuff = "UPDATE People SET FullName = '" + fullName + "', Gender = '" + gender + "', Yob = '" + yob + "', Yod = '" + yod + " 'WHERE ID = '" + ID + "'";
 
     query.exec("UPDATE People SET FullName = '" + fullName + "', Gender = '" + gender + "', Yob = '" + yob + "', Yod = '" + yod + " 'WHERE ID = '" + ID + "'");
 }
 
-void DataAccess::editComputer(int theId, string theName, string theType, bool isBuilt, string theYear)
+void DataAccess::editComputer(int theId,QString theName, QString theType, QString isBuilt, QString theYear)
 {
     QSqlQuery query(_db);
     QString ID = QString::number(theId);
-    QString name = QString::fromStdString(theName);
-    QString type = QString::fromStdString(theType);
-    bool built = isBuilt;
-    QString year = QString::fromStdString(theYear);
+    QString name = theName;
+    QString type = theType;
+    QString built = isBuilt;
+    QString year = theYear;
 
-    query.exec();
+    query.exec("UPDATE Computers SET Name = '" + name + "', Type = '" + type + "', Built = '" + built + "', Year = '" + year + " 'WHERE ID = '" + ID + "'");
 }
 
 void DataAccess::linkPersonToComputer(int persID, int compID)
