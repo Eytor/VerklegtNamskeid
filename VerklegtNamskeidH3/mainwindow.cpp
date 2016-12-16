@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "edit.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -668,10 +667,6 @@ void MainWindow::on_scientist_edit_button_clicked()
     QString gender = QString::fromStdString(_currentScientistDisplay[selected].gender);
     QString yob = QString::number(_currentScientistDisplay[selected].yearOfBirth);
     QString yod = QString::number(_currentScientistDisplay[selected].yearOfDeath);
-    //_edit.getCurrValues(name,gender,yob,yod);
-    Edit edit;
-    edit.setModal(true);
-    edit.exec();
     _currentEditID = 0;
 
 }
