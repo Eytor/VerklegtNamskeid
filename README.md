@@ -3,7 +3,8 @@
 ## Description
 
 This project contains a program that can store and display a table of known computer 
-scientists and computers and show the relations betrween them.
+scientists and computers and show the relations betrween them. 
+Project created with QT Creator.
 
 ## Functionality
 
