@@ -2,8 +2,8 @@
 
 ## Description
 
-This project contains a program that can store and display a list of known computer 
-scientists and computers and show the relations betrween them. It also contains a fun little feature.
+This project contains a program that can store and display a table of known computer 
+scientists and computers and show the relations betrween them.
 
 ## Functionality
 
