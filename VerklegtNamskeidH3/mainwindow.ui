@@ -184,6 +184,11 @@ QLineEdit:hover{
 background-color:rgb(75, 75, 75);
 border: 1px solid #008CBA ;
 }
+QLineEdit:!enabled{
+border:  1px solid grey;
+color:grey;
+background-color:rgb(65, 65, 65)
+}
 
 QPushButton{
   font-size: 12px;
@@ -214,7 +219,7 @@ border: 1px solid gray;
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="Scientists">
        <attribute name="title">
@@ -233,6 +238,24 @@ border: 1px solid gray;
            <string>Search..</string>
           </property>
          </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>Order by:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="text">
+             <string>In order:</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_10">
@@ -721,6 +744,24 @@ border: 1px solid gray;
          </widget>
         </item>
         <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QLabel" name="label_7">
+            <property name="text">
+             <string>Order by:</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_6">
+            <property name="text">
+             <string>In order:</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
          <layout class="QHBoxLayout" name="horizontalLayout_13">
           <item>
            <widget class="QComboBox" name="computer_order_by_column"/>
@@ -739,7 +780,7 @@ border: 1px solid gray;
            <enum>QAbstractItemView::SelectRows</enum>
           </property>
           <property name="sortingEnabled">
-           <bool>true</bool>
+           <bool>false</bool>
           </property>
           <attribute name="horizontalHeaderDefaultSectionSize">
            <number>265</number>
