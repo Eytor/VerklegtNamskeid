@@ -740,3 +740,31 @@ void MainWindow::on_computer_edit_button_clicked()
     }
 
 }
+
+void MainWindow::on_computer_button_edit_clicked()
+{
+    QString name = ui->computer_name_input_edit->text();
+    QString type = ui->computer_type_input_edit->text();
+    string built1;
+    QString built;
+    if(ui->computer_built_input_edit->currentText() == "True")
+    {
+        built1 = "1";
+    }
+    else
+    {
+        built1 = "0";
+    }
+    built = QString::fromStdString(built1);
+    QString year = ui->computer_year_input_edit->text();
+    _service.editComputer(_currentEditID, name, type, built, year);
+    displayAllComputers();
+    ui->computer_built_input_edit->clear();
+    ui->computer_built_input_edit->setEnabled(false);
+    ui->computer_name_input_edit->clear();
+    ui->computer_name_input_edit->setEnabled(false);
+    ui->computer_type_input_edit->clear();
+    ui->computer_type_input_edit->setEnabled(false);
+    ui->computer_year_input_edit->clear();
+    ui->computer_year_input_edit->setEnabled(false);
+}

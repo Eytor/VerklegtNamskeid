@@ -82,6 +82,8 @@ public:
     void displayScientistLink(vector<TolPersLink>& results);
     void displayCompsLink(vector<TolCompLink>& results, int id);
     bool checkTheLinkExists(int pID, int cID);
+    void editComputer(int id, QString name, QString type, QString built, QString year);
+
 
 private:
     vector<TolPers> _personur;

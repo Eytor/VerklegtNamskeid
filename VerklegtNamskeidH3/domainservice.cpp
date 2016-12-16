@@ -369,6 +369,16 @@ void DomainService::editPerson(int id,QString name,QString gender, QString yearO
     retriveList();
 }
 
+void DomainService::editComputer(int id, QString name, QString type, QString built, QString year)
+{
+    _data.editComputer(id, name, type, built, year);
+    _personur.clear();
+    _computer.clear();
+    _deletedComputer.clear();
+    _deletedPersonur.clear();
+    retriveList();
+}
+
 void DomainService::linkPersonToComp(int persID, int compID)
 {
     _data.linkPersonToComputer(persID, compID);
