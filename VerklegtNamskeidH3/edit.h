@@ -22,7 +22,7 @@ private slots:
 
 private:
     Ui::Edit *ui;
-    Ui::MainWindow _main;
+    //Ui::MainWindow _main;
     int _id;
 };
 

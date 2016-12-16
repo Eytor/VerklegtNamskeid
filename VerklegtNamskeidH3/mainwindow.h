@@ -85,7 +85,7 @@ private:
     vector<TolPersLink> _linkPersDisplay;
     vector<TolCompLink> _linkCompDisplay;
     int _currentEditID;
-    Edit _edit;
+    //Edit _edit;
 };
 
 #endif // MAINWINDOW_H

@@ -11,6 +11,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->scientist_order_by_column->addItem("Gender");
     ui->scientist_order_by_column->addItem("Year Of Birth");
     ui->scientist_order_by_column->addItem("Year of Death");
+    ui->computer_order_by_column->addItem("Name");
+    ui->computer_order_by_column->addItem("Type");
+    ui->computer_order_by_column->addItem("Built");
+    ui->computer_order_by_column->addItem("Year");
+    ui->computer_order_by_asc_desc->addItem("Ascending");
+    ui->computer_order_by_asc_desc->addItem("Descending");
     ui->scientist_order_by_asc_desc->addItem("Ascending");
     ui->scientist_order_by_asc_desc->addItem("Descending");
     ui->computer_built_input->addItem("True");
@@ -626,7 +632,7 @@ void MainWindow::on_scientist_edit_button_clicked()
     QString gender = QString::fromStdString(_currentScientistDisplay[selected].gender);
     QString yob = QString::number(_currentScientistDisplay[selected].yearOfBirth);
     QString yod = QString::number(_currentScientistDisplay[selected].yearOfDeath);
-    _edit.getCurrValues(name,gender,yob,yod);
+    //_edit.getCurrValues(name,gender,yob,yod);
     Edit edit;
     edit.setModal(true);
     edit.exec();

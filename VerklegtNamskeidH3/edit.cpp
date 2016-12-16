@@ -23,7 +23,7 @@ void Edit::on_buttonBox_accepted()
     Yob=ui->scientist_edit_yob->text();
     Yod=ui->scientist_edit_yob->text();
     //_service.editPerson(_id, name, gender, Yob, Yod);
-    _main.editToService(name, gender, Yob, Yod);
+    //_main.editToService(name, gender, Yob, Yod);
 
 }
 void Edit::getCurrValues(int id, const QString name, const QString gender, const QString yob, const QString yod)
