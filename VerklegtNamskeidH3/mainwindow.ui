@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1112</width>
+    <width>1058</width>
     <height>742</height>
    </rect>
   </property>
@@ -207,14 +207,14 @@ border: 1px solid gray;
 }</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QVBoxLayout" name="verticalLayout_4">
+   <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QTabWidget" name="tabs">
       <property name="tabShape">
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="Scientists">
        <attribute name="title">
@@ -381,136 +381,324 @@ border: 1px solid gray;
          </layout>
         </item>
         <item>
-         <widget class="QLabel" name="add_label">
-          <property name="layoutDirection">
-           <enum>Qt::LeftToRight</enum>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::NoFrame</enum>
-          </property>
-          <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:x-large; font-weight:600; color:#ffffff;&quot;&gt;Add scientist to list&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <layout class="QHBoxLayout" name="AddAndEditorHolder">
           <item>
-           <widget class="QLabel" name="scientist_name">
-            <property name="text">
-             <string>Name:</string>
-            </property>
-           </widget>
+           <layout class="QVBoxLayout" name="AdderHolder">
+            <item>
+             <widget class="QGroupBox" name="groupBox_4">
+              <property name="minimumSize">
+               <size>
+                <width>500</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>650</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="title">
+               <string>Add scientist to list</string>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_13">
+               <item>
+                <layout class="QHBoxLayout" name="NameAndErrorSci">
+                 <item>
+                  <widget class="QLabel" name="scientist_name">
+                   <property name="text">
+                    <string>Name:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="scientist_name_error_2">
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="scientist_name_input">
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Name..</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="GenderAndError">
+                 <item>
+                  <widget class="QLabel" name="scientist_gender">
+                   <property name="text">
+                    <string>Gender:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="scientist_gender_error">
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="scientist_gender_input">
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Gender..</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="YearAndErrorSci">
+                 <item>
+                  <widget class="QLabel" name="scientist_yob">
+                   <property name="text">
+                    <string>Year of birth:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="scientist_yob_error">
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="scientist_yob_input">
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Year of birth..</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="YoDAndError">
+                 <item>
+                  <widget class="QLabel" name="scientist_yod">
+                   <property name="text">
+                    <string>Year of Death:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="scientist_yod_error">
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="scientist_yod_input">
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Year of death (leave empty if still alive)..</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="scientist_button">
+                 <property name="text">
+                  <string>Add</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
           </item>
           <item>
-           <widget class="QLabel" name="scientist_name_error">
-            <property name="text">
-             <string/>
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
             </property>
-           </widget>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_14">
+            <item>
+             <widget class="QGroupBox" name="groupBox_5">
+              <property name="minimumSize">
+               <size>
+                <width>500</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>650</width>
+                <height>16777215</height>
+               </size>
+              </property>
+              <property name="title">
+               <string>Edit selected scientist</string>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_4">
+               <item>
+                <layout class="QHBoxLayout" name="NameAndErrorEdit_2">
+                 <item>
+                  <widget class="QLabel" name="scientist_name_edit">
+                   <property name="text">
+                    <string>Name:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="scientist_name_error">
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="scientist_name_input_edit">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Name..</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="GenderAndErrorEdit">
+                 <item>
+                  <widget class="QLabel" name="scientist_gender_edit">
+                   <property name="text">
+                    <string>Gender:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="scientist_gender_error_edit">
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="scientist_gender_input_edit">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Gender..</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="YoBAndErrorEdit">
+                 <item>
+                  <widget class="QLabel" name="scientist_yob_edit">
+                   <property name="text">
+                    <string>Year of birth:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="scientist_yob_error_edit">
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="scientist_yob_input_edit">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Year of birth..</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="YoDAndErrorEdit">
+                 <item>
+                  <widget class="QLabel" name="scientist_yod_edit">
+                   <property name="text">
+                    <string>Year of Death:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="scientist_yod_error_edit">
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="scientist_yod_input_edit">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Year of death (leave empty if still alive)..</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="scientist_button_edit">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="text">
+                  <string>Save</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="scientist_name_input">
-          <property name="text">
-           <string/>
-          </property>
-          <property name="placeholderText">
-           <string>Name..</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
-          <item>
-           <widget class="QLabel" name="scientist_gender">
-            <property name="text">
-             <string>Gender:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="scientist_gender_error">
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="scientist_gender_input">
-          <property name="text">
-           <string/>
-          </property>
-          <property name="placeholderText">
-           <string>Gender..</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_4">
-          <item>
-           <widget class="QLabel" name="scientist_yob">
-            <property name="text">
-             <string>Year of birth:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="scientist_yob_error">
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="scientist_yob_input">
-          <property name="text">
-           <string/>
-          </property>
-          <property name="placeholderText">
-           <string>Year of birth..</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_5">
-          <item>
-           <widget class="QLabel" name="scientist_yod">
-            <property name="text">
-             <string>Year of Death:</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="scientist_yod_error">
-            <property name="text">
-             <string/>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="QLineEdit" name="scientist_yod_input">
-          <property name="text">
-           <string/>
-          </property>
-          <property name="placeholderText">
-           <string>Year of death (leave empty if still alive)..</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="scientist_button">
-          <property name="text">
-           <string>Add</string>
-          </property>
-         </widget>
         </item>
        </layout>
       </widget>
@@ -647,7 +835,7 @@ border: 1px solid gray;
               </property>
               <property name="maximumSize">
                <size>
-                <width>16777215</width>
+                <width>650</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -787,6 +975,12 @@ border: 1px solid gray;
                <size>
                 <width>500</width>
                 <height>0</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>650</width>
+                <height>16777215</height>
                </size>
               </property>
               <property name="title">
@@ -1231,7 +1425,7 @@ border: 1px solid gray;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1112</width>
+     <width>1058</width>
      <height>36</height>
     </rect>
    </property>
