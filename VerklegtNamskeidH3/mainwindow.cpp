@@ -72,6 +72,42 @@ void MainWindow::scientistsOrder()
     displayAllScientists();
 }
 
+void MainWindow::computersOrder()
+{
+    int column;
+    int order;
+    string sColumn = ui->computer_order_by_column->currentText().toStdString();
+    string sOrder = ui->computer_order_by_asc_desc->currentText().toStdString();
+    if(sColumn == "Name")
+    {
+        column = 1;
+    }
+    else if(sColumn == "Type")
+    {
+        column = 2;
+    }
+    else if(sColumn == "Built")
+    {
+        column = 3;
+    }
+    else
+    {
+        column = 4;
+    }
+
+    if(sOrder == "Ascending")
+    {
+        order = 1;
+    }
+    else
+    {
+        order = 2;
+    }
+    _service.whatToSort(2, column, order);
+
+    displayAllComputers();
+}
+
 void MainWindow::displayAllScientists()
 {
     ui->scientist_table->clearContents();
@@ -664,4 +700,14 @@ void MainWindow::on_scientist_order_by_column_currentIndexChanged()
 void MainWindow::on_scientist_order_by_asc_desc_currentIndexChanged()
 {
     scientistsOrder();
+}
+
+void MainWindow::on_computer_order_by_column_currentIndexChanged()
+{
+    computersOrder();
+}
+
+void MainWindow::on_computer_order_by_asc_desc_currentIndexChanged()
+{
+    computersOrder();
 }
