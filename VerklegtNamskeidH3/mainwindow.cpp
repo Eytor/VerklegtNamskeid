@@ -13,6 +13,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->scientist_order_by_column->addItem("Year of Death");
     ui->scientist_order_by_asc_desc->addItem("Ascending");
     ui->scientist_order_by_asc_desc->addItem("Descending");
+    ui->computer_built_input->addItem("True");
+    ui->computer_built_input->addItem("False");
     _service.retriveList();
 
     scientistsOrder();
@@ -46,7 +48,7 @@ void MainWindow::scientistsOrder()
     {
         column = 3;
     }
-    else if(sColumn == "Year of Death")
+    else
     {
         column = 4;
     }
@@ -55,7 +57,7 @@ void MainWindow::scientistsOrder()
     {
         order = 1;
     }
-    else if(sOrder == "Descending")
+    else
     {
         order = 2;
     }
@@ -340,14 +342,16 @@ void MainWindow::on_computer_button_clicked()
 {
     _tempCompInput.clear();
     bool error = false;
+    bool isint;
     ui->computer_name_error->clear();
     ui->computer_type_error->clear();
     ui->computer_built_error->clear();
     ui->computer_year_error->clear();
     QString name = ui->computer_name_input->text();
     QString type = ui->computer_type_input->text();
-    QString built = ui->computer_built_input->text();
+    QString built = ui->computer_built_input->currentText();
     QString year = ui->computer_year_input->text();
+    int check = year.toInt(&isint);
 
     if(name.isEmpty())
     {
@@ -361,12 +365,26 @@ void MainWindow::on_computer_button_clicked()
     }
     if(built.isEmpty())
     {
-        ui->computer_built_error->setText("<span style='color: #b20c0c'>Was it built or not, fucknugget!</span>");
+        ui->computer_built_error->setText("<span style='color: #b20c0c'>Was it built or not!</span>");
         error = true;
     }
-    if(year.isEmpty())
+    if(year.isEmpty() && built == "False")
     {
         year = "0";
+    }
+    else if(!check)
+    {
+        ui->computer_built_error->setText("<span style='color: #b20c0c'>Year has to be a number!</span>");
+        error = true;
+    }
+
+    if(built == "True")
+    {
+        built = "1";
+    }
+    else
+    {
+        built = "0";
     }
 
     if(!error)
@@ -383,11 +401,9 @@ void MainWindow::on_computer_button_clicked()
         displayAllComputers();
         ui->computer_name_input->clear();
         ui->computer_type_input->clear();
-        ui->computer_built_input->clear();
         ui->computer_year_input->clear();
     }
 }
-
 void MainWindow::on_computer_table_clicked()
 {
     ui->computer_delete->setEnabled(true);
