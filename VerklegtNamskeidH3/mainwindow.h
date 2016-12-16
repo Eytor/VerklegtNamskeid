@@ -74,6 +74,8 @@ private slots:
 
     void on_computer_order_by_asc_desc_currentIndexChanged();
 
+    void on_computer_edit_button_clicked();
+
 private:
     Ui::MainWindow *ui;
     DomainService _service;
