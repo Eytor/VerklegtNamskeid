@@ -40,7 +40,7 @@ class Ui_MainWindow
 public:
     QAction *actionClick_me;
     QWidget *centralWidget;
-    QVBoxLayout *verticalLayout_4;
+    QHBoxLayout *horizontalLayout;
     QTabWidget *tabs;
     QWidget *Scientists;
     QVBoxLayout *verticalLayout_2;
@@ -53,24 +53,48 @@ public:
     QPushButton *scientist_delete;
     QSpacerItem *horizontalSpacer_2;
     QPushButton *scientist_edit_button;
-    QLabel *add_label;
-    QHBoxLayout *horizontalLayout_2;
+    QHBoxLayout *AddAndEditorHolder;
+    QVBoxLayout *AdderHolder;
+    QGroupBox *groupBox_4;
+    QVBoxLayout *verticalLayout_13;
+    QHBoxLayout *NameAndErrorSci;
     QLabel *scientist_name;
-    QLabel *scientist_name_error;
+    QLabel *scientist_name_error_2;
     QLineEdit *scientist_name_input;
-    QHBoxLayout *horizontalLayout_3;
+    QHBoxLayout *GenderAndError;
     QLabel *scientist_gender;
     QLabel *scientist_gender_error;
     QLineEdit *scientist_gender_input;
-    QHBoxLayout *horizontalLayout_4;
+    QHBoxLayout *YearAndErrorSci;
     QLabel *scientist_yob;
     QLabel *scientist_yob_error;
     QLineEdit *scientist_yob_input;
-    QHBoxLayout *horizontalLayout_5;
+    QHBoxLayout *YoDAndError;
     QLabel *scientist_yod;
     QLabel *scientist_yod_error;
     QLineEdit *scientist_yod_input;
     QPushButton *scientist_button;
+    QSpacerItem *horizontalSpacer_4;
+    QVBoxLayout *verticalLayout_14;
+    QGroupBox *groupBox_5;
+    QVBoxLayout *verticalLayout_4;
+    QHBoxLayout *NameAndErrorEdit_2;
+    QLabel *scientist_name_edit;
+    QLabel *scientist_name_error;
+    QLineEdit *scientist_name_input_edit;
+    QHBoxLayout *GenderAndErrorEdit;
+    QLabel *scientist_gender_edit;
+    QLabel *scientist_gender_error_edit;
+    QLineEdit *scientist_gender_input_edit;
+    QHBoxLayout *YoBAndErrorEdit;
+    QLabel *scientist_yob_edit;
+    QLabel *scientist_yob_error_edit;
+    QLineEdit *scientist_yob_input_edit;
+    QHBoxLayout *YoDAndErrorEdit;
+    QLabel *scientist_yod_edit;
+    QLabel *scientist_yod_error_edit;
+    QLineEdit *scientist_yod_input_edit;
+    QPushButton *scientist_button_edit;
     QWidget *Computers;
     QVBoxLayout *verticalLayout_3;
     QLineEdit *computer_search;
@@ -167,7 +191,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(1112, 742);
+        MainWindow->resize(1068, 742);
         QPalette palette;
         QBrush brush(QColor(53, 53, 53, 255));
         brush.setStyle(Qt::SolidPattern);
@@ -286,10 +310,10 @@ public:
         actionClick_me->setObjectName(QStringLiteral("actionClick_me"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        verticalLayout_4 = new QVBoxLayout(centralWidget);
-        verticalLayout_4->setSpacing(6);
-        verticalLayout_4->setContentsMargins(11, 11, 11, 11);
-        verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
+        horizontalLayout = new QHBoxLayout(centralWidget);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         tabs = new QTabWidget(centralWidget);
         tabs->setObjectName(QStringLiteral("tabs"));
         tabs->setTabShape(QTabWidget::Rounded);
@@ -381,101 +405,232 @@ public:
 
         verticalLayout_2->addLayout(horizontalLayout_12);
 
-        add_label = new QLabel(Scientists);
-        add_label->setObjectName(QStringLiteral("add_label"));
-        add_label->setLayoutDirection(Qt::LeftToRight);
-        add_label->setFrameShape(QFrame::NoFrame);
-
-        verticalLayout_2->addWidget(add_label);
-
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setSpacing(6);
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        scientist_name = new QLabel(Scientists);
+        AddAndEditorHolder = new QHBoxLayout();
+        AddAndEditorHolder->setSpacing(6);
+        AddAndEditorHolder->setObjectName(QStringLiteral("AddAndEditorHolder"));
+        AdderHolder = new QVBoxLayout();
+        AdderHolder->setSpacing(6);
+        AdderHolder->setObjectName(QStringLiteral("AdderHolder"));
+        groupBox_4 = new QGroupBox(Scientists);
+        groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
+        groupBox_4->setMinimumSize(QSize(500, 0));
+        groupBox_4->setMaximumSize(QSize(650, 16777215));
+        verticalLayout_13 = new QVBoxLayout(groupBox_4);
+        verticalLayout_13->setSpacing(6);
+        verticalLayout_13->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_13->setObjectName(QStringLiteral("verticalLayout_13"));
+        NameAndErrorSci = new QHBoxLayout();
+        NameAndErrorSci->setSpacing(6);
+        NameAndErrorSci->setObjectName(QStringLiteral("NameAndErrorSci"));
+        scientist_name = new QLabel(groupBox_4);
         scientist_name->setObjectName(QStringLiteral("scientist_name"));
 
-        horizontalLayout_2->addWidget(scientist_name);
+        NameAndErrorSci->addWidget(scientist_name);
 
-        scientist_name_error = new QLabel(Scientists);
-        scientist_name_error->setObjectName(QStringLiteral("scientist_name_error"));
+        scientist_name_error_2 = new QLabel(groupBox_4);
+        scientist_name_error_2->setObjectName(QStringLiteral("scientist_name_error_2"));
 
-        horizontalLayout_2->addWidget(scientist_name_error);
+        NameAndErrorSci->addWidget(scientist_name_error_2);
 
 
-        verticalLayout_2->addLayout(horizontalLayout_2);
+        verticalLayout_13->addLayout(NameAndErrorSci);
 
-        scientist_name_input = new QLineEdit(Scientists);
+        scientist_name_input = new QLineEdit(groupBox_4);
         scientist_name_input->setObjectName(QStringLiteral("scientist_name_input"));
 
-        verticalLayout_2->addWidget(scientist_name_input);
+        verticalLayout_13->addWidget(scientist_name_input);
 
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setSpacing(6);
-        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        scientist_gender = new QLabel(Scientists);
+        GenderAndError = new QHBoxLayout();
+        GenderAndError->setSpacing(6);
+        GenderAndError->setObjectName(QStringLiteral("GenderAndError"));
+        scientist_gender = new QLabel(groupBox_4);
         scientist_gender->setObjectName(QStringLiteral("scientist_gender"));
 
-        horizontalLayout_3->addWidget(scientist_gender);
+        GenderAndError->addWidget(scientist_gender);
 
-        scientist_gender_error = new QLabel(Scientists);
+        scientist_gender_error = new QLabel(groupBox_4);
         scientist_gender_error->setObjectName(QStringLiteral("scientist_gender_error"));
 
-        horizontalLayout_3->addWidget(scientist_gender_error);
+        GenderAndError->addWidget(scientist_gender_error);
 
 
-        verticalLayout_2->addLayout(horizontalLayout_3);
+        verticalLayout_13->addLayout(GenderAndError);
 
-        scientist_gender_input = new QLineEdit(Scientists);
+        scientist_gender_input = new QLineEdit(groupBox_4);
         scientist_gender_input->setObjectName(QStringLiteral("scientist_gender_input"));
 
-        verticalLayout_2->addWidget(scientist_gender_input);
+        verticalLayout_13->addWidget(scientist_gender_input);
 
-        horizontalLayout_4 = new QHBoxLayout();
-        horizontalLayout_4->setSpacing(6);
-        horizontalLayout_4->setObjectName(QStringLiteral("horizontalLayout_4"));
-        scientist_yob = new QLabel(Scientists);
+        YearAndErrorSci = new QHBoxLayout();
+        YearAndErrorSci->setSpacing(6);
+        YearAndErrorSci->setObjectName(QStringLiteral("YearAndErrorSci"));
+        scientist_yob = new QLabel(groupBox_4);
         scientist_yob->setObjectName(QStringLiteral("scientist_yob"));
 
-        horizontalLayout_4->addWidget(scientist_yob);
+        YearAndErrorSci->addWidget(scientist_yob);
 
-        scientist_yob_error = new QLabel(Scientists);
+        scientist_yob_error = new QLabel(groupBox_4);
         scientist_yob_error->setObjectName(QStringLiteral("scientist_yob_error"));
 
-        horizontalLayout_4->addWidget(scientist_yob_error);
+        YearAndErrorSci->addWidget(scientist_yob_error);
 
 
-        verticalLayout_2->addLayout(horizontalLayout_4);
+        verticalLayout_13->addLayout(YearAndErrorSci);
 
-        scientist_yob_input = new QLineEdit(Scientists);
+        scientist_yob_input = new QLineEdit(groupBox_4);
         scientist_yob_input->setObjectName(QStringLiteral("scientist_yob_input"));
 
-        verticalLayout_2->addWidget(scientist_yob_input);
+        verticalLayout_13->addWidget(scientist_yob_input);
 
-        horizontalLayout_5 = new QHBoxLayout();
-        horizontalLayout_5->setSpacing(6);
-        horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
-        scientist_yod = new QLabel(Scientists);
+        YoDAndError = new QHBoxLayout();
+        YoDAndError->setSpacing(6);
+        YoDAndError->setObjectName(QStringLiteral("YoDAndError"));
+        scientist_yod = new QLabel(groupBox_4);
         scientist_yod->setObjectName(QStringLiteral("scientist_yod"));
 
-        horizontalLayout_5->addWidget(scientist_yod);
+        YoDAndError->addWidget(scientist_yod);
 
-        scientist_yod_error = new QLabel(Scientists);
+        scientist_yod_error = new QLabel(groupBox_4);
         scientist_yod_error->setObjectName(QStringLiteral("scientist_yod_error"));
 
-        horizontalLayout_5->addWidget(scientist_yod_error);
+        YoDAndError->addWidget(scientist_yod_error);
 
 
-        verticalLayout_2->addLayout(horizontalLayout_5);
+        verticalLayout_13->addLayout(YoDAndError);
 
-        scientist_yod_input = new QLineEdit(Scientists);
+        scientist_yod_input = new QLineEdit(groupBox_4);
         scientist_yod_input->setObjectName(QStringLiteral("scientist_yod_input"));
 
-        verticalLayout_2->addWidget(scientist_yod_input);
+        verticalLayout_13->addWidget(scientist_yod_input);
 
-        scientist_button = new QPushButton(Scientists);
+        scientist_button = new QPushButton(groupBox_4);
         scientist_button->setObjectName(QStringLiteral("scientist_button"));
 
-        verticalLayout_2->addWidget(scientist_button);
+        verticalLayout_13->addWidget(scientist_button);
+
+
+        AdderHolder->addWidget(groupBox_4);
+
+
+        AddAndEditorHolder->addLayout(AdderHolder);
+
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        AddAndEditorHolder->addItem(horizontalSpacer_4);
+
+        verticalLayout_14 = new QVBoxLayout();
+        verticalLayout_14->setSpacing(6);
+        verticalLayout_14->setObjectName(QStringLiteral("verticalLayout_14"));
+        groupBox_5 = new QGroupBox(Scientists);
+        groupBox_5->setObjectName(QStringLiteral("groupBox_5"));
+        groupBox_5->setMinimumSize(QSize(500, 0));
+        groupBox_5->setMaximumSize(QSize(650, 16777215));
+        verticalLayout_4 = new QVBoxLayout(groupBox_5);
+        verticalLayout_4->setSpacing(6);
+        verticalLayout_4->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
+        NameAndErrorEdit_2 = new QHBoxLayout();
+        NameAndErrorEdit_2->setSpacing(6);
+        NameAndErrorEdit_2->setObjectName(QStringLiteral("NameAndErrorEdit_2"));
+        scientist_name_edit = new QLabel(groupBox_5);
+        scientist_name_edit->setObjectName(QStringLiteral("scientist_name_edit"));
+
+        NameAndErrorEdit_2->addWidget(scientist_name_edit);
+
+        scientist_name_error = new QLabel(groupBox_5);
+        scientist_name_error->setObjectName(QStringLiteral("scientist_name_error"));
+
+        NameAndErrorEdit_2->addWidget(scientist_name_error);
+
+
+        verticalLayout_4->addLayout(NameAndErrorEdit_2);
+
+        scientist_name_input_edit = new QLineEdit(groupBox_5);
+        scientist_name_input_edit->setObjectName(QStringLiteral("scientist_name_input_edit"));
+        scientist_name_input_edit->setEnabled(false);
+
+        verticalLayout_4->addWidget(scientist_name_input_edit);
+
+        GenderAndErrorEdit = new QHBoxLayout();
+        GenderAndErrorEdit->setSpacing(6);
+        GenderAndErrorEdit->setObjectName(QStringLiteral("GenderAndErrorEdit"));
+        scientist_gender_edit = new QLabel(groupBox_5);
+        scientist_gender_edit->setObjectName(QStringLiteral("scientist_gender_edit"));
+
+        GenderAndErrorEdit->addWidget(scientist_gender_edit);
+
+        scientist_gender_error_edit = new QLabel(groupBox_5);
+        scientist_gender_error_edit->setObjectName(QStringLiteral("scientist_gender_error_edit"));
+
+        GenderAndErrorEdit->addWidget(scientist_gender_error_edit);
+
+
+        verticalLayout_4->addLayout(GenderAndErrorEdit);
+
+        scientist_gender_input_edit = new QLineEdit(groupBox_5);
+        scientist_gender_input_edit->setObjectName(QStringLiteral("scientist_gender_input_edit"));
+        scientist_gender_input_edit->setEnabled(false);
+
+        verticalLayout_4->addWidget(scientist_gender_input_edit);
+
+        YoBAndErrorEdit = new QHBoxLayout();
+        YoBAndErrorEdit->setSpacing(6);
+        YoBAndErrorEdit->setObjectName(QStringLiteral("YoBAndErrorEdit"));
+        scientist_yob_edit = new QLabel(groupBox_5);
+        scientist_yob_edit->setObjectName(QStringLiteral("scientist_yob_edit"));
+
+        YoBAndErrorEdit->addWidget(scientist_yob_edit);
+
+        scientist_yob_error_edit = new QLabel(groupBox_5);
+        scientist_yob_error_edit->setObjectName(QStringLiteral("scientist_yob_error_edit"));
+
+        YoBAndErrorEdit->addWidget(scientist_yob_error_edit);
+
+
+        verticalLayout_4->addLayout(YoBAndErrorEdit);
+
+        scientist_yob_input_edit = new QLineEdit(groupBox_5);
+        scientist_yob_input_edit->setObjectName(QStringLiteral("scientist_yob_input_edit"));
+        scientist_yob_input_edit->setEnabled(false);
+
+        verticalLayout_4->addWidget(scientist_yob_input_edit);
+
+        YoDAndErrorEdit = new QHBoxLayout();
+        YoDAndErrorEdit->setSpacing(6);
+        YoDAndErrorEdit->setObjectName(QStringLiteral("YoDAndErrorEdit"));
+        scientist_yod_edit = new QLabel(groupBox_5);
+        scientist_yod_edit->setObjectName(QStringLiteral("scientist_yod_edit"));
+
+        YoDAndErrorEdit->addWidget(scientist_yod_edit);
+
+        scientist_yod_error_edit = new QLabel(groupBox_5);
+        scientist_yod_error_edit->setObjectName(QStringLiteral("scientist_yod_error_edit"));
+
+        YoDAndErrorEdit->addWidget(scientist_yod_error_edit);
+
+
+        verticalLayout_4->addLayout(YoDAndErrorEdit);
+
+        scientist_yod_input_edit = new QLineEdit(groupBox_5);
+        scientist_yod_input_edit->setObjectName(QStringLiteral("scientist_yod_input_edit"));
+        scientist_yod_input_edit->setEnabled(false);
+
+        verticalLayout_4->addWidget(scientist_yod_input_edit);
+
+        scientist_button_edit = new QPushButton(groupBox_5);
+        scientist_button_edit->setObjectName(QStringLiteral("scientist_button_edit"));
+        scientist_button_edit->setEnabled(false);
+
+        verticalLayout_4->addWidget(scientist_button_edit);
+
+
+        verticalLayout_14->addWidget(groupBox_5);
+
+
+        AddAndEditorHolder->addLayout(verticalLayout_14);
+
+
+        verticalLayout_2->addLayout(AddAndEditorHolder);
 
         tabs->addTab(Scientists, QString());
         Computers = new QWidget();
@@ -560,7 +715,7 @@ public:
         groupBox_2 = new QGroupBox(Computers);
         groupBox_2->setObjectName(QStringLiteral("groupBox_2"));
         groupBox_2->setMinimumSize(QSize(500, 0));
-        groupBox_2->setMaximumSize(QSize(16777215, 16777215));
+        groupBox_2->setMaximumSize(QSize(650, 16777215));
         verticalLayout_10 = new QVBoxLayout(groupBox_2);
         verticalLayout_10->setSpacing(6);
         verticalLayout_10->setContentsMargins(11, 11, 11, 11);
@@ -670,6 +825,7 @@ public:
         groupBox_3 = new QGroupBox(Computers);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
         groupBox_3->setMinimumSize(QSize(500, 0));
+        groupBox_3->setMaximumSize(QSize(650, 16777215));
         verticalLayout_9 = new QVBoxLayout(groupBox_3);
         verticalLayout_9->setSpacing(6);
         verticalLayout_9->setContentsMargins(11, 11, 11, 11);
@@ -993,12 +1149,12 @@ public:
 
         tabs->addTab(tab_2, QString());
 
-        verticalLayout_4->addWidget(tabs);
+        horizontalLayout->addWidget(tabs);
 
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1112, 36));
+        menuBar->setGeometry(QRect(0, 0, 1068, 41));
         menuUltra_scientist_and_computer_database = new QMenu(menuBar);
         menuUltra_scientist_and_computer_database->setObjectName(QStringLiteral("menuUltra_scientist_and_computer_database"));
         MainWindow->setMenuBar(menuBar);
@@ -1014,7 +1170,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabs->setCurrentIndex(1);
+        tabs->setCurrentIndex(0);
         trash_placeholder->setCurrentIndex(1);
 
 
@@ -1040,9 +1196,9 @@ public:
 #endif // QT_NO_TOOLTIP
         scientist_delete->setText(QApplication::translate("MainWindow", "Delete scientist", 0));
         scientist_edit_button->setText(QApplication::translate("MainWindow", "Edit", 0));
-        add_label->setText(QApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-size:x-large; font-weight:600; color:#ffffff;\">Add scientist to list</span></p></body></html>", 0));
+        groupBox_4->setTitle(QApplication::translate("MainWindow", "Add scientist to list", 0));
         scientist_name->setText(QApplication::translate("MainWindow", "Name:", 0));
-        scientist_name_error->setText(QString());
+        scientist_name_error_2->setText(QString());
         scientist_name_input->setText(QString());
         scientist_name_input->setPlaceholderText(QApplication::translate("MainWindow", "Name..", 0));
         scientist_gender->setText(QApplication::translate("MainWindow", "Gender:", 0));
@@ -1058,6 +1214,24 @@ public:
         scientist_yod_input->setText(QString());
         scientist_yod_input->setPlaceholderText(QApplication::translate("MainWindow", "Year of death (leave empty if still alive)..", 0));
         scientist_button->setText(QApplication::translate("MainWindow", "Add", 0));
+        groupBox_5->setTitle(QApplication::translate("MainWindow", "Edit selected scientist", 0));
+        scientist_name_edit->setText(QApplication::translate("MainWindow", "Name:", 0));
+        scientist_name_error->setText(QString());
+        scientist_name_input_edit->setText(QString());
+        scientist_name_input_edit->setPlaceholderText(QApplication::translate("MainWindow", "Name..", 0));
+        scientist_gender_edit->setText(QApplication::translate("MainWindow", "Gender:", 0));
+        scientist_gender_error_edit->setText(QString());
+        scientist_gender_input_edit->setText(QString());
+        scientist_gender_input_edit->setPlaceholderText(QApplication::translate("MainWindow", "Gender..", 0));
+        scientist_yob_edit->setText(QApplication::translate("MainWindow", "Year of birth:", 0));
+        scientist_yob_error_edit->setText(QString());
+        scientist_yob_input_edit->setText(QString());
+        scientist_yob_input_edit->setPlaceholderText(QApplication::translate("MainWindow", "Year of birth..", 0));
+        scientist_yod_edit->setText(QApplication::translate("MainWindow", "Year of Death:", 0));
+        scientist_yod_error_edit->setText(QString());
+        scientist_yod_input_edit->setText(QString());
+        scientist_yod_input_edit->setPlaceholderText(QApplication::translate("MainWindow", "Year of death (leave empty if still alive)..", 0));
+        scientist_button_edit->setText(QApplication::translate("MainWindow", "Save", 0));
         tabs->setTabText(tabs->indexOf(Scientists), QApplication::translate("MainWindow", "Scientists", 0));
         computer_search->setText(QString());
         computer_search->setPlaceholderText(QApplication::translate("MainWindow", "Search..", 0));

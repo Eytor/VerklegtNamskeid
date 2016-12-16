@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1058</width>
+    <width>1068</width>
     <height>742</height>
    </rect>
   </property>
@@ -1425,8 +1425,8 @@ border: 1px solid gray;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1058</width>
-     <height>36</height>
+     <width>1068</width>
+     <height>41</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuUltra_scientist_and_computer_database">

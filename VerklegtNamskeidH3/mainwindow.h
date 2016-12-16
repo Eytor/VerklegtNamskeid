@@ -78,6 +78,8 @@ private slots:
 
     void on_computer_button_edit_clicked();
 
+    void on_scientist_button_edit_clicked();
+
 private:
     Ui::MainWindow *ui;
     DomainService _service;

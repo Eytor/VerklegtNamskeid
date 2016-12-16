@@ -286,6 +286,11 @@ void MainWindow::on_scientist_button_clicked()
     {
         yoD = "0";
     }
+    else if(!check2)
+    {
+        ui->scientist_yod_error->setText("<span style='color: #b20c0c'>Year of death must be a number!</span>");
+        error = true;
+    }
 
     if(!check)
     {
@@ -293,15 +298,13 @@ void MainWindow::on_scientist_button_clicked()
         error = true;
     }
 
-    if(!check2)
+    if(yoD.toInt() == 0)
     {
-        ui->scientist_yod_error->setText("<span style='color: #b20c0c'>Year of death must be a number!</span>");
-        error = true;
+        error = false;
     }
-
-    if(yoD.toInt() < yoB.toInt())
+    else if(yoD.toInt() < yoB.toInt())
     {
-        ui->scientist_yod_error->setText("<span style='color: #b20c0c'>Year of death must be a number!</span>");
+        ui->scientist_yod_error->setText("<span style='color: #b20c0c'>Scientist can't have died before he was born</span>");
         error = true;
     }
 
@@ -662,15 +665,26 @@ void MainWindow::on_scientist_link_table_clicked()
 
 void MainWindow::on_scientist_edit_button_clicked()
 {
-    _currentEditID = 0;
+    ui->scientist_name_input_edit->setEnabled(true);
+    ui->scientist_gender_input_edit->setEnabled(true);
+    ui->scientist_yob_input_edit->setEnabled(true);
+    ui->scientist_yod_input_edit->setEnabled(true);
+    ui->scientist_button_edit->setEnabled(true);
+
     int selected = ui->scientist_table->currentIndex().row();
     _currentEditID = _currentScientistDisplay[selected].ID;
-    QString name = QString::fromStdString(_currentScientistDisplay[selected].fullName);
-    QString gender = QString::fromStdString(_currentScientistDisplay[selected].gender);
-    QString yob = QString::number(_currentScientistDisplay[selected].yearOfBirth);
-    QString yod = QString::number(_currentScientistDisplay[selected].yearOfDeath);
-    _currentEditID = 0;
+    ui->scientist_name_input_edit->setText(QString::fromStdString(_currentScientistDisplay[selected].fullName));
+    ui->scientist_gender_input_edit->setText(QString::fromStdString(_currentScientistDisplay[selected].gender));
+    ui->scientist_yob_input_edit->setText(QString::number(_currentScientistDisplay[selected].yearOfBirth));
 
+    if(_currentScientistDisplay[selected].yearOfDeath != 0)
+    {
+        ui->scientist_yod_input_edit->setText(QString::number(_currentScientistDisplay[selected].yearOfDeath));
+    }
+    else
+    {
+        ui->scientist_yod_input_edit->setText("");
+    }
 }
 
 void MainWindow::on_computer_link_table_clicked()
@@ -767,4 +781,32 @@ void MainWindow::on_computer_button_edit_clicked()
     ui->computer_type_input_edit->setEnabled(false);
     ui->computer_year_input_edit->clear();
     ui->computer_year_input_edit->setEnabled(false);
+    ui->computer_button_edit->setEnabled(false);
+}
+
+void MainWindow::on_scientist_button_edit_clicked()
+{
+    QString name = ui->scientist_name_input_edit->text();
+    QString gender = ui->scientist_gender_input_edit->text();
+    QString yob = ui->scientist_yob_input_edit->text();
+    QString yod;
+    if(ui->scientist_yod_input_edit->text() == "" || ui->scientist_yod_input_edit->text() == "0")
+    {
+        yod = "0";
+    }
+    else
+    {
+        yod = ui->scientist_yod_input_edit->text();
+    }
+    _service.editPerson(_currentEditID, name, gender, yob, yod);
+    displayAllScientists();
+    ui->scientist_name_input_edit->clear();
+    ui->scientist_name_input_edit->setEnabled(false);
+    ui->scientist_gender_input_edit->clear();
+    ui->scientist_gender_input_edit->setEnabled(false);
+    ui->scientist_yob_input_edit->clear();
+    ui->scientist_yob_input_edit->setEnabled(false);
+    ui->scientist_yod_input_edit->clear();
+    ui->scientist_yod_input_edit->setEnabled(false);
+    ui->scientist_button_edit->setEnabled(false);
 }
