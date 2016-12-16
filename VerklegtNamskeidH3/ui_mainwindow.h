@@ -45,6 +45,9 @@ public:
     QWidget *Scientists;
     QVBoxLayout *verticalLayout_2;
     QLineEdit *scientist_search;
+    QHBoxLayout *horizontalLayout_2;
+    QLabel *label_5;
+    QLabel *label;
     QHBoxLayout *horizontalLayout_10;
     QComboBox *scientist_order_by_column;
     QComboBox *scientist_order_by_asc_desc;
@@ -59,7 +62,7 @@ public:
     QVBoxLayout *verticalLayout_13;
     QHBoxLayout *NameAndErrorSci;
     QLabel *scientist_name;
-    QLabel *scientist_name_error_2;
+    QLabel *scientist_name_error;
     QLineEdit *scientist_name_input;
     QHBoxLayout *GenderAndError;
     QLabel *scientist_gender;
@@ -80,7 +83,7 @@ public:
     QVBoxLayout *verticalLayout_4;
     QHBoxLayout *NameAndErrorEdit_2;
     QLabel *scientist_name_edit;
-    QLabel *scientist_name_error;
+    QLabel *scientist_name_error_edit;
     QLineEdit *scientist_name_input_edit;
     QHBoxLayout *GenderAndErrorEdit;
     QLabel *scientist_gender_edit;
@@ -98,6 +101,9 @@ public:
     QWidget *Computers;
     QVBoxLayout *verticalLayout_3;
     QLineEdit *computer_search;
+    QHBoxLayout *horizontalLayout_3;
+    QLabel *label_7;
+    QLabel *label_6;
     QHBoxLayout *horizontalLayout_13;
     QComboBox *computer_order_by_column;
     QComboBox *computer_order_by_asc_desc;
@@ -285,6 +291,11 @@ public:
 "background-color:rgb(75, 75, 75);\n"
 "border: 1px solid #008CBA ;\n"
 "}\n"
+"QLineEdit:!enabled{\n"
+"border:  1px solid grey;\n"
+"color:grey;\n"
+"background-color:rgb(65, 65, 65)\n"
+"}\n"
 "\n"
 "QPushButton{\n"
 "  font-size: 12px;\n"
@@ -328,6 +339,22 @@ public:
         scientist_search->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop);
 
         verticalLayout_2->addWidget(scientist_search);
+
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setSpacing(6);
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        label_5 = new QLabel(Scientists);
+        label_5->setObjectName(QStringLiteral("label_5"));
+
+        horizontalLayout_2->addWidget(label_5);
+
+        label = new QLabel(Scientists);
+        label->setObjectName(QStringLiteral("label"));
+
+        horizontalLayout_2->addWidget(label);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_2);
 
         horizontalLayout_10 = new QHBoxLayout();
         horizontalLayout_10->setSpacing(6);
@@ -427,10 +454,10 @@ public:
 
         NameAndErrorSci->addWidget(scientist_name);
 
-        scientist_name_error_2 = new QLabel(groupBox_4);
-        scientist_name_error_2->setObjectName(QStringLiteral("scientist_name_error_2"));
+        scientist_name_error = new QLabel(groupBox_4);
+        scientist_name_error->setObjectName(QStringLiteral("scientist_name_error"));
 
-        NameAndErrorSci->addWidget(scientist_name_error_2);
+        NameAndErrorSci->addWidget(scientist_name_error);
 
 
         verticalLayout_13->addLayout(NameAndErrorSci);
@@ -537,10 +564,10 @@ public:
 
         NameAndErrorEdit_2->addWidget(scientist_name_edit);
 
-        scientist_name_error = new QLabel(groupBox_5);
-        scientist_name_error->setObjectName(QStringLiteral("scientist_name_error"));
+        scientist_name_error_edit = new QLabel(groupBox_5);
+        scientist_name_error_edit->setObjectName(QStringLiteral("scientist_name_error_edit"));
 
-        NameAndErrorEdit_2->addWidget(scientist_name_error);
+        NameAndErrorEdit_2->addWidget(scientist_name_error_edit);
 
 
         verticalLayout_4->addLayout(NameAndErrorEdit_2);
@@ -645,6 +672,22 @@ public:
 
         verticalLayout_3->addWidget(computer_search);
 
+        horizontalLayout_3 = new QHBoxLayout();
+        horizontalLayout_3->setSpacing(6);
+        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
+        label_7 = new QLabel(Computers);
+        label_7->setObjectName(QStringLiteral("label_7"));
+
+        horizontalLayout_3->addWidget(label_7);
+
+        label_6 = new QLabel(Computers);
+        label_6->setObjectName(QStringLiteral("label_6"));
+
+        horizontalLayout_3->addWidget(label_6);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_3);
+
         horizontalLayout_13 = new QHBoxLayout();
         horizontalLayout_13->setSpacing(6);
         horizontalLayout_13->setObjectName(QStringLiteral("horizontalLayout_13"));
@@ -675,7 +718,7 @@ public:
         computer_table->setObjectName(QStringLiteral("computer_table"));
         computer_table->setEditTriggers(QAbstractItemView::NoEditTriggers);
         computer_table->setSelectionBehavior(QAbstractItemView::SelectRows);
-        computer_table->setSortingEnabled(true);
+        computer_table->setSortingEnabled(false);
         computer_table->horizontalHeader()->setDefaultSectionSize(265);
         computer_table->horizontalHeader()->setStretchLastSection(true);
         computer_table->verticalHeader()->setVisible(false);
@@ -1154,7 +1197,7 @@ public:
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 1068, 41));
+        menuBar->setGeometry(QRect(0, 0, 1068, 37));
         menuUltra_scientist_and_computer_database = new QMenu(menuBar);
         menuUltra_scientist_and_computer_database->setObjectName(QStringLiteral("menuUltra_scientist_and_computer_database"));
         MainWindow->setMenuBar(menuBar);
@@ -1183,6 +1226,8 @@ public:
         actionClick_me->setText(QApplication::translate("MainWindow", "Click me!", 0));
         scientist_search->setText(QString());
         scientist_search->setPlaceholderText(QApplication::translate("MainWindow", "Search..", 0));
+        label_5->setText(QApplication::translate("MainWindow", "Order by:", 0));
+        label->setText(QApplication::translate("MainWindow", "In order:", 0));
         QTableWidgetItem *___qtablewidgetitem = scientist_table->horizontalHeaderItem(0);
         ___qtablewidgetitem->setText(QApplication::translate("MainWindow", "Full name", 0));
         QTableWidgetItem *___qtablewidgetitem1 = scientist_table->horizontalHeaderItem(1);
@@ -1198,7 +1243,7 @@ public:
         scientist_edit_button->setText(QApplication::translate("MainWindow", "Edit", 0));
         groupBox_4->setTitle(QApplication::translate("MainWindow", "Add scientist to list", 0));
         scientist_name->setText(QApplication::translate("MainWindow", "Name:", 0));
-        scientist_name_error_2->setText(QString());
+        scientist_name_error->setText(QString());
         scientist_name_input->setText(QString());
         scientist_name_input->setPlaceholderText(QApplication::translate("MainWindow", "Name..", 0));
         scientist_gender->setText(QApplication::translate("MainWindow", "Gender:", 0));
@@ -1216,7 +1261,7 @@ public:
         scientist_button->setText(QApplication::translate("MainWindow", "Add", 0));
         groupBox_5->setTitle(QApplication::translate("MainWindow", "Edit selected scientist", 0));
         scientist_name_edit->setText(QApplication::translate("MainWindow", "Name:", 0));
-        scientist_name_error->setText(QString());
+        scientist_name_error_edit->setText(QString());
         scientist_name_input_edit->setText(QString());
         scientist_name_input_edit->setPlaceholderText(QApplication::translate("MainWindow", "Name..", 0));
         scientist_gender_edit->setText(QApplication::translate("MainWindow", "Gender:", 0));
@@ -1235,6 +1280,8 @@ public:
         tabs->setTabText(tabs->indexOf(Scientists), QApplication::translate("MainWindow", "Scientists", 0));
         computer_search->setText(QString());
         computer_search->setPlaceholderText(QApplication::translate("MainWindow", "Search..", 0));
+        label_7->setText(QApplication::translate("MainWindow", "Order by:", 0));
+        label_6->setText(QApplication::translate("MainWindow", "In order:", 0));
         QTableWidgetItem *___qtablewidgetitem4 = computer_table->horizontalHeaderItem(0);
         ___qtablewidgetitem4->setText(QApplication::translate("MainWindow", "Name", 0));
         QTableWidgetItem *___qtablewidgetitem5 = computer_table->horizontalHeaderItem(1);

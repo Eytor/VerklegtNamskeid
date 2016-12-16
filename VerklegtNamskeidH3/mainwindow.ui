@@ -219,7 +219,7 @@ border: 1px solid gray;
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="Scientists">
        <attribute name="title">
@@ -435,7 +435,7 @@ border: 1px solid gray;
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLabel" name="scientist_name_error_2">
+                  <widget class="QLabel" name="scientist_name_error">
                    <property name="text">
                     <string/>
                    </property>
@@ -592,7 +592,7 @@ border: 1px solid gray;
                   </widget>
                  </item>
                  <item>
-                  <widget class="QLabel" name="scientist_name_error">
+                  <widget class="QLabel" name="scientist_name_error_edit">
                    <property name="text">
                     <string/>
                    </property>
@@ -1467,7 +1467,7 @@ border: 1px solid gray;
      <x>0</x>
      <y>0</y>
      <width>1068</width>
-     <height>41</height>
+     <height>37</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuUltra_scientist_and_computer_database">

@@ -18,15 +18,15 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->computer_order_by_asc_desc->addItem("Descending");
     ui->scientist_order_by_asc_desc->addItem("Ascending");
     ui->scientist_order_by_asc_desc->addItem("Descending");
-    ui->computer_built_input_edit->addItem("True");
-    ui->computer_built_input_edit->addItem("False");
-    ui->computer_built_input->addItem("True");
-    ui->computer_built_input->addItem("False");
+    ui->computer_built_input_edit->addItem("Yes");
+    ui->computer_built_input_edit->addItem("No");
+    ui->computer_built_input->addItem("Yes");
+    ui->computer_built_input->addItem("No");
     _service.retriveList();
-
     scientistsOrder();
     displayAllScientists();
     displayAllComputers();
+    computersOrder();
     displayComputerTrash();
     displayScientistTrash();
     displayLinksScientists();
@@ -148,11 +148,14 @@ void MainWindow::displayAllComputers()
 
         ui->computer_table->setItem(i, 0, new QTableWidgetItem(name));
         ui->computer_table->setItem(i, 1, new QTableWidgetItem(type));
-        ui->computer_table->setItem(i, 2, new QTableWidgetItem(built));
-
         if(built != "0")
         {
+            ui->computer_table->setItem(i, 2, new QTableWidgetItem("Yes"));
             ui->computer_table->setItem(i, 3, new QTableWidgetItem(year));
+        }
+        else
+        {
+            ui->computer_table->setItem(i, 2, new QTableWidgetItem("No"));
         }
     }
 }
@@ -172,11 +175,14 @@ void MainWindow::displayComputerTrash()
 
         ui->computer_trash_table->setItem(i, 0, new QTableWidgetItem(name));
         ui->computer_trash_table->setItem(i, 1, new QTableWidgetItem(type));
-        ui->computer_trash_table->setItem(i, 2, new QTableWidgetItem(built));
-
         if(built != "0")
         {
+            ui->computer_table->setItem(i, 2, new QTableWidgetItem("Yes"));
             ui->computer_trash_table->setItem(i, 3, new QTableWidgetItem(year));
+        }
+        else
+        {
+            ui->computer_table->setItem(i, 2, new QTableWidgetItem("No"));
         }
     }
 }
@@ -300,7 +306,6 @@ void MainWindow::on_scientist_button_clicked()
 
     if(yoD.toInt() == 0)
     {
-        error = false;
     }
     else if(yoD.toInt() < yoB.toInt())
     {
@@ -396,10 +401,14 @@ void MainWindow::on_computer_search_textChanged(const QString &arg1)
         ui->computer_table->setItem(i, 0, new QTableWidgetItem(name));
         ui->computer_table->setItem(i, 1, new QTableWidgetItem(type));
         ui->computer_table->setItem(i, 2, new QTableWidgetItem(built));
-
         if(built != "0")
         {
+            ui->computer_table->setItem(i, 2, new QTableWidgetItem("Yes"));
             ui->computer_table->setItem(i, 3, new QTableWidgetItem(year));
+        }
+        else
+        {
+            ui->computer_table->setItem(i, 2, new QTableWidgetItem("No"));
         }
     }
     _tempCompInput.clear();
@@ -435,9 +444,14 @@ void MainWindow::on_computer_button_clicked()
         ui->computer_built_error->setText("<span style='color: #b20c0c'>Was it built or not!</span>");
         error = true;
     }
-    if(year.isEmpty() && built == "False")
+    if(year.isEmpty() && built == "No")
     {
         year = "0";
+    }
+    else if(year.isEmpty() && built == "Yes")
+    {
+        ui->computer_year_error->setText("<span style='color: #b20c0c'>Year can not be Empty!</span>");
+        error = true;
     }
     else if(!check)
     {
@@ -445,7 +459,7 @@ void MainWindow::on_computer_button_clicked()
         error = true;
     }
 
-    if(built == "True")
+    if(built == "Yes")
     {
         built = "1";
     }
@@ -737,11 +751,11 @@ void MainWindow::on_computer_edit_button_clicked()
     ui->computer_type_input_edit->setText(QString::fromStdString(_currentComputerDisplay[selected].type));
     if(_currentComputerDisplay[selected].built == 1)
     {
-        ui->computer_built_input_edit->setCurrentText("True");
+        ui->computer_built_input_edit->setCurrentText("Yes");
     }
     else
     {
-        ui->computer_built_input_edit->setCurrentText("False");
+        ui->computer_built_input_edit->setCurrentText("No");
     }
 
     if(_currentComputerDisplay[selected].year != 0)
@@ -757,11 +771,21 @@ void MainWindow::on_computer_edit_button_clicked()
 
 void MainWindow::on_computer_button_edit_clicked()
 {
+
+    ui->computer_built_error_edit->clear();
+    ui->computer_name_error_edit->clear();
+    ui->computer_type_error_edit->clear();
+    ui->computer_year_error_2->clear();
     QString name = ui->computer_name_input_edit->text();
     QString type = ui->computer_type_input_edit->text();
+    QString year = ui->computer_year_input_edit->text();
     string built1;
     QString built;
-    if(ui->computer_built_input_edit->currentText() == "True")
+    bool isint;
+    int check = year.toInt(&isint);
+    bool error = false;
+
+    if(ui->computer_built_input_edit->currentText() == "Yes")
     {
         built1 = "1";
     }
@@ -769,23 +793,65 @@ void MainWindow::on_computer_button_edit_clicked()
     {
         built1 = "0";
     }
-    built = QString::fromStdString(built1);
-    QString year = ui->computer_year_input_edit->text();
-    _service.editComputer(_currentEditID, name, type, built, year);
-    displayAllComputers();
-    ui->computer_built_input_edit->clear();
-    ui->computer_built_input_edit->setEnabled(false);
-    ui->computer_name_input_edit->clear();
-    ui->computer_name_input_edit->setEnabled(false);
-    ui->computer_type_input_edit->clear();
-    ui->computer_type_input_edit->setEnabled(false);
-    ui->computer_year_input_edit->clear();
-    ui->computer_year_input_edit->setEnabled(false);
-    ui->computer_button_edit->setEnabled(false);
+
+    if(name.isEmpty())
+    {
+        error = true;
+        ui->computer_name_error_edit->setText("<span style='color: #b20c0c'>Name can not be empty!</span>");
+    }
+    if(type.isEmpty())
+    {
+        ui->computer_type_error_edit->setText("<span style='color: #b20c0c'>Type can not be empty!</span>");
+        error = true;
+    }
+    if(year.isEmpty() && built1 == "0")
+    {
+        year = "0";
+    }
+    else if(!check)
+    {
+        if(year == "")
+        {
+            ui->computer_year_error_2->setText("<span style='color: #b20c0c'>Year can not be Empty!</span>");
+            error = true;
+        }
+        else
+        {
+            ui->computer_year_error_2->setText("<span style='color: #b20c0c'>Year has to be a number!</span>");
+            error = true;
+        }
+    }
+
+    if(!error)
+    {
+
+        built = QString::fromStdString(built1);
+        _service.editComputer(_currentEditID, name, type, built, year);
+        displayAllComputers();
+        ui->computer_built_error_edit->clear();
+        ui->computer_name_error_edit->clear();
+        ui->computer_type_error_edit->clear();
+        ui->computer_year_error_2->clear();
+        ui->computer_built_input_edit->setEnabled(false);
+        ui->computer_name_input_edit->clear();
+        ui->computer_name_input_edit->setEnabled(false);
+        ui->computer_type_input_edit->clear();
+        ui->computer_type_input_edit->setEnabled(false);
+        ui->computer_year_input_edit->clear();
+        ui->computer_year_input_edit->setEnabled(false);
+        ui->computer_button_edit->setEnabled(false);
+    }
+
 }
 
 void MainWindow::on_scientist_button_edit_clicked()
 {
+    ui->scientist_name_error_edit->clear();
+    ui->scientist_gender_error_edit->clear();
+    ui->scientist_yob_error_edit->clear();
+    ui->scientist_yod_error_edit->clear();
+    bool error = false;
+    bool isint;
     QString name = ui->scientist_name_input_edit->text();
     QString gender = ui->scientist_gender_input_edit->text();
     QString yob = ui->scientist_yob_input_edit->text();
@@ -798,15 +864,60 @@ void MainWindow::on_scientist_button_edit_clicked()
     {
         yod = ui->scientist_yod_input_edit->text();
     }
-    _service.editPerson(_currentEditID, name, gender, yob, yod);
-    displayAllScientists();
-    ui->scientist_name_input_edit->clear();
-    ui->scientist_name_input_edit->setEnabled(false);
-    ui->scientist_gender_input_edit->clear();
-    ui->scientist_gender_input_edit->setEnabled(false);
-    ui->scientist_yob_input_edit->clear();
-    ui->scientist_yob_input_edit->setEnabled(false);
-    ui->scientist_yod_input_edit->clear();
-    ui->scientist_yod_input_edit->setEnabled(false);
-    ui->scientist_button_edit->setEnabled(false);
+    int check = yob.toInt(&isint);
+    int check2 = yod.toInt(&isint);
+
+    if(name.isEmpty())
+    {
+        error = true;
+        ui->scientist_name_error_edit->setText("<span style='color: #b20c0c'>Name can not be empty!</span>");
+    }
+    if(gender.isEmpty())
+    {
+        ui->scientist_gender_error_edit->setText("<span style='color: #b20c0c'>Gender can not be empty!</span>");
+        error = true;
+    }
+    if(yob.isEmpty())
+    {
+        ui->scientist_yob_error_edit->setText("<span style='color: #b20c0c'>Scientist must have been born!</span>");
+        error = true;
+    }
+    if(yod == "0")
+    {
+    }
+    else if(!check2)
+    {
+        ui->scientist_yod_error_edit->setText("<span style='color: #b20c0c'>Year of death must be a number!</span>");
+        error = true;
+    }
+
+    if(!check)
+    {
+        ui->scientist_yob_error_edit->setText("<span style='color: #b20c0c'>Year of birth must be a number!</span>");
+        error = true;
+    }
+
+    if(yod.toInt() == 0)
+    {
+    }
+    else if(yod.toInt() < yob.toInt())
+    {
+        ui->scientist_yod_error_edit->setText("<span style='color: #b20c0c'>Scientist can't have died before he was born</span>");
+        error = true;
+    }
+
+    if(!error)
+    {
+        _service.editPerson(_currentEditID, name, gender, yob, yod);
+        displayAllScientists();
+        ui->scientist_name_input_edit->clear();
+        ui->scientist_name_input_edit->setEnabled(false);
+        ui->scientist_gender_input_edit->clear();
+        ui->scientist_gender_input_edit->setEnabled(false);
+        ui->scientist_yob_input_edit->clear();
+        ui->scientist_yob_input_edit->setEnabled(false);
+        ui->scientist_yod_input_edit->clear();
+        ui->scientist_yod_input_edit->setEnabled(false);
+        ui->scientist_button_edit->setEnabled(false);
+    }
 }
