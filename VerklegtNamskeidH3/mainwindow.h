@@ -27,11 +27,12 @@ public:
     void displayComputerTrash();
     // Function that displays all deleted scientists to table
     void displayScientistTrash();
+    // Function that displays all scientists that have links to a specific table
     void displayLinksScientists();
-    void printPerson(int list, int i);
 private slots:
+    // Function starts searching scientists as soon as user starts writing
     void on_scientist_search_textChanged(const QString &arg1);
-
+    // Add to Scientist Table button, when it's clicked it adds scientist to table and database
     void on_scientist_button_clicked();
 
     void on_scientist_delete_clicked();
