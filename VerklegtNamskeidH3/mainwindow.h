@@ -3,7 +3,6 @@
 #include "domainservice.h"
 #include <QMainWindow>
 #include <QDialog>
-#include "edit.h"
 
 namespace Ui {
 class MainWindow;

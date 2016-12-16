@@ -16,13 +16,10 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     domainservice.cpp \
-    dataaccess.cpp \
-    edit.cpp
+    dataaccess.cpp
 
 HEADERS  += mainwindow.h \
     domainservice.h \
-    dataaccess.h \
-    edit.h
+    dataaccess.h
 
-FORMS    += mainwindow.ui \
-    edit.ui
+FORMS    += mainwindow.ui
