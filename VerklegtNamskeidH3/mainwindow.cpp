@@ -18,6 +18,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->computer_order_by_asc_desc->addItem("Descending");
     ui->scientist_order_by_asc_desc->addItem("Ascending");
     ui->scientist_order_by_asc_desc->addItem("Descending");
+    ui->computer_built_input_edit->addItem("True");
+    ui->computer_built_input_edit->addItem("False");
     ui->computer_built_input->addItem("True");
     ui->computer_built_input->addItem("False");
     _service.retriveList();
@@ -705,4 +707,36 @@ void MainWindow::on_computer_order_by_column_currentIndexChanged()
 void MainWindow::on_computer_order_by_asc_desc_currentIndexChanged()
 {
     computersOrder();
+}
+
+void MainWindow::on_computer_edit_button_clicked()
+{
+    ui->computer_name_input_edit->setEnabled(true);
+    ui->computer_type_input_edit->setEnabled(true);
+    ui->computer_built_input_edit->setEnabled(true);
+    ui->computer_year_input_edit->setEnabled(true);
+    ui->computer_button_edit->setEnabled(true);
+
+    int selected = ui->computer_table->currentIndex().row();
+    _currentEditID = _currentComputerDisplay[selected].ID;
+    ui->computer_name_input_edit->setText(QString::fromStdString(_currentComputerDisplay[selected].name));
+    ui->computer_type_input_edit->setText(QString::fromStdString(_currentComputerDisplay[selected].type));
+    if(_currentComputerDisplay[selected].built == 1)
+    {
+        ui->computer_built_input_edit->setCurrentText("True");
+    }
+    else
+    {
+        ui->computer_built_input_edit->setCurrentText("False");
+    }
+
+    if(_currentComputerDisplay[selected].year != 0)
+    {
+        ui->computer_year_input_edit->setText(QString::number(_currentComputerDisplay[selected].year));
+    }
+    else
+    {
+        ui->computer_year_input_edit->setText("");
+    }
+
 }
