@@ -634,9 +634,9 @@ border: 1px solid gray;
          </layout>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_14">
+         <layout class="QHBoxLayout" name="AddAndEditHolder">
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_9">
+           <layout class="QVBoxLayout" name="AddHolder">
             <item>
              <widget class="QGroupBox" name="groupBox_2">
               <property name="minimumSize">
@@ -672,13 +672,6 @@ border: 1px solid gray;
                   </widget>
                  </item>
                 </layout>
-               </item>
-               <item>
-                <widget class="QPushButton" name="pushButton">
-                 <property name="text">
-                  <string>PushButton</string>
-                 </property>
-                </widget>
                </item>
                <item>
                 <widget class="QLineEdit" name="computer_name_input">
@@ -785,6 +778,147 @@ border: 1px solid gray;
              </size>
             </property>
            </spacer>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="EditHolder">
+            <item>
+             <widget class="QGroupBox" name="groupBox_3">
+              <property name="minimumSize">
+               <size>
+                <width>500</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="title">
+               <string>Edit selected computer</string>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_9">
+               <item>
+                <layout class="QHBoxLayout" name="NameAndErrorEdit">
+                 <item>
+                  <widget class="QLabel" name="computer_name_label_2">
+                   <property name="text">
+                    <string>Name:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="computer_name_error_edit">
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="computer_name_input_edit">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Name..</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="TypeAndErrorEdit">
+                 <item>
+                  <widget class="QLabel" name="computer_type_label_2">
+                   <property name="text">
+                    <string>Type:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="computer_type_error_edit">
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="computer_type_input_edit">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Type..</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="BuiltAndErrorEdit">
+                 <item>
+                  <widget class="QLabel" name="computer_built_label_2">
+                   <property name="text">
+                    <string>Built:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="computer_built_error_edit">
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QComboBox" name="computer_built_input_edit">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="YearAndErrorEdit">
+                 <item>
+                  <widget class="QLabel" name="computer_year_lable_2">
+                   <property name="text">
+                    <string>Year:</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="computer_year_error_2">
+                   <property name="text">
+                    <string/>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <widget class="QLineEdit" name="computer_year_input_edit">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="text">
+                  <string/>
+                 </property>
+                 <property name="placeholderText">
+                  <string>Year..</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="computer_button_edit">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="text">
+                  <string>Save</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </item>
