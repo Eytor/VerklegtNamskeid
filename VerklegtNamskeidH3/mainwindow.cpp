@@ -395,7 +395,7 @@ void MainWindow::on_computer_button_clicked()
     }
     else if(!check)
     {
-        ui->computer_built_error->setText("<span style='color: #b20c0c'>Year has to be a number!</span>");
+        ui->computer_year_error->setText("<span style='color: #b20c0c'>Year has to be a number!</span>");
         error = true;
     }
 
