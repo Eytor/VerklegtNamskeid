@@ -23,3 +23,5 @@ HEADERS  += mainwindow.h \
     dataaccess.h
 
 FORMS    += mainwindow.ui
+RC_FILE = myapp.rc
+

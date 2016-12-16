@@ -73,6 +73,47 @@ void MainWindow::scientistsOrder()
     displayAllScientists();
 }
 
+void MainWindow::disableAndClearErrthing()
+{
+    ui->computer_name_error->clear();
+    ui->computer_type_error->clear();
+    ui->computer_built_error->clear();
+    ui->computer_year_error->clear();
+    ui->scientist_name_error_edit->clear();
+    ui->scientist_gender_error_edit->clear();
+    ui->scientist_yob_error_edit->clear();
+    ui->scientist_yod_error_edit->clear();
+    ui->computer_built_error_edit->clear();
+    ui->computer_name_error_edit->clear();
+    ui->computer_type_error_edit->clear();
+    ui->computer_year_error_2->clear();
+    ui->computer_name_error->clear();
+    ui->computer_type_error->clear();
+    ui->computer_built_error->clear();
+    ui->computer_year_error->clear();
+    ui->scientist_delete->setEnabled(false);
+    ui->computer_delete->setEnabled(false);
+    ui->computer_edit_button->setEnabled(false);
+    ui->computer_built_input_edit->setEnabled(false);
+    ui->computer_name_input_edit->clear();
+    ui->computer_name_input_edit->setEnabled(false);
+    ui->computer_type_input_edit->clear();
+    ui->computer_type_input_edit->setEnabled(false);
+    ui->computer_year_input_edit->clear();
+    ui->computer_year_input_edit->setEnabled(false);
+    ui->computer_button_edit->setEnabled(false);
+    ui->scientist_edit_button->setEnabled(false);
+    ui-> scientist_button_edit->setEnabled(false);
+    ui-> scientist_gender_input_edit->clear();
+    ui-> scientist_gender_input_edit->setEnabled(false);
+    ui-> scientist_name_input_edit->clear();
+    ui-> scientist_name_input_edit->setEnabled(false);
+    ui-> scientist_yob_input_edit->clear();
+    ui-> scientist_yob_input_edit->setEnabled(false);
+    ui-> scientist_yod_input_edit->clear();
+    ui-> scientist_yod_input_edit->setEnabled(false);
+}
+
 void MainWindow::computersOrder()
 {
     int column;
@@ -131,6 +172,7 @@ void MainWindow::displayAllScientists()
             ui->scientist_table->setItem(i, 3, new QTableWidgetItem(YoD));
         }
     }
+    disableAndClearErrthing();
 }
 
 void MainWindow::displayAllComputers()
@@ -158,6 +200,7 @@ void MainWindow::displayAllComputers()
             ui->computer_table->setItem(i, 2, new QTableWidgetItem("No"));
         }
     }
+    disableAndClearErrthing();
 }
 
 void MainWindow::displayComputerTrash()
@@ -353,27 +396,6 @@ void MainWindow::on_scientist_delete_clicked()
     displayScientistTrash();
 
     ui->scientist_delete->setEnabled(false);
-
-    /*_tempCompInput.clear();
-    int currentlySelectedComputer = ui->computer_table->currentIndex().row();
-    int computerID = _currentComputerDisplay[currentlySelectedComputer].ID;
-
-    TolComp comp;
-    comp.name = _currentComputerDisplay[currentlySelectedComputer].name;
-    comp.type = _currentComputerDisplay[currentlySelectedComputer].type;
-    comp.built =_currentComputerDisplay[currentlySelectedComputer].built;
-    comp.year = _currentComputerDisplay[currentlySelectedComputer].year;
-    _tempCompInput.push_back(comp);
-
-    _service.deleteFromComp(1, computerID, _tempCompInput);
-    _tempInput.clear();
-    ui->scientist_search->clear();
-    displayAllComputers();
-    displayComputerTrash();
-
-    ui->computer_delete->setEnabled(false);
-
-    ui->computer_edit_button->setEnabled(false);*/
 }
 
 

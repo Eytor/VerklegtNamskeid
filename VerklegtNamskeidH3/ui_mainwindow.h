@@ -13,7 +13,6 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
-#include <QtWidgets/QCalendarWidget>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QGroupBox>
@@ -26,10 +25,8 @@
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
-#include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTabWidget>
 #include <QtWidgets/QTableWidget>
-#include <QtWidgets/QToolBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -185,13 +182,8 @@ public:
     QPushButton *computer_empty_button;
     QWidget *tab_2;
     QVBoxLayout *verticalLayout_8;
-    QGroupBox *groupBox;
-    QVBoxLayout *verticalLayout;
-    QCalendarWidget *calendarWidget;
     QMenuBar *menuBar;
     QMenu *menuUltra_scientist_and_computer_database;
-    QToolBar *mainToolBar;
-    QStatusBar *statusBar;
 
     void setupUi(QMainWindow *MainWindow)
     {
@@ -1172,24 +1164,12 @@ public:
         tabs->addTab(recycle_tab, QString());
         tab_2 = new QWidget();
         tab_2->setObjectName(QStringLiteral("tab_2"));
+        tab_2->setMaximumSize(QSize(16777212, 16777215));
+        tab_2->setCursor(QCursor(Qt::ArrowCursor));
         verticalLayout_8 = new QVBoxLayout(tab_2);
         verticalLayout_8->setSpacing(6);
         verticalLayout_8->setContentsMargins(11, 11, 11, 11);
         verticalLayout_8->setObjectName(QStringLiteral("verticalLayout_8"));
-        groupBox = new QGroupBox(tab_2);
-        groupBox->setObjectName(QStringLiteral("groupBox"));
-        verticalLayout = new QVBoxLayout(groupBox);
-        verticalLayout->setSpacing(6);
-        verticalLayout->setContentsMargins(11, 11, 11, 11);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        calendarWidget = new QCalendarWidget(groupBox);
-        calendarWidget->setObjectName(QStringLiteral("calendarWidget"));
-
-        verticalLayout->addWidget(calendarWidget);
-
-
-        verticalLayout_8->addWidget(groupBox);
-
         tabs->addTab(tab_2, QString());
 
         horizontalLayout->addWidget(tabs);
@@ -1200,20 +1180,15 @@ public:
         menuBar->setGeometry(QRect(0, 0, 1068, 37));
         menuUltra_scientist_and_computer_database = new QMenu(menuBar);
         menuUltra_scientist_and_computer_database->setObjectName(QStringLiteral("menuUltra_scientist_and_computer_database"));
+        menuUltra_scientist_and_computer_database->setEnabled(false);
         MainWindow->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(MainWindow);
-        mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        MainWindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
-        statusBar = new QStatusBar(MainWindow);
-        statusBar->setObjectName(QStringLiteral("statusBar"));
-        MainWindow->setStatusBar(statusBar);
 
         menuBar->addAction(menuUltra_scientist_and_computer_database->menuAction());
         menuUltra_scientist_and_computer_database->addAction(actionClick_me);
 
         retranslateUi(MainWindow);
 
-        tabs->setCurrentIndex(0);
+        tabs->setCurrentIndex(1);
         trash_placeholder->setCurrentIndex(1);
 
 
@@ -1222,7 +1197,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", 0));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Ultra scientist and computer database", 0));
         actionClick_me->setText(QApplication::translate("MainWindow", "Click me!", 0));
         scientist_search->setText(QString());
         scientist_search->setPlaceholderText(QApplication::translate("MainWindow", "Search..", 0));
@@ -1355,7 +1330,6 @@ public:
         computer_empty_button->setText(QApplication::translate("MainWindow", "Empty recycle bin", 0));
         trash_placeholder->setTabText(trash_placeholder->indexOf(computer_trash_tab), QApplication::translate("MainWindow", "Computers", 0));
         tabs->setTabText(tabs->indexOf(recycle_tab), QApplication::translate("MainWindow", "Recycle Bin", 0));
-        groupBox->setTitle(QApplication::translate("MainWindow", "Calendar", 0));
         tabs->setTabText(tabs->indexOf(tab_2), QApplication::translate("MainWindow", "Calendar", 0));
         menuUltra_scientist_and_computer_database->setTitle(QApplication::translate("MainWindow", "Ultra scientist and computer database", 0));
     } // retranslateUi

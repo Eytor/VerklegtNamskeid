@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[31];
-    char stringdata0[918];
+    QByteArrayData data[32];
+    char stringdata0[942];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,36 +35,38 @@ QT_MOC_LITERAL(2, 43, 0), // ""
 QT_MOC_LITERAL(3, 44, 4), // "arg1"
 QT_MOC_LITERAL(4, 49, 27), // "on_scientist_button_clicked"
 QT_MOC_LITERAL(5, 77, 27), // "on_scientist_delete_clicked"
-QT_MOC_LITERAL(6, 105, 26), // "on_scientist_table_clicked"
-QT_MOC_LITERAL(7, 132, 30), // "on_computer_search_textChanged"
-QT_MOC_LITERAL(8, 163, 26), // "on_computer_button_clicked"
-QT_MOC_LITERAL(9, 190, 25), // "on_computer_table_clicked"
-QT_MOC_LITERAL(10, 216, 26), // "on_computer_delete_clicked"
-QT_MOC_LITERAL(11, 243, 31), // "on_computer_trash_table_clicked"
-QT_MOC_LITERAL(12, 275, 32), // "on_scientist_trash_table_clicked"
-QT_MOC_LITERAL(13, 308, 34), // "on_computer_recover_button_cl..."
-QT_MOC_LITERAL(14, 343, 35), // "on_scientist_recover_button_c..."
-QT_MOC_LITERAL(15, 379, 32), // "on_computer_empty_button_clicked"
-QT_MOC_LITERAL(16, 412, 33), // "on_scientist_empty_button_cli..."
-QT_MOC_LITERAL(17, 446, 21), // "on_tabs_tabBarClicked"
-QT_MOC_LITERAL(18, 468, 5), // "index"
-QT_MOC_LITERAL(19, 474, 22), // "on_link_button_clicked"
-QT_MOC_LITERAL(20, 497, 31), // "on_scientist_link_table_clicked"
-QT_MOC_LITERAL(21, 529, 32), // "on_scientist_edit_button_clicked"
-QT_MOC_LITERAL(22, 562, 30), // "on_computer_link_table_clicked"
-QT_MOC_LITERAL(23, 593, 29), // "on_link_delete_button_clicked"
-QT_MOC_LITERAL(24, 623, 48), // "on_scientist_order_by_column_..."
-QT_MOC_LITERAL(25, 672, 50), // "on_scientist_order_by_asc_des..."
-QT_MOC_LITERAL(26, 723, 47), // "on_computer_order_by_column_c..."
-QT_MOC_LITERAL(27, 771, 49), // "on_computer_order_by_asc_desc..."
-QT_MOC_LITERAL(28, 821, 31), // "on_computer_edit_button_clicked"
-QT_MOC_LITERAL(29, 853, 31), // "on_computer_button_edit_clicked"
-QT_MOC_LITERAL(30, 885, 32) // "on_scientist_button_edit_clicked"
+QT_MOC_LITERAL(6, 105, 23), // "disableAndClearErrthing"
+QT_MOC_LITERAL(7, 129, 26), // "on_scientist_table_clicked"
+QT_MOC_LITERAL(8, 156, 30), // "on_computer_search_textChanged"
+QT_MOC_LITERAL(9, 187, 26), // "on_computer_button_clicked"
+QT_MOC_LITERAL(10, 214, 25), // "on_computer_table_clicked"
+QT_MOC_LITERAL(11, 240, 26), // "on_computer_delete_clicked"
+QT_MOC_LITERAL(12, 267, 31), // "on_computer_trash_table_clicked"
+QT_MOC_LITERAL(13, 299, 32), // "on_scientist_trash_table_clicked"
+QT_MOC_LITERAL(14, 332, 34), // "on_computer_recover_button_cl..."
+QT_MOC_LITERAL(15, 367, 35), // "on_scientist_recover_button_c..."
+QT_MOC_LITERAL(16, 403, 32), // "on_computer_empty_button_clicked"
+QT_MOC_LITERAL(17, 436, 33), // "on_scientist_empty_button_cli..."
+QT_MOC_LITERAL(18, 470, 21), // "on_tabs_tabBarClicked"
+QT_MOC_LITERAL(19, 492, 5), // "index"
+QT_MOC_LITERAL(20, 498, 22), // "on_link_button_clicked"
+QT_MOC_LITERAL(21, 521, 31), // "on_scientist_link_table_clicked"
+QT_MOC_LITERAL(22, 553, 32), // "on_scientist_edit_button_clicked"
+QT_MOC_LITERAL(23, 586, 30), // "on_computer_link_table_clicked"
+QT_MOC_LITERAL(24, 617, 29), // "on_link_delete_button_clicked"
+QT_MOC_LITERAL(25, 647, 48), // "on_scientist_order_by_column_..."
+QT_MOC_LITERAL(26, 696, 50), // "on_scientist_order_by_asc_des..."
+QT_MOC_LITERAL(27, 747, 47), // "on_computer_order_by_column_c..."
+QT_MOC_LITERAL(28, 795, 49), // "on_computer_order_by_asc_desc..."
+QT_MOC_LITERAL(29, 845, 31), // "on_computer_edit_button_clicked"
+QT_MOC_LITERAL(30, 877, 31), // "on_computer_button_edit_clicked"
+QT_MOC_LITERAL(31, 909, 32) // "on_scientist_button_edit_clicked"
 
     },
     "MainWindow\0on_scientist_search_textChanged\0"
     "\0arg1\0on_scientist_button_clicked\0"
     "on_scientist_delete_clicked\0"
+    "disableAndClearErrthing\0"
     "on_scientist_table_clicked\0"
     "on_computer_search_textChanged\0"
     "on_computer_button_clicked\0"
@@ -98,7 +100,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      27,   14, // methods
+      28,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -106,39 +108,41 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    1,  149,    2, 0x08 /* Private */,
-       4,    0,  152,    2, 0x08 /* Private */,
-       5,    0,  153,    2, 0x08 /* Private */,
-       6,    0,  154,    2, 0x08 /* Private */,
-       7,    1,  155,    2, 0x08 /* Private */,
-       8,    0,  158,    2, 0x08 /* Private */,
-       9,    0,  159,    2, 0x08 /* Private */,
-      10,    0,  160,    2, 0x08 /* Private */,
-      11,    0,  161,    2, 0x08 /* Private */,
-      12,    0,  162,    2, 0x08 /* Private */,
-      13,    0,  163,    2, 0x08 /* Private */,
-      14,    0,  164,    2, 0x08 /* Private */,
-      15,    0,  165,    2, 0x08 /* Private */,
-      16,    0,  166,    2, 0x08 /* Private */,
-      17,    1,  167,    2, 0x08 /* Private */,
-      19,    0,  170,    2, 0x08 /* Private */,
-      20,    0,  171,    2, 0x08 /* Private */,
-      21,    0,  172,    2, 0x08 /* Private */,
-      22,    0,  173,    2, 0x08 /* Private */,
-      23,    0,  174,    2, 0x08 /* Private */,
-      24,    0,  175,    2, 0x08 /* Private */,
-      25,    0,  176,    2, 0x08 /* Private */,
-      26,    0,  177,    2, 0x08 /* Private */,
-      27,    0,  178,    2, 0x08 /* Private */,
-      28,    0,  179,    2, 0x08 /* Private */,
-      29,    0,  180,    2, 0x08 /* Private */,
-      30,    0,  181,    2, 0x08 /* Private */,
+       1,    1,  154,    2, 0x08 /* Private */,
+       4,    0,  157,    2, 0x08 /* Private */,
+       5,    0,  158,    2, 0x08 /* Private */,
+       6,    0,  159,    2, 0x08 /* Private */,
+       7,    0,  160,    2, 0x08 /* Private */,
+       8,    1,  161,    2, 0x08 /* Private */,
+       9,    0,  164,    2, 0x08 /* Private */,
+      10,    0,  165,    2, 0x08 /* Private */,
+      11,    0,  166,    2, 0x08 /* Private */,
+      12,    0,  167,    2, 0x08 /* Private */,
+      13,    0,  168,    2, 0x08 /* Private */,
+      14,    0,  169,    2, 0x08 /* Private */,
+      15,    0,  170,    2, 0x08 /* Private */,
+      16,    0,  171,    2, 0x08 /* Private */,
+      17,    0,  172,    2, 0x08 /* Private */,
+      18,    1,  173,    2, 0x08 /* Private */,
+      20,    0,  176,    2, 0x08 /* Private */,
+      21,    0,  177,    2, 0x08 /* Private */,
+      22,    0,  178,    2, 0x08 /* Private */,
+      23,    0,  179,    2, 0x08 /* Private */,
+      24,    0,  180,    2, 0x08 /* Private */,
+      25,    0,  181,    2, 0x08 /* Private */,
+      26,    0,  182,    2, 0x08 /* Private */,
+      27,    0,  183,    2, 0x08 /* Private */,
+      28,    0,  184,    2, 0x08 /* Private */,
+      29,    0,  185,    2, 0x08 /* Private */,
+      30,    0,  186,    2, 0x08 /* Private */,
+      31,    0,  187,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void,
     QMetaType::Void,
@@ -149,7 +153,7 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,   18,
+    QMetaType::Void, QMetaType::Int,   19,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -175,30 +179,31 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 0: _t->on_scientist_search_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 1: _t->on_scientist_button_clicked(); break;
         case 2: _t->on_scientist_delete_clicked(); break;
-        case 3: _t->on_scientist_table_clicked(); break;
-        case 4: _t->on_computer_search_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 5: _t->on_computer_button_clicked(); break;
-        case 6: _t->on_computer_table_clicked(); break;
-        case 7: _t->on_computer_delete_clicked(); break;
-        case 8: _t->on_computer_trash_table_clicked(); break;
-        case 9: _t->on_scientist_trash_table_clicked(); break;
-        case 10: _t->on_computer_recover_button_clicked(); break;
-        case 11: _t->on_scientist_recover_button_clicked(); break;
-        case 12: _t->on_computer_empty_button_clicked(); break;
-        case 13: _t->on_scientist_empty_button_clicked(); break;
-        case 14: _t->on_tabs_tabBarClicked((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 15: _t->on_link_button_clicked(); break;
-        case 16: _t->on_scientist_link_table_clicked(); break;
-        case 17: _t->on_scientist_edit_button_clicked(); break;
-        case 18: _t->on_computer_link_table_clicked(); break;
-        case 19: _t->on_link_delete_button_clicked(); break;
-        case 20: _t->on_scientist_order_by_column_currentIndexChanged(); break;
-        case 21: _t->on_scientist_order_by_asc_desc_currentIndexChanged(); break;
-        case 22: _t->on_computer_order_by_column_currentIndexChanged(); break;
-        case 23: _t->on_computer_order_by_asc_desc_currentIndexChanged(); break;
-        case 24: _t->on_computer_edit_button_clicked(); break;
-        case 25: _t->on_computer_button_edit_clicked(); break;
-        case 26: _t->on_scientist_button_edit_clicked(); break;
+        case 3: _t->disableAndClearErrthing(); break;
+        case 4: _t->on_scientist_table_clicked(); break;
+        case 5: _t->on_computer_search_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 6: _t->on_computer_button_clicked(); break;
+        case 7: _t->on_computer_table_clicked(); break;
+        case 8: _t->on_computer_delete_clicked(); break;
+        case 9: _t->on_computer_trash_table_clicked(); break;
+        case 10: _t->on_scientist_trash_table_clicked(); break;
+        case 11: _t->on_computer_recover_button_clicked(); break;
+        case 12: _t->on_scientist_recover_button_clicked(); break;
+        case 13: _t->on_computer_empty_button_clicked(); break;
+        case 14: _t->on_scientist_empty_button_clicked(); break;
+        case 15: _t->on_tabs_tabBarClicked((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 16: _t->on_link_button_clicked(); break;
+        case 17: _t->on_scientist_link_table_clicked(); break;
+        case 18: _t->on_scientist_edit_button_clicked(); break;
+        case 19: _t->on_computer_link_table_clicked(); break;
+        case 20: _t->on_link_delete_button_clicked(); break;
+        case 21: _t->on_scientist_order_by_column_currentIndexChanged(); break;
+        case 22: _t->on_scientist_order_by_asc_desc_currentIndexChanged(); break;
+        case 23: _t->on_computer_order_by_column_currentIndexChanged(); break;
+        case 24: _t->on_computer_order_by_asc_desc_currentIndexChanged(); break;
+        case 25: _t->on_computer_edit_button_clicked(); break;
+        case 26: _t->on_computer_button_edit_clicked(); break;
+        case 27: _t->on_scientist_button_edit_clicked(); break;
         default: ;
         }
     }
@@ -229,13 +234,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 27)
+        if (_id < 28)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 27;
+        _id -= 28;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 27)
+        if (_id < 28)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 27;
+        _id -= 28;
     }
     return _id;
 }

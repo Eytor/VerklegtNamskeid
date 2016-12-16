@@ -36,6 +36,7 @@ private slots:
     void on_scientist_button_clicked();
 
     void on_scientist_delete_clicked();
+    void disableAndClearErrthing();
 
 
     void on_scientist_table_clicked();
@@ -102,7 +103,6 @@ private:
     vector<TolPersLink> _linkPersDisplay;
     vector<TolCompLink> _linkCompDisplay;
     int _currentEditID;
-    //Edit _edit;
 };
 
 #endif // MAINWINDOW_H
