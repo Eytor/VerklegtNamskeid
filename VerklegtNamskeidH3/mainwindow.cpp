@@ -212,6 +212,7 @@ void MainWindow::on_scientist_button_clicked()
 {
     _tempInput.clear();
     bool error = false;
+    bool isint;
     ui->scientist_name_error->clear();
     ui->scientist_gender_error->clear();
     ui->scientist_yob_error->clear();
@@ -220,6 +221,8 @@ void MainWindow::on_scientist_button_clicked()
     QString gender = ui->scientist_gender_input->text();
     QString yoB = ui->scientist_yob_input->text();
     QString yoD = ui->scientist_yod_input->text();
+    int check = yoB.toInt(&isint);
+    int check2 = yoD.toInt(&isint);
 
     if(fullName.isEmpty())
     {
@@ -239,6 +242,24 @@ void MainWindow::on_scientist_button_clicked()
     if(yoD.isEmpty())
     {
         yoD = "0";
+    }
+
+    if(!check)
+    {
+        ui->scientist_yob_error->setText("<span style='color: #b20c0c'>Year of birth must be a number!</span>");
+        error = true;
+    }
+
+    if(!check2)
+    {
+        ui->scientist_yod_error->setText("<span style='color: #b20c0c'>Year of death must be a number!</span>");
+        error = true;
+    }
+
+    if(yoD.toInt() < yoB.toInt())
+    {
+        ui->scientist_yod_error->setText("<span style='color: #b20c0c'>Year of death must be a number!</span>");
+        error = true;
     }
 
     if(!error)
