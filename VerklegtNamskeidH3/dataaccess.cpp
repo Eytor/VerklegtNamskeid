@@ -342,16 +342,18 @@ void DataAccess::searchComputers(vector<TolComp>& compOutput, string s)
     }
 }
 
-void DataAccess::editPerson(int theId, string name, string theGender, string yearOfBirth, string yearOfDeath)
+void DataAccess::editPerson(int theId, QString name, QString theGender, QString yearOfBirth, QString yearOfDeath)
 {
     QSqlQuery query(_db);
     QString ID = QString::number(theId);
-    QString fullName = QString::fromStdString(name);
-    QString gender = QString::fromStdString(theGender);
-    QString yob = QString::fromStdString(yearOfBirth);
-    QString yod = QString::fromStdString(yearOfDeath);
+    QString fullName = name;
+    QString gender = theGender;
+    QString yob = yearOfBirth;
+    QString yod = yearOfDeath;
 
-    query.exec("UPDATE People SET FullName = " + fullName + ", Gender = " + gender + ", Yob = " + yob + ", Yod = " + yod + "WHERE ID = " + ID);
+    QString stuff = "UPDATE People SET FullName = '" + fullName + "', Gender = '" + gender + "', Yob = '" + yob + "', Yod = '" + yod + " 'WHERE ID = '" + ID + "'";
+
+    query.exec("UPDATE People SET FullName = '" + fullName + "', Gender = '" + gender + "', Yob = '" + yob + "', Yod = '" + yod + " 'WHERE ID = '" + ID + "'");
 }
 
 void DataAccess::editComputer(int theId, string theName, string theType, bool isBuilt, string theYear)

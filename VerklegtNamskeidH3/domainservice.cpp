@@ -359,11 +359,9 @@ bool DomainService::checkIfLegitYear(string s)
     }
 }
 
-void DomainService::editPerson(int list, int ID, int selection, string s)
+void DomainService::editPerson(int id,QString name,QString gender, QString yearOfBirth, QString yearOfDeath)
 {
-    string tempString = s;
-
-    //_data.editPerson(list, ID, selection, tempString);
+    _data.editPerson(id, name, gender, yearOfBirth, yearOfDeath);
     _personur.clear();
     _computer.clear();
     _deletedComputer.clear();

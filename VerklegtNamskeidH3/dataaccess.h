@@ -95,7 +95,7 @@ public:
 
     void searchComputers(vector<TolComp>& compOutput, string s);
     //Function that allows the user to edit the database
-    void editPerson(int theId, string name, string theGender, string yearOfBirth, string yearOfDeath);
+    void editPerson(int theId, QString name, QString theGender, QString yearOfBirth, QString yearOfDeath);
     void editComputer(int theId, string theName, string theType, bool isBuilt, string theYear);
 
     //Function that allows the user to sort the database

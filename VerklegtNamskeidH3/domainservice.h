@@ -56,7 +56,7 @@ public:
     //Function that sorts the list in different ways
     void whatToSort(int data, int col, int ord);
     //Function that edits a value of a person
-    void editPerson(int list, int personID, int Selection, string s);
+    void editPerson(int id, QString name, QString gender, QString yearOfBirth, QString yearOfDeath);
     //Function that adds a person to the list
     void addToList(vector<TolPers> input);
     //adds a computer to the list
