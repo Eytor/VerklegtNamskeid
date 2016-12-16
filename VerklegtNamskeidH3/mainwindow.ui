@@ -111,6 +111,7 @@ background-color:rgb(53, 53, 53);
 
 QTableWidget::item{
 background-color:grey;
+padding:0;
 }
 
 QTableWidget::item:hover{
@@ -297,6 +298,21 @@ background-color:rgb(65, 65, 65)
           <property name="enabled">
            <bool>false</bool>
           </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>160000</width>
+            <height>160000</height>
+           </size>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
           <property name="autoFillBackground">
            <bool>false</bool>
           </property>
@@ -309,6 +325,18 @@ background-color:rgb(65, 65, 65)
          <widget class="QPushButton" name="scientist_edit_button">
           <property name="enabled">
            <bool>false</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>16777215</height>
+           </size>
           </property>
           <property name="text">
            <string>Edit</string>
