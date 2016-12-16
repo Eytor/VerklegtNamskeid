@@ -23,6 +23,7 @@ vector<TolPers> DomainService::getList(int list)
     }
 
 }
+
 vector<TolComp> DomainService::getCompList(int list)
 {
     if(list == 1)
@@ -34,7 +35,6 @@ vector<TolComp> DomainService::getCompList(int list)
         return _deletedComputer;
     }
 }
-
 
 void DomainService::addToList(vector<TolPers> input)
 {
@@ -72,180 +72,6 @@ void DomainService::addToComp(vector<TolComp> input)
     retriveList();
 }
 
-int DomainService::getID(int list, int i)
-{
-    if(list == 1)
-    {
-        return _personur[i].ID;
-    }
-    else if(list == 2)
-    {
-        return _deletedPersonur[i].ID;
-    }
-    else if(list == 3)
-    {
-        return _computer[i].ID;
-    }
-    else
-    {
-        return _deletedComputer[i].ID;
-    }
-}
-
-string DomainService::getName(int list, int i)
-{
-    if(list == 1)
-    {
-        return _personur[i].fullName;
-    }
-    else if(list == 2)
-    {
-        return _deletedPersonur[i].fullName;
-    }
-    else if(list == 3)
-    {
-        return _computer[i].name;
-    }
-    else
-    {
-        return _deletedComputer[i].name;
-    }
-
-}
-
-string DomainService::getType(int list, int i)
-{
-    if(list == 3)
-    {
-        return _computer[i].type;
-    }
-    else
-    {
-        return _deletedComputer[i].type;
-    }
-
-}
-
-int DomainService::getBuiltStatus(int list, int i)
-{
-    if(list == 3)
-    {
-        return _computer[i].built;
-    }
-    else
-    {
-        return _deletedComputer[i].built;
-    }
-}
-
-int DomainService::getYear(int list, int i)
-{
-    if(list == 3)
-    {
-        return _computer[i].year;
-    }
-    else
-    {
-        return _deletedComputer[i].year;
-    }
-}
-
-string DomainService::getGender(int list, int i)
-{
-    if(list == 1)
-    {
-        return _personur[i].gender;
-    }
-    else
-    {
-        return _deletedPersonur[i].gender;
-    }
-
-}
-
-int DomainService::getYoB(int list, int i)
-{
-    if(list == 1)
-    {
-        return _personur[i].yearOfBirth;
-    }
-    else
-    {
-        return _deletedPersonur[i].yearOfBirth;
-    }
-}
-
-int DomainService::getYoD(int list, int i)
-{
-    if(list == 1)
-    {
-        return _personur[i].yearOfDeath;
-    }
-    else
-    {
-        return _deletedPersonur[i].yearOfDeath;
-    }
-}
-
-int DomainService::getListSize(int list)
-{
-    if(list == 1)
-    {
-        return _personur.size();
-    }
-    else if(list == 2)
-    {
-        return _deletedPersonur.size();
-    }
-    else if(list == 3)
-    {
-        return _computer.size();
-    }
-    else if(list == 4)
-    {
-        return _deletedComputer.size();
-    }
-    else
-    {
-        return _linking.size();
-    }
-}
-
-bool DomainService::getEmptyStatus(int list)
-{
-    if(list == 1)
-    {
-        return _personur.empty();
-    }
-    else if(list == 2)
-    {
-        return _deletedPersonur.empty();
-    }
-    else if(list == 3)
-    {
-        return _computer.empty();
-    }
-    else if(list == 4)
-    {
-        return _deletedComputer.empty();
-    }
-    else
-    {
-        return _linking.empty();
-    }
-}
-
-string DomainService::convertToLower(string unfilteredString)
-{
-    locale loc;
-    string lowerCaseString;
-    for(unsigned int i = 0; i < unfilteredString.length(); i++)
-    {
-        lowerCaseString += tolower(unfilteredString[i],loc);
-    }
-    return lowerCaseString;
-}
-
 void DomainService::searchScientists(vector<TolPers>& searchResultPeople,  string keyword)
 {
     _data.searchScientists(searchResultPeople, keyword);
@@ -255,7 +81,6 @@ void DomainService::searchComputers(vector<TolComp>& searchResultComputers, stri
 {
     _data.searchComputers(searchResultComputers, keyword);
 }
-
 
 void DomainService::whatToSort(int data, int col, int ord)
 {
@@ -294,6 +119,7 @@ void DomainService::deleteFromList(int list, int id, vector<TolPers> backup)
     retriveList();
 
 }
+
 void DomainService::deleteFromComp(int list, int id, vector<TolComp> backup)
 {
     if(list == 1)
@@ -336,26 +162,6 @@ void DomainService::emptyTrash(int list)
         _deletedComputer.clear();
         _data.emptyDeletedPeople();
         _data.emptyDeletedComputers();
-    }
-}
-
-bool DomainService::checkIfLegitYear(string s)
-{
-    bool containsLetter;
-    for(unsigned int i = 0; i < s.length(); i++)
-    {
-        if(isalpha(s[i]))
-        {
-            containsLetter = true;
-        }
-    }
-    if(!containsLetter)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
     }
 }
 

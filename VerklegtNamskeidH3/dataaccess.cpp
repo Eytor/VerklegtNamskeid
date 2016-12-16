@@ -316,12 +316,7 @@ void DataAccess::searchComputers(vector<TolComp>& compOutput, string s)
 {
     QSqlQuery query(_db);
     QString keyword = QString::fromStdString(s);
-    /*query.exec("SELECT ID, Name, Type, Built, Year"
-               "FROM Computers "
-               "WHERE Name LIKE '%" + keyword + "%' "
-               "OR Type LIKE '%" + keyword + "%' "
-               "OR Built LIKE '%" + keyword + "%' "
-               "OR Year LIKE '%" + keyword + "%'");*/
+
 
     query.exec("SELECT ID, Name, Type, Built, Year "
                    "FROM Computers "

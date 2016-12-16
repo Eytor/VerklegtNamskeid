@@ -15,11 +15,17 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    // Function that displays all scientists to table
     void displayAllScientists();
+    // function that orders the scientist vector in a specific order chosen by user
     void scientistsOrder();
+    // function that orders the computer vector in a specific order chosen by user
     void computersOrder();
+    // Function that displays all computers to table
     void displayAllComputers();
+    // Function that displays all deleted computers to table
     void displayComputerTrash();
+    // Function that displays all deleted scientists to table
     void displayScientistTrash();
     void displayLinksScientists();
     void printPerson(int list, int i);
